@@ -1,0 +1,19 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/AuMidiActor.wpd ) 
+( Actor midiActor MleMidiActor 
+	( Property music musicRef musicRef ) 
+) 
+(MediaRef musicRef filemref
+	(MRSource 
+		( Media 0 audio $MLE_HOME/data/sounds/yukifuru.mid)
+	)
+	(MRTarget +win32     0
+		( Media 0 audio  $MLE_HOME\\data\\sounds\\yukifuru.mid)
+	)
+	(MRTarget +sgi       0
+		( Media 0 audio  $MLE_HOME/data/sounds/yukifuru.mid)
+	)
+	(MRTarget +rehearsal 0
+		( Media 0 audio  $MLE_HOME/data/sounds/yukifuru.mid)
+	)
+)

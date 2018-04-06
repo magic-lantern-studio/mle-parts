@@ -1,0 +1,46 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/MleEvader.wpd ) 
+( Actor evader0 MleEvader 
+	( Property predictive int 1 )
+        ( Property position MlVector3 0 0 0 )
+        ( Property orientation MlRotation 0 0 0 1 )          
+        ( Property scale MlScalar 1 )
+	( Property model MediaRef disk ) 
+	( Property +win32 colorMap MediaRef winshade ) 
+) 
+( MediaRef +brender disk Mle3dModelMediaRef 
+	( MRSource 
+		( Media 0 geometry $MLE_ROOT/data/models/disk.dat ) 
+	)
+	( MRTarget +win32 0
+		( Media 0 geometry $MLE_ROOT\\data\\models\\disk.dat ) 
+	)
+	( MRTarget +sgi 0
+		( Media 0 geometry $MLE_ROOT/data/models/disk.dat ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 geometry $MLE_ROOT/data/models/disk.dat ) 
+	)
+) 
+( MediaRef +inventor disk Mle3dModelMediaRef 
+	( MRSource 
+		( Media 0 geometry $MLE_ROOT/data/models/disk.iv ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 geometry $MLE_ROOT/data/models/disk.iv ) 
+	)
+) 
+( MediaRef +win32 winshade Mle3dColorMapMediaRef 
+	( MRSource 
+		( Media 0 shadetable $MLE_ROOT/data/shade/winshade.tab ) 
+	)
+	( MRTarget +win32 0
+		( Media 0 shadetable $MLE_ROOT\\data\\shade\\winshade.tab ) 
+	)
+	( MRTarget +sgi 0
+		( Media 0 shadetable $MLE_ROOT/data/shade/winshade.tab ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 shadetable $MLE_ROOT/data/shade/winshade.tab ) 
+	)
+) 

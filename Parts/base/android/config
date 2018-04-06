@@ -1,0 +1,3 @@
+-doclet com.ibm.malup.doclet.config.TOCDoclet
+-docletpath M:\Projects\MagicLantern\tools\java\JavaTOC\bin\TOCNavDoclet.jar
+-classpath M:\projects\MagicLantern\Core\mlert\android\com.wizzer.mle.runtime\bin

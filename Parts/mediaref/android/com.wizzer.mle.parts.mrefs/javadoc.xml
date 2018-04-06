@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpath="C:\Users\msm\Projects\MagicLantern\lib\android-10\parts.jar;C:\Users\msm\Projects\MagicLantern\lib\android-10\mlert.jar" destdir="doc" doctitle="Magic Lantern Runtime Library" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" overview="C:\Users\msm\Projects\MagicLantern\Parts\mediaref\android\com.wizzer.mle.parts.mrefs\src\overview-summary.html" source="1.5" sourcefiles="src/com/wizzer/mle/parts/mrefs/MleImageMediaRef.java,src/com/wizzer/mle/parts/mrefs/MleMrefsTest.java" sourcepath="gen;src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

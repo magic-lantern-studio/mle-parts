@@ -1,0 +1,34 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dGeometryActor.wpd ) 
+( Actor myGeometryActor Mle3dGeometryActor 
+	( Property renderStyle int 1 ) 
+	( Property translation MlVector3 0 0 0 ) 
+	( Property rotation MlVector3 0 0 0 ) 
+	( Property scale MlVector3 1 1 1 ) 
+	( Property sceneGraph MediaRef myGeometrySceneGraphMedia ) 
+	( Property pickable int 1 )
+) 
+
+(MediaRef +brender myGeometrySceneGraphMedia Mle3dSceneGraphMediaRef
+          (MRSource 
+                    (Media 0 sceneGraph $MLE_HOME/data/3d/cube.wire)
+          )
+          (MRTarget +rehearsal 0
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.brs,geometry,$MLE_HOME/data/3d/cube.brg,materials,$MLE_HOME/data/3d/cube.brm,textures,$MLE_HOME/data/3d/cube.brt)
+          )
+          (MRTarget +sgi 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.brs,geometry,$MLE_HOME/data/3d/cube.brg,materials,$MLE_HOME/data/3d/cube.brm,textures,$MLE_HOME/data/3d/cube.brt)
+          )
+          (MRTarget +win32 0 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME\\data\\cube.brs,geometry,$MLE_HOME\\data\\cube.brg,materials,$MLE_HOME\\data\\cube.brm,textures,$MLE_HOME\\data\\cube.brt)
+          )
+)
+
+(MediaRef +inventor myGeometrySceneGraphMedia Mle3dSceneGraphMediaRef
+          (MRSource 
+                    (Media 0 sceneGraph $MLE_HOME/data/3d/cube.wire)
+          )
+          (MRTarget +rehearsal 0 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.iv)
+          )
+)

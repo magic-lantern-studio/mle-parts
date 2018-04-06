@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+(ActorDef MleEscapeActor
+    (HeaderFile mle/escapea.h)
+    (Package com.wizzer.auteur.mle.parts.actors)
+    (SourceFile escapea.cxx)
+)

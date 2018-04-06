@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+( StageDef MleBrStage
+    ( HeaderFile mle/brstage.h )
+    ( PropertyDef size MlVector2 )
+)

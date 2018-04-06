@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+( StageDef MleInventorStage
+    ( HeaderFile mle/ivstage.h )
+    ( PropertyDef size MlVector2 )
+)

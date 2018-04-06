@@ -1,0 +1,7 @@
+-sourcepath com.wizzer.mle.parts.mrefs/src
+-d com.wizzer.mle.parts.mrefs.doc
+-overview com.wizzer.mle.parts.mrefs/src/overview-summary.html
+-plugintitle 'Magic Lantern Media References Library'
+-pluginid www.wizzer.mle.parts.mrefs.doc
+-version "1.0.0.0"
+-provider "Wizzer Works"

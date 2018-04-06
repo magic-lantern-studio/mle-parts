@@ -1,0 +1,5 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dTransformActor.wpd ) 
+( Actor myTransformActor Mle3dTransformActor 
+        ( Property transform MlTransform 1 0 0 0 1 0 0 0 1 0 0 0 )          
+) 

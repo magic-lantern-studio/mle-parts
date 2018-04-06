@@ -1,0 +1,10 @@
+#DWP 1.0 ascii
+(ActorDef StaticCamera
+    (HeaderFile mle/statcam.h)
+    (SourceFile statcam.cxx)
+	(PropertyDef position MlVector3)
+	(PropertyDef orientation MlRotation)
+	(PropertyDef nearClipping MlScalar)
+	(PropertyDef farClipping MlScalar)
+	(RoleSetMapping Mle3Role Mle3dSet)
+)

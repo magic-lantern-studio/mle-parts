@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+#MyThreeProperty
+(PropertyDef Property1Name Property1Type)
+(PropertyDef Property2Name Property2Type)
+(PropertyDef Property3Name Property3Type)
+

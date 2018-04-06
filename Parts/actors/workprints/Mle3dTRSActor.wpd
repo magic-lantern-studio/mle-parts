@@ -1,0 +1,11 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dTRSActor
+    (HeaderFile mle/3dtrsa.h)
+    (SourceFile 3dtrsa.cxx)
+    (Include $MLE_HOME/parts/props/Mle3dNodeTypeProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dTranslationProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dEulerAngleRotationProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dNonuniformScaleProperty.wpp)
+    ( RoleSetMapping Mle3dRole Mle3dSet )
+)
+

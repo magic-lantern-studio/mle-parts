@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MleEscapeActor", "MleEscapeActor.vcxproj", "{499A6510-6365-4D93-B1C0-21FF8D54DEA7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dImageActor", "Mle2dImageActor.vcxproj", "{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dxactors", "dxactors.vcxproj", "{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Mle2dImageActor_Debug|Win32 = Mle2dImageActor_Debug|Win32
+		Mle2dImageActor_Debug|x64 = Mle2dImageActor_Debug|x64
+		Mle2dImageActor_Release|Win32 = Mle2dImageActor_Release|Win32
+		Mle2dImageActor_Release|x64 = Mle2dImageActor_Release|x64
+		MleEscapeActor_Debug|Win32 = MleEscapeActor_Debug|Win32
+		MleEscapeActor_Debug|x64 = MleEscapeActor_Debug|x64
+		MleEscapeActor_Release|Win32 = MleEscapeActor_Release|Win32
+		MleEscapeActor_Release|x64 = MleEscapeActor_Release|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Debug|x64.ActiveCfg = Debug|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Mle2dImageActor_Debug|Win32.ActiveCfg = Mle2dImageActor_Debug|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Mle2dImageActor_Debug|x64.ActiveCfg = Mle2dImageActor_Debug|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Mle2dImageActor_Release|Win32.ActiveCfg = Mle2dImageActor_Release|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Mle2dImageActor_Release|x64.ActiveCfg = Mle2dImageActor_Release|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Debug|Win32.ActiveCfg = MleEscapeActor_Debug|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Debug|Win32.Build.0 = MleEscapeActor_Debug|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Debug|x64.ActiveCfg = MleEscapeActor_Debug|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Debug|x64.Build.0 = MleEscapeActor_Debug|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Release|Win32.ActiveCfg = MleEscapeActor_Release|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Release|Win32.Build.0 = MleEscapeActor_Release|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Release|x64.ActiveCfg = MleEscapeActor_Release|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.MleEscapeActor_Release|x64.Build.0 = MleEscapeActor_Release|x64
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Release|Win32.ActiveCfg = Release|Win32
+		{499A6510-6365-4D93-B1C0-21FF8D54DEA7}.Release|x64.ActiveCfg = Release|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Debug|x64.ActiveCfg = Debug|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Debug|Win32.ActiveCfg = Mle2dImageActor_Debug|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Debug|Win32.Build.0 = Mle2dImageActor_Debug|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Debug|x64.ActiveCfg = Mle2dImageActor_Debug|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Debug|x64.Build.0 = Mle2dImageActor_Debug|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Release|Win32.ActiveCfg = Mle2dImageActor_Release|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Release|Win32.Build.0 = Mle2dImageActor_Release|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Release|x64.ActiveCfg = Mle2dImageActor_Release|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Mle2dImageActor_Release|x64.Build.0 = Mle2dImageActor_Release|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.MleEscapeActor_Debug|Win32.ActiveCfg = MleEscapeActor_Debug|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.MleEscapeActor_Debug|x64.ActiveCfg = MleEscapeActor_Debug|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.MleEscapeActor_Release|Win32.ActiveCfg = MleEscapeActor_Release|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.MleEscapeActor_Release|x64.ActiveCfg = MleEscapeActor_Release|x64
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Release|Win32.ActiveCfg = Release|Win32
+		{28C76FC4-5D3E-4C8F-B61B-D2A89128811F}.Release|x64.ActiveCfg = Release|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Debug|Win32.Build.0 = Debug|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Debug|x64.ActiveCfg = Debug|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Debug|x64.Build.0 = Debug|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Mle2dImageActor_Debug|Win32.ActiveCfg = Mle2dImageActor_Debug|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Mle2dImageActor_Debug|x64.ActiveCfg = Mle2dImageActor_Debug|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Mle2dImageActor_Release|Win32.ActiveCfg = Mle2dImageActor_Release|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Mle2dImageActor_Release|x64.ActiveCfg = Mle2dImageActor_Release|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.MleEscapeActor_Debug|Win32.ActiveCfg = MleEscapeActor_Debug|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.MleEscapeActor_Debug|x64.ActiveCfg = MleEscapeActor_Debug|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.MleEscapeActor_Release|Win32.ActiveCfg = MleEscapeActor_Release|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.MleEscapeActor_Release|x64.ActiveCfg = MleEscapeActor_Release|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Release|Win32.ActiveCfg = Release|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Release|Win32.Build.0 = Release|Win32
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Release|x64.ActiveCfg = Release|x64
+		{7A5D8106-2B19-4B01-9E3F-4146A74BD7B7}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,31 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dSpotLightActor.wpd ) 
+( Actor myspotLight Mle3dSpotLightActor 
+	( Property onOffSwitch int 1 ) 
+	( Property intensity MlScalar 0.5 ) 
+	( Property position MlVector3 -10 0 10 ) 
+	( Property orientation MlRotation 0 0 -1 1) 
+	( Property dropOffRate MlScalar 0.5 ) 
+	( Property angle MlScalar 0.125 ) 
+	( Property +rehearsal RG.geometry MediaRef sptRGMedia )
+	( Property +rehearsal RG.onOff int 1 )
+	( Property +rehearsal scale MlScalar 1.0)
+) 
+
+( MediaRef +brender +rehearsal sptRGMedia  Mle3dSceneGraphMediaRef
+    ( MRSource
+	( Media 0 composite $MLE_HOME/data/rehearsalGeom/spotLight.wire )
+    )
+    ( MRTarget +rehearsal 0
+		( Media 0 composite sceneGraph,$MLE_HOME/data/rehearsalGeom/spotLight.brs,geometry,$MLE_HOME/data/rehearsalGeom/spotLight.brg,materials,$MLE_HOME/data/rehearsalGeom/spotLight.brm )
+	)
+)
+
+( MediaRef +inventor +rehearsal sptRGMedia  Mle3dSceneGraphMediaRef
+	( MRSource
+		( Media 0 composite $MLE_HOME/data/rehearsalGeom/spotLight.wire )
+	)
+	(MRTarget +rehearsal 0
+		(Media 0 composite sceneGraph,$MLE_HOME/data/rehearsalGeom/spotLight.iv)
+          )
+)

@@ -1,0 +1,4 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/MlePaletteActor.wpd ) 
+( Actor +win32 pal MlePaletteActor )
+# might want a default palette mediaref?

@@ -1,0 +1,7 @@
+-sourcepath com.wizzer.mle.parts.actors/src
+-d com.wizzer.mle.parts.actors.doc
+-overview com.wizzer.mle.parts.actors/src/overview-summary.html
+-plugintitle 'Magic Lantern Actors Library'
+-pluginid www.wizzer.mle.parts.actors.doc
+-version "1.0.0.0"
+-provider "Wizzer Works"

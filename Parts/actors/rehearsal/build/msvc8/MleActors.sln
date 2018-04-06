@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dImageActor", "Mle2dImageActor.vcproj", "{D3A68708-98B8-427E-ACE9-F7051A47837E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dCameraActor", "Mle3dCameraActor.vcproj", "{617D3E80-4C2F-42F5-8AB8-6C3C1D439DB4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MleEscapeActor", "MleEscapeActor.vcproj", "{52CA6125-B909-4F44-9460-689660EEF87B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3A68708-98B8-427E-ACE9-F7051A47837E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D3A68708-98B8-427E-ACE9-F7051A47837E}.Debug|Win32.Build.0 = Debug|Win32
+		{D3A68708-98B8-427E-ACE9-F7051A47837E}.Release|Win32.ActiveCfg = Release|Win32
+		{D3A68708-98B8-427E-ACE9-F7051A47837E}.Release|Win32.Build.0 = Release|Win32
+		{617D3E80-4C2F-42F5-8AB8-6C3C1D439DB4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{617D3E80-4C2F-42F5-8AB8-6C3C1D439DB4}.Debug|Win32.Build.0 = Debug|Win32
+		{617D3E80-4C2F-42F5-8AB8-6C3C1D439DB4}.Release|Win32.ActiveCfg = Release|Win32
+		{617D3E80-4C2F-42F5-8AB8-6C3C1D439DB4}.Release|Win32.Build.0 = Release|Win32
+		{52CA6125-B909-4F44-9460-689660EEF87B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{52CA6125-B909-4F44-9460-689660EEF87B}.Debug|Win32.Build.0 = Debug|Win32
+		{52CA6125-B909-4F44-9460-689660EEF87B}.Release|Win32.ActiveCfg = Release|Win32
+		{52CA6125-B909-4F44-9460-689660EEF87B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

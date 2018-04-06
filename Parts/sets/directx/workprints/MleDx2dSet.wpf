@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+( SetDef Mle2dSet
+    ( HeaderFile dxs/dx2dset.h )
+    ( PropertyDef position MlVector2 )
+    ( PropertyDef size MlVector2 )
+)

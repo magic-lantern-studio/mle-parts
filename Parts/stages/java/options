@@ -1,0 +1,7 @@
+-sourcepath com.wizzer.mle.parts.stages/src
+-d com.wizzer.mle.parts.stages.doc
+-overview com.wizzer.mle.parts.stages/src/overview-summary.html
+-plugintitle 'Magic Lantern Stages Library'
+-pluginid www.wizzer.mle.parts.stages.doc
+-version "1.0.0.0"
+-provider "Wizzer Works"

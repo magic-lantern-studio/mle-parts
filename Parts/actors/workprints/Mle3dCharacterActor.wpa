@@ -1,0 +1,79 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dCharacterActor.wpd ) 
+( Actor myMle3dCharacterActor Mle3dCharacterActor
+        ( Property render.style int 1 )
+        ( Property render.shading int 1 )
+        ( Property render.texturing int 1 )
+        ( Property render.textureBlending int 0 )
+        ( Property render.boundingBox int 0 )
+        ( Property render.facesDoubleSided int 1 )
+        ( Property render.facesAlwaysInFront int 0 )
+	( Property position MlVector3 0 0 0 ) 
+	( Property orientation MlRotation 0 0 0 1 ) 
+	( Property scale MlVector3 1 1 1 ) 
+	( Property sceneGraph MediaRef myMle3dCharacterActorSceneGraphMedia ) 
+	( Property animationRegistry MediaRef myMle3dCharacterActorAnimationMedia ) 
+	( Property characterRegistry MediaRef myMle3dCharacterActorCharacterMedia ) 
+	( Property animationFirstFrame int -1 )
+	( Property animationLastFrame int -1 )
+	( Property animationSpeed int 1 )
+	( Property animationAutoUpdateFlag int 0 )
+	( Property animationAutoUpdateParent int 0 )
+        ( Property animationNumber int 0 )
+        ( Property characterNumber int 0 )
+        ( Property snippetNumber int 0 )
+) 
+
+(MediaRef myMle3dCharacterActorCharacterMedia Mle3dCharacterRegistryMediaRef
+          (MRSource 
+                    (Media 0 animation $MLE_HOME/data/3d/ball.wire)
+          )
+          (MRTarget +rehearsal 0
+                    (Media 0 animation $MLE_HOME/data/3d/ball.fwc)
+          )
+          (MRTarget +sgi 
+                    (Media 0 animation $MLE_HOME/data/3d/ball.fwc)
+          )
+          (MRTarget +win32 
+                    (Media 0 animation $MLE_HOME\\data\\ball.fwc)
+          )
+)
+(MediaRef myMle3dCharacterActorAnimationMedia Mle3dAnimationRegistryMediaRef
+          (MRSource 
+                    (Media 0 character $MLE_HOME/data/3d/ball.wire)
+          )
+          (MRTarget +rehearsal 0
+                    (Media 0 character $MLE_HOME/data/3d/ball.fwa)
+          )
+          (MRTarget +sgi 
+                    (Media 0 character $MLE_HOME/data/3d/ball.fwa)
+          )
+          (MRTarget +win32 
+                    (Media 0 character $MLE_HOME\\data\\ballpc.fwa)
+          )
+)
+
+(MediaRef +brender myMle3dCharacterActorSceneGraphMedia Mle3dSceneGraphMediaRef
+          (MRSource 
+                    (Media 0 sceneGraph $MLE_HOME/data/3d/ball.wire)
+          )
+          (MRTarget +rehearsal 0
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/ball.brs,geometry,$MLE_HOME/data/3d/ball.brg,materials,$MLE_HOME/data/3d/ball.brm)
+          )
+          (MRTarget +sgi 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/ball.brs,geometry,$MLE_HOME/data/3d/ball.brg,materials,$MLE_HOME/data/3d/ball.brm)
+          )
+          (MRTarget +win32 0 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME\\data\\ball.brs,geometry,$MLE_HOME\\data\\ball.brg,materials,$MLE_HOME\\data\\ball.brm)
+          )
+)
+
+(MediaRef +inventor myMle3dCharacterActorSceneGraphMedia Mle3dSceneGraphMediaRef
+          (MRSource 
+                    (Media 0 sceneGraph $MLE_HOME/data/3d/ball.wire)
+          )
+          (MRTarget +rehearsal 0 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/ball.iv)
+          )
+)
+

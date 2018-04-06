@@ -1,0 +1,28 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dPointLightActor.wpd ) 
+( Actor mypointlight Mle3dPointLightActor 
+	( Property onOffSwitch int 1 ) 
+	( Property intensity MlScalar 0.5 ) 
+	( Property position MlVector3 10 0 0 ) 
+	( Property +rehearsal RG.geometry MediaRef pntRGMedia )
+	( Property +rehearsal RG.onOff int 1 )
+	( Property +rehearsal scale MlScalar 1.0 )
+) 
+
+( MediaRef +brender +rehearsal pntRGMedia  Mle3dSceneGraphMediaRef
+    ( MRSource 
+		( Media 0 composite $MLE_HOME/data/rehearsalGeom/pointLight.wire )
+	)
+    ( MRTarget +rehearsal 0
+		( Media 0 composite sceneGraph,$MLE_HOME/data/rehearsalGeom/pointLight.brs,geometry,$MLE_HOME/data/rehearsalGeom/pointLight.brg,materials,$MLE_HOME/data/rehearsalGeom/pointLight.brm )
+	)
+)
+
+( MediaRef +inventor +rehearsal pntRGMedia  Mle3dSceneGraphMediaRef
+	( MRSource
+		( Media 0 composite $MLE_HOME/data/rehearsalGeom/pointLight.wire )
+	)
+	(MRTarget +rehearsal 0
+		(Media 0 composite sceneGraph,$MLE_HOME/data/rehearsalGeom/pointLight.iv)
+          )
+)

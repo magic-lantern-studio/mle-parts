@@ -1,0 +1,8 @@
+#DWP 1.0 ascii
+( ActorDef +win32 MlePaletteActor
+    ( HeaderFile mle/palettea.h )
+    ( SourceFile palettea.cxx )
+	( PropertyDef +win32 colorMap MediaRef 
+		( MediaRefClass colorMap Mle3dColorMapMediaRef )
+	)
+)

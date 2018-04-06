@@ -1,0 +1,19 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/AuSampleActor.wpd ) 
+( Actor sampleActor MleSampleActor 
+	( Property music MediaRef musicRef ) 
+) 
+(MediaRef musicRef filemref
+	(MRSource 
+		( Media 0 audio $MLE_HOME/data/sounds/crickets.aiff)
+	)
+	(MRTarget +win32     0
+		( Media 0 audio $MLE_HOME\\data\\sounds\\crickets.wav)
+	)
+	(MRTarget +sgi       0
+		( Media 0 audio $MLE_HOME/data/sounds/crickets.aiff)
+	)
+	(MRTarget +rehearsal 0
+		( Media 0 audio $MLE_HOME/data/sounds/crickets.aiff)
+	)
+)

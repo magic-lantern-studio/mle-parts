@@ -1,0 +1,10 @@
+#DWP 1.0 ascii
+#Mle3dRenderProperty
+(PropertyDef render.style              int)
+(PropertyDef render.shading            int)
+(PropertyDef render.texture            int)
+(PropertyDef render.texturing          int)
+(PropertyDef render.textureBlending    int)
+(PropertyDef render.boundingBox        int)
+(PropertyDef render.facesDoubleSided   int)
+(PropertyDef render.facesAlwaysInFront int)

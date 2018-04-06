@@ -1,0 +1,21 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle2dMvActor.wpd ) 
+( Actor sgimovie Mle2dMvActor 
+	( Property movie MediaRef moviemedia ) 
+	( Property displayState int 1 ) 
+	( Property position MlVector2 150 150 ) 
+) 
+( MediaRef moviemedia filemref 
+	( MediaRefSource 
+		( Media 0 movie $MLE_HOME/data/movies/test.mov )
+	)
+	( MediaRefTarget +rehearsal 0
+		( Media 0 movie $MLE_HOME/data/movies/test.mov ) 
+	)
+	( MediaRefTarget +sgi 0
+		( Media 0 movie $MLE_HOME/data/movies/test.mov ) 
+	)
+	( MediaRefTarget +win32 0
+		( Media 0 movie $MLE_HOME\\data\\movies\\test.avi ) 
+	)
+) 

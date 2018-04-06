@@ -1,0 +1,8 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dTRSActor.wpd ) 
+( Actor myTRSActor Mle3dTRSActor 
+	( Property nodeType int 0 )
+	( Property translation MlVector3 0 0 0 ) 
+	( Property rotation MlVector3 0 0 0 ) 
+	( Property scale MlVector3 1 1 1 ) 
+) 

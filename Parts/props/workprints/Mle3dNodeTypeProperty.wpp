@@ -1,0 +1,3 @@
+#DWP 1.0 ascii
+#Mle3dNodeTypeProperty
+(PropertyDef nodeType int)

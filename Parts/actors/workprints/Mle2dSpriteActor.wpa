@@ -1,0 +1,30 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle2dSpriteActor.wpd ) 
+( Actor MySprite Mle2dSpriteActor 
+	(Property spriteData MediaRef spriteMedia) 
+	(Property position MlVector2 0 0)
+	(Property currentPage int 0) 
+	(Property pageCount int 9)
+	(Property pageWidth int 128)
+	(Property pageHeight int 128)
+	(Property visible int 1) 
+	(Property xscale MlScalar 1) 
+	(Property yscale MlScalar 1) 
+	(Property +win32 frameInterval int 3)
+	(Property +sgi frameInterval int 1)
+	(Property +rehearsal frameInterval int 1)
+) 
+( MediaRef spriteMedia filemref 
+	(MediaRefSource
+		(Media 0 sprite $MLE_HOME/data/images/fire)
+	)
+	(MediaRefTarget +win32 0 
+		(Media 0 sprite $MLE_HOME\\data\\images\\fire)
+	)
+	(MediaRefTarget +sgi 0
+		(Media 0 sprite $MLE_HOME/data/images/fire) 
+	)
+	(MediaRefTarget +rehearsal 0 
+		(Media 0 sprite $MLE_HOME/data/images/fire) 
+	)
+) 

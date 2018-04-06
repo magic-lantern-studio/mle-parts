@@ -1,0 +1,122 @@
+# -*- Makefile -*-
+#
+#  Copyright (C) 2000-2007  Wizzer Works
+#
+#  Wizzer Works makes available all content in this file ("Content").
+#  Unless otherwise indicated below, the Content is provided to you
+#  under the terms and conditions of the Common Public License Version 1.0
+#  ("CPL"). A copy of the CPL is available at
+#
+#      http://opensource.org/licenses/cpl1.0.php
+#
+#  For purposes of the CPL, "Program" will mean the Content.
+#
+#  For information concerning this Makefile, contact Mark S. Millard,
+#  of Wizzer Works at msm@wizzerworks.com.
+#
+#*************************************************************************
+#
+# ismdefs - ISM definitions and macros
+#
+# All Makefiles in an ISM should include ismdefs. Following the first
+# target in the Makefile $(ISMRULES) should be included. These files
+# will in turn include commondefs and commonrules so there is no need
+# to explicitly include these files. Each Makefile must define the
+# ISM_DEPTH as the relative path to the top of the ISM. In addition
+# Makefiles that build software should define CONFIGURATION as one
+# of the standard configurations found in
+# $MLE_ROOT/include/make/configurations. Thus, a typical Makefile will
+# look like:
+#
+# CONFIGURATION = ConsoleRelease
+# ISM_DEPTH = ../..
+# include $(ISM_DEPTH)/ismdefs
+# .
+# .
+# .
+# default: $(TARGETS)
+#
+# include $(ISMRULES)
+#
+# Please refer to the commondefs file for detail information.
+#
+# $Id$
+#
+#*************************************************************************
+
+#
+# If you want to force the build of only one version of the ISM
+# you can either define an environment variable PREF_VERSION set
+# to the desired version or uncomment PREF_VERSION below and set
+# it to the version to be built. By default all versions are built
+#
+ifndef PREF_VERSION
+#PREF_VERSION = <specific version name here>
+endif 
+
+#
+# Location of MLE_ROOT environment.  Override by defining MLE_ROOT.
+#
+ifndef MLE_ROOT
+MLE_ROOT = C:\Program Files\WizzerWorks\MagicLantern
+endif
+
+#
+# Turn off building depenencies.
+#
+NODEPENDS=VERBOSE
+
+#
+# ISM name.  It can be whatever you want
+#
+ISM_NAME = MlePackages
+
+#
+# ISM version number. This number is passed as a string defined in
+# C/C++ files as ISM_VERSION.
+#
+ISM_VERSION = 1.0a1
+
+#
+# Time Bomb date. Comment out ISM_TIMEBOMB_DATE to remove time bombing.
+# The ISM_TIMEBOMB_DATE variable MUST be in the form mm/dd/yyyy.
+#
+#ISM_TIMEBOMB_DATE = 12/15/2004
+
+#
+# Bring in ismcommondefs (which, in turn, will bring in commondefs)
+# (must do this after the above definitions!)
+#
+include $(MLE_ROOT)/include/make/ismcommondefs
+
+#
+# The install builder needs to know the top of the tree.  For this
+# example, it happens to be at ISM_DEPTH.  However, it may be one
+# above this directory, especially if you follow the cross-platform
+# development guidelines.
+#
+IBBASEDIR = $(ISM_DEPTH)/..
+
+#
+# Override default ISM_BUILDDIR definition so that we can specify
+# the PLATFORM location.
+#
+#ISM_BUILDDIR = $(IBBASEDIR)/build
+
+#
+# Common ISM directories
+#
+# The debug and release directories are typically where all
+# executables and their DLLs are copied during the build so
+# that the executables can be run.
+#
+ISM_INCDIR = $(ISM_DEPTH)/build/include
+ISM_LIBDIR = $(ISM_DEPTH)/build/lib
+ISM_DEBUGDIR = $(ISM_DEPTH)/build/Debug
+ISM_RELEASEDIR = $(ISM_DEPTH)/build/Release
+
+#
+# Define the rules macro. After the first target in the Makefile is
+# defined include $(ISMRULES).
+#
+ISMRULES = $(ISM_DEPTH)/ismrules

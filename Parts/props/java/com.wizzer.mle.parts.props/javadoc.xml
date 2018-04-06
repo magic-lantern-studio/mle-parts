@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="package" author="true" classpath="C:\Users\msm\Projects\MagicLantern\Parts\mediaref\java\com.wizzer.mle.parts.mrefs\bin;C:\Users\msm\Projects\MagicLantern\Parts\roles\java\com.wizzer.mle.parts.j2d\bin;C:\Users\msm\Projects\MagicLantern\Core\mlert\java\com.wizzer.mle.runtime\bin;C:\Users\msm\Projects\MagicLantern\Core\math\java\com.wizzer.mle.math\bin;C:\Users\msm\Projects\MagicLantern\Parts\base\java\com.wizzer.mle.parts\bin" destdir="doc" doctitle="Magic Lantern Runtime Library" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" overview="C:\Users\msm\Projects\MagicLantern\Parts\props\java\com.wizzer.mle.parts.props\src\overview-summary.html" packagenames="com.wizzer.mle.parts.props" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

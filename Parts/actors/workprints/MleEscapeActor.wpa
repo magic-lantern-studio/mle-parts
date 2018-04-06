@@ -1,0 +1,3 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/MleEscapeActor.wpd ) 
+( Actor escape MleEscapeActor )

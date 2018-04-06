@@ -1,0 +1,3 @@
+-doclet com.ibm.malup.doclet.config.TOCDoclet
+-docletpath M:\JavaTOC\bin\TOCNavDoclet.jar
+-classpath M:\projects\MagicLantern\Core\mlert\java\com.wizzer.mle.runtime\bin;M:\projects\MagicLantern\Core\math\java\com.wizzer.mle.math\bin;M:\projects\MagicLantern\Parts\base\java\com.wizzer.mle.parts\bin;M:\projects\MagicLantern\Parts\props\java\com.wizzer.mle.parts.props\bin;M:\projects\MagicLantern\Parts\mediaref\java\com.wizzer.mle.parts.mrefs\bin

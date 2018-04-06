@@ -1,0 +1,7 @@
+-sourcepath com.wizzer.mle.parts/src
+-d com.wizzer.mle.parts.doc
+-overview com.wizzer.mle.parts/src/overview-summary.html
+-plugintitle 'Magic Lantern Parts Library'
+-pluginid www.wizzer.mle.parts.doc
+-version "1.0.0.0"
+-provider "Wizzer Works"

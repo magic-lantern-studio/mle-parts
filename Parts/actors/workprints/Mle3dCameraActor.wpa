@@ -1,0 +1,11 @@
+#DWP 1.0 ascii 
+
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dCameraActor.wpd ) 
+
+# XXX - this still has forum0 in it!
+( Actor camera Mle3dCameraActor 
+	( Property position MlVector3 0 0 10 ) 
+	( Property orientation MlRotation 0 0 0 1 ) 
+	( Property nearClipping MlScalar 1 ) 
+	( Property farClipping MlScalar 1000 ) 
+) 

@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+#Mle3dTextureRegistryProperty
+(PropertyDef textureRegistry MlMediaRef
+    (MediaRefClass textureRegistry Mle3dTextureRegistryMediaRef)
+)

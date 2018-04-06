@@ -1,0 +1,14 @@
+#DWP 1.0 ascii 
+( ActorDef Mle3dCameraActor 
+    ( HeaderFile mle/3dcama.h )
+    ( Package com.wizzer.auteur.mle.parts.actors)
+    ( SourceFile 3dcama.cxx )
+	( PropertyDef viewHeight MlScalar ) 
+	( PropertyDef cameraType int ) 
+	( PropertyDef orientation MlRotation ) 
+	( PropertyDef aspectRatio MlScalar ) 
+	( PropertyDef farClipping MlScalar ) 
+	( PropertyDef nearClipping MlScalar ) 
+	( PropertyDef position MlVector3 ) 
+        ( RoleSetMapping Mle3dRole Mle3dSet )
+) 

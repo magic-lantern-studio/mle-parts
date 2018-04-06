@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "packages", "packages.vcproj", "{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Fixed Debug|Win32 = Fixed Debug|Win32
+		Fixed Release|Win32 = Fixed Release|Win32
+		Float Debug|Win32 = Float Debug|Win32
+		Float Release|Win32 = Float Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Fixed Debug|Win32.ActiveCfg = Fixed Debug|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Fixed Debug|Win32.Build.0 = Fixed Debug|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Fixed Release|Win32.ActiveCfg = Fixed Release|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Fixed Release|Win32.Build.0 = Fixed Release|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Float Debug|Win32.ActiveCfg = Float Debug|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Float Debug|Win32.Build.0 = Float Debug|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Float Release|Win32.ActiveCfg = Float Release|Win32
+		{B3EDCD3F-DCE6-42C6-8602-35A2B1D4B8A7}.Float Release|Win32.Build.0 = Float Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

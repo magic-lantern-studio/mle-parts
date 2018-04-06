@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dImageMediaRef", "Mle2dImageMediaRef.vcproj", "{1749C95A-8105-498B-AF35-2B26084EBB16}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dColorMapMediaRef", "Mle3dColorMapMediaRef.vcproj", "{3B5285F7-F680-4916-BF01-26A80F9EAC97}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dModelMediaRef", "Mle3dModelMediaRef.vcproj", "{C0DC5C75-3510-43D0-A28E-C6476ACA11BD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dTextureMapMediaRef", "Mle3dTextureMapMediaRef.vcproj", "{A0DD8ED7-E483-46C9-B539-21DBE2EF2F74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1749C95A-8105-498B-AF35-2B26084EBB16}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1749C95A-8105-498B-AF35-2B26084EBB16}.Debug|Win32.Build.0 = Debug|Win32
+		{1749C95A-8105-498B-AF35-2B26084EBB16}.Release|Win32.ActiveCfg = Release|Win32
+		{1749C95A-8105-498B-AF35-2B26084EBB16}.Release|Win32.Build.0 = Release|Win32
+		{3B5285F7-F680-4916-BF01-26A80F9EAC97}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3B5285F7-F680-4916-BF01-26A80F9EAC97}.Debug|Win32.Build.0 = Debug|Win32
+		{3B5285F7-F680-4916-BF01-26A80F9EAC97}.Release|Win32.ActiveCfg = Release|Win32
+		{3B5285F7-F680-4916-BF01-26A80F9EAC97}.Release|Win32.Build.0 = Release|Win32
+		{C0DC5C75-3510-43D0-A28E-C6476ACA11BD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0DC5C75-3510-43D0-A28E-C6476ACA11BD}.Debug|Win32.Build.0 = Debug|Win32
+		{C0DC5C75-3510-43D0-A28E-C6476ACA11BD}.Release|Win32.ActiveCfg = Release|Win32
+		{C0DC5C75-3510-43D0-A28E-C6476ACA11BD}.Release|Win32.Build.0 = Release|Win32
+		{A0DD8ED7-E483-46C9-B539-21DBE2EF2F74}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A0DD8ED7-E483-46C9-B539-21DBE2EF2F74}.Debug|Win32.Build.0 = Debug|Win32
+		{A0DD8ED7-E483-46C9-B539-21DBE2EF2F74}.Release|Win32.ActiveCfg = Release|Win32
+		{A0DD8ED7-E483-46C9-B539-21DBE2EF2F74}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

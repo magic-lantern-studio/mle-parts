@@ -1,0 +1,50 @@
+# -*- Makefile -*-
+#
+#  Copyright (C) 2000-2007  Wizzer Works
+#
+#  Wizzer Works makes available all content in this file ("Content").
+#  Unless otherwise indicated below, the Content is provided to you
+#  under the terms and conditions of the Common Public License Version 1.0
+#  ("CPL"). A copy of the CPL is available at
+#
+#      http://opensource.org/licenses/cpl1.0.php
+#
+#  For purposes of the CPL, "Program" will mean the Content.
+#
+#  For information concerning this Makefile, contact Mark S. Millard,
+#  of Wizzer Works at msm@wizzerworks.com.
+#
+#*************************************************************************
+#
+# ismrules - ISM build rules
+#
+# This file must be included by all Makefiles using the $(ISMRULES)
+# macro AFTER the definition of the first target. See the ismdefs and
+# commondefs files for detailed information.
+#
+# $Id$
+#
+#*************************************************************************
+
+#
+# To have leaf version TARGETS copied to the corresponding ISM top
+# level version directory, define ISM_COPY_VERSION.
+#
+ifdef ISM_COPY_VERSION
+ifdef CUR_VERSION
+ISM_VERSIONDIR = $(ISM_DEPTH)/build/$(CUR_VERSION)
+ISM_VERSIONFILES = $(foreach f,$(TARGETS),$(ISM_VERSIONDIR)/$(f))
+ITDIRT += $(ISM_VERSIONFILES)
+
+all: $(ISM_VERSIONFILES)
+
+$(ISM_VERSIONFILES): $(TARGETS)
+	$(CP) $(TARGETS) $(ISM_VERSIONDIR)
+endif
+endif
+
+#
+# Bring in ismcommonrules
+#
+include $(ISMCOMMONRULES)
+

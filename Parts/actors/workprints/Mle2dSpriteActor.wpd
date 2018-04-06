@@ -1,0 +1,19 @@
+#DWP 1.0 ascii
+(ActorDef Mle2dSpriteActor
+    (HeaderFile mle/2dspra.h)
+    (Package com.wizzer.auteur.mle.parts.actors)
+    (SourceFile 2dspra.cxx)
+	(PropertyDef spriteData MediaRef
+		(MediaRefClass spriteData filemref)
+	)
+	(PropertyDef position MlVector2)
+	(PropertyDef currentPage int)
+	(PropertyDef pageCount int)
+	(PropertyDef pageWidth int)
+	(PropertyDef pageHeight int)
+	(PropertyDef visible int)
+	(PropertyDef xscale MlScalar)
+	(PropertyDef yscale MlScalar)
+	(PropertyDef frameInterval int)
+	(RoleSetMapping Mle2dSpriteRole Mle2dSet)
+)

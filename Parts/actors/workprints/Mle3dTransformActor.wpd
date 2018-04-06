@@ -1,0 +1,7 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dTransformActor
+    (HeaderFile mle/3dtransa.h)
+    (SourceFile 3dtransa.cxx)
+    (Include $MLE_HOME/parts/props/Mle3dTransformProperty.wpp)
+    ( RoleSetMapping Mle3dRole Mle3dSet )
+)

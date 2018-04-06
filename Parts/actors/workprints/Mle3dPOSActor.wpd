@@ -1,0 +1,10 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dPOSActor
+    (HeaderFile mle/3dposa.h)
+    (SourceFile 3dposa.cxx)
+    (Include $MLE_HOME/parts/props/Mle3dNodeTypeProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dPositionProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dOrientationProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dUniformScaleProperty.wpp)
+    ( RoleSetMapping Mle3dRole Mle3dSet )
+)

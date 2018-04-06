@@ -1,0 +1,32 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dDirectLightActor.wpd )
+( Actor mydirectlight Mle3dDirectLightActor 
+	( Property onOffSwitch int 1 ) 
+	( Property intensity MlScalar 0.5 ) 
+	( Property orientation MlRotation 0 0 -1 1) 
+	( Property +rehearsal RG.geometry MediaRef dirRGMedia )
+	( Property +rehearsal RG.onOff int 1)
+	( Property +rehearsal position MlVector3 0 0 10 )
+	( Property +rehearsal scale MlScalar 1.0 )
+)
+
+
+( MediaRef +brender +rehearsal dirRGMedia  Mle3dSceneGraphMediaRef
+	( MRSource 
+		( Media 0 composite $MLE_HOME/data/rehearsalGeom/directLight.wire )
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 composite sceneGraph,$MLE_HOME/data/rehearsalGeom/directLight.brs,geometry,$MLE_HOME/data/rehearsalGeom/directLight.brg,materials,$MLE_HOME/data/rehearsalGeom/directLight.brm ) 
+	)
+)
+
+(MediaRef +inventor +rehearsal dirRGMedia Mle3dSceneGraphMediaRef
+          (MRSource 
+                    (Media 0 sceneGraph $MLE_HOME/data/rehearsalGeom/directLight.wire)
+          )
+          (MRTarget +rehearsal 0 
+                    (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/rehearsalGeom/directLight.iv)
+                    (Converter "wiretofire directLight.wire")
+          )
+)
+

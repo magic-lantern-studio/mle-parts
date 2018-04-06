@@ -1,0 +1,8 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dPOSActor.wpd ) 
+( Actor myPOSActor Mle3dPOSActor 
+	( Property nodeType int 0 )
+        ( Property position MlVector3 0 0 0 )
+        ( Property orientation MlRotation 0 0 0 1 )          
+        ( Property scale MlScalar 1 )
+) 

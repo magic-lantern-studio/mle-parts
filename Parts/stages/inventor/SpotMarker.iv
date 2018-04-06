@@ -1,0 +1,311 @@
+#Inventor V2.1 ascii
+
+#
+# This scene graph contains the definition of the Source and Target
+# SpotMarker graphs. Since the graphs contain many nodes in common,
+# putting them in the same file allows instancing to save memory.
+#
+
+Separator {
+
+    #
+    # Some definitions common to both markers:
+    #
+
+    Switch {
+	# This turns on back-face culling for the solid parts
+	DEF SM__shapeHints ShapeHints {
+	    vertexOrdering	COUNTERCLOCKWISE
+	    shapeType	SOLID
+	}
+
+	# This makes things unpickable
+	DEF SM__unpickable PickStyle { style UNPICKABLE }
+
+	# Object indicating marker point
+	DEF SM__pointObject Separator {
+	    Sphere { radius .3 }
+	}
+
+	# Material for "active" (snapped) features
+	DEF SM__activeMaterial BaseColor { rgb .9 .3 .9 }
+
+	# Object indicating marker normal
+	DEF SM__normalObject Separator {
+	    Separator {
+		Transform {
+		    scaleFactor .1 1 .1
+		    translation 0 1 0
+		}
+		Cylinder {}
+	    }
+	    Separator {
+		Transform {
+		    scaleFactor .25 .3 .25
+		    translation 0 2.3 0
+		}
+		Cone {}
+	    }
+	}
+
+	# Grid square object
+	DEF SM__gridSquareObject Separator {
+	    Material {
+		diffuseColor .83 .32 .31
+		specularColor .9 .9 .9
+		shininess .7
+	    }
+
+	    LightModel { model BASE_COLOR }
+
+	    Coordinate3 {
+		point [-1 0.02  1,  1 0.02  1,
+		       1 0.02 -1, -1 0.02 -1,
+		       -1 0.02  1,
+
+		       -1 0.02  .5, 1 0.02  .5,
+		       -1 0.02   0, 1 0.02   0,
+		       -1 0.02 -.5, 1 0.02 -.5,
+
+		       -.5 0.02 -1, -.5 0.02 1,
+		       0 0.02 -1,   0 0.02 1,
+		       .5 0.02 -1,  .5 0.02 1]
+	    }
+
+	    Separator {
+		USE SM__unpickable
+		LineSet {
+		    numVertices [5, 2,2,2, 2,2,2]
+		}
+	    }
+
+	    # Invisible, solid version for picking
+	    Separator {
+		DrawStyle { style INVISIBLE }
+		FaceSet { numVertices 4 }
+	    }
+	}
+
+	# Edge end marker
+	DEF SM__endMarker Separator {
+	    Separator {
+		Transform {
+		    scaleFactor .35 .02 .35
+		    translation 0 -.01 0
+		}
+		Cube {}
+	    }
+	    Separator {
+		Transform {
+		    scaleFactor .3 .35 .3
+		    translation 0 -.35 0
+		}
+		Cone {}
+	    }
+	}
+    }
+
+    #
+    # The Source marker object:
+    #
+
+    DEF SRC_root Separator {
+
+	# This handles middle-mouse-button events to set the source
+	DEF SRC_eventCallback EventCallback {}
+
+	# This switch turns the source display on and off
+	DEF SRC_displaySwitch Switch {
+	    # This allows us to pick through the source when necessary
+	    DEF SRC_pickStyle PickStyle {}
+
+	    # Turn on back-face culling for the solid parts
+	    USE SM__shapeHints
+
+	    # This is used to transform the source during manipulation of
+	    # the objects it is attached to
+	    DEF SRC_matrixTransform MatrixTransform {}
+
+	    # The source point, normal, and square
+	    Separator {
+		# This positions, scales, and orients the source
+		DEF SRC_transform Transform {}
+
+		Separator {
+		    Separator {
+			DEF SRC__snapMaterial Material {
+			    diffuseColor .33 .73 .41
+			    specularColor .9 .9 .9
+			    shininess .7
+			}
+
+			# Point
+			DEF SRC_pointSwitch Switch {
+			    whichChild 0 # 1 == Active
+			    USE SM__pointObject
+			    Separator {
+				USE SM__activeMaterial
+				USE SM__pointObject
+			    }
+			}
+
+			# Normal
+			DEF SRC_normalSwitch Switch {
+			    whichChild 0 # 1 == Active
+			    USE SM__normalObject
+			    Separator {
+				USE SM__activeMaterial
+				USE SM__normalObject
+			    }
+			}
+		    }
+		    USE SM__gridSquareObject
+		}
+	    }
+
+	    # Turn this switch on to highlight the edges
+	    DEF SRC_edgeSwitch Switch {
+
+		# 0 = inactive version
+		Separator {
+		    USE SM__unpickable
+		    USE SRC__snapMaterial
+		    DEF SRC__edge Separator {
+
+			# Thick line joining end points 
+			Separator {
+			    DEF SRC_edgeCoords Coordinate3 {}
+			    DrawStyle { lineWidth 5 }
+			    LineSet {}
+			}
+
+			# End markers
+			Separator {
+			    DEF SRC_end1Transform Transform {}
+			    # This brings the markers into the
+			    # same scale as the source:
+			    DEF SRC__endScale Scale {
+				scaleFactor = USE SRC_transform.scaleFactor
+			    }
+			    USE SM__endMarker
+			}
+			Separator {
+			    DEF SRC_end2Transform Transform {}
+			    USE SRC__endScale
+			    USE SM__endMarker
+			}
+		    }
+		}
+
+		# 1 = active version
+		Separator {
+		    USE SM__unpickable
+		    USE SM__activeMaterial
+		    USE SRC__edge
+		}
+	    }
+	}
+    }
+
+    #
+    # The Target marker object:
+    #
+
+    DEF TARG_root Separator {
+
+	# This handles middle-mouse-button events to set the target
+	DEF TARG_eventCallback EventCallback {}
+
+	# This switch turns the target display on and off
+	DEF TARG_displaySwitch Switch {
+
+	    # This allows us to pick through the target when necessary
+	    DEF TARG_pickStyle PickStyle {}
+
+	    # Turn on back-face culling for the solid parts
+	    USE SM__shapeHints
+
+	    # The target point, normal, and square
+	    Separator {
+		# This positions, scales, and orients the target
+		DEF TARG_transform Transform {}
+
+		Separator {
+		    Separator {
+			DEF TARG__snapMaterial Material {
+			    diffuseColor .83 .83 .31
+			    specularColor .9 .9 .9
+			    shininess .7
+			}
+
+			# Point
+			DEF TARG_pointSwitch Switch {
+			    whichChild 0 # 1 == Active
+			    USE SM__pointObject
+			    Separator {
+				USE SM__activeMaterial
+				USE SM__pointObject
+			    }
+			}
+
+			# Normal
+			DEF TARG_normalSwitch Switch {
+			    whichChild 0 # 1 == Active
+			    USE SM__normalObject
+			    Separator {
+				USE SM__activeMaterial
+				USE SM__normalObject
+			    }
+			}
+		    }
+
+		    # Grid square
+		    USE SM__gridSquareObject
+		}
+	    }
+
+	    # Turn this switch on to highlight the edges
+	    DEF TARG_edgeSwitch Switch {
+
+		# 0 = inactive version
+		Separator {
+
+		    USE SM__unpickable
+		    USE TARG__snapMaterial
+		    DEF TARG__edge Separator {
+
+			# Thick line joining end points 
+			Separator {
+			    DEF TARG_edgeCoords Coordinate3 {}
+			    DrawStyle { lineWidth 5 }
+			    LineSet {}
+			}
+
+			# End markers
+			Separator {
+			    DEF TARG_end1Transform Transform {}
+			    # This brings the markers into the same scale as
+			    # the target:
+			    DEF TARG__endScale Scale {
+				scaleFactor = USE TARG_transform.scaleFactor
+			    }
+			    USE SM__endMarker
+			}
+			Separator {
+			    DEF TARG_end2Transform Transform {}
+			    USE TARG__endScale
+			    USE SM__endMarker
+			}
+		    }
+		}
+
+		# 1 = active version
+		Separator {
+		    USE SM__unpickable
+		    USE SM__activeMaterial
+		    USE TARG__edge
+		}
+	    }
+	}
+    }
+}

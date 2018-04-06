@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/msm/Projects/MagicLantern/lib/android-10/roles.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/com.wizzer.mle.parts.roles/roles.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=com.wizzer.mle.parts.roles/src&lt;com.wizzer.mle.parts.roles{MleImageRole.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts.roles/gen"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts.roles/src&lt;com.wizzer.mle.parts.roles{MleImageCarrier.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts.roles/src&lt;com.wizzer.mle.parts.roles{MleRolesTest.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts.roles/src&lt;com.wizzer.mle.parts.roles{Mle2dRole.java"/>
+    </selectedElements>
+</jardesc>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/msm/Projects/MagicLantern/lib/android-10/parts.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/com.wizzer.mle.parts/parts.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts{MleBounds.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts{MlePartsTest.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.sets{I2dSet.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.stages{I2dStage.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.props{IMlePropPart.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d{MleJ2dPlatformData.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/gen"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.props{IImageProperty.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d{MleRenderEngine.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts{MleEventManager.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts{MleShutdownCallback.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d{MleBitmap.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.roles{I2dRole.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.mrefs{IImageMediaRef.java"/>
+        <javaElement handleIdentifier="=com.wizzer.mle.parts/src&lt;com.wizzer.mle.parts.j2d.actors{IImageActor.java"/>
+    </selectedElements>
+</jardesc>

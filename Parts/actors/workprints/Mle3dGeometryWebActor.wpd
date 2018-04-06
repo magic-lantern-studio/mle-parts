@@ -1,0 +1,11 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dGeometryWebActor
+    (HeaderFile mle/3dgeomwa.h)
+    (SourceFile 3dgeomwa.cxx)
+    (Include $MLE_HOME/parts/props/Mle3dRenderStyleProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dTranslationProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dEulerAngleRotationProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dNonuniformScaleProperty.wpp)
+    (Include $MLE_HOME/parts/props/Mle3dGeometryRegistryWebProperty.wpp)
+    (RoleSetMapping Mle3dRole Mle3dSet)
+)

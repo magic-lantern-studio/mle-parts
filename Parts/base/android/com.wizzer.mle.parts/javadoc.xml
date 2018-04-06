@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpath="C:\Users\msm\Projects\MagicLantern\lib\android-10\mlert.jar" destdir="doc" doctitle="Magic Lantern Runtime Library" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" overview="M:\projects\MagicLantern\Parts\base\android\com.wizzer.mle.parts\src\overview-summary.html" packagenames="com.wizzer.mle.parts.j2d,com.wizzer.mle.parts.j2d.roles,com.wizzer.mle.parts.j2d.props,com.wizzer.mle.parts.j2d.stages,com.wizzer.mle.parts.j2d.actors,com.wizzer.mle.parts.j2d.mrefs,com.wizzer.mle.parts.j2d.sets" source="1.5" sourcefiles="src/com/wizzer/mle/parts/MleBounds.java,src/com/wizzer/mle/parts/MlePartsTest.java,src/com/wizzer/mle/parts/MleShutdownCallback.java" sourcepath="src;gen" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

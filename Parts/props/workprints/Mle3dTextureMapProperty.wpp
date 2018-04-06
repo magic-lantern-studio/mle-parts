@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+#Mle3dTextureMapProperty
+(PropertyDef textureMap MlMediaRef
+    (MediaRefClass textureMap Mle3dTextureMapMediaRef)
+)

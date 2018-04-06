@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "actors", "actors.vcproj", "{EFA324EA-07FA-4D17-8C66-E7825302AC44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CDECL Float Debug|Win32 = CDECL Float Debug|Win32
+		CDECL Float Release|Win32 = CDECL Float Release|Win32
+		Float Debug|Win32 = Float Debug|Win32
+		Float Release|Win32 = Float Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.CDECL Float Debug|Win32.ActiveCfg = CDECL Float Debug|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.CDECL Float Debug|Win32.Build.0 = CDECL Float Debug|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.CDECL Float Release|Win32.ActiveCfg = CDECL Float Release|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.CDECL Float Release|Win32.Build.0 = CDECL Float Release|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.Float Debug|Win32.ActiveCfg = Float Debug|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.Float Debug|Win32.Build.0 = Float Debug|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.Float Release|Win32.ActiveCfg = Float Release|Win32
+		{EFA324EA-07FA-4D17-8C66-E7825302AC44}.Float Release|Win32.Build.0 = Float Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

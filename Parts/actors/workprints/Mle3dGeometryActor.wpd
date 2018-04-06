@@ -1,0 +1,12 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dGeometryActor
+    (HeaderFile mle/3dgeoma.h)
+    (SourceFile 3dgeoma.cxx)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dRenderStyleProperty.wpp)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dTranslationProperty.wpp)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dEulerAngleRotationProperty.wpp)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dNonuniformScaleProperty.wpp)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dSceneGraphProperty.wpp)
+    (Include $MLE_HOME/parts/props/workprints/Mle3dPickableProperty.wpp)
+    (RoleSetMapping Mle3dRole Mle3dSet)
+)

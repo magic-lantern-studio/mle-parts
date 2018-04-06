@@ -1,0 +1,46 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/MlePursuer.wpd ) 
+( Actor pursuer0 MlePursuer 
+	( Property predictive int 1 )
+        ( Property position MlVector3 0 0 0 )
+        ( Property orientation MlRotation 0 0 0 1 )          
+        ( Property scale MlScalar 1 )
+	( Property model MediaRef aircar ) 
+	( Property +win32 colorMap MediaRef winshade ) 
+) 
+( MediaRef +brender aircar Mle3dModelMediaRef 
+	( MRSource 
+		( Media 0 geometry $MLE_HOME/data/models/aircar.dat ) 
+	)
+	( MRTarget +win32 0
+		( Media 0 geometry $MLE_HOME\\data\\models\\aircar.dat ) 
+	)
+	( MRTarget +sgi 0
+		( Media 0 geometry $MLE_HOME/data/models/aircar.dat ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 geometry $MLE_HOME/data/models/aircar.dat ) 
+	)
+) 
+( MediaRef +inventor aircar Mle3dModelMediaRef 
+	( MRSource 
+		( Media 0 geometry $MLE_HOME/data/models/aircar.iv ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 geometry $MLE_HOME/data/models/aircar.iv ) 
+	)
+) 
+( MediaRef +win32 winshade Mle3dColorMapMediaRef 
+	( MRSource 
+		( Media 0 shadetable $MLE_HOME/data/shade/winshade.tab ) 
+	)
+	( MRTarget +win32 0
+		( Media 0 shadetable $MLE_HOME\\data\\shade\\winshade.tab ) 
+	)
+	( MRTarget +sgi 0
+		( Media 0 shadetable $MLE_HOME/data/shade/winshade.tab ) 
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 shadetable $MLE_HOME/data/shade/winshade.tab ) 
+	)
+) 

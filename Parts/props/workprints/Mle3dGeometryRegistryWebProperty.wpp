@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+#Mle3dGeometryRegistryWebProperty
+(PropertyDef geometryRegistry MlMediaRef
+    (MediaRefClass geometryRegistry Mle3dGeometryRegistryWebMediaRef)
+)

@@ -1,0 +1,23 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dGeometryWebActor.wpd ) 
+( Actor +brender myGeometryActor Mle3dGeometryWebActor 
+	( Property renderStyle int 1 ) 
+	( Property translation MlVector3 0 0 0 ) 
+	( Property rotation MlVector3 0 0 0 ) 
+	( Property scale MlVector3 1 1 1 ) 
+	( Property geometryRegistry MediaRef myGeometryMedia ) 
+) 
+( MediaRef +brender myGeometryMedia Mle3dGeometryRegistryWebMediaRef 
+	( MRSource 
+		( Media 0 HTML http://localhost/titles/3d/cube.wire )
+	)
+	( MRTarget +rehearsal 0
+		( Media 0 HTML http://localhost/titles/3d/cube.fwg ) 
+	)
+	( MRTarget +sgi 0
+		( Media 0 HTML http://localhost/titles/3d/cube.fwg ) 
+	)
+	( MRTarget +win32 0
+		( Media 0 HTML http://localhost/titles/3d/cube.fwg ) 
+	)
+) 

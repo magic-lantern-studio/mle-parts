@@ -1,0 +1,12 @@
+#DWP 1.0 ascii 
+( ActorDef My3dCameraActor 
+    ( HeaderFile mle/3dcamera.h )
+    ( SourceFile 3dcamera.cxx )
+	( PropertyDef cameraType int ) 
+	( PropertyDef position MlVector3 ) 
+	( PropertyDef orientation MlRotation ) 
+	( PropertyDef aspectRatio MlScalar ) 
+	( PropertyDef clipping MlVector2 ) 
+	( PropertyDef fieldOfView MlScalar ) 
+        ( RoleSetMapping Mle3dRole Mle3dSet )
+) 

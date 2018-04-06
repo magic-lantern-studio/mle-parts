@@ -1,0 +1,9 @@
+#DWP 1.0 ascii 
+
+( Include $MLE_WORKPRINTS/parts/actors/workprints/My3dCameraActor.wpd ) 
+
+( Actor myCamera My3dCameraActor 
+	( Property position MlVector3 0 0 10 ) 
+	( Property orientation MlRotation 0 0 0 1 ) 
+	( Property clipping MlVector2 1 1000 ) 
+) 

@@ -1,0 +1,18 @@
+#DWP 1.0 ascii 
+( ActorDef MleObstacle 
+    ( HeaderFile mle/obstacle.h )
+    ( SourceFile obstacle.cxx )
+	( PropertyDef position MlVector3 ) 
+	( PropertyDef orientation MlRotation ) 
+	( PropertyDef scale MlScalar ) 
+	( PropertyDef model MediaRef 
+		( MediaRefClass model Mle3dModelMediaRef )
+	) 
+	( PropertyDef textureMap MediaRef 
+		( MediaRefClass textureMap Mle3dTextureMapMediaRef )
+	) 
+	( PropertyDef colorMap MediaRef 
+		( MediaRefClass colorMap Mle3dColorMapMediaRef )
+	) 
+	(RoleSetMapping Mle3dRole Mle3dSet)
+) 

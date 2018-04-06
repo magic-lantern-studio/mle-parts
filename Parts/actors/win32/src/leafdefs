@@ -1,0 +1,114 @@
+# -*- Makefile -*-
+#
+#  Copyright (C) 2000-2007  Wizzer Works
+#
+#  Wizzer Works makes available all content in this file ("Content").
+#  Unless otherwise indicated below, the Content is provided to you
+#  under the terms and conditions of the Common Public License Version 1.0
+#  ("CPL"). A copy of the CPL is available at
+#
+#      http://opensource.org/licenses/cpl1.0.php
+#
+#  For purposes of the CPL, "Program" will mean the Content.
+#
+#  For information concerning this Makefile, contact Mark S. Millard,
+#  of Wizzer Works at msm@wizzerworks.com.
+#
+#*************************************************************************
+#
+# leafdefs - Actor library definitions and rules common to all
+# versions.  This file is included by the Makefiles in the version
+# directories, directories are referenced relative to a particular
+# version directory, not this one.
+#
+# $Id$
+#
+#*************************************************************************
+
+ISM_DEPTH = $(LEAF_DEPTH)/..
+include $(ISM_DEPTH)/ismdefs
+
+#
+# VPATH points to where the code actually is.
+#
+VPATH = .:..:$(ISM_DEPTH)/../common/src
+
+LCINCS = \
+    $(NULL)
+
+LCXXINCS = \
+    -I$(ISM_DEPTH)/../common/include \
+    -I$(MLE_ROOT)/Core/mlert/common/include \
+    -I$(MLE_ROOT)/Core/mlert/win32/include \
+    -I$(MLE_ROOT)/Core/mlert/common/src/foundation \
+    -I$(MLE_ROOT)/Core/mlert/common/src/input \
+    -I$(MLE_ROOT)/Core/util/common/include \
+    -I$(MLE_ROOT)/Core/math/common/include \
+    -I$(MLE_ROOT)/Parts/props/common/include \
+    -I$(MLE_ROOT)/Parts/roles/common/include \
+    -I$(BRENDER_PATH)/../INC \
+    $(NULL)
+
+COMMONOPTS = \
+    -nologo \
+    -W3 -GX \
+    $(NULL)
+
+COPTS = \
+    $(COMMONOPTS) \
+    $(LCOPTS) \
+    $(NULL)
+
+CXXOPTS = \
+    $(COMMONOPTS) \
+    $(LCXXOPTS) \
+    $(NULL)
+
+CFILES = \
+    $(LCFILES) \
+    $(NULL)
+
+CXXFILES = \
+    3dcama.cxx \
+    escapea.cxx \
+    $(LCXXFILES) \
+    $(NULL)
+
+LIBC_STYLE = $(CF_STATIC_SINGLE_LIBC)
+LIBC_STYLE_DEFS = $(CF_STATIC_SINGLE_DEFS)
+
+#
+# To use manual precompilation uncomment these two macros
+# and specify the name for the precompiled header (PCH_MANUAL_TARGET)
+# and the basename of the .h and .cxx files where precompilation is
+# to take place.
+#
+#PCH_MANUAL_TARGET = aumath.pch
+#PCH_MANUAL_BASENAME = bar
+
+all: $(TARGETS)
+
+#
+# Add $(RCOBJECTS) after each $(OBJECTS) if resource files (*.res) are
+# to be linked into the target.
+#
+$(TARGETS): $(OBJECTS)
+	$(LD) $(LLDOPTS) $(OBJECTS)
+#	$(BSCF) $(SBRFILES)
+
+#
+# 'collect' is the rule that tells where the installation package
+# should put stuff.  CUR_COLLECTLOG is the collection file in the
+# directory of the current version (e.g. debug or release).
+#
+# *NOTE: the "-srcDir ." flag is not necessary!  It is just here in
+#        the example for completeness
+#
+collect: all
+	mkdir -p $(IBBASEDIR)/build/$(CUR_VERSION)
+	$(IBCOLLECT) -log $(CUR_COLLECTLOG) -tags "LIB" \
+		-srcDir . \
+		-destDir lib \
+		$(TARGETS)
+
+include $(ISMRULES)

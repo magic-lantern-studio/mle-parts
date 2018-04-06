@@ -1,0 +1,14 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dPointLightActor
+    (HeaderFile mle/3dpntlta.h)
+    (SourceFile 3dpntlta.cxx)
+    (PropertyDef onOffSwitch int)
+    (PropertyDef position MlVector3)
+    (PropertyDef intensity MlScalar)
+	(PropertyDef RG.geometry MediaRef
+		(MediaRefClass RG.geometry Mle3dSceneGraphMediaRef)
+	)
+	(PropertyDef RG.onOff int)
+	(PropertyDef scale MlScalar)
+	(RoleSetMapping Mle3dRole Mle3dSet)
+)

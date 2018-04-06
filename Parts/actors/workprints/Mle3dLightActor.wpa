@@ -1,0 +1,10 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dLightActor.wpd )
+( Actor lightActor Mle3dLightActor 
+	( Property position MlVector3 0 0 10 )
+	( Property orientation MlRotation 0 0 -1 1) 
+	( Property lightType int 0 ) 
+	( Property onOffSwitch int 1 ) 
+	( Property intensity MlScalar 0.5 ) 
+)
+

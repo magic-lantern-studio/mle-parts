@@ -1,0 +1,10 @@
+#DWP 1.0 ascii
+( ActorDef MleMidiActor 
+	( HeaderFile mle/aumidia.h ) 
+	( SourceFile aumidia.cxx ) 
+	( DSOFile AuMidiActor.so ) 
+	( PropertyDef music MediaRef ) 
+		( MediaRefClass music filemref )
+	)
+	(RoleSetMapping MleRole MleMidiSet )
+) 

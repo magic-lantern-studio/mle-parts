@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+#Mle3dRehearsalGeometryProperty
+(PropertyDef int OnOff)
+(PropertyDef geometry MlMediaRef
+    (MediaRefClass geometry Mle3dSceneGraphMediaRef)
+)

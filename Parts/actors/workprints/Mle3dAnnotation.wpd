@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dAnnotation
+    ( HeaderFile mle/3dannoa.h )
+    ( SourceFile 3dannoa.cxx )
+    (RoleSetMapping +brender MleBr3dAnnotationDelegate Mle3dSet)
+)

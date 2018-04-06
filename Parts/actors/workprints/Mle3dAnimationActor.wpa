@@ -1,0 +1,61 @@
+DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle3dAnimationActor.wpd ) 
+( Actor myAnimationActor Mle3dAnimationActor
+        ( Property render.style int 1 )
+        ( Property render.shading int 1 )
+        ( Property render.texturing int 1 )
+        ( Property render.textureBlending int 0 )
+        ( Property render.boundingBox int 0 )
+        ( Property render.facesDoubleSided int 1 )
+        ( Property render.facesAlwaysInFront int 0 )
+	( Property position MlVector3 0 0 0 ) 
+	( Property orientation MlRotation 0 0 0 1 ) 
+	( Property scale MlVector3 1 1 1 ) 
+	( Property sceneGraph MediaRef myAnimationActorSceneGraphMedia ) 
+	( Property animationRegistry MediaRef myAnimationActorAnimationMedia ) 
+	( Property animationFirstFrame int -1 )
+	( Property animationLastFrame int -1 )
+	( Property animationSpeed int 1 )
+	( Property animationAutoUpdateFlag int 0 )
+	( Property animationAutoUpdateParent int 0 )
+        ( Property animationNumber int 0 )
+) 
+
+(MediaRef myAnimationActorAnimationMedia Mle3dAnimationRegistryMediaRef
+        (MediaRefSource 
+                (Media 0 animation $MLE_HOME/data/3d/cube.wire)
+        )
+        (MediaRefTarget +rehearsal 0
+                (Media 0 animation $MLE_HOME/data/3d/cube.fwa)
+        )
+        (MediaRefTarget +sgi 
+                (Media 0 animation $MLE_HOME/data/3d/cube.fwa)
+        )
+        (MediaRefTarget +win32 
+                (Media 0 animation $MLE_HOME\\data\\cubepc.fwa)
+        )
+)
+
+(MediaRef +brender myAnimationActorSceneGraphMedia Fw3dSceneGraphMediaRef
+        (MediaRefSource 
+                (Media 0 sceneGraph $MLE_HOME/data/3d/cube.wire)
+        )
+        (MediaRefTarget +rehearsal 0
+                (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.brs,geometry,$MLE_HOME/data/3d/cube.brg,materials,$MLE_HOME/data/3d/cube.brm,textures,$MLE_HOME/data/3d/cube.brt)
+        )
+        (MediaRefTarget +sgi 
+                (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.brs,geometry,$MLE_HOME/data/3d/cube.brg,materials,$MLE_HOME/data/3d/cube.brm,textures,$MLE_HOME/data/3d/cube.brt)
+        )
+        (MediaRefTarget +win32 0 
+                (Media 0 sceneGraph sceneGraph,$MLE_HOME\\data\\cube.brs,geometry,$MLE_HOME\\data\\cube.brg,materials,$MLE_HOME\\data\\cube.brm,textures,$MLE_HOME\\data\\cube.brt)
+        )
+)
+
+(MediaRef +inventor myAnimationActorSceneGraphMedia Mle3dSceneGraphMediaRef
+        (MediaRefSource 
+                (Media 0 sceneGraph $MLE_HOME/data/3d/cube.wire)
+        )
+        (MediaRefTarget +rehearsal 0 
+                (Media 0 sceneGraph sceneGraph,$MLE_HOME/data/3d/cube.iv)
+        )
+)

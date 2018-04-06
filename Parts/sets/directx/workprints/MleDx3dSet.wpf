@@ -1,0 +1,6 @@
+#DWP 1.0 ascii
+( SetDef Mle3dSet
+    ( HeaderFile dxs/dx3dset.h )
+    ( PropertyDef position MlVector2 )
+    ( PropertyDef size MlVector2 )
+)

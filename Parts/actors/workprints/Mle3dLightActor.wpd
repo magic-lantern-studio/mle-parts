@@ -1,0 +1,11 @@
+#DWP 1.0 ascii
+(ActorDef Mle3dLightActor
+    (HeaderFile mle/3dlighta.h)
+    (SourceFile 3dlighta.cxx)
+    (PropertyDef position MlVector3)
+    (PropertyDef orientation MlRotation)
+    (PropertyDef lightType int)
+    (PropertyDef onOffSwitch int)
+    (PropertyDef intensity MlScalar)
+    (RoleSetMapping Mle3dRole Mle3dSet)
+)

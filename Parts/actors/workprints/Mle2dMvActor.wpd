@@ -1,0 +1,12 @@
+#DWP 1.0 ascii
+( ActorDef Mle2dMvActor
+    ( HeaderFile mle/2dmva.h )
+    ( Package com.wizzer.auteur.mle.parts.actors )
+    ( SourceFile 2dmva.cxx )
+    ( PropertyDef movie MediaRef 
+        ( MediaRefClass movie filemref )
+    )
+    ( PropertyDef displayState int )
+    ( PropertyDef position MlVector2 )
+    ( RoleSetMapping Mle2dMvRole Mle2dSet )
+)

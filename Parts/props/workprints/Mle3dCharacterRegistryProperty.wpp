@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+#Mle3dCharacterRegistryProperty
+(PropertyDef characterRegistry MlMediaRef
+    (MediaRefClass characterRegistry Mle3dCharacterRegistryMediaRef)
+)

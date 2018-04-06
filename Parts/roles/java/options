@@ -1,0 +1,7 @@
+-sourcepath com.wizzer.mle.parts.j2d/src
+-d com.wizzer.mle.parts.roles.doc
+-overview com.wizzer.mle.parts.j2d/src/overview-summary.html
+-plugintitle 'Magic Lantern Roles Library'
+-pluginid www.wizzer.mle.parts.roles.doc
+-version "1.0.0.0"
+-provider "Wizzer Works"

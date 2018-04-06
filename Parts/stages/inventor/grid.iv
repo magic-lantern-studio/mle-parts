@@ -1,0 +1,80 @@
+#Inventor V2.1 ascii
+#
+# horizon grid used for authoring tools
+#
+
+Separator {
+    Material {
+	diffuseColor 0.3 0.3 0.3
+    }
+    DEF lines Separator {
+	# 2x2 grid closed on top and right
+	LineSet {
+	    vertexProperty		VertexProperty {
+		vertex	[   0 0 10, 10 0 10, 10 0 0, 
+				0 0 5, 10 0 5, 
+				5 0 0, 5 0 10 ]
+		normal	[  ]
+		texCoord	[  ]
+		orderedRGBA	[  ]
+	    }
+    
+	    startIndex	0
+	    numVertices	[ 3, 2, 2 ]
+	}
+    }
+    DEF lineset Separator {
+	# quadrant grid that goes from (0, 0, 0) to (150, 0, 150)
+	Array {
+	    numElements1 15
+	    separation1 10 0 0
+
+	    Array {
+		numElements1 15
+		separation1 0 0 10
+		
+		USE lines
+	    }
+	}
+    }
+
+    Separator
+    {
+	# do three other quadrants of grid
+	RotationXYZ {
+	    axis Y
+	    angle 1.5707963	# pi/2
+	}
+	USE lineset
+
+	RotationXYZ {
+	    axis Y
+	    angle 1.5707963	# pi/2
+	}
+	USE lineset
+
+	RotationXYZ {
+	    axis Y
+	    angle 1.5707963	# pi/2
+	}
+	USE lineset
+    }
+
+    Separator {
+	# brighter colored origin lines
+	Material {
+	    diffuseColor 0.6 0.6 0.6
+	}
+	LineSet {
+	    vertexProperty		VertexProperty {
+		vertex	[   -150 0 0, 150 0 0,
+			    0 0 -150, 0 0 150 ]
+		normal	[  ]
+		texCoord	[  ]
+		orderedRGBA	[  ]
+	    }
+	    startIndex	0
+	    numVertices	[ 2, 2 ]
+	}
+    }
+}

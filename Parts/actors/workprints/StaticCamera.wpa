@@ -1,0 +1,8 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/StaticCamera.wpd ) 
+( Actor cam1 StaticCamera 
+	( Property position MlVector3 0 0 30 ) 
+	( Property orientation MlRotation 0 0 0 1 ) 
+	( Property nearClipping MlScalar 0.1 ) 
+	( Property farClipping MlScalar 1000 ) 
+) 

@@ -1,0 +1,5 @@
+#DWP 1.0 ascii
+#Mle3dSceneGraphProperty
+(PropertyDef sceneGraph MlMediaRef
+    (MediaRefClass sceneGraph Mle3dSceneGraphMediaRef)
+)

@@ -1,0 +1,13 @@
+#DWP 1.0 ascii
+( ActorDef MleSampleActor 
+    ( HeaderFile mle/ausampla.h )
+    ( SourceFile ausampla.cxx )
+	( DSOFile AuSampleActor.so ) 
+	( PropertyDef music MediaRef 
+		( MediaRefClass music filemref )
+	) 
+	( PropertyDef volume float ) 
+	( PropertyDef bufferSize int )
+	( PropertyDef stoppingTime float )
+	(RoleSetMapping MleRole MleSampleSet )
+) 

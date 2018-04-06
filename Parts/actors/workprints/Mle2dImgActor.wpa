@@ -1,0 +1,21 @@
+#DWP 1.0 ascii 
+( Include $MLE_WORKPRINTS/parts/actors/workprints/Mle2dImgActor.wpd ) 
+( Actor tree Mle2dImgActor 
+	( Property image MediaRef treemedia ) 
+	( Property displayState int 1 ) 
+	( Property position MlVector2 150 150 ) 
+) 
+( MediaRef treemedia MleImageMediaRef 
+	( MediaRefSource 
+		( Media 0 image $MLE_HOME/data/images/tree.rgba )
+	)
+	( MediaRefTarget +rehearsal 0
+		( Media 0 image $MLE_HOME/data/images/tree.rgba ) 
+	)
+	( MediaRefTarget +sgi 0
+		( Media 0 image $MLE_HOME/data/images/tree.rgba ) 
+	)
+	( MediaRefTarget +win32 0
+		( Media 0 image ..\\media\\tree.dib ) 
+	)
+) 
