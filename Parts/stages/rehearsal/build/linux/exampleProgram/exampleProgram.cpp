@@ -27,21 +27,21 @@
 
 int main(void)
 {
-	// Initialize the title meta data. By default the scheduler will be initialized to 6 phases
-	// with slots for 200 items. The title must be initialized in this manner prior to constructing
-	// the MleIvStage; otherwise, the stage will crash.
-	g_theTitle = new MleDirector();
-	g_theTitle->m_theScheduler = new MleScheduler();
-	g_theTitle->m_theScheduler->init();
+    // Initialize the title meta data. By default the scheduler will be initialized to 6 phases
+    // with slots for 200 items. The title must be initialized in this manner prior to constructing
+    // the MleIvStage; otherwise, the stage will crash.
+    g_theTitle = new MleDirector();
+    g_theTitle->m_theScheduler = new MleScheduler();
+    g_theTitle->m_theScheduler->init();
 
-	// Create an Inventor stage and initialize it.
+    // Create an Inventor stage and initialize it.
     MleIvStage *stage = new MleIvStage();
     stage->init();
 
     // Main loop of execution.
     while(1)
     {
-    	g_theTitle->m_theScheduler->goAll();
+        g_theTitle->m_theScheduler->goAll();
     }
 
     // Clean up before exiting.
