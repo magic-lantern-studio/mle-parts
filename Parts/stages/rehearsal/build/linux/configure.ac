@@ -25,5 +25,7 @@ AC_CONFIG_FILES(Makefile
                 rehearsalTest/Makefile
                 runtimeTest/Makefile
                 MleIvStage/Makefile
+                MleIvStage/rehearsal/Makefile
+                MleIvStage/runtime/Makefile
                 include/Makefile)
 AC_OUTPUT

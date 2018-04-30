@@ -14,7 +14,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017 Wizzer Works
+// Copyright (c) 2017-2018 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@
 #define __MLE_2DIMGD_H_
 
 // Include system header files.
-#if defined(MLE_REHEARSAL)
+#if defined(MLE_REHEARSAL) || defined(__linux__)
 
 // Include files for image processing library.
 #include <FreeImage.h>
@@ -109,7 +109,7 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
 	// TRUE for on, FALSE for off
     int displayState;
 
-#if defined(MLE_REHEARSAL)
+#if defined(MLE_REHEARSAL) || defined(__linux__)
 
     unsigned char *imageData;
 

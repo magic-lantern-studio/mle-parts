@@ -21,14 +21,17 @@ ACLOCAL_AMFLAGS=-I ../m4
 rehearsalTest_SOURCES= exampleProgram.cpp
 
 # Libraries for a.out
-rehearsalTest_LDADD = $(top_srcdir)/MleIvStage/MleIvStage.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dRole.la $(MLE_ROOT)/lib/mle/rehearsal/Mle3dRole.la \
-	$(MLE_ROOT)/lib/libivroles.la $(MLE_ROOT)/lib/Mle2dSet.la \
-	$(MLE_ROOT)/lib/Mle3dSet.la \
+rehearsalTest_LDADD = $(top_srcdir)/MleIvStage/rehearsal/MleIvStage.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dRole.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dRole.la \
+	$(MLE_ROOT)/lib/libivroles.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dSet.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dSet.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaref.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaref.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaref.la \
-	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP -lmlmath -lCoin -lSoXt -lXmu
+	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP -lmlmath -lmlutil \
+	-lCoin -lSoXt -lXmu
 
 # Linker options for a.out
 rehearsalTest_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs

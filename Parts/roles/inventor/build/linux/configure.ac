@@ -25,6 +25,12 @@ AC_CONFIG_FILES(Makefile
                 ivroles/Makefile
                 include/Makefile
                 MleIv2dRole/Makefile
+                MleIv2dRole/rehearsal/Makefile
+                MleIv2dRole/runtime/Makefile
                 MleIv2dImgRole/Makefile
-                MleIv3dRole/Makefile)
+                MleIv2dImgRole/rehearsal/Makefile
+                MleIv2dImgRole/runtime/Makefile
+                MleIv3dRole/Makefile
+                MleIv3dRole/rehearsal/Makefile
+                MleIv3dRole/runtime/Makefile)
 AC_OUTPUT

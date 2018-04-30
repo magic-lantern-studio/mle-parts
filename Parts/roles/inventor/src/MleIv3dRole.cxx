@@ -13,7 +13,7 @@
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+//  Copyright (C) 2000-2018  Wizzer Works
 //
 //  Wizzer Works makes available all content in this file ("Content").
 //  Unless otherwise indicated below, the Content is provided to you
@@ -74,11 +74,11 @@ Mle3dRole::~Mle3dRole()
     {
 #ifdef MLE_REHEARSAL
 		g_pickRegistry.remove(m_root);
-#endif /* MLE_REHEARSAL */
-	
+
 		// Remove ourselves from our parent - this should bring
 		// refcount to zero and delete us.
 		m_ivParent->removeChild(m_root);
+#endif /* MLE_REHEARSAL */
     }
 }
 

@@ -139,13 +139,17 @@ Mle3dSet::attach(MleRole *p,MleRole *c)
 	{
 		// it's a role
 		parent->addChild(child);
+#ifdef MLE_REHEARSAL
 		child->setIvParent(parent->getRoot());
+#endif
 	}
 	else
 	{
 		// It's the set.
 		m_root->addChild(child->getRoot());
+#ifdef MLE_REHEARSAL
 		child->setIvParent(m_root);
+#endif
 	}
 }
 

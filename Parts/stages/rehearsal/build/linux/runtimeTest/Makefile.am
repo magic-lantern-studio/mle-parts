@@ -18,17 +18,20 @@ noinst_PROGRAMS=runtimeTest
 ACLOCAL_AMFLAGS=-I ../m4
 
 # Sources for the a.out 
-runtimeTest_SOURCES= exampleProgram.cpp
+runtimeTest_SOURCES= exampleProgram.cpp rtestubs.cpp
 
 # Libraries for a.out
-runtimeTest_LDADD = $(top_srcdir)/MleIvStage/MleIvStage.la \
-	$(MLE_ROOT)/lib/mle/runtime/Mle2dRole.la $(MLE_ROOT)/lib/mle/runtime/Mle3dRole.la \
-	$(MLE_ROOT)/lib/libivroles.la $(MLE_ROOT)/lib/Mle2dSet.la \
-	$(MLE_ROOT)/lib/Mle3dSet.la \
+runtimeTest_LDADD = $(top_srcdir)/MleIvStage/runtime/MleIvStage.la \
+	$(MLE_ROOT)/lib/mle/runtime/Mle2dRole.la \
+	$(MLE_ROOT)/lib/mle/runtime/Mle3dRole.la \
+	$(MLE_ROOT)/lib/libivroles.la \
+	$(MLE_ROOT)/lib/mle/runtime/Mle2dSet.la \
+	$(MLE_ROOT)/lib/mle/runtime/Mle3dSet.la \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dColorMapMediaref.la \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dModelMediaref.la \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dTextureMapMediaref.la \
-	-L$(MLE_ROOT)/lib/mle/runtime -lmlert -lDWP -lmlmath -lCoin -lSoXt -lXmu
+	-L$(MLE_ROOT)/lib/mle/runtime -lmlert -lDPP -lplayprint -lmlmath -lmlutil \
+	-lCoin -lSoXt -lXmu
 
 # Linker options for a.out
 runtimeTest_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs

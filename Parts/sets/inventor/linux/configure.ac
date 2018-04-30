@@ -21,8 +21,11 @@ dnl Initialize Libtool
 LT_INIT
 
 AC_CONFIG_FILES(Makefile
-                exampleProgram/Makefile
                 Mle2dSet/Makefile
+                Mle2dSet/rehearsal/Makefile
+                Mle2dSet/runtime/Makefile
                 Mle3dSet/Makefile
+                Mle3dSet/rehearsal/Makefile
+                Mle3dSet/runtime/Makefile
                 include/Makefile)
 AC_OUTPUT
