@@ -3,4 +3,4 @@
 includedir = $(prefix)/include/mle
 
 include_HEADERS = $(top_srcdir)/../../include/mle/MleIvStage.h \
-    $(top_srcdir)/../../../inventor/mle/ivstage.h
+    $(top_srcdir)/../../../inventor/include/mle/ivstage.h

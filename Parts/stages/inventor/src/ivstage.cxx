@@ -12,18 +12,29 @@
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2017-2018 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -140,6 +151,25 @@
 
 MLE_STAGE_SOURCE(MleIvStage,MleStage);
 
+#if defined(__sgi) || defined(__linux__)
+static void _processXtEvents()
+{
+    // Get the application context for the stage.
+    XtAppContext appContext = SoXt::getAppContext();
+
+	while (XtAppPending(appContext))
+	{
+        XEvent event;
+	    SoXt::nextEvent(appContext, &event);
+        Boolean dispatched = SoXt::dispatchEvent(&event);
+	}
+#if 0
+	// Check for events and dispatch them if found.
+	while ( XtAppPending(appContext) )
+		XtAppProcessEvent(appContext,XtIMAll);
+#endif /* 0 */
+}
+#endif /* __linux__ */
 
 #ifdef MLE_REHEARSAL
 void
@@ -533,12 +563,7 @@ MleIvStage::init(void)
 
 #if defined(__sgi) || defined(__linux__)
 	// Flush the Xt queue.
-	// Get the application context for the stage.
-	XtAppContext appContext = SoXt::getAppContext();
-
-	// Check for events and dispatch them if found.
-	while ( XtAppPending(appContext) )
-		XtAppProcessEvent(appContext,XtIMAll);
+	_processXtEvents();
 #endif
 #if defined(WIN32)
 	MSG msg;
@@ -665,7 +690,7 @@ printf("doSelect: no events pending - call doSelect()\n");
 
     return select(nfds, readfds, writefds, exceptfds, userTimeOut);
 }
-#endif
+#endif /* 0 */
 #endif	// MLE_REHEARSAL doSelect()
 #endif  // __sgi
 
@@ -763,7 +788,7 @@ MleIvStage::setCB(void *data,SoAction *action)
 #if defined(__sgi) || defined(__linux__)
 // This function is the Inventor event handler.  It is Installed on the
 //   render area to pick up X events before the render area processes them.
-//   It shold return TRUE if the event is not to be passed on to the
+//   It should return TRUE if the event is not to be passed on to the
 //   render area.
 int
 MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
@@ -827,16 +852,17 @@ MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
 #endif /* MLE_REHEARSAL */
 
 	// Can deliver events to the player here.
+	return FALSE;
 
 	// Don't pass this event to the viewer.
-	return TRUE;
+	//return TRUE;
 }
-#endif
+#endif /* __linux__ */
 
 #if defined(WIN32)
 // This function is the Inventor event handler.  It is Installed on the
 //   render area to pick up Windows messages before the render area processes them.
-//   It shold return TRUE if the event is not to be passed on to the
+//   It should return TRUE if the event is not to be passed on to the
 //   render area.
 int
 MleIvStage::eventHandler(MleIvStage *stage,MSG *msg)
@@ -915,12 +941,7 @@ MleIvStage::update(MleIvStage * stage)
 	stage->m_viewer->render();
 
 #if defined(__sgi) || defined(__linux__)
-	// Get the application context for the stage.
-	XtAppContext appContext = SoXt::getAppContext();
-
-	// Check for events and dispatch them if found.
-	while ( XtAppPending(appContext) )
-		XtAppProcessEvent(appContext,XtIMAll);
+	_processXtEvents();
 #endif
 #if defined(WIN32)
 	MSG msg;
