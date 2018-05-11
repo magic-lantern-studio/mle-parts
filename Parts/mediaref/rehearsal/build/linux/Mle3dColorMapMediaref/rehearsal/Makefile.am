@@ -6,21 +6,21 @@ libdir = $(exec_prefix)/lib/mle/rehearsal
 # The list of libraries we are building seperated by spaces.
 # The 'lib_' indicates that these build products will be installed
 # in the $(libdir) directory. For example /usr/lib
-lib_LTLIBRARIES = Mle3dColorMapMediaref.la
+lib_LTLIBRARIES = Mle3dColorMapMediaRef.la
 
 #######################################
 # Build information for each library
 
 # Sources for MleMediaref
-Mle3dColorMapMediaref_la_SOURCES = \
+Mle3dColorMapMediaRef_la_SOURCES = \
 	../../../../../inventor/MleIv3dColorMapMediaRef.cxx
 
 # Linker options libTestProgram
-Mle3dColorMapMediaref_la_LDFLAGS = -module
+Mle3dColorMapMediaRef_la_LDFLAGS = -module
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-Mle3dColorMapMediaref_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
+Mle3dColorMapMediaRef_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../common/include \
 	-I$(top_srcdir)/../../../inventor \

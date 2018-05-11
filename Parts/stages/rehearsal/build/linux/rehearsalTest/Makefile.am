@@ -27,9 +27,9 @@ rehearsalTest_LDADD = $(top_srcdir)/MleIvStage/rehearsal/MleIvStage.la \
 	$(MLE_ROOT)/lib/libivroles.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dSet.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dSet.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaref.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaref.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaref.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaRef.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaRef.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaRef.la \
 	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP -lmlmath -lmlutil \
 	-lCoin -lSoXt -lXmu
 
@@ -39,5 +39,5 @@ rehearsalTest_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs
 # Compiler options for a.out
 rehearsalTest_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/../../../inventor \
+	-I$(top_srcdir)/../../../inventor/include \
 	-I$(MLE_ROOT)/include

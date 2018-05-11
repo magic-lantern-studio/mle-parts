@@ -27,9 +27,9 @@ exampleProgram_LDADD = $(top_srcdir)/IvStage/IvStage.la \
 	$(MLE_ROOT)/lib/libivroles.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dSet.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dSet.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaref.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaref.la \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaref.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaRef.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaRef.la \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaRef.la \
 	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP -lmlmath \
 	-lCoin -lSoXt -lXmu
 

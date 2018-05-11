@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS=-I ../m4
 exampleProgram_SOURCES= exampleProgram.c
 
 # Libraries for a.out
-exampleProgram_LDADD = $(top_srcdir)/Mle3dModelMediaref/runtime/Mle3dModelMediaref.la
+exampleProgram_LDADD = $(top_srcdir)/Mle3dModelMediaref/runtime/Mle3dModelMediaRef.la
 
 # Linker options for a.out
 exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/Mle3dModelMediaref/runtime/.libs
