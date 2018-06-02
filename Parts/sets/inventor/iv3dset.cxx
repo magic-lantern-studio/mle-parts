@@ -68,7 +68,7 @@ MLE_SET_SOURCE(Mle3dSet,MleSet);
 void
 Mle3dSet::initClass(void)
 {
-	mlRegisterSetClass(Mle3dSet,MleSet);
+	mleRegisterSetClass(Mle3dSet,MleSet);
 
 	// Set properties go here.
 }

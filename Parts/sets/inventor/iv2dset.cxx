@@ -50,10 +50,10 @@ MLE_SET_SOURCE(Mle2dSet, MleSet);
 void
 Mle2dSet::initClass(void)
 {
-    mlRegisterSetClass(Mle2dSet, MleSet);
+    mleRegisterSetClass(Mle2dSet, MleSet);
 
-    mlRegisterSetMember(Mle2dSet, position, MlVector2);
-    mlRegisterSetMember(Mle2dSet, size, MlVector2);
+    mleRegisterSetMember(Mle2dSet, position, MlVector2);
+    mleRegisterSetMember(Mle2dSet, size, MlVector2);
 }
 
 #endif	/* MLE_REHEARSAL */
