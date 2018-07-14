@@ -14,7 +14,7 @@ unix:!macx: LIBS += \
 INCLUDEPATH += $$PWD/../include /opt/MagicLantern/include
 DEPENDPATH += $$PWD/../build/build-mleqtstage-Desktop_Qt_5_8_0_GCC_64bit-Debug/src
 
-DEFINES += MLE_NOT_DLL
+DEFINES += MLE_DIGITAL_PLAYPRINT MLE_NOT_DLL
 
 SOURCES += \
     main.cpp \

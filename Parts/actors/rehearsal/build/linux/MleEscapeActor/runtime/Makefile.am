@@ -20,7 +20,7 @@ MleEscapeActor_la_LDFLAGS = -module
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-MleEscapeActor_la_CPPFLAGS = -DMLE_NOT_DLL \
+MleEscapeActor_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include -I$(top_srcdir)/../../../common/include \
 	-I$(MLE_ROOT)/include
 

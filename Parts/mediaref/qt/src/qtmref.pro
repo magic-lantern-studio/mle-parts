@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += $$PWD/../include /opt/MagicLantern/include /usr/local/include
 
-DEFINES += MLE_NOT_DLL
+DEFINES += MLE_DIGITAL_PLAYPRINT MLE_NOT_DLL
 
 SOURCES += qtmref.cpp \
            imagcnvtr.cpp \

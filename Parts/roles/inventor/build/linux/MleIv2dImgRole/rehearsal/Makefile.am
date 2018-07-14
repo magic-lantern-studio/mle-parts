@@ -21,7 +21,7 @@ Mle2dImgRole_la_LDFLAGS = -module
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-Mle2dImgRole_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
+Mle2dImgRole_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../common/include \
 	-I$(top_srcdir)/../../../inventor/include \

@@ -37,7 +37,7 @@ runtimeTest_LDADD = $(top_srcdir)/MleIvStage/runtime/MleIvStage.la \
 runtimeTest_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs
 
 # Compiler options for a.out
-runtimeTest_CPPFLAGS = -DMLE_NOT_DLL \
+runtimeTest_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../inventor/include \
 	-I$(MLE_ROOT)/include

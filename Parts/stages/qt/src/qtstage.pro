@@ -26,7 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #INCLUDEPATH += $$PWD/../include /opt/MagicLantern/include /usr/local/include
 INCLUDEPATH += $$PWD/../include /opt/MagicLantern/include
 
-DEFINES += MLE_NOT_DLL
+DEFINES += MLE_DIGITAL_PLAYPRINT MLE_NOT_DLL
 
 SOURCES += qtstage.cpp \
            qtstagewindow.cpp \

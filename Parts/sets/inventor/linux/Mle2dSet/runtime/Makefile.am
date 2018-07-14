@@ -20,7 +20,7 @@ Mle2dSet_la_LDFLAGS = -module
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-Mle2dSet_la_CPPFLAGS = -DMLE_NOT_DLL \
+Mle2dSet_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include -I$(top_srcdir)/.. \
 	-I$(top_srcdir)/../../../stages/inventor \
 	-I$(top_srcdir)/../../../roles/inventor/include \

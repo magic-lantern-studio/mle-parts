@@ -26,7 +26,7 @@ INCLUDEPATH += $$PWD/../include $$PWD/../../common/include \
                $$PWD/../../../roles/common/include \
                /opt/MagicLantern/include /usr/local/include
 
-DEFINES += MLE_NOT_DLL
+DEFINES += MLE_DIGITAL_PLAYPRINT MLE_NOT_DLL
 
 SOURCES += qtset.cpp \
            qt2dset.cpp
