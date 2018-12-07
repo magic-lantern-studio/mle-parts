@@ -92,7 +92,7 @@
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -143,7 +143,7 @@ copy Win32\Release\Mle3dColorMapMediaRef.dll $(MLE_HOME)\bin\rehearsal\Mle3dColo
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -193,7 +193,7 @@ copy x64\Release\Mle3dColorMapMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dColo
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -245,7 +245,7 @@ copy Win32\Debug\Mle3dColorMapMediaRefd.dll $(MLE_HOME)\bin\rehearsal\Mle3dColor
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dColorMapMediaRef.pch</PrecompiledHeaderOutputFile>

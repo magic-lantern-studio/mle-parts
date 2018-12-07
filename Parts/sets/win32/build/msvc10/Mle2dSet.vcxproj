@@ -91,7 +91,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\roles\common\include;..\..\..\..\roles\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -143,7 +143,7 @@ xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\roles\common\include;..\..\..\..\roles\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle2dSet.pch</PrecompiledHeaderOutputFile>
@@ -195,7 +195,7 @@ xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\roles\common\include;..\..\..\..\roles\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -246,7 +246,7 @@ xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\roles\common\include;..\..\..\..\roles\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE2DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
