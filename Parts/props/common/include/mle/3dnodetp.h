@@ -47,6 +47,7 @@
 #define __MLE_3DNODETP_H_
 
 // Include Magic Lantern Property header files.
+#include "mle/propdef.h"
 
 // Include Carrier support.
 #include "mle/3dnodetc.h"
