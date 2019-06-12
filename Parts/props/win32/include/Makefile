@@ -62,6 +62,7 @@ HEADERS = \
 	myprop1p.h \
 	myprop2p.h \
 	myprop3p.h \
+	propdef.h \
 	$(NULL)
 
 install: $(HEADERS)
