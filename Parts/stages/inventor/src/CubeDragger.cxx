@@ -111,7 +111,7 @@ CubeDragger::CubeDragger()
 
     // read geometry for shared parts
     if (SO_KIT_IS_FIRST_INSTANCE())
-	readDefaultParts("cubeDragger.iv", geomBuffer, sizeof(geomBuffer));
+	readDefaultParts("cubeDragger.iv", (const char *)geomBuffer, sizeof(geomBuffer));
 
     SO_KIT_ADD_FIELD(scaleFactor, (1.0, 1.0, 1.0));
     SO_KIT_ADD_FIELD(rotation,    (SbRotation::identity()));

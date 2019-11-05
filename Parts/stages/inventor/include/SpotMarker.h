@@ -183,7 +183,7 @@ class SpotMarker
     MultiSearchAction	   *searchAction; // For searching for coordinates
 
     // This contains the data for reading the scene graph
-    static const char	sceneBuffer[];
+    static unsigned const char sceneBuffer[];
 
     // Builds the scene graph
     virtual void	buildSceneGraph();

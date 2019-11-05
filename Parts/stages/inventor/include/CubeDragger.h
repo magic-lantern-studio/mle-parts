@@ -98,7 +98,7 @@ class CubeDragger : public SoTransformerDragger
 
   private:
     // Character string from which the shared geometry is read
-    static const char	geomBuffer[];
+    static const unsigned char geomBuffer[];
 
     Side		currentSide;
     Side		restartSide;

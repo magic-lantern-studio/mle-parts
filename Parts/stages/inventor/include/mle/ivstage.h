@@ -451,7 +451,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     static void deselectCB(MleIvStage *stage,SoPath *path);
     
     // Horizon grid iv buffer.
-    static const char g_gridBuffer[];
+    static unsigned const char g_gridBuffer[];
 
 #endif /* MLE_REHEARSAL */
 };
