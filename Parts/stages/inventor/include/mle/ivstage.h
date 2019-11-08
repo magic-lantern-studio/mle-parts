@@ -14,7 +14,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2018 Wizzer Works
+// Copyright (c) 2017-2020 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -71,7 +71,7 @@
 #endif
 
 #ifndef MLE_REHEARSAL
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
 class SoXtRenderArea;
 #endif
 #if defined(WIN32)
@@ -133,7 +133,7 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     virtual void resolveEdit(const char *property);
 
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
 #if 0
     // X event handling: we call SoDB::doSelect() so that Inventor
     // animation, etc, will run even when no X events are being generated.
@@ -150,7 +150,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     virtual void edit(void);
     
     // Configuration.
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
     virtual int getFD();
 #endif
 
@@ -158,12 +158,12 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     virtual void getSize(int *width,int *height);
 
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
     virtual Window getWindow(void);
     virtual Display* getDisplay(void);
 #endif
 #if defined(WIN32)
-	virtual HWND getWindow();
+    virtual HWND getWindow();
 #endif
 
     virtual void setOffscreen(int flag);
@@ -265,7 +265,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     // effect actor transform.
     virtual void recalcAutoClipPlanes();
 
-#endif	/* MLE_REHEARSAL */
+#endif    /* MLE_REHEARSAL */
     
     // Stage-specific API.
     //   This is new API (not inherited) for this particular stage type.
@@ -291,27 +291,27 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Our viewer is a full inventor viewer for rehearsal, but for
     // runtime is just a render area.
 #ifdef MLE_REHEARSAL
-#if defined(__sgi) || defined(__linux__)
-	// MleFullViewer  *m_walkVwr;
-	// MleFullViewer *m_viewer;
+#if defined(__linux__)
+    // MleFullViewer  *m_walkVwr;
+    // MleFullViewer *m_viewer;
     // MleFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
-	SoXtFullViewer *m_viewer;
+    SoXtFullViewer *m_viewer;
     SoXtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
 #endif
 #if defined(WIN32)
-	SoWinFullViewer *m_viewer;
+    SoWinFullViewer *m_viewer;
     SoWinFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
 #endif
 #else
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
     SoXtRenderArea *m_viewer;
 #endif
 #if defined(WIN32)
-	SoWinRenderArea *m_viewer;
+    SoWinRenderArea *m_viewer;
 #endif
 #endif
 
-	// Root of the scene graph.
+    // Root of the scene graph.
     SoSelection *m_root;
     SoSeparator *m_sets;
 
@@ -321,17 +321,17 @@ class REHEARSAL_API MleIvStage : public MleStage
     //   Inventor scene graph traversal.  In this Inventor stage, only
     //   2D set is added as Inventor callback node.
     typedef struct _SetInfo {
-	    void (*func)(MleSet *);
-	    MleSet *set;
+        void (*func)(MleSet *);
+        MleSet *set;
     } SetInfo;
 
 #ifdef MLE_REHEARSAL
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
     // Keeps track of the shell's widget.
     Widget m_shellParent;
 #endif
 #if defined(WIN32)
-	HWND m_shellParent;
+    HWND m_shellParent;
 #endif
     
     SoSeparator *m_toolRoot;
@@ -351,7 +351,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     SbMatrix m_manipNorm;
     
     // switch to turn horizon grid on/off
-    SoSwitch		*m_gridSwitch;
+    SoSwitch        *m_gridSwitch;
 
     SoSwitch *m_cameraSwitch;
     SoPerspectiveCamera *m_perspectCamera;
@@ -368,7 +368,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     // A list contains all sets sorted based on drawing order (first one
     // on the list is drawn last).
     typedef struct _SetDrawOrder {
-		SetInfo *setInfo;
+        SetInfo *setInfo;
         _SetDrawOrder *prev;
         _SetDrawOrder *next;
     } SetDrawOrder;
@@ -420,11 +420,11 @@ class REHEARSAL_API MleIvStage : public MleStage
     static void setCB(void *data,SoAction *action);
 
     // eventHandler() is the callback for Inventor event handling.
-#if defined(__sgi) || defined(__linux__)
+#if defined(__linux__)
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
 #endif
 #if defined(WIN32)
-	static int eventHandler(MleIvStage *stage,MSG *event);
+    static int eventHandler(MleIvStage *stage,MSG *event);
 #endif
     
 #ifdef MLE_REHEARSAL
