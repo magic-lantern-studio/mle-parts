@@ -154,17 +154,21 @@ static void _processXtEvents()
     // Get the application context for the stage.
     XtAppContext appContext = SoXt::getAppContext();
 
-    while (XtAppPending(appContext))
+#if 0
+    XtInputMask imask;
+    while (imask = XtAppPending(appContext))
+    //while (XtAppPending(appContext))
     {
+        printf("Xt Pending Input: %d\n", imask);
         XEvent event;
         SoXt::nextEvent(appContext, &event);
         Boolean dispatched = SoXt::dispatchEvent(&event);
     }
-#if 0
+#endif /* 0 */
+
     // Check for events and dispatch them if found.
     while ( XtAppPending(appContext) )
         XtAppProcessEvent(appContext,XtIMAll);
-#endif /* 0 */
 }
 #endif /* __linux__ */
 
