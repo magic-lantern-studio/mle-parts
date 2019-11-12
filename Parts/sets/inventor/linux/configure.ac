@@ -24,8 +24,10 @@ AC_CONFIG_FILES(Makefile
                 Mle2dSet/Makefile
                 Mle2dSet/rehearsal/Makefile
                 Mle2dSet/runtime/Makefile
+                Mle2dSet/inventor/Makefile
                 Mle3dSet/Makefile
                 Mle3dSet/rehearsal/Makefile
                 Mle3dSet/runtime/Makefile
+                Mle3dSet/inventor/Makefile
                 include/Makefile)
 AC_OUTPUT

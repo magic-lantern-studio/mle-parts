@@ -27,10 +27,13 @@ AC_CONFIG_FILES(Makefile
                 MleIv2dRole/Makefile
                 MleIv2dRole/rehearsal/Makefile
                 MleIv2dRole/runtime/Makefile
+                MleIv2dRole/inventor/Makefile
                 MleIv2dImgRole/Makefile
                 MleIv2dImgRole/rehearsal/Makefile
                 MleIv2dImgRole/runtime/Makefile
+                MleIv2dImgRole/inventor/Makefile
                 MleIv3dRole/Makefile
                 MleIv3dRole/rehearsal/Makefile
-                MleIv3dRole/runtime/Makefile)
+                MleIv3dRole/runtime/Makefile
+                MleIv3dRole/inventor/Makefile)
 AC_OUTPUT
