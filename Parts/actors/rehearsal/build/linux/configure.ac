@@ -25,11 +25,14 @@ AC_CONFIG_FILES(Makefile
                 MleEscapeActor/Makefile
                 MleEscapeActor/rehearsal/Makefile
                 MleEscapeActor/runtime/Makefile
+                MleEscapeActor/inventor/Makefile
                 Mle3dCameraActor/Makefile
                 Mle3dCameraActor/rehearsal/Makefile
                 Mle3dCameraActor/runtime/Makefile
+                Mle3dCameraActor/inventor/Makefile
                 Mle2dImageActor/Makefile
                 Mle2dImageActor/rehearsal/Makefile
                 Mle2dImageActor/runtime/Makefile
+                Mle2dImageActor/inventor/Makefile
                 include/Makefile)
 AC_OUTPUT

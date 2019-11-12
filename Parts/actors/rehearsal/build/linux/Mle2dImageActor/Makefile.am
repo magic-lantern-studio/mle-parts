@@ -1,1 +1,1 @@
-SUBDIRS=rehearsal runtime
+SUBDIRS=rehearsal runtime inventor
