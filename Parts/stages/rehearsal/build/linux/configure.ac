@@ -27,5 +27,6 @@ AC_CONFIG_FILES(Makefile
                 MleIvStage/Makefile
                 MleIvStage/rehearsal/Makefile
                 MleIvStage/runtime/Makefile
+                MleIvStage/inventor/Makefile
                 include/Makefile)
 AC_OUTPUT

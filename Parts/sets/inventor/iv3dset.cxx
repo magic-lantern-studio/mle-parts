@@ -13,18 +13,29 @@
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2018-2020 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -64,7 +75,7 @@
 
 MLE_SET_SOURCE(Mle3dSet,MleSet);
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
 void
 Mle3dSet::initClass(void)
 {
@@ -101,7 +112,7 @@ Mle3dSet::Mle3dSet(void)
 	
 	// XXX temporary
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
 	// Create a headlight.
 	SoTransformSeparator *lightSep = new SoTransformSeparator;
 	m_root->addChild(lightSep);
@@ -137,7 +148,7 @@ Mle3dSet::attach(MleRole *p,MleRole *c)
 	// See if we are attaching to another role or to the set.
 	if ( parent )
 	{
-		// it's a role
+		// It's a role.
 		parent->addChild(child);
 #ifdef MLE_REHEARSAL
 		child->setIvParent(parent->getRoot());
@@ -182,7 +193,7 @@ int Mle3dSet :: setCameraTransform(MlTransform *t)
     MlRotation orient(rot);
     setCameraOrientation(&orient);
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, getCamera());
@@ -222,7 +233,7 @@ Mle3dSet::setCameraPosition(const MlVector3 *position)
 		mlScalarToFloat((*position)[1]),
 		mlScalarToFloat((*position)[2]));
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -258,7 +269,7 @@ Mle3dSet::setCameraOrientation(const MlRotation *orientation)
 	mlScalarToFloat(orient[2]),
 	mlScalarToFloat(orient[3]));
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -289,7 +300,7 @@ Mle3dSet::setCameraNearClipping(MlScalar nearPlane)
 
 	camera->nearDistance.setValue(mlScalarToFloat(nearPlane));
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -315,7 +326,7 @@ Mle3dSet::setCameraFarClipping(MlScalar farPlane)
 
 	camera->farDistance.setValue(mlScalarToFloat(farPlane));
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -352,7 +363,7 @@ Mle3dSet::setCameraAspect(MlScalar aspect)
 
     camera->aspectRatio.setValue(mlScalarToFloat(aspect));
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -370,7 +381,7 @@ Mle3dSet::getCameraAspect(void)
 	return mlFloatToScalar(camera->aspectRatio.getValue());
 }
 
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
 // Camera rotation sensor callback.
 // static
 void Mle3dSet::cameraCB(Mle3dSet *set, SoFieldSensor *)
@@ -384,7 +395,7 @@ void Mle3dSet::cameraCB(Mle3dSet *set, SoFieldSensor *)
 void
 Mle3dSet :: getStageSize(int *width, int *height)
 {
-#ifdef MLE_REHEARSAL
+#ifdef MLE_DIGITAL_WORKPRINT
     MleStage::g_theStage->getSize(width, height);
 #else
     // XXX - quick fix for build.
@@ -393,7 +404,7 @@ Mle3dSet :: getStageSize(int *width, int *height)
 #endif
 }
 
-#ifdef MLE_REHEARSAL	// getFunctions/getFunctionAttributes
+#ifdef MLE_REHEARSAL
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -434,7 +445,7 @@ const char** Mle3dSet::getFunctionAttributes(char* functionName)
     return NULL;
 }
 
-#endif	// MLE_REHEARSAL get functions
+#endif	// MLE_REHEARSAL
 
 #ifdef MLE_REHEARSAL
 
@@ -475,7 +486,7 @@ Mle3dSet::intersectScreenCoordinates(int x, int y, MlScalar* coord)
     }
 }
 
-#endif	// MLE_REHEARSAL intersect
+#endif	// MLE_REHEARSAL
 
 #ifdef MLE_REHEARSAL
 
@@ -551,4 +562,4 @@ Mle3dSet::getPickPath(const SbVec2s &point)
     return path;
 }
 
-#endif	// #ifdef MLE_REHEARSAL
+#endif	// MLE_REHEARSAL
