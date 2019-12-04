@@ -66,6 +66,9 @@ install: $(WORKPRINTS)
 	$(INSTALL) -d $(MLE_ROOT)/include/workprints
 	$(INSTALL) $^ $(MLE_ROOT)/include/workprints
 
+uninstall: $(WORKPRINTS)
+	cat install_manifest.txt | xargs echo sudo rm -f | sh
+
 include $(ISMRULES)
 
 collect:

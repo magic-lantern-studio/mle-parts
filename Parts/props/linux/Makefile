@@ -39,4 +39,7 @@ SUBDIRS = \
 all install $(COMMONTARGS):
 	$(SUBDIRS_MAKERULE)
 
+uninstall:
+	$(SUBDIRS_MAKERULE)
+
 include $(ISMRULES)

@@ -69,6 +69,9 @@ install: $(HEADERS)
 	$(INSTALL) -d $(MLE_ROOT)/include/mle
 	$(INSTALL) $^ $(MLE_ROOT)/include/mle
 
+uninstall: $(HEADERS)
+	cat install_manifest.txt | xargs echo sudo rm -f | sh
+
 include $(ISMRULES)
 
 collect:
