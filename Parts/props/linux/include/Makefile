@@ -70,7 +70,8 @@ install: $(HEADERS)
 	$(INSTALL) $^ $(MLE_ROOT)/include/mle
 
 uninstall: $(HEADERS)
-	cat install_manifest.txt | xargs echo sudo rm -f | sh
+#	cat install_manifest.txt | xargs echo sudo rm -f | sh
+	cat install_manifest.txt | xargs echo rm -f | sh
 
 include $(ISMRULES)
 
