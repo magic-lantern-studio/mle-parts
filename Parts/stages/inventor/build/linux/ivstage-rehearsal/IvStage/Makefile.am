@@ -6,13 +6,13 @@ libdir = $(exec_prefix)/lib/mle/rehearsal
 # The list of libraries we are building seperated by spaces.
 # The 'lib_' indicates that these build products will be installed
 # in the $(libdir) directory. For example /usr/lib
-lib_LTLIBRARIES = IvStage.la
+lib_LTLIBRARIES = MleIvStage.la
 
 #######################################
 # Build information for each library
 
 # Sources for MleIvStage
-IvStage_la_SOURCES = \
+MleIvStage_la_SOURCES = \
 	../../../../src/antirot.cxx \
 	../../../../src/CubeDragger.cxx \
 	../../../../src/CubeManip.cxx \
@@ -26,11 +26,11 @@ IvStage_la_SOURCES = \
 	
 
 # Linker options libTestProgram
-IvStage_la_LDFLAGS = -module
+MleIvStage_la_LDFLAGS = -module
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-IvStage_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
+MleIvStage_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
 	-I$(MLE_ROOT)/include \

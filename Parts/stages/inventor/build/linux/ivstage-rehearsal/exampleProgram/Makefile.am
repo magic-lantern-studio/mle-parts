@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS=-I ../m4
 exampleProgram_SOURCES= exampleProgram.cpp
 
 # Libraries for a.out
-exampleProgram_LDADD = $(top_srcdir)/IvStage/IvStage.la \
+exampleProgram_LDADD = $(top_srcdir)/IvStage/MleIvStage.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dRole.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dRole.la \
 	$(MLE_ROOT)/lib/libivroles.la \
@@ -30,14 +30,15 @@ exampleProgram_LDADD = $(top_srcdir)/IvStage/IvStage.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaRef.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaRef.la \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaRef.la \
-	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP -lmlmath \
+	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP \
+	-L$(MLE_ROOT)/lib -lmlmath -lmlutil \
 	-lCoin -lSoXt -lXmu
 
 # Linker options for a.out
-exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs
+exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/IvStage/.libs
 
 # Compiler options for a.out
-exampleProgram_CPPFLAGS = -DMLE_REHEARSAL -DMLE_NOT_DLL \
+exampleProgram_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
 	-I$(MLE_ROOT)/include

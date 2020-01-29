@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS=-I ../m4
 exampleProgram_SOURCES= exampleProgram.cpp rtestubs.cpp
 
 # Libraries for a.out
-exampleProgram_LDADD = $(top_srcdir)/IvStage/IvStage.la \
+exampleProgram_LDADD = $(top_srcdir)/IvStage/MleIvStage.la \
 	$(MLE_ROOT)/lib/mle/runtime/Mle2dRole.la \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dRole.la \
 	$(MLE_ROOT)/lib/libivroles.la \
@@ -34,10 +34,10 @@ exampleProgram_LDADD = $(top_srcdir)/IvStage/IvStage.la \
 	-lCoin -lSoXt -lXmu
 
 # Linker options for a.out
-exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/MleIvStage/.libs
+exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/IvStage/.libs
 
 # Compiler options for a.out
-exampleProgram_CPPFLAGS = -DMLE_NOT_DLL \
+exampleProgram_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
 	-I$(MLE_ROOT)/include
