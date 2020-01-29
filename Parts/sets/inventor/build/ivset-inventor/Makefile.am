@@ -1,0 +1,2 @@
+SUBDIRS=Iv2dSet Iv3dSet include
+ACLOCAL_AMFLAGS=-I m4
