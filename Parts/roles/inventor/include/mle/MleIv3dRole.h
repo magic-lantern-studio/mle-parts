@@ -15,7 +15,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017 Wizzer Works
+// Copyright (c) 2003-2020 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@
 #include "mle/Mle3dRole.h"
 
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 #include "mle/DwpDict.h"
 #endif /* MLE_REHEARSAL */
 
@@ -90,7 +90,7 @@ class MLE_3DROLE_API Mle3dRole : public MleRole
 
     SoSeparator *getRoot(void) const { return m_root; }
     
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 
     // Our inventor parent, set by Set, used for deleting our
     // scenegraph on destruction.

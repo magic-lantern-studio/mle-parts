@@ -13,7 +13,7 @@
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2018  Wizzer Works
+//  Copyright (C) 2003-2018  Wizzer Works
 //
 //  Wizzer Works makes available all content in this file ("Content").
 //  Unless otherwise indicated below, the Content is provided to you
@@ -55,7 +55,7 @@ MLE_ROLE_SOURCE(Mle3dRole,MleRole);
 
 
 // Declare picking registry.
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 MleDwpDict Mle3dRole::g_pickRegistry;
 #endif /* MLE_REHEARSAL */
 
@@ -72,7 +72,7 @@ Mle3dRole::~Mle3dRole()
     // Remove the node from the graph.
     if ( m_root )
     {
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 		g_pickRegistry.remove(m_root);
 
 		// Remove ourselves from our parent - this should bring
@@ -113,7 +113,7 @@ int Mle3dRole::setNodeType(int nodeType)
     
     Mle3dTransformCarrier::set(this,MlTransform::identity());
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Default is to set picking on.
     g_pickRegistry.set(m_root,this);
 #endif /* MLE_REHEARSAL */
