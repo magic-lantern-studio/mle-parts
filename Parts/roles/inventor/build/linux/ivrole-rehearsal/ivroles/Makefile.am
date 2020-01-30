@@ -6,22 +6,26 @@ libdir = $(exec_prefix)/lib/mle/rehearsal
 # The list of libraries we are building seperated by spaces.
 # The 'lib_' indicates that these build products will be installed
 # in the $(libdir) directory. For example /usr/lib
-lib_LTLIBRARIES = Mle2dRole.la
+lib_LTLIBRARIES = libivroles.la
 
 #######################################
 # Build information for each library
 
-# Sources for MleIv2dRole
-Mle2dRole_la_SOURCES = \
-	../../../../src/MleIv2dRole.cxx
+# Sources for ivroles
+libivroles_la_SOURCES = \
+	$(top_srcdir)/../../../src/MleIv3dCameraCarrier.cxx \
+	$(top_srcdir)/../../../src/MleIv3dColorMapCarrier.cxx \
+	$(top_srcdir)/../../../src/MleIv3dModelCarrier.cxx \
+	$(top_srcdir)/../../../src/MleIv3dTextureMapCarrier.cxx \
+	$(top_srcdir)/../../../src/MleIv3dTransformCarrier.cxx
 	
 
-# Linker options MleIv2dRole
-Mle2dRole_la_LDFLAGS = -module
+# Linker options libTestProgram
+libivroles_la_LDFLAGS = 
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-Mle2dRole_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
+libivroles_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../../common/include \
 	-I$(top_srcdir)/../../../../inventor/include \

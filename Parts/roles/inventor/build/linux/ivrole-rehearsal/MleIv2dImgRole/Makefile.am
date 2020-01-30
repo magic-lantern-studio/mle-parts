@@ -23,10 +23,10 @@ Mle2dImgRole_la_LDFLAGS = -module
 # to be searched for headers included in the source code.
 Mle2dImgRole_la_CPPFLAGS = -DMLE_REHEARSAL -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/../../../common/include \
-	-I$(top_srcdir)/../../../inventor/include \
-	-I$(top_srcdir)/../../../../sets/inventor/include \
-	-I$(top_srcdir)/../../../../mediaref/common/include \
-	-I$(top_srcdir)/../../../../stages/inventor/include \
-	-I$(top_srcdir)/../../../../actors/common/include \
+	-I$(top_srcdir)/../../../../common/include \
+	-I$(top_srcdir)/../../../../inventor/include \
+	-I$(top_srcdir)/../../../../../sets/inventor/include \
+	-I$(top_srcdir)/../../../../../mediaref/common/include \
+	-I$(top_srcdir)/../../../../../stages/inventor/include \
+	-I$(top_srcdir)/../../../../../actors/common/include \
 	-I$(MLE_ROOT)/include
