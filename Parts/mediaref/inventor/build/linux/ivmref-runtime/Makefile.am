@@ -1,0 +1,2 @@
+SUBDIRS=Mle2dImageMediaref Mle3dModelMediaref Mle3dColorMapMediaref Mle3dTextureMapMediaref include
+ACLOCAL_AMFLAGS=-I m4
