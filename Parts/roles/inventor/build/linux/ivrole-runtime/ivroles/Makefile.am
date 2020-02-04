@@ -27,8 +27,8 @@ libivroles_la_LDFLAGS =
 # to be searched for headers included in the source code.
 libivroles_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/../../../common/include \
-	-I$(top_srcdir)/../../../inventor/include \
-	-I$(top_srcdir)/../../../../sets/inventor \
-	-I$(top_srcdir)/../../../../mediaref/common/include \
+	-I$(top_srcdir)/../../../../common/include \
+	-I$(top_srcdir)/../../../../inventor/include \
+	-I$(top_srcdir)/../../../../../sets/inventor \
+	-I$(top_srcdir)/../../../../../mediaref/common/include \
 	-I$(MLE_ROOT)/include
