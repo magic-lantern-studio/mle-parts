@@ -22,7 +22,7 @@ Mle3dModelMediaRef_la_LDFLAGS = -module
 # to be searched for headers included in the source code.
 Mle3dModelMediaRef_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
-	-I$(top_srcdir)/../../../common/include \
-	-I$(top_srcdir)/../../../inventor \
+	-I$(top_srcdir)/../../../../common/include \
+	-I$(top_srcdir)/../../../../inventor \
 	-I$(MLE_ROOT)/include
 
