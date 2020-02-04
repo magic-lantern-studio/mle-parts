@@ -23,6 +23,5 @@ LT_INIT
 
 AC_CONFIG_FILES(Makefile
                 IvStage/Makefile
-                include/Makefile
-                exampleProgram/Makefile)
+                include/Makefile)
 AC_OUTPUT

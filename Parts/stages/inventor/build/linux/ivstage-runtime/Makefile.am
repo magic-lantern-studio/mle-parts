@@ -1,2 +1,2 @@
-SUBDIRS=IvStage include exampleProgram
+SUBDIRS=IvStage include
 ACLOCAL_AMFLAGS=-I m4

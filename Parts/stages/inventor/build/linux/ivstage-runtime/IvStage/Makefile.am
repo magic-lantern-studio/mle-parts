@@ -32,4 +32,4 @@ MleIvStage_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
 	-I$(MLE_ROOT)/include \
-	-I$(MLE_HOME)/Core/mlert/runtime/include
+	-I$(MLE_HOME)/Core/mlert/linux/include
