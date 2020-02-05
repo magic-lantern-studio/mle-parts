@@ -172,7 +172,7 @@ static void _processXtEvents()
 }
 #endif /* __linux__ */
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 void
 MleIvStage::initClass(void)
 {
@@ -192,7 +192,7 @@ LRESULT CALLBACK PopupWindowProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lPa
 {
     return DefWindowProc(hwnd, iMsg, wParam, lParam);
 }
-#endif
+#endif /* WIN32 */
 #endif /* MLE_REHEARSAL */
 
 
@@ -207,7 +207,7 @@ MleIvStage::MleIvStage(void)
 //   at creation.  This is the type of thing that goes into constructors,
 //   but we don't want to clutter up our runtime interface with rehearsal
 //   parameters.
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     m_offscreen = 0;
     m_setDrawOrder = NULL;
 }
@@ -217,16 +217,16 @@ MleIvStage::init(void)
 {
 #endif /* MLE_REHEARSAL initialization trickery */
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Initialize variables.
     m_activeRole = NULL;
     m_activeSet = NULL;
-#endif
+#endif /* MLE_REHEARSAL */
 
 #if defined(__linux__)
     // Initialize Inventor and Xt.
     Widget mainWindow = SoXt::init("Magic Lantern");
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     // Initializes SoWin library (and implicitly also the Coin
     // library). Returns a top-level / shell window to use.
@@ -238,16 +238,16 @@ MleIvStage::init(void)
     {
         SoWin::init(mainWindow);
     }
-#endif
+#endif /* WIN32 */
 
     // Put the window offscreen if asked.
 #if defined(__linux__)
     Widget parent = mainWindow;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     HWND parent = mainWindow;
-#endif
-#ifdef MLE_REHEARSAL
+#endif /* WIN32 */
+#if defined(MLE_REHEARSAL)
     if ( m_offscreen )
     {
 #if defined(__linux__)
@@ -305,7 +305,7 @@ MleIvStage::init(void)
 
         SetParent(mainWindow,parent);
         SetWindowPos(parent,HWND_NOTOPMOST,-1024,-1024,0,0,SWP_NOSIZE | SWP_NOZORDER);
-#endif
+#endif /* WIN32 */
     }
     m_shellParent = parent;
 
@@ -318,37 +318,37 @@ MleIvStage::init(void)
     m_examVwr = new SoXtExaminerViewer(parent);
     //m_flyVwr = new SoXtFlyViewer(parent);
     //m_planeVwr = new SoXtPlaneViewer(parent);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     m_examVwr = new SoWinExaminerViewer(parent);
     //m_flyVwr = new SoWinFlyViewer(parent);
     //m_planeVwr = new SoWinPlaneViewer(parent);
-#endif
+#endif /* WIN32 */
     m_viewer = NULL;
     
-#else    // #ifdef MLE_REHEARSAL
-    // Not at rehearsal - no true iv viewer.
+#else /* MLE_REHEARSAL */
+    // Not a rehearsal - no true iv viewer.
 #if defined(__linux__)
     m_viewer = new SoXtRenderArea(parent);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     m_viewer = new SoWinRenderArea(parent);
-#endif
+#endif /* WIN32 */
     m_viewer->setAutoRedraw(FALSE);
-#endif    // #ifdef MLE_REHEARSAL
+#endif /* ! MLE_REHEARSAL */
 
     // Configure viewer.
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     setViewer(STAGE_VIEWER_EXAMINER);
-#endif
+#endif /* MLE_REHEARSAL */
     m_viewer->setTitle("Magic Lantern - Inventor Stage");
     m_viewer->setSize(SbVec2s(640,480));
 #if defined(__linux__)
     m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
-#endif
+#endif /* WIN32 */
     m_viewer->show();
 
     // Create the root of the scene graph.
@@ -368,7 +368,7 @@ MleIvStage::init(void)
 // XXX try this sometime, may give better performance
 // m_sets->renderCaching.setValue(SoSeparator::OFF);
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Add a headlight node - this serves to light the source/target
     m_root->addChild(new SoDirectionalLight);
 
@@ -403,7 +403,7 @@ MleIvStage::init(void)
     // are init'd (SoNewManips seems to do this for CosmoCreate3d)
 #if defined(__linux__)
     //SoNewManips::init();
-#endif
+#endif /* __linux__ */
     // Note: Coin3D library modifications initializes the new manips.
 
     // Create a Target, Source, and Snapper
@@ -431,9 +431,9 @@ MleIvStage::init(void)
         fprintf(stderr, "Can't open grid.iv\n");
         exit(1);
     }
-#else
+#else /* READ_FROM_FILE */
     in.setBuffer((void *) g_gridBuffer, sizeof(g_gridBuffer));
-#endif
+#endif /* ! READ_FROM_FILE */
     SoSeparator *gridRoot = SoDB::readAll(&in);
     if (gridRoot == NULL) {
         fprintf(stderr, "Bad read of grid.iv\n");
@@ -539,25 +539,25 @@ MleIvStage::init(void)
     
     // Create a nudger.
     m_nudger = new Nudger;
-#endif
+#endif /* MLE_REHEARSAL */
 
     // Done setting up, so attach it to the viewer.
     m_viewer->setSceneGraph(m_root);
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 
     // Init snapping.
     initSnapping();
 
     // Realize all windows if not offscreen.
     if ( ! m_offscreen )
-#endif
+#endif /* MLE_REHEARSAL */
 #if defined(__linux__)
         SoXt::show(mainWindow);
-#endif
+#endif /* MLRE_REHEARSAL */
 #if defined(WIN32)
         SoWin::show(mainWindow);
-#endif
+#endif /* WIN32 */
 
     // Initialize platform data.
     g_theTitle->m_platformData = initPlatform();
@@ -565,7 +565,7 @@ MleIvStage::init(void)
 #if defined(__linux__)
     // Flush the Xt queue.
     _processXtEvents();
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
 
@@ -575,7 +575,7 @@ MleIvStage::init(void)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif
+#endif /* WIN32 */
 
     // Schedule the rendering function.
     g_theTitle->m_theScheduler->insertFunc(
@@ -584,7 +584,7 @@ MleIvStage::init(void)
 
 MleIvStage::~MleIvStage(void)
 {
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     MleIvStage::SetDrawOrder *tmpPtr;
 
     while (m_setDrawOrder) {
@@ -595,7 +595,7 @@ MleIvStage::~MleIvStage(void)
 
     // Note we're not bothering to kill off sub-objects - shouldn't
     // be a problem since stage exists for entire process.
-#endif
+#endif /* MLE_REHEARSAL */
 }
 
 // initPlatform
@@ -606,24 +606,24 @@ MleIvStage::initPlatform(void)
 #if defined(__linux__)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
-#endif
+#endif /* WIN32 */
 
     // Provide users with the render area widget.
     data->m_widget = m_viewer->getOverlayWidget();
 #if defined(WIN32)
     data->m_widget = m_viewer->getGLWidget();
-#endif
+#endif /* WIN32 */
     MLE_ASSERT(data->m_widget);
 
 #if defined(__linux__)
     // Provide users with the application context.
     data->m_appContext = SoXt::getAppContext();
     MLE_ASSERT(data->appContext);
-#endif
+#endif /* __linux__ */
 
     // Focus management.
     data->m_focusEventHandlerRefCount = 0;
@@ -637,7 +637,7 @@ MleIvStage::initPlatform(void)
 }
 
 #if defined(__linux__)
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 #if 0
 // X event handling: we call SoDB::doSelect() so that inventor
 // animation, etc, will run even when no X events are being generated.
@@ -671,14 +671,14 @@ printf("doSelect: events pending\n");
         printf("doSelect: event handled\n");
     else
         printf("doSelect: events not handled\n");
-#endif    // #if 0 (inner)
+#endif /* #if 0 (inner) */
 
     return 0;
     }
 
 printf("doSelect: no events pending - call doSelect()\n");
 
-#endif    // #if 0 (outer)
+#endif /* #if 0 (outer) */
 
     // mvo 5/8/96: temporary workaround - call doSelect for exam vwr
     // since it has no side effects, but call select directly for
@@ -689,8 +689,8 @@ printf("doSelect: no events pending - call doSelect()\n");
     return select(nfds, readfds, writefds, exceptfds, userTimeOut);
 }
 #endif /* 0 */
-#endif // MLE_REHEARSAL doSelect()
-#endif // __linux__
+#endif /* MLE_REHEARSAL doSelect() */
+#endif /* __linux__ */
 
 // This adds a set to the stage.
 MleSchedulerItem *
@@ -718,7 +718,7 @@ MleIvStage::addSet(void (*render)(MleSet *),MleSet *set)
         callback->setCallback(setCB,finfo);
     }
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Reset snapping each time a set is added.
     initSnapping();
 
@@ -731,7 +731,7 @@ MleIvStage::addSet(void (*render)(MleSet *),MleSet *set)
     // first one on the list is drawn last.
     //
     addSetDrawOrder(finfo);
-#endif
+#endif /* MLE_REHEARSAL */
 
     return NULL;
 }
@@ -752,7 +752,7 @@ MleIvStage::setCB(void *data,SoAction *action)
         // Have the set do rendering by invoking the callback.
         (*finfo->func)(finfo->set);
     }
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     else if ( action->isOfType(SoGetBoundingBoxAction::getClassTypeId()) &&
         finfo->set == MleIvStage::cast(g_theStage)->m_activeSet )
     {
@@ -791,7 +791,7 @@ MleIvStage::setCB(void *data,SoAction *action)
 int
 MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
 {
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Get stage size.
     int width,height;
     stage->getSize(&width,&height);
@@ -865,7 +865,7 @@ MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
 int
 MleIvStage::eventHandler(MleIvStage *stage,MSG *msg)
 {
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // Get stage size.
     int width,height;
     stage->getSize(&width,&height);
@@ -930,7 +930,7 @@ MleIvStage::eventHandler(MleIvStage *stage,MSG *msg)
     // Don't pass this event to the viewer.
     return TRUE;
 }
-#endif
+#endif /* WIN32 */
 
 void
 MleIvStage::update(MleIvStage * stage)
@@ -940,7 +940,7 @@ MleIvStage::update(MleIvStage * stage)
 
 #if defined(__linux__)
     _processXtEvents();
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
     HWND window = SoWin::getTopLevelWidget();
@@ -951,7 +951,7 @@ MleIvStage::update(MleIvStage * stage)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif
+#endif /* WIN32 */
 }
 
 void
@@ -986,7 +986,7 @@ MleIvStage::setProperty(MleObject *object, const char *name, unsigned char *valu
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 // everything below this point is for rehearsal only
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 
 void
 MleIvStage::edit(void)
@@ -1000,7 +1000,7 @@ MleIvStage::edit(void)
     // Check for events and dispatch them if found.
     while ( XtAppPending(appContext) )
         XtAppProcessEvent(appContext,XtIMAll);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
     HWND window = SoWin::getTopLevelWidget();
@@ -1011,7 +1011,7 @@ MleIvStage::edit(void)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif
+#endif /* WIN32 */
 }
 
 #if defined(__linux__)
@@ -1020,7 +1020,7 @@ MleIvStage::getFD()
 {
     return (ConnectionNumber(XtDisplay(m_viewer->getWidget())));
 }
-#endif
+#endif /* __linux__ */
 
 int
 MleIvStage::setSize(int width,int height)
@@ -1107,14 +1107,14 @@ MleIvStage::getDisplay(void)
 {
     return XtDisplay(m_viewer->getWidget());
 }
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
 HWND
 MleIvStage::getWindow(void)
 {
     return m_shellParent;
 }
-#endif
+#endif /* WIN32 */
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -1203,10 +1203,10 @@ int MleIvStage::setViewer(char* viewerName)
 #if defined(__linux__)
     //MleFullViewer *oldViewer = m_viewer;
     SoXtFullViewer *oldViewer = m_viewer;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     SoWinFullViewer *oldViewer = m_viewer;
-#endif
+#endif /* WIN32 **/
 
     if (!strcmp(viewerName, STAGE_VIEWER_FLY))
         m_viewer = m_flyVwr;
@@ -1215,7 +1215,7 @@ int MleIvStage::setViewer(char* viewerName)
 #if defined(__linux__)
     //else if (!strcmp(viewerName, STAGE_VIEWER_WALK))
     //    m_viewer = m_walkVwr;
-#endif
+#endif /* __linux__ */
     else    // STAGE_VIEWER_EXAMINER
         m_viewer = m_examVwr;
 
@@ -1245,10 +1245,10 @@ int MleIvStage::setViewer(char* viewerName)
 
 #if defined(__linux__)
         m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
         m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
-#endif
+#endif /* WIN32 */
 
         m_viewer->show();
         oldViewer->hide();
@@ -1259,14 +1259,14 @@ int MleIvStage::setViewer(char* viewerName)
         m_viewer->setDrawStyle( 
                 SoXtViewer::INTERACTIVE,
                 oldViewer->getDrawStyle(SoXtViewer::INTERACTIVE) );
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
         m_viewer->setDrawStyle(SoWinViewer::STILL, 
                  oldViewer->getDrawStyle(SoWinViewer::STILL));
         m_viewer->setDrawStyle( 
                 SoWinViewer::INTERACTIVE,
                 oldViewer->getDrawStyle(SoWinViewer::INTERACTIVE) );
-#endif
+#endif /* WIN32 */
 
         m_viewer->setSceneGraph(m_root);
 
@@ -1278,7 +1278,7 @@ int MleIvStage::setViewer(char* viewerName)
         // Check for events and dispatch them if found.
         while ( XtAppPending(appContext) )
             XtAppProcessEvent(appContext,XtIMAll);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
         MSG msg;
         HWND window = SoWin::getTopLevelWidget();
@@ -1289,7 +1289,7 @@ int MleIvStage::setViewer(char* viewerName)
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-#endif
+#endif /* WIN32 */
 
         // Sync up the camera by setting the active set.
         setActiveSet(m_activeSet);
@@ -1309,10 +1309,10 @@ char* MleIvStage::getViewer()
         return STAGE_VIEWER_FLY;
     if (m_viewer == m_planeVwr)
         return STAGE_VIEWER_PLANE;
-//#if defined(__sgi)
+//#if defined(__linux__)
 //    if (m_viewer == m_walkVwr)
 //        return STAGE_VIEWER_WALK;
-//#endif
+//#endif /* __linux__ */
     if (m_viewer == m_examVwr)
         return STAGE_VIEWER_EXAMINER;
     
@@ -2471,7 +2471,7 @@ void MleIvStage::setRenderMode(char *renderMode)
     }
 
     m_viewer->setDrawStyle(SoXtViewer::STILL, style);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     SoWinViewer::DrawStyle style;
     if (!strcmp(renderMode, RENDER_AS_IS))
@@ -2510,7 +2510,7 @@ void MleIvStage::setRenderMode(char *renderMode)
     }
 
     m_viewer->setDrawStyle(SoWinViewer::STILL, style);
-#endif
+#endif /* WIN32 */
 }
 
 const char * MleIvStage::getRenderMode() const
@@ -2529,7 +2529,7 @@ const char * MleIvStage::getRenderMode() const
 
     printf("ERROR iv stage getRenderMode: unknown iv mode %d\n", 
        m_viewer->getDrawStyle(SoXtViewer::STILL));
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     switch (m_viewer->getDrawStyle(SoWinViewer::STILL))
     {
@@ -2544,7 +2544,7 @@ const char * MleIvStage::getRenderMode() const
 
     printf("ERROR iv stage getRenderMode: unknown iv mode %d\n", 
        m_viewer->getDrawStyle(SoWinViewer::STILL));
-#endif
+#endif /* WIN32 */
 
     return NULL;
 }
@@ -3015,4 +3015,4 @@ void MleIvStage::recalcAutoClipPlanes()
 //////////////////////////////////////////////////////////////////////
 
 
-#endif    /* #ifdef MLE_REHEARSAL */
+#endif /* MLE_REHEARSAL */

@@ -52,11 +52,12 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <Inventor/Win/viewers/SoWinFullViewer.h>
-#endif
+#endif /* WIN32 */
 #if defined(__linux__)
 #include <Inventor/Xt/viewers/SoXtFullViewer.h>
-#endif
+#endif /* __linux__ */
 
+// Include Magic Lantern header files.
 #include "mle/mlTypes.h"
 
 #include "mle/MleStage.h"
@@ -66,17 +67,17 @@
 
 #if defined(WIN32)
 #include "mle/MleIvStage.h"
-#else
+#else /* WIN32 */
 #define REHEARSAL_API
-#endif
+#endif /* ! WIN32 */
 
-#ifndef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 #if defined(__linux__)
 class SoXtRenderArea;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
 class SoWinRenderArea;
-#endif
+#endif /* WIN32 */
 #endif /* MLE_REHEARSAL */
 
 class SoSelection;
@@ -127,7 +128,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     MleIvStage(void);
     virtual ~MleIvStage(void);
     
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 
     virtual void init(void);
 
@@ -142,8 +143,8 @@ class REHEARSAL_API MleIvStage : public MleStage
     fd_set *writefds,
     fd_set *exceptfds,
     struct timeval *userTimeOut);
-#endif
-#endif
+#endif /* 0 */
+#endif /* __linux__ */
     
     // Editing.
     virtual void setEditing(int flag);
@@ -152,7 +153,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Configuration.
 #if defined(__linux__)
     virtual int getFD();
-#endif
+#endif /* __linux__ */
 
     virtual int setSize(int width,int height);
 
@@ -161,10 +162,10 @@ class REHEARSAL_API MleIvStage : public MleStage
 #if defined(__linux__)
     virtual Window getWindow(void);
     virtual Display* getDisplay(void);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     virtual HWND getWindow();
-#endif
+#endif /* WIN32 */
 
     virtual void setOffscreen(int flag);
     
@@ -195,12 +196,10 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     // Snapping enabling.
     virtual int hasSnappingTarget();
-
     virtual void setSnapping(int flag);
-
 #if 0
     virtual int getSnapping();
-#endif
+#endif /* 0 */
     
     // Sets/returns whether scale snapping is enabled.
     // XXX note not in funcs list / stage base class
@@ -265,7 +264,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     // effect actor transform.
     virtual void recalcAutoClipPlanes();
 
-#endif    /* MLE_REHEARSAL */
+#endif /* MLE_REHEARSAL */
     
     // Stage-specific API.
     //   This is new API (not inherited) for this particular stage type.
@@ -290,26 +289,26 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     // Our viewer is a full inventor viewer for rehearsal, but for
     // runtime is just a render area.
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 #if defined(__linux__)
     // MleFullViewer  *m_walkVwr;
     // MleFullViewer *m_viewer;
     // MleFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
     SoXtFullViewer *m_viewer;
     SoXtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     SoWinFullViewer *m_viewer;
     SoWinFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
-#endif
-#else
+#endif /* WIN32 */
+#else /* MLE_REHEARSAL */
 #if defined(__linux__)
     SoXtRenderArea *m_viewer;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     SoWinRenderArea *m_viewer;
-#endif
-#endif
+#endif /* WIN32 */
+#endif /* ! MLE_REHEARSAL */
 
     // Root of the scene graph.
     SoSelection *m_root;
@@ -325,14 +324,14 @@ class REHEARSAL_API MleIvStage : public MleStage
         MleSet *set;
     } SetInfo;
 
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
 #if defined(__linux__)
     // Keeps track of the shell's widget.
     Widget m_shellParent;
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     HWND m_shellParent;
-#endif
+#endif /* WIN32 */
     
     SoSeparator *m_toolRoot;
     MleSnapper *m_snapper;
@@ -422,12 +421,12 @@ class REHEARSAL_API MleIvStage : public MleStage
     // eventHandler() is the callback for Inventor event handling.
 #if defined(__linux__)
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
-#endif
+#endif /* __linux__ */
 #if defined(WIN32)
     static int eventHandler(MleIvStage *stage,MSG *event);
-#endif
+#endif /* WIN32 */
     
-#ifdef MLE_REHEARSAL
+#if defined(MLE_REHEARSAL)
     // eventCB() is the callback for the Inventor event callback
     //   node use to get events that draggers don't get.
     static void eventCB(MleIvStage *stage,SoEventCallback *callback);
