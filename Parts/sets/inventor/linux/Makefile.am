@@ -1,2 +1,0 @@
-SUBDIRS=Mle2dSet Mle3dSet include
-ACLOCAL_AMFLAGS=-I m4
