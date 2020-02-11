@@ -1,2 +1,0 @@
-SUBDIRS=MleEscapeActor Mle3dCameraActor Mle2dImageActor include exampleProgram
-ACLOCAL_AMFLAGS=-I m4
