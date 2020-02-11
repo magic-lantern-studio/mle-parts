@@ -193,7 +193,7 @@ int Mle3dSet :: setCameraTransform(MlTransform *t)
     MlRotation orient(rot);
     setCameraOrientation(&orient);
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, getCamera());
@@ -233,7 +233,7 @@ Mle3dSet::setCameraPosition(const MlVector3 *position)
 		mlScalarToFloat((*position)[1]),
 		mlScalarToFloat((*position)[2]));
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -269,7 +269,7 @@ Mle3dSet::setCameraOrientation(const MlRotation *orientation)
 	mlScalarToFloat(orient[2]),
 	mlScalarToFloat(orient[3]));
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -300,7 +300,7 @@ Mle3dSet::setCameraNearClipping(MlScalar nearPlane)
 
 	camera->nearDistance.setValue(mlScalarToFloat(nearPlane));
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -326,7 +326,7 @@ Mle3dSet::setCameraFarClipping(MlScalar farPlane)
 
 	camera->farDistance.setValue(mlScalarToFloat(farPlane));
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
@@ -363,7 +363,7 @@ Mle3dSet::setCameraAspect(MlScalar aspect)
 
     camera->aspectRatio.setValue(mlScalarToFloat(aspect));
 
-#ifdef MLE_DIGITAL_WORKPRINT
+#ifdef MLE_REHEARSAL
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);

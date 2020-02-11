@@ -22,11 +22,11 @@ exampleProgram_SOURCES= ivstage-rehearsal-example.cpp
 
 # Libraries for exampleProgram
 exampleProgram_LDADD = $(top_srcdir)/../ivstage-rehearsal/IvStage/.libs/MleIvStage.so \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dSet.so \
+	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dRole.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dRole.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/libivroles.so \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle2dSet.so \
-	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaRef.so \

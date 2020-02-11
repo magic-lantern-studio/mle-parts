@@ -22,11 +22,11 @@ exampleProgram_SOURCES= ivstage-inventor-example.cpp
 
 # Libraries for exampleProgram
 exampleProgram_LDADD = $(top_srcdir)/../ivstage-inventor/IvStage/.libs/MleIvStage.so \
+	$(MLE_ROOT)/lib/mle/inventor/Mle2dSet.so \
+	$(MLE_ROOT)/lib/mle/inventor/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle2dRole.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dRole.so \
 	$(MLE_ROOT)/lib/mle/inventor/libivroles.so \
-	$(MLE_ROOT)/lib/mle/inventor/Mle2dSet.so \
-	$(MLE_ROOT)/lib/mle/inventor/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dTextureMapMediaRef.so \

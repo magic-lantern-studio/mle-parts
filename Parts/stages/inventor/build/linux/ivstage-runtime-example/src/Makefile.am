@@ -22,11 +22,11 @@ exampleProgram_SOURCES= ivstage-runtime-example.cpp rtestubs.cpp
 
 # Libraries for exampleProgram
 exampleProgram_LDADD = $(top_srcdir)/../ivstage-runtime/IvStage/.libs/MleIvStage.so \
+	$(MLE_ROOT)/lib/mle/runtime/Mle2dSet.so \
+	$(MLE_ROOT)/lib/mle/runtime/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle2dRole.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dRole.so \
 	$(MLE_ROOT)/lib/mle/runtime/libivroles.so \
-	$(MLE_ROOT)/lib/mle/runtime/Mle2dSet.so \
-	$(MLE_ROOT)/lib/mle/runtime/Mle3dSet.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dTextureMapMediaRef.so \
