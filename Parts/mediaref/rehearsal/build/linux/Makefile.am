@@ -1,2 +1,0 @@
-SUBDIRS=Mle3dModelMediaref Mle3dTextureMapMediaref Mle3dColorMapMediaref Mle2dImageMediaref include exampleProgram
-ACLOCAL_AMFLAGS=-I m4
