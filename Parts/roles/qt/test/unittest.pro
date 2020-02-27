@@ -7,7 +7,7 @@ CONFIG(debug, debug|release) {
 # debug build
 unix:!macx: LIBS += \
     -L$$PWD/../build/build-mleqtrole-Desktop_Qt_5_12_6_GCC_64bit-Debug/src -lqtrole \
-    -L/opt/MagicLantern/lib -lqtmref \
+    -L/opt/MagicLantern/lib/mle/qt -lqtmref \
     -L/opt/MagicLantern/lib/mle/runtime -lmlert \
     -L/opt/MagicLantern/lib -lplayprint -lmlutil -lmlmath -lpng
 
@@ -17,7 +17,7 @@ DEPENDPATH += $$PWD/../build/build-mleqtrole-Desktop_Qt_5_12_6_GCC_64bit-Debug/s
 # release build
 unix:!macx: LIBS += \
     -L$$PWD/../build/build-mleqtrole-Desktop_Qt_5_12_6_GCC_64bit-Release/src -lqtrole \
-    -L/opt/MagicLantern/lib -lqtmref \
+    -L/opt/MagicLantern/lib/mle/qt -lqtmref \
     -L/opt/MagicLantern/lib/mle/runtime -lmlert \
     -L/opt/MagicLantern/lib -lplayprint -lmlutil -lmlmath -lpng
 

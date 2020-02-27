@@ -40,7 +40,7 @@ HEADERS += $$PWD/../include/qtmref.h\
            $$PWD/../include/qtpngcnvtr.h
 
 unix {
-    target.path = /opt/MagicLantern/lib
+    target.path = /opt/MagicLantern/lib/mle/qt
     headers.path = /opt/MagicLantern/include/mle/qt
     headers.files = $$HEADERS
     INSTALLS += target headers

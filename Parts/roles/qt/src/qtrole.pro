@@ -36,7 +36,7 @@ HEADERS += $$PWD/../include/qtrole.h\
            $$PWD/../../common/include/mle/2drole.h
 
 unix {
-    target.path = /opt/MagicLantern/lib
+    target.path = /opt/MagicLantern/lib/mle/qt
     headers.path = /opt/MagicLantern/include/mle/qt
     headers.files = $$HEADERS
     INSTALLS += target headers
