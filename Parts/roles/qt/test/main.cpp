@@ -115,10 +115,10 @@ int main(int argc, char *argv[])
 
     MlScalar min[2], max[2];
     role->getBounds(min, max);
-    qDebug() << "MleImageMediaRef Unit Test: left =" << min[0];
-    qDebug() << "MleImageMediaRef Unit Test: bottom =" << min[1];
-    qDebug() << "MleImageMediaRef Unit Test: top =" << max[0];
-    qDebug() << "MleImageMediaRef Unit Test: right =" << max[1];
+    qDebug() << "Mle2dImgRole Unit Test: left =" << min[0];
+    qDebug() << "Mle2dImgRole Unit Test: bottom =" << min[1];
+    qDebug() << "Mle2dImgRole Unit Test: top =" << max[0];
+    qDebug() << "Mle2dImgRole Unit Test: right =" << max[1];
 
     mref = new MleImageMediaRef();
     mref->init();
