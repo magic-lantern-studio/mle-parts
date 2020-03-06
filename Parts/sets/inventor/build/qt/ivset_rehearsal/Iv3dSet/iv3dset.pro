@@ -1,5 +1,6 @@
 QT -= gui
 
+TARGET = Mle3dSet
 TEMPLATE = lib
 DEFINES += IVSET_REHEARSAL_LIBRARY
 
