@@ -33,42 +33,42 @@ SOURCES += \
 
 
 HEADERS += \
-    $$PWD/../../../../common/include/mle/2dimgd.h \
-    $$PWD/../../../../common/include/mle/2drole.h \
-    $$PWD/../../../../common/include/mle/3danimd.h \
-    $$PWD/../../../../common/include/mle/3danimrc.h \
-    $$PWD/../../../../common/include/mle/3dbboxc.h \
-    $$PWD/../../../../common/include/mle/3dcamarc.h \
-    $$PWD/../../../../common/include/mle/3dcamc.h \
-    $$PWD/../../../../common/include/mle/3dcamclc.h \
-    $$PWD/../../../../common/include/mle/3dcamfvc.h \
-    $$PWD/../../../../common/include/mle/3dcamtc.h \
-    $$PWD/../../../../common/include/mle/3dcharrc.h \
-    $$PWD/../../../../common/include/mle/3dcomapc.h \
-    $$PWD/../../../../common/include/mle/3dgeomrc.h \
-    $$PWD/../../../../common/include/mle/3dgeorwc.h \
-    $$PWD/../../../../common/include/mle/3dltac.h \
-    $$PWD/../../../../common/include/mle/3dltdc.h \
-    $$PWD/../../../../common/include/mle/3dltic.h \
-    $$PWD/../../../../common/include/mle/3dltsc.h \
-    $$PWD/../../../../common/include/mle/3dlttc.h \
-    $$PWD/../../../../common/include/mle/3dmatlrc.h \
-    $$PWD/../../../../common/include/mle/3dmodelc.h \
-    $$PWD/../../../../common/include/mle/3dnodetc.h \
-    $$PWD/../../../../common/include/mle/3dpickc.h \
-    $$PWD/../../../../common/include/mle/3drendc.h \
-    $$PWD/../../../../common/include/mle/3drgeomc.h \
-    $$PWD/../../../../common/include/mle/3drstylc.h \
-    $$PWD/../../../../common/include/mle/3dscenec.h \
-    $$PWD/../../../../common/include/mle/3dtexmpc.h \
-    $$PWD/../../../../common/include/mle/3dtextrc.h \
-    $$PWD/../../../../common/include/mle/3dtranrc.h \
-    $$PWD/../../../../common/include/mle/3dtransc.h \
-    $$PWD/../../../../common/include/mle/Mle2dImageRole.h \
-    $$PWD/../../../../common/include/mle/Mle2dRole.h \
-    $$PWD/../../../../common/include/mle/Mle3dRole.h \
-    $$PWD/../../../../common/include/mle/paletted.h \
-    $$PWD/../../../include/mle/MleIv3dRole.h
+    $$PWD/../../../../../common/include/mle/2dimgd.h \
+    $$PWD/../../../../../common/include/mle/2drole.h \
+    $$PWD/../../../../../common/include/mle/3danimd.h \
+    $$PWD/../../../../../common/include/mle/3danimrc.h \
+    $$PWD/../../../../../common/include/mle/3dbboxc.h \
+    $$PWD/../../../../../common/include/mle/3dcamarc.h \
+    $$PWD/../../../../../common/include/mle/3dcamc.h \
+    $$PWD/../../../../../common/include/mle/3dcamclc.h \
+    $$PWD/../../../../../common/include/mle/3dcamfvc.h \
+    $$PWD/../../../../../common/include/mle/3dcamtc.h \
+    $$PWD/../../../../../common/include/mle/3dcharrc.h \
+    $$PWD/../../../../../common/include/mle/3dcomapc.h \
+    $$PWD/../../../../../common/include/mle/3dgeomrc.h \
+    $$PWD/../../../../../common/include/mle/3dgeorwc.h \
+    $$PWD/../../../../../common/include/mle/3dltac.h \
+    $$PWD/../../../../../common/include/mle/3dltdc.h \
+    $$PWD/../../../../../common/include/mle/3dltic.h \
+    $$PWD/../../../../../common/include/mle/3dltsc.h \
+    $$PWD/../../../../../common/include/mle/3dlttc.h \
+    $$PWD/../../../../../common/include/mle/3dmatlrc.h \
+    $$PWD/../../../../../common/include/mle/3dmodelc.h \
+    $$PWD/../../../../../common/include/mle/3dnodetc.h \
+    $$PWD/../../../../../common/include/mle/3dpickc.h \
+    $$PWD/../../../../../common/include/mle/3drendc.h \
+    $$PWD/../../../../../common/include/mle/3drgeomc.h \
+    $$PWD/../../../../../common/include/mle/3drstylc.h \
+    $$PWD/../../../../../common/include/mle/3dscenec.h \
+    $$PWD/../../../../../common/include/mle/3dtexmpc.h \
+    $$PWD/../../../../../common/include/mle/3dtextrc.h \
+    $$PWD/../../../../../common/include/mle/3dtranrc.h \
+    $$PWD/../../../../../common/include/mle/3dtransc.h \
+    $$PWD/../../../../../common/include/mle/Mle2dImageRole.h \
+    $$PWD/../../../../../common/include/mle/Mle2dRole.h \
+    $$PWD/../../../../../common/include/mle/Mle3dRole.h \
+    $$PWD/../../../../../common/include/mle/paletted.h \
+    $$PWD/../../../../include/mle/MleIv3dRole.h
 
 # Default rules for deployment.
 unix {
