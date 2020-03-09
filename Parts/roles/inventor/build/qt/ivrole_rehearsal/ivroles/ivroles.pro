@@ -70,16 +70,11 @@ HEADERS += \
     $$PWD/../../../../common/include/mle/paletted.h \
     $$PWD/../../../include/mle/MleIv3dRole.h
 
-
-WORKPRINTS += $$PWD/../../../../workprints/MleIv2dSet.wpf
-
 # Default rules for deployment.
 unix {
     target.path = /opt/MagicLantern/lib/mle/qt/rehearsal
     headers.path = /opt/MagicLantern/include/mle
     headers.files = $$HEADERS
-    workprints.path = /opt/MagicLantern/include/workprints
-    workprints.files = $$WORKPRINTS
-    INSTALLS += target headers workprints
+    INSTALLS += target headers
 }
 !isEmpty(target.path): INSTALLS += target
