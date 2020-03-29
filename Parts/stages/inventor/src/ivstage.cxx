@@ -56,13 +56,22 @@
 #include <ctype.h>
 
 #if defined(__linux__)
+#if defined(Q_OS_LINUX)
+#else
 #include <X11/IntrinsicP.h>
 #endif
+#endif /* __linux__ */
 
 #include <Inventor/SoPickedPoint.h>
 //#include <Inventor/SoNewManips.h>
 
 #if defined(__linux__)
+#if defined(Q_OS_LINUX)
+#include <Inventor/Qt/SoQt.h>
+#include <Inventor/Qt/viewers/SoQtExaminerViewer.h>
+#include <Inventor/Qt/viewers/SoQtPlaneViewer.h>
+#include <Inventor/Qt/viewers/SoQtFlyViewer.h>
+#else
 //#include "mle/MleWalkViewer.h"
 //#include "mle/MleExaminerViewer.h"
 //#include "mle/MlePlaneViewer.h"
@@ -72,6 +81,7 @@
 #include <Inventor/Xt/viewers/SoXtPlaneViewer.h>
 #include <Inventor/Xt/viewers/SoXtFlyViewer.h>
 #endif
+#endif /* __linux__ */
 #if defined(WIN32)
 #include <Inventor/Win/SoWin.h>
 #include <Inventor/Win/viewers/SoWinExaminerViewer.h>
@@ -149,6 +159,8 @@
 MLE_STAGE_SOURCE(MleIvStage,MleStage);
 
 #if defined(__linux__)
+#if defined(Q_OS_LINUX)
+#else
 static void _processXtEvents()
 {
     // Get the application context for the stage.
@@ -170,6 +182,7 @@ static void _processXtEvents()
     while ( XtAppPending(appContext) )
         XtAppProcessEvent(appContext,XtIMAll);
 }
+#endif
 #endif /* __linux__ */
 
 #if defined(MLE_REHEARSAL)
