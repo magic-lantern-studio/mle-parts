@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="/home/msm/Projects/wz-mle-code/lib/java/runtime/mrefs.jar"/>
+    <jar path="/home/msm/Projects/MagicLanternStudio/lib/java/runtime/mrefs.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/com.wizzer.mle.parts.mrefs/mrefs-linux.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
