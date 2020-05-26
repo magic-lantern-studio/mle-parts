@@ -136,7 +136,7 @@ public class MleImageProperty implements IImageProperty
      * @return <b>true</b> is returned if the properties are equal.
      * Otherwise, <b>false</b> will be returned.
      * 
-     * @see com.wizzer.mle.parts.j2d.props.IMlePropPart#equals(com.wizzer.mle.parts.props.IMlePropPart)
+     * @see com.wizzer.mle.parts.j2d.props.IMlePropPart#equals(com.wizzer.mle.parts.j2d.props.IMlePropPart)
      */
     public boolean equals(IMlePropPart property)
     {
