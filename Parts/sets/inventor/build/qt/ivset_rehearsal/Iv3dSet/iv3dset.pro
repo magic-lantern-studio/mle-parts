@@ -25,11 +25,11 @@ DEFINES += \
     MLE_REHEARSAL
 
 SOURCES += \
-    $PWD/../../../../../iv3dset.cxx
+    $$PWD/../../../../iv3dset.cxx
 
 HEADERS += \
-    $PWD/../../../../../mle/iv3dset.h \
-    $PWD/../../../../../mle/Mle3dSet.h
+    $$PWD/../../../../mle/iv3dset.h \
+    $$PWD/../../../../mle/Mle3dSet.h
 
 
 WORKPRINTS += $$PWD/../../../../workprints/MleIv3dSet.wpf

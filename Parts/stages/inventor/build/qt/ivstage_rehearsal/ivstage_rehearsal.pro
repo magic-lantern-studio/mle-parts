@@ -1,6 +1,6 @@
 QT -= gui
 
-TARGET = MleIvstage
+TARGET = MleIvStage
 TEMPLATE = lib
 DEFINES += IVSTAGE_REHEARSAL_LIBRARY
 
@@ -12,6 +12,8 @@ CONFIG += c++11
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
+QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-parameter -Wno-unused-but-set-parameter
+
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
@@ -22,23 +24,24 @@ INCLUDEPATH += $$PWD/../../../include /opt/MagicLantern/include /usr/local/inclu
 DEFINES += \
     MLE_NOT_DLL \
     MLE_DIGITAL_WORKPRINT \
-    MLE_REHEARSAL
+    MLE_REHEARSAL \
+    MLE_SOQT
 
 SOURCES += \
-    $PWD/../../../../src/antirot.cxx \
-    $PWD/../../../../src/CubeDragger.cxx \
-    $PWD/../../../../src/CubeManip.cxx \
-    $PWD/../../../../src/ivstage.cxx \
-    $PWD/../../../../src/MultiSearchAction.cxx \
-    $PWD/../../../../src/Nudger.cxx \
-    $PWD/../../../../src/Snapper.cxx \
-    $PWD/../../../../src/Source.cxx \
-    $PWD/../../../../src/SpotMarker.cxx \
-    $PWD/../../../../src/Target.cxx
+    $$PWD/../../../src/antirot.cxx \
+    $$PWD/../../../src/CubeDragger.cxx \
+    $$PWD/../../../src/CubeManip.cxx \
+    $$PWD/../../../src/ivstage.cxx \
+    $$PWD/../../../src/MultiSearchAction.cxx \
+    $$PWD/../../../src/Nudger.cxx \
+    $$PWD/../../../src/Snapper.cxx \
+    $$PWD/../../../src/Source.cxx \
+    $$PWD/../../../src/SpotMarker.cxx \
+    $$PWD/../../../src/Target.cxx
 
 HEADERS += \
-    $PWD/../../../../include/mle/MleIvStage.h \
-    $PWD/../../../../include/mle/ivstage.h
+    $$PWD/../../../include/mle/MleIvStage.h \
+    $$PWD/../../../include/mle/ivstage.h
 
 # Default rules for deployment.
 unix {

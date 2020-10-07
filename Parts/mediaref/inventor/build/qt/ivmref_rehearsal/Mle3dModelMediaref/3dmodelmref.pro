@@ -1,6 +1,6 @@
 QT -= gui
 
-TARGET = MleIv3dModelMediaRef
+TARGET = Mle3dModelMediaRef
 TEMPLATE = lib
 DEFINES += IVMREF_REHEARSAL_LIBRARY
 

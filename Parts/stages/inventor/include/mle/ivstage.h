@@ -5,7 +5,6 @@
  * @ingroup MlParts
  *
  * @author Mark S. Millard
- * @date Jan 24, 2006
  *
  * This file defines the Inventor Stage.
  */
@@ -54,7 +53,12 @@
 #include <Inventor/Win/viewers/SoWinFullViewer.h>
 #endif /* WIN32 */
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+#include <QtGlobal>
+#include <Inventor/Qt/viewers/SoQtFullViewer.h>
+#else
 #include <Inventor/Xt/viewers/SoXtFullViewer.h>
+#endif /* Qt */
 #endif /* __linux__ */
 
 // Include Magic Lantern header files.
@@ -73,7 +77,11 @@
 
 #if defined(MLE_REHEARSAL)
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+class SoQtRenderArea;
+#else
 class SoXtRenderArea;
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
 class SoWinRenderArea;
@@ -152,7 +160,9 @@ class REHEARSAL_API MleIvStage : public MleStage
     
     // Configuration.
 #if defined(__linux__)
+#if ! defined(MLE_SOQT)
     virtual int getFD();
+#endif
 #endif /* __linux__ */
 
     virtual int setSize(int width,int height);
@@ -160,8 +170,12 @@ class REHEARSAL_API MleIvStage : public MleStage
     virtual void getSize(int *width,int *height);
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    virtual QWidget *getWindow(void);
+#else
     virtual Window getWindow(void);
     virtual Display* getDisplay(void);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     virtual HWND getWindow();
@@ -183,8 +197,8 @@ class REHEARSAL_API MleIvStage : public MleStage
     virtual const char** getFunctionAttributes(char* functionName);
 
     // Control over IV viewers.
-    virtual int setViewer(char* viewerName);
-    virtual char* getViewer();
+    virtual int setViewer(const char* viewerName);
+    virtual const char* getViewer();
 
     // Control over edit modes.
     virtual int setEditMode(char* editMode);
@@ -291,11 +305,16 @@ class REHEARSAL_API MleIvStage : public MleStage
     // runtime is just a render area.
 #if defined(MLE_REHEARSAL)
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    SoQtFullViewer *m_viewer;
+    SoQtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
+#else
     // MleFullViewer  *m_walkVwr;
     // MleFullViewer *m_viewer;
     // MleFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
     SoXtFullViewer *m_viewer;
     SoXtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     SoWinFullViewer *m_viewer;
@@ -303,7 +322,11 @@ class REHEARSAL_API MleIvStage : public MleStage
 #endif /* WIN32 */
 #else /* MLE_REHEARSAL */
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    SoQtRenderArea *m_viewer;
+#else
     SoXtRenderArea *m_viewer;
+#endif
 #endif /* __linux__ */
 #if defined(WIN32)
     SoWinRenderArea *m_viewer;
@@ -326,8 +349,12 @@ class REHEARSAL_API MleIvStage : public MleStage
 
 #if defined(MLE_REHEARSAL)
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    QWidget *m_shellParent;
+#else
     // Keeps track of the shell's widget.
     Widget m_shellParent;
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     HWND m_shellParent;
@@ -420,7 +447,11 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     // eventHandler() is the callback for Inventor event handling.
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    static int eventHandler(MleIvStage *stage,QEvent *event);
+#else
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     static int eventHandler(MleIvStage *stage,MSG *event);

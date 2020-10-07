@@ -1,6 +1,6 @@
 QT -= gui
 
-TARGET = MleIv3dColorMapMediaRef
+TARGET = Mle3dColorMapMediaRef
 TEMPLATE = lib
 DEFINES += IVMREF_REHEARSAL_LIBRARY
 

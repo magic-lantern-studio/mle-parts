@@ -5,7 +5,6 @@
  * @ingroup MlParts
  *
  * @author Mark S. Millard
- * @date Jan 24, 2006
  *
  * This file implements the Inventor Stage.
  */
@@ -43,7 +42,7 @@
 //
 // COPYRIGHT_END
 
-//  XXX a lot of code is duplicated from brender - should consider
+//  ToDo: a lot of code is duplicated from brender - should consider
 //  moving into a common base class sometime after MLE 1.0.
 
 #if defined(WIN32)
@@ -56,31 +55,29 @@
 #include <ctype.h>
 
 #if defined(__linux__)
-#if defined(Q_OS_LINUX)
+#if defined(MLE_SOQT)
+#include <QCoreApplication>
 #else
 #include <X11/IntrinsicP.h>
 #endif
 #endif /* __linux__ */
 
+// Include Inventor header files.
 #include <Inventor/SoPickedPoint.h>
 //#include <Inventor/SoNewManips.h>
 
 #if defined(__linux__)
-#if defined(Q_OS_LINUX)
+#if defined(MLE_SOQT)
 #include <Inventor/Qt/SoQt.h>
 #include <Inventor/Qt/viewers/SoQtExaminerViewer.h>
 #include <Inventor/Qt/viewers/SoQtPlaneViewer.h>
 #include <Inventor/Qt/viewers/SoQtFlyViewer.h>
 #else
-//#include "mle/MleWalkViewer.h"
-//#include "mle/MleExaminerViewer.h"
-//#include "mle/MlePlaneViewer.h"
-//#include "mle/MleFlyViewer.h"
 #include <Inventor/Xt/SoXt.h>
 #include <Inventor/Xt/viewers/SoXtExaminerViewer.h>
 #include <Inventor/Xt/viewers/SoXtPlaneViewer.h>
 #include <Inventor/Xt/viewers/SoXtFlyViewer.h>
-#endif
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
 #include <Inventor/Win/SoWin.h>
@@ -112,6 +109,7 @@
 #include <Inventor/nodes/SoPickStyle.h>
 #include <Inventor/sensors/SoNodeSensor.h>
 
+// Include Magic Lantern headers files.
 #include "mle/mlAssert.h"
 #include "mle/mlMalloc.h"
 
@@ -159,30 +157,24 @@
 MLE_STAGE_SOURCE(MleIvStage,MleStage);
 
 #if defined(__linux__)
-#if defined(Q_OS_LINUX)
+#if defined(MLE_SOQT)
+static void _processQtEvents()
+{
+    // Note: the DeferredDelete events will not be processed by processEvents(). If this becomes a problem,
+    // then this function will need to be rewritten to use sendPostedEvents().
+    QCoreApplication::processEvents();
+}
 #else
 static void _processXtEvents()
 {
     // Get the application context for the stage.
     XtAppContext appContext = SoXt::getAppContext();
 
-#if 0
-    XtInputMask imask;
-    while (imask = XtAppPending(appContext))
-    //while (XtAppPending(appContext))
-    {
-        printf("Xt Pending Input: %d\n", imask);
-        XEvent event;
-        SoXt::nextEvent(appContext, &event);
-        Boolean dispatched = SoXt::dispatchEvent(&event);
-    }
-#endif /* 0 */
-
     // Check for events and dispatch them if found.
     while ( XtAppPending(appContext) )
         XtAppProcessEvent(appContext,XtIMAll);
 }
-#endif
+#endif /* Qt */
 #endif /* __linux__ */
 
 #if defined(MLE_REHEARSAL)
@@ -237,8 +229,13 @@ MleIvStage::init(void)
 #endif /* MLE_REHEARSAL */
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    // Initialize Inventor and Qt.
+    QWidget *mainWindow = SoQt::init("Magic Lantern");
+#else
     // Initialize Inventor and Xt.
     Widget mainWindow = SoXt::init("Magic Lantern");
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     // Initializes SoWin library (and implicitly also the Coin
@@ -255,7 +252,11 @@ MleIvStage::init(void)
 
     // Put the window offscreen if asked.
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    QWidget *parent = mainWindow;
+#else
     Widget parent = mainWindow;
+#endif /* QT */
 #endif /* __linux__ */
 #if defined(WIN32)
     HWND parent = mainWindow;
@@ -264,6 +265,9 @@ MleIvStage::init(void)
     if ( m_offscreen )
     {
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+        // ToDo: determine what to do if the window is to be placed offscreen.
+#else
         // Create the popup widget.
         parent = XtCreatePopupShell("popup",
             transientShellWidgetClass,
@@ -281,6 +285,7 @@ MleIvStage::init(void)
         XtMoveWidget(parent,-1024,-1024);
         
         //m_shellParent = parent;
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
         WNDCLASSEX wndclass;
@@ -324,6 +329,9 @@ MleIvStage::init(void)
 
     // Create the main window and rendering area.
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    m_examVwr = new SoQtExaminerViewer(parent);
+#else
     //m_examVwr = new MleExaminerViewer(parent);
     //m_flyVwr = new MleFlyViewer(parent);
     //m_planeVwr = new MlePlaneViewer(parent);
@@ -331,6 +339,7 @@ MleIvStage::init(void)
     m_examVwr = new SoXtExaminerViewer(parent);
     //m_flyVwr = new SoXtFlyViewer(parent);
     //m_planeVwr = new SoXtPlaneViewer(parent);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     m_examVwr = new SoWinExaminerViewer(parent);
@@ -342,7 +351,11 @@ MleIvStage::init(void)
 #else /* MLE_REHEARSAL */
     // Not a rehearsal - no true iv viewer.
 #if defined(__linux__)
+#if defined(MLE_SOQT)
     m_viewer = new SoXtRenderArea(parent);
+#else
+    m_viewer = new SoXtRenderArea(parent);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     m_viewer = new SoWinRenderArea(parent);
@@ -357,7 +370,11 @@ MleIvStage::init(void)
     m_viewer->setTitle("Magic Lantern - Inventor Stage");
     m_viewer->setSize(SbVec2s(640,480));
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
+#else
     m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
@@ -368,7 +385,7 @@ MleIvStage::init(void)
     m_root = new SoSelection;
     m_root->ref();
 
-// XXX try this sometime, may give better performance
+// TodO: try this sometime, may give better performance
 // m_root->renderCaching.setValue(SoSeparator::OFF);
 
     // Set up selection.
@@ -378,11 +395,11 @@ MleIvStage::init(void)
     m_sets = new SoSeparator;
     m_root->addChild(m_sets);
 
-// XXX try this sometime, may give better performance
+// ToDo: try this sometime, may give better performance
 // m_sets->renderCaching.setValue(SoSeparator::OFF);
 
 #if defined(MLE_REHEARSAL)
-    // Add a headlight node - this serves to light the source/target
+    // Add a headlight node - this serves to light the source/target.
     m_root->addChild(new SoDirectionalLight);
 
     // Create cameras.
@@ -398,9 +415,7 @@ MleIvStage::init(void)
     m_perspectCamera = new SoPerspectiveCamera;
     m_orthoCamera = new SoOrthographicCamera;
 
-    //
     // Attach cameras, switch on the perspective camera for the viewer.
-    //
     m_root->addChild(m_cameraSwitch);
     m_cameraSwitch->addChild(m_perspectCamera);
     m_cameraSwitch->addChild(m_orthoCamera);
@@ -465,16 +480,16 @@ MleIvStage::init(void)
 
     // Create manip for 3D actors.
     // Attach manip under group node under manip switch.
-    // XXX should possibly put this under m_toolRoot as well.
+    // toDo: should possibly put this under m_toolRoot as well.
     m_manipSwitch = new SoSwitch;
     m_manipGroup = new SoGroup;
     m_manip = new SoTransformer2Manip;
     m_manip->getDragger()->addStartCallback((SoDraggerCB *)startDraggerCB,
-                          this);
+        this);
     m_manip->getDragger()->addMotionCallback((SoDraggerCB *)draggerCB,
-                           this);
+        this);
     m_manip->getDragger()->addFinishCallback((SoDraggerCB *)finishDraggerCB,
-                           this);
+        this);
     m_manipGroup->addChild(m_manip);
 
     // Add a hidden box after manip - the box mimics the bbox
@@ -498,7 +513,7 @@ MleIvStage::init(void)
     // 
     m_transManip = new SoTransformerManip;
     SoTransformerDragger *transDragger = (SoTransformerDragger *)
-                         m_transManip->getDragger();
+        m_transManip->getDragger();
     transDragger->addStartCallback((SoDraggerCB *) startDraggerCB, this);
     transDragger->addMotionCallback((SoDraggerCB *) draggerCB, this);
     transDragger->addFinishCallback((SoDraggerCB *) finishDraggerCB, this);
@@ -511,8 +526,7 @@ MleIvStage::init(void)
     transDragger->setPart("rotator2", new SoSeparator);
     transDragger->setPart("rotator3", new SoSeparator);
     transDragger->setPart("rotator4", new SoSeparator);
-    SoSeparator *rot5 = (SoSeparator *) transDragger->getPart("rotator5",
-                                  FALSE);
+    SoSeparator *rot5 = (SoSeparator *) transDragger->getPart("rotator5", FALSE);
     MLE_ASSERT(rot5);
     SoGroup *rot5Gp2 = (SoGroup *) rot5->getChild(1);
     MLE_ASSERT(rot5Gp2);
@@ -528,9 +542,7 @@ MleIvStage::init(void)
     transDragger->setPart("scale7", new SoSeparator);
     transDragger->setPart("scale8", new SoSeparator);
 
-    //
     // Attach manips.
-    //
     m_root->addChild(m_manipSwitch);
     m_manipSwitch->addChild(m_manipGroup);
     m_manipSwitch->addChild(m_transManip);
@@ -541,7 +553,7 @@ MleIvStage::init(void)
     search.setType(SoTransformer2Manip::getClassTypeId());
     search.apply(m_root);
     m_manipPath = search.getPath()->copy();
-//XXX need to ref this?
+// ToDo: need to ref this?
     m_manipPath->ref();
     MLE_ASSERT(m_manipPath);
     m_manipSwitch->whichChild.setValue(SO_SWITCH_NONE);
@@ -558,7 +570,6 @@ MleIvStage::init(void)
     m_viewer->setSceneGraph(m_root);
 
 #if defined(MLE_REHEARSAL)
-
     // Init snapping.
     initSnapping();
 
@@ -566,7 +577,11 @@ MleIvStage::init(void)
     if ( ! m_offscreen )
 #endif /* MLE_REHEARSAL */
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+        SoQt::show(mainWindow);
+#else
         SoXt::show(mainWindow);
+#endif /* Qt */
 #endif /* MLRE_REHEARSAL */
 #if defined(WIN32)
         SoWin::show(mainWindow);
@@ -576,8 +591,13 @@ MleIvStage::init(void)
     g_theTitle->m_platformData = initPlatform();
 
 #if defined(__linux__)
-    // Flush the Xt queue.
+#if defined(MLE_SOQT)
+    // Flush the Qt event queue.
+    _processQtEvents();
+#else
+    // Flush the Xt event queue.
     _processXtEvents();
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
@@ -633,9 +653,14 @@ MleIvStage::initPlatform(void)
     MLE_ASSERT(data->m_widget);
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    // Provide users with the application context.
+    // ToDo: not sure if we need something like this for Qt.
+#else
     // Provide users with the application context.
     data->m_appContext = SoXt::getAppContext();
     MLE_ASSERT(data->appContext);
+#endif /* Qt */
 #endif /* __linux__ */
 
     // Focus management.
@@ -797,6 +822,27 @@ MleIvStage::setCB(void *data,SoAction *action)
 }
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+int
+MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
+{
+#if defined(MLE_REHEARSAL)
+    // Get stage size.
+    int width,height;
+    stage->getSize(&width,&height);
+
+    if ( stage->getEditing() )
+        // ToDo: see below to determine what to do in special cases.
+        // Normally let event go through (rehearsal editing time).
+        return FALSE;
+    {
+    }
+#endif /* MLE_REHEARSAL */
+
+    // Deliver events to the player.
+    return FALSE;
+}
+#else
 // This function is the Inventor event handler.  It is Installed on the
 //   render area to pick up X events before the render area processes them.
 //   It should return TRUE if the event is not to be passed on to the
@@ -868,6 +914,7 @@ MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
     // Don't pass this event to the viewer.
     //return TRUE;
 }
+#endif /* Qt */
 #endif /* __linux__ */
 
 #if defined(WIN32)
@@ -951,8 +998,13 @@ MleIvStage::update(MleIvStage * stage)
     // Draw the scene graph.
     stage->m_viewer->render();
 
+    // Process pending events.
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    _processQtEvents();
+#else
     _processXtEvents();
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
@@ -1007,12 +1059,17 @@ MleIvStage::edit(void)
     MLE_ASSERT(m_editMode);
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    // Process pending events.
+    QCoreApplication::processEvents();
+#else
     // Get the application context for the stage.
     XtAppContext appContext = SoXt::getAppContext();
 
     // Check for events and dispatch them if found.
     while ( XtAppPending(appContext) )
         XtAppProcessEvent(appContext,XtIMAll);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     MSG msg;
@@ -1028,11 +1085,13 @@ MleIvStage::edit(void)
 }
 
 #if defined(__linux__)
+#if ! defined (MLE_SOQT)
 int 
 MleIvStage::getFD()
 {
     return (ConnectionNumber(XtDisplay(m_viewer->getWidget())));
 }
+#endif /* Xt */
 #endif /* __linux__ */
 
 int
@@ -1109,6 +1168,13 @@ MleIvStage::deactivateManipulator(MleActor *actor,int invokeCallback)
 }
 
 #if defined(__linux__)
+#if defined (MLE_SOQT)
+QWidget *
+MleIvStage::getWindow(void)
+{
+    return m_shellParent;
+}
+#else
 Window
 MleIvStage::getWindow(void)
 {
@@ -1120,6 +1186,7 @@ MleIvStage::getDisplay(void)
 {
     return XtDisplay(m_viewer->getWidget());
 }
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
 HWND
@@ -1136,7 +1203,7 @@ MleIvStage::getWindow(void)
 
 const char** MleIvStage::getFunctions()
 {
-    static char *funcs[] =
+    static const char *funcs[] =
     {
         STAGE_MOVE_TO_TARGET, 
         STAGE_SNAPPING_TARGET, 
@@ -1152,7 +1219,7 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 {
     if (!strcmp(functionName, STAGE_ATTR_EDIT_MODES))
     {
-        static char *funcs[] =
+        static const char *funcs[] =
         {
             STAGE_ATTR_EDIT_MODE_PLAY, 
             STAGE_ATTR_EDIT_MODE_PICK, 
@@ -1165,7 +1232,7 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 
     if (!strcmp(functionName, STAGE_ATTR_VIEWERS))
     {
-        static char *funcs[] =
+        static const char *funcs[] =
         {
             STAGE_VIEWER_EXAMINER, 
             STAGE_VIEWER_FLY, 
@@ -1179,14 +1246,14 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 
     if (!strcmp(functionName, STAGE_ATTR_GLOBAL_RENDER_MODES))
     {
-        static char *renderFuncs[] =
+        static const char *renderFuncs[] =
         {
             RENDER_AS_IS, 
             RENDER_HIDDEN_LINE, 
             RENDER_NO_TEXTURE, 
             RENDER_LOWRES, 
             RENDER_WIREFRAME, 
-//XXX mvo 4/24/96: render points crashes when there's a selected item...
+// ToDo: mvo 4/24/96: render points crashes when there's a selected item...
 // filed as a bug which we'll look at after we get onto 6.2 (b/c 6.2
 // may fix this problem)
 //            RENDER_POINTS, 
@@ -1210,12 +1277,15 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 // should be kept in sync.
 //
 
-
-int MleIvStage::setViewer(char* viewerName)
+int MleIvStage::setViewer(const char* viewerName)
 {
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    SoQtFullViewer *oldViewer = m_viewer;
+#else
     //MleFullViewer *oldViewer = m_viewer;
     SoXtFullViewer *oldViewer = m_viewer;
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     SoWinFullViewer *oldViewer = m_viewer;
@@ -1257,7 +1327,11 @@ int MleIvStage::setViewer(char* viewerName)
         m_viewer->setSeekTime( oldViewer->getSeekTime() );    
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+        m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
+#else
         m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
         m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
@@ -1267,30 +1341,43 @@ int MleIvStage::setViewer(char* viewerName)
         oldViewer->hide();
 
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+        m_viewer->setDrawStyle(SoQtViewer::STILL,
+            oldViewer->getDrawStyle(SoQtViewer::STILL));
+        m_viewer->setDrawStyle(
+            SoQtViewer::INTERACTIVE,
+            oldViewer->getDrawStyle(SoQtViewer::INTERACTIVE) );
+#else
         m_viewer->setDrawStyle(SoXtViewer::STILL, 
-                 oldViewer->getDrawStyle(SoXtViewer::STILL));
+            oldViewer->getDrawStyle(SoXtViewer::STILL));
         m_viewer->setDrawStyle( 
-                SoXtViewer::INTERACTIVE,
-                oldViewer->getDrawStyle(SoXtViewer::INTERACTIVE) );
+            SoXtViewer::INTERACTIVE,
+            oldViewer->getDrawStyle(SoXtViewer::INTERACTIVE) );
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
         m_viewer->setDrawStyle(SoWinViewer::STILL, 
-                 oldViewer->getDrawStyle(SoWinViewer::STILL));
+            oldViewer->getDrawStyle(SoWinViewer::STILL));
         m_viewer->setDrawStyle( 
-                SoWinViewer::INTERACTIVE,
-                oldViewer->getDrawStyle(SoWinViewer::INTERACTIVE) );
+            SoWinViewer::INTERACTIVE,
+            oldViewer->getDrawStyle(SoWinViewer::INTERACTIVE) );
 #endif /* WIN32 */
 
         m_viewer->setSceneGraph(m_root);
 
 #if defined(__linux__)
-        // Flush the Xt queue.
+#if defined(MLE_SOQT)
+        // Flush the Qt event queue.
+        QCoreApplication::processEvents();
+#else
+        // Flush the Xt eventqueue.
         // Get the application context for the stage.
         XtAppContext appContext = SoXt::getAppContext();
     
         // Check for events and dispatch them if found.
         while ( XtAppPending(appContext) )
             XtAppProcessEvent(appContext,XtIMAll);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
         MSG msg;
@@ -1313,7 +1400,7 @@ int MleIvStage::setViewer(char* viewerName)
 
 //////////////////////////////////////////////////////////////////////
 
-char* MleIvStage::getViewer()
+const char* MleIvStage::getViewer()
 {
     // XXX should optimize these strings by defining them
     // as static const in the class - eventually will need to move
@@ -1419,7 +1506,7 @@ int MleIvStage::setEditMode(char* editMode)
 char* MleIvStage::getEditMode()
 {
     fixEditMode();
-    return "";
+    return (char *)"";
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1437,7 +1524,7 @@ MleIvStage::setEditing(int mode)
     switch( m_editMode )
     {
         case 0:    // Run mode.
-        break;
+            break;
         case 1:    // Pick mode.
             // Remove the event callback.
             eventCallback->removeEventCallback(
@@ -1474,7 +1561,7 @@ MleIvStage::setEditing(int mode)
     switch ( mode )
     {
         case 0:    // Run mode.
-        break;
+            break;
         case 1:    // Pick mode.
             // Add the event callbacks.
             eventCallback->addEventCallback(
@@ -1532,7 +1619,7 @@ MleIvStage::setEditing(int mode)
 
 void MleIvStage::fixEditMode()
 {
-    // XXX need to expunge these numbers!
+    // ToDo: need to expunge these numbers!
     if ( m_editMode == 3 && !m_viewer->isSeekMode())
     m_editMode = 2;
 }
@@ -1740,24 +1827,18 @@ MleIvStage::setActiveRole(MleSet *set,MleRole *role,int cbFlag)
         {
             Mle2dRole *ivd = Mle2dRole::cast(m_activeRole);
 
-            //
             // Turn on the manip.
-            //
             int tMIdx = m_manipSwitch->findChild(m_transManip);
             m_manipSwitch->whichChild.setValue(tMIdx);
 
-            //
             // Get the bounding box of the role.
-            //
             MlScalar min[2], max[2];
             ivd->getBounds(min, max);
             MLE_ASSERT(min[0] <= max[0]);
             MLE_ASSERT(min[1] <= max[1]);
 
-            //
             // Store manip geometry into manipNorm (without
             // transformation).
-            //
             float scaleX, scaleY;
             scaleX = mlScalarToFloat(max[0] - min[0] +
                          ML_SCALAR_ONE) / 2.0f;
@@ -1767,17 +1848,13 @@ MleIvStage::setActiveRole(MleSet *set,MleRole *role,int cbFlag)
             m_manipNorm.makeIdentity();
             m_manipNorm.setScale(scale);
 
-            //
             // Get the manip transformation (only translation
             // in the case of 2D role).
-            //
             SbVec3f trans(mlScalarToFloat(max[0] + min[0]) / 2.0f,
                       mlScalarToFloat(max[1] + min[1]) / 2.0f,
                       0.0f);
 
-            //
             // Update the dragger.
-            //
             m_transManip->translation.setValue(trans);
             m_transManip->rotation.setValue(SbRotation::identity());
             m_transManip->scaleFactor.setValue(scale);
@@ -1820,7 +1897,7 @@ MleIvStage::setActiveSet(MleSet *set)
 
     if ( m_activeSet->isa("Mle3dSet") )
     {
-        // XXX The way this should really work is to use the
+        // ToDo: The way this should really work is to use the
         //   camera API on the set.  It's not done here
         //   because right now the Mle3dSet doesn't have
         //   the complete camera API.
@@ -1863,30 +1940,23 @@ MleIvStage::setActiveSet(MleSet *set)
             m_cameraSensor->attach(sensorNode);
     }
     else if (m_activeSet->isa("Mle2dSet")) {
-        //
         // Use the orthographic camera.
-        //
         int oCIdx = m_cameraSwitch->findChild(m_orthoCamera);
         m_cameraSwitch->whichChild.setValue(oCIdx);
 
-        //
-        // XXX When set properties are used for 2D set bounding
+        // ToDo: When set properties are used for 2D set bounding
         //     box, use the following call
         //
         //     MlScalar min[3], max[3];
         //     ((Mle2dSet *) activeSet)->getBounds(min, max);
         //
         //     For now use the size of the whole stage window.
-        //
         int width, height;
         getSize(&width, &height);
 
-        //
         // Start updating the stage Inventor orthographic camera
         // parameters.
-        //
 
-        //
         // Set the camera position at the middle of the set in
         // xy and 11.0 in z.
         //
@@ -1895,37 +1965,28 @@ MleIvStage::setActiveSet(MleSet *set)
         //
         //     pos[0] = mlScalarToFloat(max[0] - min[0]) / 2.0f;
         //     pos[1] = mlScalarToFloat(max[1] - min[1]) / 2.0f;
-        //
         float pos[3];
         pos[0] = width / 2.0f;
         pos[1] = height / 2.0f;
         pos[2] = 11.0f;
         m_orthoCamera->position.setValue(pos[0], pos[1], pos[2]);
 
-        //
         // Set the camera orientation with zero rotation looking
         // down the z axis.
-        //
         m_orthoCamera->orientation.setValue(SbRotation::identity());
 
-        //
         // Set the camera distance to the near and far clipping planes
         // at 1.0 and 21.0 (or 10.0 and -10.0 in z).
-        //
         float nearDist = 1.0f;
         float farDist = 21.0f;
         m_orthoCamera->nearDistance.setValue(nearDist);
         m_orthoCamera->farDistance.setValue(farDist);
 
-        //
         // Set the camera focal distance at 11.0 (or 0.0 in z).
-        //
         m_orthoCamera->focalDistance.setValue(11.0f);
 
-        //
         // Set the camera aspect ratio to be 640 by 480 and the
         // height of the camera viewing volume.
-        //
         m_orthoCamera->aspectRatio.setValue(640.0f / 480.0f);
         m_orthoCamera->height.setValue(height);
     }
@@ -1934,9 +1995,7 @@ MleIvStage::setActiveSet(MleSet *set)
 void
 MleIvStage::addSetDrawOrder(MleIvStage::SetInfo *setInfo)
 {
-    //
     // Add the set to the beginning of the list.
-    //
     if (m_setDrawOrder)
     {
         MleIvStage::SetDrawOrder *tmpPtr = m_setDrawOrder;
@@ -1994,36 +2053,28 @@ MleIvStage::eventCB(MleIvStage *stage,SoEventCallback *callback)
 void
 MleIvStage::eventCallbackProc(SoEventCallback *callback)
 {
-    //
     // Get the event.
-    //
     const SoEvent *event = callback->getEvent();
 
     if(SoMouseButtonEvent::isButtonPressEvent(event,
     SoMouseButtonEvent::BUTTON1)) {
 
-    //
     // Find the window position.
-    //
     const SbVec2s& position = event->getPosition();
     int width,height;
     getSize(&width,&height);
 
     enableSelectionCallbacks(0);
 
-    //
     // Deselect active role if there's any.
-    //
     if (m_activeRole)
     {
         m_root->deselectAll();
         setActiveRole(m_activeSet, NULL);
     }
 
-    //
     // Loop through the available sets starting from the
     // layer at the top on down.
-    //
     MleRole *role = NULL;
     MleSet *set;
     MleIvStage::SetDrawOrder *setOrder;
@@ -2034,73 +2085,53 @@ MleIvStage::eventCallbackProc(SoEventCallback *callback)
 
         set = setOrder->setInfo->set;
 
-        //
         // Switch on the set type.
-        //
         if (set->isa("Mle3dSet"))
         {
-            //
             // Get the path for the node picked.
-            //
             SoPath *path = Mle3dSet::cast(set)->getPickPath(position);
 
-            //
             // Make sure the selection is not on the dragger itself.
-            //
             if (path && path->getTail() != m_manip)
             {
-                //
                 // Search for a registered node, looking back from
                 // the tail.
-                //
                 for (int i = 0; i < path->getLength(); i++)
                 {
-                    //
                     // Look in the dictionary to find a role.
-                    //
                     role = (MleRole *)
                            Mle3dRole::g_pickRegistry.find(
                                path->getNodeFromTail(i));
 
-                    //
                     // Stop if we find one.
-                    //
-                    if(role)
+                    if (role)
                         break;
                 }
 
                 if (role)
                 {
-                    //
                     // Select the role.
-                    //
                     m_root->select(Mle3dRole::cast(role)->
                              getRoot());
                     setActiveRole(set, role);
 
-                    //
                     // Break out of the for loop which loops
                     // through all the sets.
-                    //
                     break;
                 }
             }
         }
         else if(set->isa("Mle2dSet")) {
-        //
-        // Select the role if any.
-        //
-        role = Mle2dSet::cast(set)->pickRole(
+            // Select the role if any.
+            role = Mle2dSet::cast(set)->pickRole(
                    position[0], position[1]);
-        if(role) {
-            setActiveRole(set, role);
+            if (role) {
+                setActiveRole(set, role);
 
-            //
-            // Break out of the for loop which loops through
-            // all the sets.
-            //
-            break;
-        }
+                // Break out of the for loop which loops through
+                // all the sets.
+                break;
+            }
         }
     }
 
@@ -2208,11 +2239,9 @@ void MleIvStage::draggerCallback(MlBoolean generateCallback)
     m_manip->rotation.setValue(rotation);
     m_manip->scaleFactor.setValue(scaleFactor);
     
-    //
     // Notify interested parties.
-    //
     if (manipCB && generateCallback)
-    (*manipCB)(actor, m_manipClientData);
+        (*manipCB)(actor, m_manipClientData);
 }
 
 void
@@ -2223,14 +2252,10 @@ MleIvStage::transDraggerCallback(MlBoolean generateCallback)
     MleActor *actor = m_activeRole->getActor();
     MLE_ASSERT(actor);
 
-    //
     // Get the changes.
-    //
     SbVec3f pos = m_transManip->translation.getValue();
 
-    //
     // Get the role bounding box for offset calculation.
-    //
     Mle2dRole *role = (Mle2dRole *) (actor->getRole());
     MlScalar min[2], max[2];
     role->getBounds(min, max);
@@ -2240,11 +2265,9 @@ MleIvStage::transDraggerCallback(MlBoolean generateCallback)
     offsetX = mlScalarToFloat(max[0] - min[0]) / 2.0f;
     offsetY = mlScalarToFloat(max[1] - min[1]) / 2.0f;
 
-    //
     // Build the appropriate matrix for the actor.  Note we want the
     // lower left of the actor rather than the center which the manip
     // gives.
-    //
     pos[0] = pos[0] - offsetX;
     pos[1] = pos[1] - offsetY;
     MlTransform t;
@@ -2261,44 +2284,30 @@ MleIvStage::transDraggerCallback(MlBoolean generateCallback)
     t[3][1] = mlFloatToScalar(pos[1]);
     t[3][2] = ML_SCALAR_ZERO;
 
-    //
     // Update the actor position to be in sync with the manip.
-    //
     actor->setTransform(t);
 
-    //
     // Propagate the change to the role side.
-    //
     actor->resolveEdit();
 
-    //
     // Get the actor transformation; this may not be the same as the
     // transform set above because the actor may not accept all
     // (or any) kinds of transform.
-    //
     actor->getTransform(t);
 
-    //
     // Note the dragger position if based on the center of the role
     // rather than lower left corner of the role.
-    //
     pos[0] = mlScalarToFloat(t[3][0]) + offsetX;
     pos[1] = mlScalarToFloat(t[3][1]) + offsetY;
     pos[2] = mlScalarToFloat(t[3][2]);
 
-    //
     // Correct manip transformation based on actor constraints.
-    //
     m_transManip->translation.setValue(pos);
 
-    //
     // Touch the set separator to invalidate the bounding box.
-    //
     m_sets->touch();
 
-    //
     // Notify interested parties.
-    //
     if (manipCB && generateCallback)
         (*manipCB)(actor, m_manipClientData);
 }
@@ -2426,7 +2435,7 @@ MleIvStage::selectCB(MleIvStage *stage,SoPath *path)
 void
 MleIvStage::deselectCB(MleIvStage *stage,SoPath *)
 {
-    // XXX should look up the right set for role
+    // ToDo: should look up the right set for role
     stage->setActiveRole(stage->m_activeSet,NULL);
 }
 
@@ -2447,6 +2456,45 @@ void MleIvStage::enableSelectionCallbacks(MlBoolean onOff)
 void MleIvStage::setRenderMode(char *renderMode)
 {
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    SoQtViewer::DrawStyle style;
+    if (!strcmp(renderMode, RENDER_AS_IS))
+    {
+        style = SoQtViewer::VIEW_AS_IS;
+    }
+    else if (!strcmp(renderMode, RENDER_HIDDEN_LINE))
+    {
+        style = SoQtViewer::VIEW_HIDDEN_LINE;
+    }
+    else if (!strcmp(renderMode, RENDER_NO_TEXTURE))
+    {
+        style = SoQtViewer::VIEW_NO_TEXTURE;
+    }
+    else if (!strcmp(renderMode, RENDER_LOWRES))
+    {
+        style = SoQtViewer::VIEW_LOW_COMPLEXITY;
+    }
+    else if (!strcmp(renderMode, RENDER_WIREFRAME))
+    {
+        style = SoQtViewer::VIEW_LINE;
+    }
+    else if (!strcmp(renderMode, RENDER_POINTS))
+    {
+        style = SoQtViewer::VIEW_POINT;
+    }
+    else if (!strcmp(renderMode, RENDER_BBOX))
+    {
+        style = SoQtViewer::VIEW_BBOX;
+    }
+    else
+    {
+        printf("ERROR MleIvStage setRenderMode: unknown render mode '%s'\n",
+            renderMode);
+        style = SoQtViewer::VIEW_AS_IS;
+    }
+
+    m_viewer->setDrawStyle(SoQtViewer::STILL, style);
+#else
     SoXtViewer::DrawStyle style;
     if (!strcmp(renderMode, RENDER_AS_IS))
     {
@@ -2484,6 +2532,7 @@ void MleIvStage::setRenderMode(char *renderMode)
     }
 
     m_viewer->setDrawStyle(SoXtViewer::STILL, style);
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     SoWinViewer::DrawStyle style;
@@ -2529,6 +2578,21 @@ void MleIvStage::setRenderMode(char *renderMode)
 const char * MleIvStage::getRenderMode() const
 {
 #if defined(__linux__)
+#if defined(MLE_SOQT)
+    switch (m_viewer->getDrawStyle(SoQtViewer::STILL))
+    {
+        case SoQtViewer::VIEW_AS_IS: return RENDER_AS_IS;
+        case SoQtViewer::VIEW_HIDDEN_LINE: return RENDER_HIDDEN_LINE;
+        case SoQtViewer::VIEW_NO_TEXTURE: return RENDER_NO_TEXTURE;
+        case SoQtViewer::VIEW_LOW_COMPLEXITY: return RENDER_LOWRES;
+        case SoQtViewer::VIEW_LINE: return RENDER_WIREFRAME;
+        case SoQtViewer::VIEW_POINT: return RENDER_POINTS;
+        case SoQtViewer::VIEW_BBOX: return RENDER_BBOX;
+    }
+
+    printf("ERROR iv stage getRenderMode: unknown iv mode %d\n",
+    m_viewer->getDrawStyle(SoQtViewer::STILL));
+#else
     switch (m_viewer->getDrawStyle(SoXtViewer::STILL))
     {
         case SoXtViewer::VIEW_AS_IS: return RENDER_AS_IS;
@@ -2541,7 +2605,8 @@ const char * MleIvStage::getRenderMode() const
     }
 
     printf("ERROR iv stage getRenderMode: unknown iv mode %d\n", 
-       m_viewer->getDrawStyle(SoXtViewer::STILL));
+    m_viewer->getDrawStyle(SoXtViewer::STILL));
+#endif /* Qt */
 #endif /* __linux__ */
 #if defined(WIN32)
     switch (m_viewer->getDrawStyle(SoWinViewer::STILL))
@@ -2571,10 +2636,8 @@ MleIvStage::pushSet(MleSet *f)
 
     MLE_ASSERT(f);
 
-    //
     // Find the index of the matching set callback node under the
     // set separator.
-    //
     for (i = m_sets->getNumChildren() - 1, setData = m_setDrawOrder;
         setData; i--, setData = setData->next)
     {
@@ -2587,9 +2650,7 @@ MleIvStage::pushSet(MleSet *f)
 
     if(index > 0)
     {
-        //
         // Push the set one layer down.
-        //
         setNode = m_sets->getChild(index);
         MLE_ASSERT(setNode);
         if (f->isa("Mle2dSet"))
@@ -2602,9 +2663,7 @@ MleIvStage::pushSet(MleSet *f)
             ((SoCallback *) setNode)->setCallback(setCB,
                                 setData->setInfo);
 
-        //
         // Update setDrawOrder list.
-        //
         if (setData == m_setDrawOrder)
             m_setDrawOrder = setData->next;
 
@@ -2621,10 +2680,8 @@ MleIvStage::pushSet(MleSet *f)
         return 0;
     }
     else
-    //
-    // Already at the lowest layer.
-    //
-    return -1;
+        // Already at the lowest layer.
+        return -1;
 }
 
 int
@@ -2636,23 +2693,19 @@ MleIvStage::pushSetToBottom(MleSet *f)
 
     MLE_ASSERT(f);
 
-    //
     // Find the index of the matching set callback node under the
     // set separator.
-    //
     for (i = m_sets->getNumChildren() - 1, setData = m_setDrawOrder;
-    setData; i--, setData = setData->next) {
-    if (f == setData->setInfo->set) {
-        index = i;
-        break;
-    }
+         setData; i--, setData = setData->next) {
+        if (f == setData->setInfo->set) {
+            index = i;
+            break;
+        }
     }
 
-    if(index > 0)
+    if (index > 0)
     {
-        //
         // Push the set to the bottom.
-        //
         setNode = m_sets->getChild(index);
         MLE_ASSERT(setNode);
         if(f->isa("Mle2dSet"))
@@ -2665,9 +2718,7 @@ MleIvStage::pushSetToBottom(MleSet *f)
             ((SoCallback *) setNode)->setCallback(setCB,
                                 setData->setInfo);
 
-        //
         // Update setDrawOrder list.
-        //
         if (setData == m_setDrawOrder)
             m_setDrawOrder = setData->next;
 
@@ -2683,10 +2734,8 @@ MleIvStage::pushSetToBottom(MleSet *f)
         return 0;
     }
     else
-    //
-    // Already at the lowest layer.
-    //
-    return -1;
+        // Already at the lowest layer.
+        return -1;
 }
 
 int
@@ -2698,10 +2747,8 @@ MleIvStage::popSet(MleSet *f)
 
     MLE_ASSERT(f);
 
-    //
     // Find the index of the matching set callback node under the
     // set separator.
-    //
     for (i = m_sets->getNumChildren() - 1, setData = m_setDrawOrder;
         setData; i--, setData = setData->next)
     {
@@ -2714,9 +2761,7 @@ MleIvStage::popSet(MleSet *f)
 
     if (index >= 0 && index < (m_sets->getNumChildren() - 1))
     {
-        //
         // Pop the set one layer up.
-        //
         setNode = m_sets->getChild(index);
         MLE_ASSERT(setNode);
         if (f->isa("Mle2dSet"))
@@ -2729,9 +2774,7 @@ MleIvStage::popSet(MleSet *f)
             ((SoCallback *) setNode)->setCallback(setCB,
                                 setData->setInfo);
 
-        //
         // Update setDrawOrder list.
-        //
         insertBefore = setData->prev;
         setData->prev->next = setData->next;
         if (setData->next)
@@ -2747,10 +2790,8 @@ MleIvStage::popSet(MleSet *f)
         return 0;
     }
     else
-    //
-    // Already at the top layer.
-    //
-    return -1;
+        // Already at the top layer.
+        return -1;
 }
 
 int
@@ -2762,25 +2803,21 @@ MleIvStage::popSetToTop(MleSet *f)
 
     MLE_ASSERT(f);
 
-    //
     // Find the index of the matching set callback node under the
     // set separator.
-    //
     for (i = m_sets->getNumChildren() - 1, setData = m_setDrawOrder;
-    setData; i--, setData = setData->next)
+         setData; i--, setData = setData->next)
     {
-    if (f == setData->setInfo->set) {
-        index = i;
-        break;
-    }
+        if (f == setData->setInfo->set) {
+            index = i;
+            break;
+        }
     }
 
     topIndex = m_sets->getNumChildren() - 1;
     if (index >= 0 && index < topIndex)
     {
-        //
         // Pop the set to the top.
-        //
         setNode = m_sets->getChild(index);
         MLE_ASSERT(setNode);
         if (f->isa("Mle2dSet"))
@@ -2793,9 +2830,7 @@ MleIvStage::popSetToTop(MleSet *f)
             ((SoCallback *) setNode)->setCallback(setCB,
                                 setData->setInfo);
 
-        //
         // Update setDrawOrder list.
-        //
         insertBefore = m_setDrawOrder;
         setData->prev->next = setData->next;
         if (setData->next)
@@ -2808,10 +2843,8 @@ MleIvStage::popSetToTop(MleSet *f)
         return 0;
     }
     else
-    //
-    // Already at the top layer.
-    //
-    return -1;
+        // Already at the top layer.
+        return -1;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -2982,7 +3015,7 @@ MleIvStage::nudge(int direction, int numPixels)
         return;
     }
 
-    // XXX don't think we need to send copy of manipPath.
+    // ToDo: don't think we need to send copy of manipPath.
     m_nudger->nudge(m_manipPath->copy(), 
           m_activeRole->getActor(), 
           getCamera()->getViewVolume(), 

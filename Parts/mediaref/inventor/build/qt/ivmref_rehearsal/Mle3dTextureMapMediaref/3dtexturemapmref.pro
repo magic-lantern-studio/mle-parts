@@ -1,6 +1,6 @@
 QQT -= gui
 
-TARGET = MleIv3dTextureMapMediaRef
+TARGET = Mle3dTextureMapMediaRef
 TEMPLATE = lib
 DEFINES += IVMREF_REHEARSAL_LIBRARY
 
