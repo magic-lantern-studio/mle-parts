@@ -45,6 +45,8 @@
 #ifndef __MLE_IVSTAGE_H_
 #define __MLE_IVSTAGE_H_
 
+#include "mle/MleStage.h"
+
 // Include Inventor header files.
 #include <Inventor/SbLinear.h>
 #if defined(WIN32)
@@ -64,7 +66,7 @@
 // Include Magic Lantern header files.
 #include "mle/mlTypes.h"
 
-#include "mle/MleStage.h"
+//#include "mle/MleStage.h"
 #include "mle/MleScheduler.h"
 
 #include "math/vector.h"
