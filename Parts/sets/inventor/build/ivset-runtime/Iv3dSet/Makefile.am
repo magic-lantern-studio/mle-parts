@@ -16,7 +16,7 @@ Mle3dSet_la_SOURCES = \
 	$(top_srcdir)/../../iv3dset.cxx
 
 # Linker options libTestProgram
-Mle3dSet_la_LDFLAGS = -module
+Mle3dSet_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.

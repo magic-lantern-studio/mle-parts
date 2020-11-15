@@ -16,7 +16,7 @@ Mle3dModelMediaRef_la_SOURCES = \
 	../../../../../inventor/MleIv3dModelMediaRef.cxx
 
 # Linker options libTestProgram
-Mle3dModelMediaRef_la_LDFLAGS = -module
+Mle3dModelMediaRef_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.

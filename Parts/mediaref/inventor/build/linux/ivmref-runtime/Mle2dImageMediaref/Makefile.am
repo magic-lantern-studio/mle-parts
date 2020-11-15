@@ -16,7 +16,7 @@ Mle2dImageMediaRef_la_SOURCES = \
 	../../../../../inventor/MleIv2dImageMediaRef.cxx
 
 # Linker options libTestProgram
-Mle2dImageMediaRef_la_LDFLAGS = -module
+Mle2dImageMediaRef_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.

@@ -16,7 +16,7 @@ Mle2dImageActor_la_SOURCES = \
 	$(top_srcdir)/../../../../common/src/2dimga.cxx
 
 # Linker options libTestProgram
-Mle2dImageActor_la_LDFLAGS = -module
+Mle2dImageActor_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.

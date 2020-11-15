@@ -21,7 +21,7 @@ libivroles_la_SOURCES = \
 	
 
 # Linker options libTestProgram
-libivroles_la_LDFLAGS = 
+libivroles_la_LDFLAGS = -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
