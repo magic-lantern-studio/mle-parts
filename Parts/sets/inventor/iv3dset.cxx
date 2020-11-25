@@ -83,7 +83,7 @@ Mle3dSet::initClass(void)
 
 	// Set properties go here.
 }
-#endif
+#endif /* MLE_DIGITAL_WORKPRINT */
 
 Mle3dSet::Mle3dSet(void)
 {
@@ -127,12 +127,23 @@ Mle3dSet::Mle3dSet(void)
 	    new SoFieldSensor((SoSensorCB *) cameraCB, this);
 	sensor->attach(&getCamera()->orientation);
 	sensor->setPriority(0);
-#endif
+#endif /* MLE_DIGITAL_WORKPRINT */
 
 	// Attach the Set scene graph to the stage
 	//   This is a stage-specific protocol, not a base class feature
-	MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
-	stage->addSet(NULL, this);
+    //MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
+    //stage->addSet(NULL, this);
+}
+
+void
+Mle3dSet::init()
+{
+    // Attach the Set scene graph to the stage
+    //   This is a stage-specific protocol, not a base class feature
+    MleStage *stage = MleStage::g_theStage;
+    //MleIvStage *ivstage = MleIvStage::cast(MleStage::g_theStage);
+    MleIvStage *ivstage = MleIvStage::cast(stage);
+    ivstage->addSet(NULL, this);
 }
 
 void
@@ -152,7 +163,7 @@ Mle3dSet::attach(MleRole *p,MleRole *c)
 		parent->addChild(child);
 #ifdef MLE_REHEARSAL
 		child->setIvParent(parent->getRoot());
-#endif
+#endif /* MLE_REHEARSAL */
 	}
 	else
 	{
@@ -160,7 +171,7 @@ Mle3dSet::attach(MleRole *p,MleRole *c)
 		m_root->addChild(child->getRoot());
 #ifdef MLE_REHEARSAL
 		child->setIvParent(m_root);
-#endif
+#endif /* MLE_REHEARSAL */
 	}
 }
 
@@ -197,7 +208,7 @@ int Mle3dSet :: setCameraTransform(MlTransform *t)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, getCamera());
-#endif
+#endif /* MLE_REHEARSAL */
 
     return 0;
 }
@@ -237,7 +248,7 @@ Mle3dSet::setCameraPosition(const MlVector3 *position)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
-#endif
+#endif /* MLE_REHEARSAL */
 	return 0;
 }
 
@@ -273,7 +284,7 @@ Mle3dSet::setCameraOrientation(const MlRotation *orientation)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
-#endif
+#endif /* MLE_REHEARSAL */
 
     // Any input is allowable, so return success.
     return 0;
@@ -304,7 +315,7 @@ Mle3dSet::setCameraNearClipping(MlScalar nearPlane)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
-#endif
+#endif /* MLE_REHEARSAL */
     
 	return 0;	// This means success.
 }
@@ -330,7 +341,7 @@ Mle3dSet::setCameraFarClipping(MlScalar farPlane)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
-#endif
+#endif /* MLE_REHEARSAL */
 
 	return 0;	// This means success.
 }
@@ -367,7 +378,7 @@ Mle3dSet::setCameraAspect(MlScalar aspect)
     // Notify stage so it can sync its camera.
     MleIvStage *stage = MleIvStage::cast(MleStage::g_theStage);
     stage->setCameraMoved(this, camera);
-#endif
+#endif /* MLE_REHEARSAL */
 
     return 0;	// This means success.
 }
@@ -389,7 +400,7 @@ void Mle3dSet::cameraCB(Mle3dSet *set, SoFieldSensor *)
     set->m_lightRot->rotation.setValue(
 	set->getCamera()->orientation.getValue());
 }
-#endif
+#endif /* MLE_DIGITAL_WORKPRINT */
 
 // Convenience function.
 void
@@ -401,7 +412,7 @@ Mle3dSet :: getStageSize(int *width, int *height)
     // XXX - quick fix for build.
     *width = 640;
     *height = 480;
-#endif
+#endif /* MLE_DIGITAL_WORKPRINT */
 }
 
 #ifdef MLE_REHEARSAL
@@ -425,13 +436,13 @@ const char** Mle3dSet::getFunctionAttributes(char* functionName)
 {
     static char *renderFuncs[] =
     {
-		RENDER_AS_IS, 
-		RENDER_HIDDEN_LINE, 
-		RENDER_NO_TEXTURE, 
-		RENDER_LOWRES, 
-		RENDER_WIREFRAME, 
-		RENDER_POINTS, 
-		RENDER_BBOX, 
+        (char *)RENDER_AS_IS,
+        (char *)RENDER_HIDDEN_LINE,
+        (char *)RENDER_NO_TEXTURE,
+        (char *)RENDER_LOWRES,
+        (char *)RENDER_WIREFRAME,
+        (char *)RENDER_POINTS,
+        (char *)RENDER_BBOX,
 		NULL
     };
 
@@ -445,7 +456,7 @@ const char** Mle3dSet::getFunctionAttributes(char* functionName)
     return NULL;
 }
 
-#endif	// MLE_REHEARSAL
+#endif	/* MLE_REHEARSAL */
 
 #ifdef MLE_REHEARSAL
 
@@ -486,7 +497,7 @@ Mle3dSet::intersectScreenCoordinates(int x, int y, MlScalar* coord)
     }
 }
 
-#endif	// MLE_REHEARSAL
+#endif	/* MLE_REHEARSAL */
 
 #ifdef MLE_REHEARSAL
 
@@ -562,4 +573,4 @@ Mle3dSet::getPickPath(const SbVec2s &point)
     return path;
 }
 
-#endif	// MLE_REHEARSAL
+#endif	/* MLE_REHEARSAL */

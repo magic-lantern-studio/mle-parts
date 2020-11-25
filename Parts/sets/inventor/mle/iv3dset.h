@@ -76,6 +76,8 @@ class MLE3DSET_API Mle3dSet : public MleSet
   public:
 
     Mle3dSet(void);
+
+    virtual void init(void);
     
     virtual void attach(MleRole *parent,MleRole *child);
 
