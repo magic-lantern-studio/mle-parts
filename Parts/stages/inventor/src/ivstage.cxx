@@ -879,10 +879,10 @@ MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
     stage->getSize(&width,&height);
 
     if ( stage->getEditing() )
+    {
         // ToDo: see below to determine what to do in special cases.
         // Normally let event go through (rehearsal editing time).
         return FALSE;
-    {
     }
 #endif /* MLE_REHEARSAL */
 
@@ -2091,7 +2091,7 @@ SoCamera * MleIvStage::getCamera()
 }
 
 // Called by a set when it's camera moves.
-void MleIvStage::setCameraMoved(MleSet *set, SoCamera *cam)
+void MleIvStage::setCameraMoved(MleSet *set, SoCamera *camera)
 {
     // Only track set's camera if this set is the active one.
     if (set == m_activeSet)

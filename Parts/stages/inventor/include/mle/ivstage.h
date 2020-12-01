@@ -123,14 +123,7 @@ class MleSchederItem;
 class Nudger;
 
 #if defined(MLE_SOQT)
-// Global declaration for Magic Lantern Qt events.
-#if 0
-REHEARSAL_API MleEvent QT_RESIZE_EVENT = 0x0000;
-REHEARSAL_API MleEvent QT_CLOSE_EVENT  = 0x0001;
-REHEARSAL_API MleEvent QT_EXPOSE_EVENT = 0x0002;
-REHEARSAL_API MleEvent QT_MOUSE_EVENT  = 0x0003;
-REHEARSAL_API MleEvent QT_PAINT_EVENT  = 0x0004;
-#endif
+// Global definition for Magic Lantern Qt events.
 #define QT_RESIZE_EVENT 0x0000
 #define QT_CLOSE_EVENT  0x0001
 #define QT_EXPOSE_EVENT 0x0002
@@ -301,11 +294,23 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Stage-specific API.
     // This is new API (not inherited) for this particular stage type.
 
-    // addSet() registers a new set with this stage.
+    /**
+     * @brief Register a new Set with this Stage.
+     *
+     * @param set A pointer to the Set to register.
+     *
+     * @return A pointer to a MleSchedulerItem for the scheduled
+     * render callaback is returned.
+     */
     virtual MleSchedulerItem *addSet(void (*render)(MleSet *),MleSet *set);
 
-    // Called by a set when it's camera moves.
-    void setCameraMoved(MleSet *set, SoCamera *cam);
+    /**
+     * @brief Called by a Set when it's camera moves.
+     *
+     * @param set The associated Set.
+     * @param camera The Inventor camera.
+     */
+    void setCameraMoved(MleSet *set, SoCamera *camera);
 
 #ifdef MLE_SOQT
     /**
@@ -317,16 +322,22 @@ class REHEARSAL_API MleIvStage : public MleStage
     { m_shellParent = parent; }
 #endif /* MLE_SOQT */
 
-    // Initializes platform-specific data for this stage.
-    // Returns pointer to the initialized platform-specific data structure.
+    /**
+     * @brief Initializes platform-specific data for the stage.
+     *
+     * @return A pointer to the initialized platform-specific data structure
+     * is returned.
+     */
     void *initPlatform(void);
 
+#ifdef MLE_SOQT
     /**
      * @brief Exit the stage.
      *
      * @param event A pointer to the QtEvent generating an exit event.
      */
     static void doExit(QEvent *event);
+#endif /* MLE_SOQT */
 
     // Beginning of properties.
 
