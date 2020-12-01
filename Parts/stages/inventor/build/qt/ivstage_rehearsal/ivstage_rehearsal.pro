@@ -44,11 +44,13 @@ SOURCES += \
     $$PWD/../../../src/Snapper.cxx \
     $$PWD/../../../src/Source.cxx \
     $$PWD/../../../src/SpotMarker.cxx \
-    $$PWD/../../../src/Target.cxx
+    $$PWD/../../../src/Target.cxx \
+    $$PWD/../../../src/QtStageWindow.cxx
 
 HEADERS += \
     $$PWD/../../../include/mle/MleIvStage.h \
-    $$PWD/../../../include/mle/ivstage.h
+    $$PWD/../../../include/mle/ivstage.h \
+    $$PWD/../../../include/mle/QtStageWindow.h
 
 # Default rules for deployment.
 unix {

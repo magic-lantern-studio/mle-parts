@@ -22,7 +22,9 @@ INCLUDEPATH += $$PWD/../../../../../common/include /opt/MagicLantern/include /us
 DEFINES += \
     MLE_NOT_DLL \
     MLE_DIGITAL_WORKPRINT \
-    MLE_REHEARSAL
+    MLE_REHEARSAL \
+    MLE_QT \
+    MLE_SOQT
 
 SOURCES += \
     $$PWD/../../../../MleIv3dColorMapMediaRef.cxx

@@ -57,6 +57,7 @@
 #if defined(__linux__)
 #if defined(MLE_SOQT)
 #include <QtGlobal>
+#include <QEvent>
 #include <Inventor/Qt/viewers/SoQtFullViewer.h>
 #else
 #include <Inventor/Xt/viewers/SoXtFullViewer.h>
@@ -66,8 +67,8 @@
 // Include Magic Lantern header files.
 #include "mle/mlTypes.h"
 
-//#include "mle/MleStage.h"
 #include "mle/MleScheduler.h"
+#include "mle/MleEvent.h"
 
 #include "math/vector.h"
 
@@ -120,6 +121,22 @@ class MleSet;
 class MleRole;
 class MleSchederItem;
 class Nudger;
+
+#if defined(MLE_SOQT)
+// Global declaration for Magic Lantern Qt events.
+#if 0
+REHEARSAL_API MleEvent QT_RESIZE_EVENT = 0x0000;
+REHEARSAL_API MleEvent QT_CLOSE_EVENT  = 0x0001;
+REHEARSAL_API MleEvent QT_EXPOSE_EVENT = 0x0002;
+REHEARSAL_API MleEvent QT_MOUSE_EVENT  = 0x0003;
+REHEARSAL_API MleEvent QT_PAINT_EVENT  = 0x0004;
+#endif
+#define QT_RESIZE_EVENT 0x0000
+#define QT_CLOSE_EVENT  0x0001
+#define QT_EXPOSE_EVENT 0x0002
+#define QT_MOUSE_EVENT  0x0003
+#define QT_PAINT_EVENT  0x0004
+#endif /* MLE_SOQT */
 
 
 class REHEARSAL_API MleIvStage : public MleStage
@@ -218,7 +235,7 @@ class REHEARSAL_API MleIvStage : public MleStage
 #endif /* 0 */
     
     // Sets/returns whether scale snapping is enabled.
-    // XXX note not in funcs list / stage base class
+    // Todo: note not in funcs list / stage base class
     void enableScaleSnapping(MlBoolean flag);
 
     MlBoolean isScaleSnappingEnabled() const;
@@ -258,7 +275,6 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     virtual void getBgndColor(float* color); 
 
-
     // Horizon grid.
     virtual void setHorizonGrid(int onOff);
 
@@ -283,7 +299,7 @@ class REHEARSAL_API MleIvStage : public MleStage
 #endif /* MLE_REHEARSAL */
     
     // Stage-specific API.
-    //   This is new API (not inherited) for this particular stage type.
+    // This is new API (not inherited) for this particular stage type.
 
     // addSet() registers a new set with this stage.
     virtual MleSchedulerItem *addSet(void (*render)(MleSet *),MleSet *set);
@@ -291,10 +307,26 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Called by a set when it's camera moves.
     void setCameraMoved(MleSet *set, SoCamera *cam);
 
+#ifdef MLE_SOQT
+    /**
+     * @brief Set the shell parent widget.
+     *
+     * @param parent The widget to set as the pareent of the stage.
+     */
+    void setShellParent(QWidget *parent)
+    { m_shellParent = parent; }
+#endif /* MLE_SOQT */
+
     // Initializes platform-specific data for this stage.
     // Returns pointer to the initialized platform-specific data structure.
     void *initPlatform(void);
 
+    /**
+     * @brief Exit the stage.
+     *
+     * @param event A pointer to the QtEvent generating an exit event.
+     */
+    static void doExit(QEvent *event);
 
     // Beginning of properties.
 
@@ -340,10 +372,10 @@ class REHEARSAL_API MleIvStage : public MleStage
     SoSeparator *m_sets;
 
     // This is a local struct definition to bundle information for the
-    //   Inventor callback node.  It contains information about the
-    //   set, so the set rendering function can be called during
-    //   Inventor scene graph traversal.  In this Inventor stage, only
-    //   2D set is added as Inventor callback node.
+    // Inventor callback node.  It contains information about the
+    // set, so the set rendering function can be called during
+    // Inventor scene graph traversal.  In this Inventor stage, only
+    // 2D set is added as Inventor callback node.
     typedef struct _SetInfo {
         void (*func)(MleSet *);
         MleSet *set;
@@ -378,8 +410,8 @@ class REHEARSAL_API MleIvStage : public MleStage
     SoCube *m_manipHiddenCube;
     SbMatrix m_manipNorm;
     
-    // switch to turn horizon grid on/off
-    SoSwitch        *m_gridSwitch;
+    // Switch to turn horizon grid on/off
+    SoSwitch *m_gridSwitch;
 
     SoSwitch *m_cameraSwitch;
     SoPerspectiveCamera *m_perspectCamera;
@@ -407,8 +439,8 @@ class REHEARSAL_API MleIvStage : public MleStage
     SoCamera * getCamera();
 
     // SetActiveRole() is called from the event callback to
-    //   identify the active role.  A manip is activated and
-    //   configured.
+    // identify the active role.  A manip is activated and
+    // configured.
     void setActiveRole(MleSet *set,MleRole *role, int cbFlag=1);
     void setActiveSet(MleSet *set);
 
@@ -442,15 +474,27 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Update() is the function the stage registers with the scheduler.
     static void update(MleIvStage *stage);
 
-    // setCB() is the callback for the Inventor callback node
-    //   used to invoke a set.  Only the 2D set uses this in
-    //   this stage.
+    /**
+     * This callback is the Inventor callback node
+     * used to invoke a set.  Only the 2D set uses this in
+     * this stage.
+     */
     static void setCB(void *data,SoAction *action);
 
     // eventHandler() is the callback for Inventor event handling.
 #if defined(__linux__)
 #if defined(MLE_SOQT)
     static int eventHandler(MleIvStage *stage,QEvent *event);
+
+    /**
+     * This callback is used to capture the close message. It is called
+     * via the event dispatch manager.
+     *
+     * @param event The Magic Lantern event.
+     * @param callData Call data for the event callback.
+     * @param clientData Client data for the event callback
+     */
+    static int closeEventCB(MleEvent event,void *callData,void *clientData);
 #else
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
 #endif /* Qt */

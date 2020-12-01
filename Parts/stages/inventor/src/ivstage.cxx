@@ -117,6 +117,7 @@
 
 #include "mle/MleDirector.h"
 #include "mle/MleScheduler.h"
+#include "mle/MleEventDispatcher.h"
 #include "mle/MleSet.h"
 
 #if defined(__linux__)
@@ -186,7 +187,7 @@ MleIvStage::initClass(void)
 }
 
 void
-MleIvStage::resolveEdit(const char *property)
+MleIvStage::resolveEdit(const char * /*property*/)
 {
 }
 
@@ -205,14 +206,48 @@ MleIvStage::MleIvStage(void)
 {
 
 // This is a little trickery to put rehearsal stage construction into an
-//   init() procedure, and still allow the same file to be compiled without
-//   rehearsal with stage construction in the constructor.  The reason is
-//   that we need to create the stage to talk to it (configure it), but
-//   some configuration options (offscreen, size, etc.) can only be applied
-//   at creation.  This is the type of thing that goes into constructors,
-//   but we don't want to clutter up our runtime interface with rehearsal
-//   parameters.
+// init() procedure, and still allow the same file to be compiled without
+// rehearsal with stage construction in the constructor.  The reason is
+// that we need to create the stage to talk to it (configure it), but
+// some configuration options (offscreen, size, etc.) can only be applied
+// at creation.  This is the type of thing that goes into constructors,
+// but we don't want to clutter up our runtime interface with rehearsal
+// parameters.
 #if defined(MLE_REHEARSAL)
+    m_shellParent = NULL;
+
+    m_viewer = NULL;
+    m_examVwr = NULL;
+    m_flyVwr = NULL;
+    m_planeVwr = NULL;
+
+    m_toolRoot = NULL;
+    m_snapper = NULL;
+    m_target = NULL;
+    m_source = NULL;
+
+    eventCallback = NULL;
+
+    m_manipSwitch = NULL;
+    m_manipGroup = NULL;
+    m_manip = NULL;
+    m_transManip = NULL;
+    m_manipPath = NULL;
+    m_manipHiddenCubeTranslation = NULL;
+    m_manipHiddenCube = NULL;
+
+    m_gridSwitch = NULL;
+
+    m_cameraSwitch = NULL;
+    m_perspectCamera = NULL;
+    m_orthoCamera = NULL;
+    m_cameraSensor = NULL;
+
+    m_nudger = NULL;
+
+    m_activeSet = NULL;
+    m_activeRole = NULL;
+
     m_offscreen = 0;
     m_setDrawOrder = NULL;
 }
@@ -222,16 +257,16 @@ MleIvStage::init(void)
 {
 #endif /* MLE_REHEARSAL initialization trickery */
 
-#if defined(MLE_REHEARSAL)
-    // Initialize variables.
-    m_activeRole = NULL;
-    m_activeSet = NULL;
-#endif /* MLE_REHEARSAL */
-
 #if defined(__linux__)
 #if defined(MLE_SOQT)
     // Initialize Inventor and Qt.
-    QWidget *mainWindow = SoQt::init("Magic Lantern");
+    QWidget *mainWindow;
+    if (m_shellParent == NULL) {
+        mainWindow = SoQt::init("Magic Lantern");
+    } else {
+        SoQt::init(m_shellParent);
+        mainWindow = m_shellParent;
+    }
 #else
     // Initialize Inventor and Xt.
     Widget mainWindow = SoXt::init("Magic Lantern");
@@ -613,6 +648,16 @@ MleIvStage::init(void)
     // Schedule the rendering function.
     g_theTitle->m_theScheduler->insertFunc(
         PHASE_STAGE,(MleSchedulerFunc)update,this,this);
+
+#if defined(MLE_SOQT)
+    // Declare local variables
+    MleCallbackId cbId;
+
+    // Insert close callback into event dispatch manager.
+    MleEvent closeEvent = QT_CLOSE_EVENT;
+    cbId = g_theTitle->m_theEventMgr->installEventCB(
+        closeEvent, MleIvStage::closeEventCB, (void *)this);
+#endif /* MLE_SOQT */
 }
 
 MleIvStage::~MleIvStage(void)
@@ -826,6 +871,8 @@ MleIvStage::setCB(void *data,SoAction *action)
 int
 MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
 {
+    printf("MleIvStage: INFO: Processing event: %d\n", event->type());
+
 #if defined(MLE_REHEARSAL)
     // Get stage size.
     int width,height;
@@ -841,6 +888,27 @@ MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
 
     // Deliver events to the player.
     return FALSE;
+}
+
+void
+MleIvStage::doExit(QEvent *event)
+{
+    //qDebug() << "MleIvStage: exit received Qt Close event.";
+    // Dispatch Magic Lantern close event.
+    g_theTitle->m_theEventMgr->dispatchEvent(QT_CLOSE_EVENT, NULL);
+}
+
+int
+MleIvStage::closeEventCB(MleEvent event,void *callData,void *clientData)
+{
+    // Declare local variables.
+    MleIvStage *theStage = (MleIvStage *)clientData;
+    //QtCallData *eventData = (QtCallData *)callData;
+
+    // Process the close event.
+    g_theTitle->m_quit = TRUE;
+
+    return 0;
 }
 #else
 // This function is the Inventor event handler.  It is Installed on the
@@ -1273,7 +1341,7 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 //
 // Control over IV viewers
 //
-// this routine has been copied to sgiivstage.c++ -- these two copies
+// this routine has been copied to ivstage.c++ -- these two copies
 // should be kept in sync.
 //
 
