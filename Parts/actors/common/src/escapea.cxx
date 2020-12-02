@@ -103,8 +103,10 @@ MleEscapeActor::resolveEdit(const char *)
 void
 MleEscapeActor::update(MleEscapeActor* /* self */)
 {
-    if (MleKeyboardPolled::g_keyboardManager // Make sure no one else deleted it
-        &&
+    // Make sure the keyboard manager exists.
+    if (MleKeyboardPolled::g_keyboardManager  &&
        (MleKeyboardPolled::g_keyboardManager->keyDown(MLE_KEY_Escape)))
-    g_theTitle->m_quit = TRUE;
+    {
+        g_theTitle->m_quit = TRUE;
+    }
 }

@@ -121,7 +121,6 @@
 #include "mle/MleSet.h"
 
 #if defined(__linux__)
-//#include "mle/ivplatform.h"
 #include "mle/mlPlatformData.h"
 #endif
 #if defined(WIN32)
@@ -871,7 +870,17 @@ MleIvStage::setCB(void *data,SoAction *action)
 int
 MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
 {
-    printf("MleIvStage: INFO: Processing event: %d\n", event->type());
+    QEvent::Type type = event->type();
+    printf("MleIvStage: INFO: Processing event: %d\n", type);
+
+    if (type == (QEvent::KeyPress))
+    {
+        // Dispatch Magic Lantern key down event.
+        g_theTitle->m_theEventMgr->dispatchEvent(Qt::Key_Down, event);
+    } else if (type == QEvent::KeyRelease) {
+        // Dispatch Magic Lantern key up event.
+        g_theTitle->m_theEventMgr->dispatchEvent(Qt::Key_Up, event);
+    }
 
 #if defined(MLE_REHEARSAL)
     // Get stage size.

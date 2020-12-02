@@ -26,7 +26,8 @@ INCLUDEPATH += \
 DEFINES += \
     MLE_NOT_DLL \
     MLE_DIGITAL_WORKPRINT \
-    MLE_REHEARSAL
+    MLE_REHEARSAL \
+    MLE_QT
 
 SOURCES += \
     $$PWD/../../../../../common/src/escapea.cxx
