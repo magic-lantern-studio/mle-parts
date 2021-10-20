@@ -54,7 +54,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 #include <QCoreApplication>
 #else
@@ -66,7 +66,7 @@
 #include <Inventor/SoPickedPoint.h>
 //#include <Inventor/SoNewManips.h>
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 #include <Inventor/Qt/SoQt.h>
 #include <Inventor/Qt/viewers/SoQtExaminerViewer.h>
@@ -120,7 +120,7 @@
 #include "mle/MleEventDispatcher.h"
 #include "mle/MleSet.h"
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #include "mle/mlPlatformData.h"
 #endif
 #if defined(WIN32)
@@ -156,7 +156,7 @@
 
 MLE_STAGE_SOURCE(MleIvStage,MleStage);
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 static void _processQtEvents()
 {
@@ -256,7 +256,7 @@ MleIvStage::init(void)
 {
 #endif /* MLE_REHEARSAL initialization trickery */
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     // Initialize Inventor and Qt.
     QWidget *mainWindow;
@@ -285,7 +285,7 @@ MleIvStage::init(void)
 #endif /* WIN32 */
 
     // Put the window offscreen if asked.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     QWidget *parent = mainWindow;
 #else
@@ -298,7 +298,7 @@ MleIvStage::init(void)
 #if defined(MLE_REHEARSAL)
     if ( m_offscreen )
     {
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         // ToDo: determine what to do if the window is to be placed offscreen.
 #else
@@ -362,7 +362,7 @@ MleIvStage::init(void)
     m_shellParent = parent;
 
     // Create the main window and rendering area.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_examVwr = new SoQtExaminerViewer(parent);
 #else
@@ -384,7 +384,7 @@ MleIvStage::init(void)
     
 #else /* MLE_REHEARSAL */
     // Not a rehearsal - no true iv viewer.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_viewer = new SoXtRenderArea(parent);
 #else
@@ -403,7 +403,7 @@ MleIvStage::init(void)
 #endif /* MLE_REHEARSAL */
     m_viewer->setTitle("Magic Lantern - Inventor Stage");
     m_viewer->setSize(SbVec2s(640,480));
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
 #else
@@ -463,7 +463,7 @@ MleIvStage::init(void)
 
     // Be sure new xform2manip/dragger classes.
     // are init'd (SoNewManips seems to do this for CosmoCreate3d)
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
     //SoNewManips::init();
 #endif /* __linux__ */
     // Note: Coin3D library modifications initializes the new manips.
@@ -610,7 +610,7 @@ MleIvStage::init(void)
     // Realize all windows if not offscreen.
     if ( ! m_offscreen )
 #endif /* MLE_REHEARSAL */
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         SoQt::show(mainWindow);
 #else
@@ -624,7 +624,7 @@ MleIvStage::init(void)
     // Initialize platform data.
     g_theTitle->m_platformData = initPlatform();
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     // Flush the Qt event queue.
     _processQtEvents();
@@ -680,7 +680,7 @@ MleIvStage::~MleIvStage(void)
 void*
 MleIvStage::initPlatform(void)
 {
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
 #endif /* __linux__ */
@@ -696,7 +696,7 @@ MleIvStage::initPlatform(void)
 #endif /* WIN32 */
     MLE_ASSERT(data->m_widget);
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     // Provide users with the application context.
     // ToDo: not sure if we need something like this for Qt.
@@ -718,7 +718,7 @@ MleIvStage::initPlatform(void)
     return((void *) data);
 }
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_REHEARSAL)
 #if 0
 // X event handling: we call SoDB::doSelect() so that inventor
@@ -865,7 +865,7 @@ MleIvStage::setCB(void *data,SoAction *action)
 #endif /* MLE_REHEARSAL bounding box action */
 }
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 int
 MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
@@ -1076,7 +1076,7 @@ MleIvStage::update(MleIvStage * stage)
     stage->m_viewer->render();
 
     // Process pending events.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     _processQtEvents();
 #else
@@ -1135,7 +1135,7 @@ MleIvStage::edit(void)
 {
     MLE_ASSERT(m_editMode);
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     // Process pending events.
     QCoreApplication::processEvents();
@@ -1161,7 +1161,7 @@ MleIvStage::edit(void)
 #endif /* WIN32 */
 }
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if ! defined (MLE_SOQT)
 int 
 MleIvStage::getFD()
@@ -1244,7 +1244,7 @@ MleIvStage::deactivateManipulator(MleActor *actor,int invokeCallback)
     }
 }
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined (MLE_SOQT)
 QWidget *
 MleIvStage::getWindow(void)
@@ -1356,7 +1356,7 @@ const char** MleIvStage::getFunctionAttributes(char* functionName)
 
 int MleIvStage::setViewer(const char* viewerName)
 {
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtFullViewer *oldViewer = m_viewer;
 #else
@@ -1372,7 +1372,7 @@ int MleIvStage::setViewer(const char* viewerName)
         m_viewer = m_flyVwr;
     else if (!strcmp(viewerName, STAGE_VIEWER_PLANE))
         m_viewer = m_planeVwr;
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
     //else if (!strcmp(viewerName, STAGE_VIEWER_WALK))
     //    m_viewer = m_walkVwr;
 #endif /* __linux__ */
@@ -1403,7 +1403,7 @@ int MleIvStage::setViewer(const char* viewerName)
         m_viewer->setViewing( oldViewer->isViewing() );
         m_viewer->setSeekTime( oldViewer->getSeekTime() );    
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
 #else
@@ -1417,7 +1417,7 @@ int MleIvStage::setViewer(const char* viewerName)
         m_viewer->show();
         oldViewer->hide();
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         m_viewer->setDrawStyle(SoQtViewer::STILL,
             oldViewer->getDrawStyle(SoQtViewer::STILL));
@@ -1442,7 +1442,7 @@ int MleIvStage::setViewer(const char* viewerName)
 
         m_viewer->setSceneGraph(m_root);
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         // Flush the Qt event queue.
         QCoreApplication::processEvents();
@@ -2532,7 +2532,7 @@ void MleIvStage::enableSelectionCallbacks(MlBoolean onOff)
 // Sets rendering mode for entire stage
 void MleIvStage::setRenderMode(char *renderMode)
 {
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtViewer::DrawStyle style;
     if (!strcmp(renderMode, RENDER_AS_IS))
@@ -2654,7 +2654,7 @@ void MleIvStage::setRenderMode(char *renderMode)
 
 const char * MleIvStage::getRenderMode() const
 {
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     switch (m_viewer->getDrawStyle(SoQtViewer::STILL))
     {
@@ -3044,7 +3044,6 @@ MleIvStage::updateTargetAndSource()
 /////////////////////////////////////////////////////////////////////////////
 
 #if 0
-
 void
 MleIvStage::enableGrid(Boolean flag)
 {

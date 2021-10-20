@@ -4,8 +4,6 @@
  * @file ivstage.h
  * @ingroup MlParts
  *
- * @author Mark S. Millard
- *
  * This file defines the Inventor Stage.
  */
 
@@ -13,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2020 Wizzer Works
+// Copyright (c) 2017-2021 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +52,7 @@
 #include <windows.h>
 #include <Inventor/Win/viewers/SoWinFullViewer.h>
 #endif /* WIN32 */
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 #include <QtGlobal>
 #include <QEvent>
@@ -79,7 +77,7 @@
 #endif /* ! WIN32 */
 
 #if defined(MLE_REHEARSAL)
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 class SoQtRenderArea;
 #else
@@ -171,7 +169,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     virtual void edit(void);
     
     // Configuration.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if ! defined(MLE_SOQT)
     virtual int getFD();
 #endif
@@ -181,7 +179,7 @@ class REHEARSAL_API MleIvStage : public MleStage
 
     virtual void getSize(int *width,int *height);
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     virtual QWidget *getWindow(void);
 #else
@@ -349,7 +347,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     // Our viewer is a full inventor viewer for rehearsal, but for
     // runtime is just a render area.
 #if defined(MLE_REHEARSAL)
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtFullViewer *m_viewer;
     SoQtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
@@ -366,7 +364,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     SoWinFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
 #endif /* WIN32 */
 #else /* MLE_REHEARSAL */
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtRenderArea *m_viewer;
 #else
@@ -393,7 +391,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     } SetInfo;
 
 #if defined(MLE_REHEARSAL)
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     QWidget *m_shellParent;
 #else
@@ -493,7 +491,7 @@ class REHEARSAL_API MleIvStage : public MleStage
     static void setCB(void *data,SoAction *action);
 
     // eventHandler() is the callback for Inventor event handling.
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     static int eventHandler(MleIvStage *stage,QEvent *event);
 
