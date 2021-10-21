@@ -39,8 +39,12 @@ HEADERS += \
     $$PWD/../../../../mle/iv3dset.h \
     $$PWD/../../../../mle/Mle3dSet.h
 
-
 WORKPRINTS += $$PWD/../../../../workprints/MleIv3dSet.wpf
+
+macx {
+    # Set the LFLAGS so that dynamic libraries behave like Linux DSOs.
+    QMAKE_LFLAGS += -undefined suppress -flat_namespace
+}
 
 # Default rules for deployment.
 unix {
