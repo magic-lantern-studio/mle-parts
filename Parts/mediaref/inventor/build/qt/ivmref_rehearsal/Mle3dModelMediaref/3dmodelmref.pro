@@ -33,6 +33,10 @@ HEADERS += \
     $$PWD/../../../../../common/include/mle/3dmodelm.h \
     $$PWD/../../../../../common/include/mle/Mle3dModelMediaRef.h \
 
+macx {
+    # Set the LFLAGS so that dynamic libraries behave like Linux DSOs.
+    QMAKE_LFLAGS += -undefined suppress -flat_namespace
+}
 
 # Default rules for deployment.
 unix {

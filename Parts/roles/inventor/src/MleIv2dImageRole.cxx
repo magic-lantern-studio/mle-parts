@@ -5,16 +5,13 @@
  * @ingroup MleParts
  *
  * This file implements the 2D Image Role targeting the Inventor platform.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017 Wizzer Works
+// Copyright (c) 2017-2021 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +46,11 @@
 #endif /* WIN32 */
 
 // Include system header files.
+#if defined(__APPLE__)
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 // Include Magic Lantern header files.
 #include "mle/MleLoad.h"
