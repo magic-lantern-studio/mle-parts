@@ -1,0 +1,47 @@
+<?eclipse.ant.import?>
+<project name="com.wizzer.mle.parts.stages.createjar">
+    <!-- Set up the 'env' prefix for environment variables -->
+    <property environment="env"/>
+
+    <!-- Abort the build if MLE_HOME is not set -->
+    <target name="check-MLE_HOME" unless="env.MLE_HOME">
+        <fail message="MLE_HOME must be set!"/>
+    </target>
+
+    <!-- Create the Jar in $MLE_HOME/lib/java/runtime -->
+    <target name="create-jar" description="Create Jar file" depends="check-MLE_HOME,build">
+        <jar destfile="${env.MLE_HOME}/lib/java/runtime/stages.jar">
+            <fileset dir="bin" excludes="**/*.html"/>
+            <fileset dir="src" excludes="**/*.html"/>
+            <manifest>
+                <attribute name="Manifest-Version"
+                           value="1.0"/>
+                <attribute name="Created-By"
+                           value="Wizzer Works"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Delete the Jar file -->
+    <target name="delete-jar" description="Delete Jar file" depends="check-MLE_HOME">
+        <delete file="${env.MLE_HOME}/lib/java/runtime/stages.jar"/>
+    </target>
+
+    <!-- Create the Jar Javadoc in $MLE_HOME/lib/java/runtime -->
+    <target name="create-jardoc" description="Create Jar Javadoc file" depends="check-MLE_HOME">
+        <jar destfile="${env.MLE_HOME}/lib/java/runtime/stagesdoc.jar">
+            <fileset dir="doc"/>
+            <manifest>
+                <attribute name="Manifest-Version"
+                           value="1.0"/>
+                <attribute name="Created-By"
+                           value="Wizzer Works"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Delete the Jar Javadoc file -->
+    <target name="delete-jardoc" description="Delete Jar Javadoc file" depends="check-MLE_HOME">
+        <delete file="${env.MLE_HOME}/lib/java/runtime/stagesdoc.jar"/>
+    </target>
+</project>
