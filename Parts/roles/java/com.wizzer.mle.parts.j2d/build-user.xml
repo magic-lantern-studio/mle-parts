@@ -11,8 +11,8 @@
     <!-- Create the Jar in $MLE_HOME/lib/java/runtime -->
     <target name="create-jar" description="Create Jar file" depends="check-MLE_HOME,build">
         <jar destfile="${env.MLE_HOME}/lib/java/runtime/roles.jar">
-            <fileset dir="bin" excludes="**/*.html"/>
-            <fileset dir="src" excludes="**/*.html"/>
+            <fileset dir="${env.MLE_HOME}/Parts/roles/java/com.wizzer.mle.parts.j2d/bin" excludes="**/*.html"/>
+            <fileset dir="${env.MLE_HOME}/Parts/roles/java/com.wizzer.mle.parts.j2d/src" excludes="**/*.html"/>
             <manifest>
                 <attribute name="Manifest-Version"
                            value="1.0"/>
@@ -30,7 +30,7 @@
     <!-- Create the Jar Javadoc in $MLE_HOME/lib/java/runtime -->
     <target name="create-jardoc" description="Create Jar Javadoc file" depends="check-MLE_HOME">
         <jar destfile="${env.MLE_HOME}/lib/java/runtime/rolesdoc.jar">
-            <fileset dir="doc"/>
+            <fileset dir="${env.MLE_HOME}/Parts/roles/java/com.wizzer.mle.parts.j2d/doc"/>
             <manifest>
                 <attribute name="Manifest-Version"
                            value="1.0"/>
