@@ -11,8 +11,8 @@
     <!-- Create the Jar in $MLE_HOME/lib/java/runtime -->
     <target name="create-jar" description="Create Jar file" depends="check-MLE_HOME,build">
         <jar destfile="${env.MLE_HOME}/lib/java/runtime/stages.jar">
-            <fileset dir="bin" excludes="**/*.html"/>
-            <fileset dir="src" excludes="**/*.html"/>
+            <fileset dir="${env.MLE_HOME}/Parts/stages/java/com.wizzer.mle.parts.stages/bin" excludes="**/*.html"/>
+            <fileset dir="${env.MLE_HOME}/Parts/stages/java/com.wizzer.mle.parts.stages/src" excludes="**/*.html"/>
             <manifest>
                 <attribute name="Manifest-Version"
                            value="1.0"/>
@@ -30,7 +30,7 @@
     <!-- Create the Jar Javadoc in $MLE_HOME/lib/java/runtime -->
     <target name="create-jardoc" description="Create Jar Javadoc file" depends="check-MLE_HOME">
         <jar destfile="${env.MLE_HOME}/lib/java/runtime/stagesdoc.jar">
-            <fileset dir="doc"/>
+            <fileset dir="${env.MLE_HOME}/Parts/stages/java/com.wizzer.mle.parts.stages/doc"/>
             <manifest>
                 <attribute name="Manifest-Version"
                            value="1.0"/>
