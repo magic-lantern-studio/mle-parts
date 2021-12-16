@@ -1,6 +1,6 @@
 #######################################
 # The directory for object files and libraries of object code
-libdir = $(exec_prefix)/lib/mle/rn=untime
+libdir = $(exec_prefix)/lib/mle/runtime
 
 #######################################
 # The list of libraries we are building seperated by spaces.
