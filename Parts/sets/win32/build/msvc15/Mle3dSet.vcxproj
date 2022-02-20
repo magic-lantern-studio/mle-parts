@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FFF5400C-0F23-4781-A36A-CBA00021B96F}</ProjectGuid>
-    <RootNamespace>Mle2dImageRole</RootNamespace>
+    <ProjectGuid>{11799B62-F1AC-4474-8635-8DA7B591CA91}</ProjectGuid>
+    <RootNamespace>Mle3dSet</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,16 +70,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dImageRoleDebug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dImageRoleDebug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dImageRoleDebug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dImageRoleDebug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dImageRoleRelease\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dImageRoleRelease\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dImageRoleRelease\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dImageRoleRelease\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
   </PropertyGroup>
@@ -89,23 +89,21 @@
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Debug/Mle2dImageRole.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Debug/Mle3dSet.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;..\..\..\..\mediaref\inventor;..\..\..\..\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE3DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dSet.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -115,25 +113,26 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mlertd.lib;Mle2dImageMediaRefd.lib;Mle2dRoled.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRoled.dll</OutputFile>
+      <AdditionalDependencies>MleIvStaged.lib;Mle3dRoled.lib;mlertd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSetd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dSetd.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dSetd.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRoled.lib
+copy Win32\Debug\Mle3dSetd.lib $(MLE_HOME)\lib\rehearsal\Mle3dSetd.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRoled.dll
+copy Win32\Debug\Mle3dSetd.dll $(MLE_HOME)\bin\rehearsal\Mle3dSetd.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -142,22 +141,20 @@ copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\Debug/Mle2dImageRole.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Debug/Mle3dSet.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE3DSET_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dSet.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -167,24 +164,25 @@ copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mlertd.lib;Mle2dImageMediaRefd.lib;Mle2dRoled.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRoled.dll</OutputFile>
+      <AdditionalDependencies>MleIvStaged.lib;Mle3dRoled.lib;mlertd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSetd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dSetd.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dSetd.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRoled.lib
+copy x64\Debug\Mle3dSetd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dSetd.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRoled.dll
+copy x64\Debug\Mle3dSetd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSetd.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -194,22 +192,22 @@ copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
-      <TypeLibraryName>.\Release/Mle2dImageRole.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Release/Mle3dSet.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor;..\..\..\..\stages\rehearsal\include;..\..\..\..\props\common;..\..\..\..\mediaref\inventor;..\..\..\..\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE3DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dSet.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -218,24 +216,25 @@ copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mlert.lib;Mle2dImageMediaRef.lib;Mle2dRole.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.dll</OutputFile>
+      <AdditionalDependencies>MleIvStage.lib;Mle3dRole.lib;mlert.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dSet.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dSet.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRole.lib
+copy Win32\Release\Mle3dSet.lib $(MLE_HOME)\lib\rehearsal\Mle3dSet.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRole.dll
+copy Win32\Release\Mle3dSet.dll $(MLE_HOME)\bin\rehearsal\Mle3dSet.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -244,22 +243,22 @@ copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Ml
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MkTypLibCompatible>true</MkTypLibCompatible>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <TypeLibraryName>.\Release/Mle2dImageRole.tlb</TypeLibraryName>
+      <TypeLibraryName>.\Release/Mle3dSet.tlb</TypeLibraryName>
       <HeaderFileName>
       </HeaderFileName>
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE3DSET_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dSet.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -268,64 +267,57 @@ copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Ml
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mlert.lib;Mle2dImageMediaRef.lib;Mle2dRole.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.dll</OutputFile>
+      <AdditionalDependencies>MleIvStage.lib;Mle3dRole.lib;mlert.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dSet.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dSet.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/Mle3dSet.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dImageRoleRelease\Mle2dImageRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRole.lib
+copy x64\Release\Mle3dSet.lib $(MLE_HOME)\lib64\rehearsal\Mle3dSet.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRole.dll
+copy x64\Release\Mle3dSet.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSet.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Mle2dImageRole\Mle2dImageRole.cpp">
+    <ClCompile Include="..\..\..\inventor\iv3dset.cxx">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\..\..\inventor\src\MleIv2dImageRole.cxx">
+    <ClCompile Include="..\..\Mle3dSet\Mle3dSet.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\..\Mle2dImageRole\StdAfx.cpp">
+    <ClCompile Include="..\..\Mle3dSet\StdAfx.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -337,12 +329,12 @@ copy x64\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Ml
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\common\include\mle\2dimgd.h" />
-    <ClInclude Include="..\..\..\common\include\mle\Mle2dImageRole.h" />
-    <ClInclude Include="..\..\Mle2dImageRole\StdAfx.h" />
+    <ClInclude Include="..\..\..\inventor\mle\iv3dset.h" />
+    <ClInclude Include="..\..\..\inventor\mle\Mle3dSet.h" />
+    <ClInclude Include="..\..\Mle3dSet\StdAfx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Mle2dRole\ReadMe.txt" />
+    <None Include="..\..\Mle3dSet\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
