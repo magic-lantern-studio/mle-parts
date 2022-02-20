@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,27 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{20607A0B-6C76-4F59-BB23-BEC6C6896B8E}</ProjectGuid>
     <RootNamespace>inventor</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -77,7 +82,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor\include;..\..\..\..\props\common;..\..\..\..\mediaref\common\include;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -113,7 +118,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor\include;..\..\..\..\props\common;..\..\..\..\mediaref\common\include;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -149,7 +154,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor\include;..\..\..\..\props\common;..\..\..\..\mediaref\common\include;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -185,7 +190,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor\include;..\..\..\..\props\common;..\..\..\..\mediaref\common\include;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
