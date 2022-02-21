@@ -114,7 +114,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/section:".GLOBALS,rws" %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin3d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin4d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)/MleIvStaged.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -168,7 +168,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/section:".GLOBALS,rws" %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin3d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin4d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)/MleIvStaged.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -222,7 +222,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin3.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin4.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)/MleIvStage.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -273,7 +273,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin3.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin4.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)/MleIvStage.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
