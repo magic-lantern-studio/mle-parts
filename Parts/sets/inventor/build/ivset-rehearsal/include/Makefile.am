@@ -8,7 +8,7 @@ include_HEADERS = \
 	$(top_srcdir)/../../mle/Mle2dSet.h \
 	$(top_srcdir)/../../mle/Mle3dSet.h
 
-workprints_dir = $(prefix)/include/workprints
+workprints_dir = $(prefix)/include/workprints/Parts/sets/inventor
 
 workprints__DATA = \
 	$(top_srcdir)/../../workprints/MleIv2dSet.wpf \
