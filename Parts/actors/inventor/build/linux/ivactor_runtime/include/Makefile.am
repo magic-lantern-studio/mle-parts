@@ -10,7 +10,7 @@ include_HEADERS = \
 	$(top_srcdir)/../../../../common/include/mle/2dimga.h \
 	$(top_srcdir)/../../../../common/include/mle/Mle2dImageActor.h
 	
-workprints_dir = $(prefix)/include/workprints/Parts/actors
+workprints_dir = $(prefix)/include/Parts/actors/workprints
 
 workprints__DATA = \
 	$(top_srcdir)/../../../../workprints/Mle3dCameraActor.wpd \
