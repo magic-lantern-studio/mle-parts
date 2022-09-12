@@ -36,3 +36,15 @@ libmlloaders_la_CPPFLAGS = \
 	-I$(MLE_HOME)/ATK/common/include \
 	-I$(MLE_HOME)/ATK/linux/include
 
+if HAVE_LOG4CXX
+#libmlloaderss_SOURCES += \
+#    source.h \
+#    source.cpp
+	
+libmlloaders_CPPFLAGS += $(LOG4CXX_CFLAGS)
+#libmlloaders_CPPFLAGS += -DLINUX -D_REENTRANT -D_GNU_SOURCE -I/usr/local/include -I/usr/include/apr-1.0
+
+libmlloaders_LDFLAGS += -Wl,-rpath=/usr/local/lib
+libmlloaders_LDADD += $(LOG4CXX_LIBS)
+#libmlloaders_LDADD += -L/usr/local/lib -llog4cxx
+endif
