@@ -30,9 +30,9 @@ exampleProgram_LDADD = $(top_srcdir)/../ivstage-rehearsal/IvStage/.libs/MleIvSta
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/rehearsal/Mle3dTextureMapMediaRef.so \
-	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lDWP \
+	-L$(MLE_ROOT)/lib/mle/rehearsal -lmlert -lmlloaders -lDWP \
 	-L$(MLE_ROOT)/lib -lmlmath -lmlutil \
-	-lCoin -lSoXt -lXmu
+	-llog4cxx -lCoin -lSoXt -lXmu
 
 # Linker options for exampleProgram
 #exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/../ivstage-rehearsal/IvStage/.libs

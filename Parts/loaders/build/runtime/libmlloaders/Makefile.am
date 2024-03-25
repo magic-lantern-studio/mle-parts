@@ -13,7 +13,6 @@ lib_LTLIBRARIES = libmlloaders.la
 
 # Sources for libmlloaders
 libmlloaders_la_SOURCES = \
-    $(top_srcdir)/../../common/src/loadDwp.cxx \
     $(top_srcdir)/../../common/src/loadSet.cxx
 
 # Linker options libTestProgram

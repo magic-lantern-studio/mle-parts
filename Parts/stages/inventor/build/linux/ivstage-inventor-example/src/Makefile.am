@@ -30,9 +30,9 @@ exampleProgram_LDADD = $(top_srcdir)/../ivstage-inventor/IvStage/.libs/MleIvStag
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/inventor/Mle3dTextureMapMediaRef.so \
-	-L$(MLE_ROOT)/lib/mle/inventor -lmlert -lDWP \
+	-L$(MLE_ROOT)/lib/mle/inventor -lmlert -lmlloaders -lDWP \
 	-L$(MLE_ROOT)/lib -lmlmath -lmlutil \
-	-lCoin -lSoXt -lXmu
+	-llog4cxx -lCoin -lSoXt -lXmu
 
 # Linker options for exampleProgram
 #exampleProgram_LDFLAGS = -rpath `cd $(top_srcdir);pwd`/../ivstage-inventor/IvStage/.libs
