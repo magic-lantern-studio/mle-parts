@@ -28,3 +28,13 @@ libmlloaders_la_CPPFLAGS = \
     -I$(top_srcdir)/include \
     -I$(MLE_ROOT)/include \
     -std=c++17
+
+    
+libmlloaders_la_LIBDADD =
+
+if HAVE_LOG4CXX
+libmlloaders_la_CPPFLAGS += $(LOG4CXX_CFLAGS)
+libmlloaders_la_LDFLAGS += -Wl,-rpath=/usr/local/lib
+libmlloaders_la_LIBDADD += $(LOG4CXX_LIBS)
+endif
+    
