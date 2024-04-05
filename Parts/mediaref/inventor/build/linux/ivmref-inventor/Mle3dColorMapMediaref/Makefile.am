@@ -13,7 +13,7 @@ lib_LTLIBRARIES = Mle3dColorMapMediaRef.la
 
 # Sources for MleMediaref
 Mle3dColorMapMediaRef_la_SOURCES = \
-	../../../../../inventor/MleIv3dColorMapMediaRef.cxx
+	$(top_srcdir)/../../../../inventor/MleIv3dColorMapMediaRef.cxx
 
 # Linker options libTestProgram
 Mle3dColorMapMediaRef_la_LDFLAGS = -module -version-info 1:0:0

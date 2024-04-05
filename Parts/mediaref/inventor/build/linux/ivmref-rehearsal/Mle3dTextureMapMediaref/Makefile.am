@@ -13,7 +13,7 @@ lib_LTLIBRARIES = Mle3dTextureMapMediaRef.la
 
 # Sources for MleMediaref
 Mle3dTextureMapMediaRef_la_SOURCES = \
-	../../../../../inventor/MleIv3dTextureMapMediaRef.cxx
+	$(top_srcdir)/../../../../inventor/MleIv3dTextureMapMediaRef.cxx
 
 # Linker options libTestProgram
 Mle3dTextureMapMediaRef_la_LDFLAGS = -module -version-info 1:0:0

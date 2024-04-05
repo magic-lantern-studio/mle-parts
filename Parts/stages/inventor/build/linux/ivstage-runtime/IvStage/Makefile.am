@@ -13,14 +13,14 @@ lib_LTLIBRARIES = MleIvStage.la
 
 # Sources for MleIvStage
 MleIvStage_la_SOURCES = \
-	../../../../src/antirot.cxx \
-	../../../../src/CubeDragger.cxx \
-	../../../../src/CubeManip.cxx \
-	../../../../src/ivstage.cxx \
-	../../../../src/MultiSearchAction.cxx \
-	../../../../src/Source.cxx \
-	../../../../src/SpotMarker.cxx \
-	../../../../src/Target.cxx
+	$(top_srcdir)/../../../src/antirot.cxx \
+	$(top_srcdir)/../../../src/CubeDragger.cxx \
+	$(top_srcdir)/../../../src/CubeManip.cxx \
+	$(top_srcdir)/../../../src/ivstage.cxx \
+	$(top_srcdir)/../../../src/MultiSearchAction.cxx \
+	$(top_srcdir)/../../../src/Source.cxx \
+	$(top_srcdir)/../../../src/SpotMarker.cxx \
+	$(top_srcdir)/../../../src/Target.cxx
 	
 
 # Linker options libTestProgram

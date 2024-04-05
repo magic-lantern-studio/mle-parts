@@ -13,7 +13,7 @@ lib_LTLIBRARIES = Mle3dModelMediaRef.la
 
 # Sources for MleMediaref
 Mle3dModelMediaRef_la_SOURCES = \
-	../../../../../inventor/MleIv3dModelMediaRef.cxx
+	$(top_srcdir)/../../../../inventor/MleIv3dModelMediaRef.cxx
 
 # Linker options libTestProgram
 Mle3dModelMediaRef_la_LDFLAGS = -module -version-info 1:0:0
