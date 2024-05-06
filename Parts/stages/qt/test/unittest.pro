@@ -8,7 +8,7 @@ CONFIG(debug, debug|release) {
 # debug build
 unix:!macx: LIBS += \
     -L$$PWD/../../build-mleqtstage-Desktop-Debug/src -lqtstage \
-    -L/opt/MagicLantern/lib/mle/runtime -lmlert \
+    -L/opt/MagicLantern/lib/mle/runtime -lmlert -lmlloaders\
     -L/opt/MagicLantern/lib -lplayprint -lmlutil -lmlmath
 
 #INCLUDEPATH += $$PWD/../build/build-mleqtstage-Desktop_Qt_5_8_0_GCC_64bit-Debug
@@ -19,7 +19,7 @@ DEPENDPATH += $$PWD/../../build-mleqtstage-Desktop-Debug/src
 # release build
 unix:!macx: LIBS += \
     -L$$PWD/../../build-mleqtstage-Desktop-Release/src -lqtstage \
-    -L/opt/MagicLantern/lib/mle/runtime -lmlert \
+    -L/opt/MagicLantern/lib/mle/runtime -lmlert -lmlloaders \
     -L/opt/MagicLantern/lib -lplayprint -lmlutil -lmlmath
 
 #INCLUDEPATH += $$PWD/../build/build-mleqtstage-Desktop_Qt_5_8_0_GCC_64bit-Debug

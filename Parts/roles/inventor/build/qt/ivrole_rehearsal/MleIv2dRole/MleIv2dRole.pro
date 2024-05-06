@@ -49,4 +49,4 @@ unix {
     headers.files = $$HEADERS
     INSTALLS += target headers
 }
-!isEmpty(target.path): INSTALLS += target
+#!isEmpty(target.path): INSTALLS += target

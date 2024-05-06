@@ -3,15 +3,13 @@
 /**
  * @file loadSet.cxx
  * @ingroup MleFoundation
- *
- * @author Mark S. Millard
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2003-2020 Wizzer Works
+// Copyright (c) 2003-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +45,7 @@
 #include <mle/mlAssert.h>
 #include <mle/mlFileio.h>
 
-// Include Magic Lantern Player header files.
+// Include Magic Lantern Runtime Engine header files.
 #include "mle/MleLoad.h"
 #include "mle/MleSet.h"
 #include "mle/MleDirector.h"
