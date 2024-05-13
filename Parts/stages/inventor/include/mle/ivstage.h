@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2021 Wizzer Works
+// Copyright (c) 2017-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -390,15 +390,17 @@ class REHEARSAL_API MleIvStage : public MleStage
         MleSet *set;
     } SetInfo;
 
-#if defined(MLE_REHEARSAL)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
+    // The shell's parent widget for the Qt platform.
     QWidget *m_shellParent;
 #else
-    // Keeps track of the shell's widget.
+    // The shell's parent widget for non-Qt platform.
     Widget m_shellParent;
 #endif /* Qt */
 #endif /* __linux__ */
+
+#if defined(MLE_REHEARSAL)
 #if defined(WIN32)
     HWND m_shellParent;
 #endif /* WIN32 */

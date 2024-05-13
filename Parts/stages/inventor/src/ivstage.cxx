@@ -4,8 +4,6 @@
  * @file ivstage.cxx
  * @ingroup MlParts
  *
- * @author Mark S. Millard
- *
  * This file implements the Inventor Stage.
  */
 
@@ -13,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2020 Wizzer Works
+// Copyright (c) 2017-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -386,7 +384,7 @@ MleIvStage::init(void)
     // Not a rehearsal - no true iv viewer.
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
-    m_viewer = new SoXtRenderArea(parent);
+    m_viewer = new SoQtRenderArea(parent);
 #else
     m_viewer = new SoXtRenderArea(parent);
 #endif /* Qt */
