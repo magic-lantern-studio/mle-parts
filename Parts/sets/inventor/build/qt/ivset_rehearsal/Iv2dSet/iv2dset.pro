@@ -39,7 +39,9 @@ HEADERS += \
     $$PWD/../../../../mle/iv2dset.h \
     $$PWD/../../../../mle/Mle2dSet.h \
 
-WORKPRINTS += $$PWD/../../../../workprints/MleIv2dSet.wpf
+WORKPRINTS += \
+    $$PWD/../../../../workprints/MleIv2dSet.wpf \
+    $$PWD/../../../../../qt/workprints/MleQt2dSet.wpf
 
 macx {
     # Set the LFLAGS so that dynamic libraries behave like Linux DSOs.
