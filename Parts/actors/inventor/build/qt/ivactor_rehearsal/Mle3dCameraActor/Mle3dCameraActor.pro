@@ -36,6 +36,9 @@ HEADERS += \
     $$PWD/../../../../../common/include/mle/3dcama.h \
     $$PWD/../../../../../common/include/mle/Mle3dCameraActor.h \
 
+WORKPRINTS = \
+    $$PWD/../../../../../workprints/Mle3dCameraActor.wpd
+
 macx {
     # Set the LFLAGS so that dynamic libraries behave like Linux DSOs.
     QMAKE_LFLAGS += -undefined suppress -flat_namespace
@@ -46,6 +49,8 @@ unix {
     target.path = /opt/MagicLantern/lib/mle/qt/rehearsal
     headers.path = /opt/MagicLantern/include/mle
     headers.files = $$HEADERS
-    INSTALLS += target headers
+    workprints.path = /opt/MagicLantern/include/workprints/Parts/actors/workprints
+    workprints.files = $$WORKPRINTS
+    INSTALLS += target headers workprints
 }
 #!isEmpty(target.path): INSTALLS += target
