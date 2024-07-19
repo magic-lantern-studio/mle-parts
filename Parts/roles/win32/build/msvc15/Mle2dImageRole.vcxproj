@@ -70,18 +70,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dImageRoleDebug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dImageRoleDebug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dImageRoleDebug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dImageRoleDebug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle2dImageRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle2dImageRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle2dImageRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle2dImageRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dImageRoleRelease\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dImageRoleRelease\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dImageRoleRelease\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dImageRoleRelease\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle2dImageRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle2dImageRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle2dImageRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle2dImageRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>Mle2dImageRoled</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>Mle2dImageRoled</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -102,10 +108,10 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dImageRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -116,24 +122,24 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;Mle2dImageMediaRefd.lib;Mle2dRoled.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRoled.lib
+copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRoled.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRoled.dll
+copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -154,10 +160,10 @@ copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dImageRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -168,23 +174,23 @@ copy Win32\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;Mle2dImageMediaRefd.lib;Mle2dRoled.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dImageRoleDebug/Mle2dImageRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleDebug/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRoled.lib
+copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRoled.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRoled.dll
+copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -206,10 +212,10 @@ copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dImageRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -219,23 +225,23 @@ copy x64\Mle2dImageRoleDebug\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;Mle2dImageMediaRef.lib;Mle2dRole.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRole.lib
+copy Win32\Release\Mle2dImageRole\Mle2dImageRole.lib $(MLE_HOME)\lib\rehearsal\Mle2dImageRole.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRole.dll
+copy Win32\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dImageRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -256,10 +262,10 @@ copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Ml
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dImageRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dImageRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dImageRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dImageRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dImageRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -269,22 +275,22 @@ copy Win32\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\Ml
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;Mle2dImageMediaRef.lib;Mle2dRole.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dImageRoleRelease/Mle2dImageRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dImageRoleRelease\Mle2dImageRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRole.lib
+copy x64\Release\Mle2dImageRole\Mle2dImageRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRole.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dImageRoleRelease\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRole.dll
+copy x64\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

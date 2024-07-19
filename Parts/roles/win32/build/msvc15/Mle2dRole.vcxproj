@@ -70,18 +70,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dRoleRelease\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dRoleRelease\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle2dRoleRelease\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle2dRoleRelease\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle2dRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle2dRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle2dRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle2dRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dRoleDebug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dRoleDebug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle2dRoleDebug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle2dRoleDebug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle2dRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle2dRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle2dRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle2dRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>Mle2dRoled</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>Mle2dRoled</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -101,10 +107,10 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -114,23 +120,23 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dRoleRelease/Mle2dRole.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dRoleRelease\Mle2dRole.lib $(MLE_HOME)\lib\rehearsal\Mle2dRole.lib
+copy Win32\Release\Mle2dRole\Mle2dRole.lib $(MLE_HOME)\lib\rehearsal\Mle2dRole.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dRole.dll
+copy Win32\Release\Mle2dRole\Mle2dRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -151,10 +157,10 @@ copy Win32\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dRole.dl
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dRoleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -164,22 +170,22 @@ copy Win32\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin\rehearsal\Mle2dRole.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dRoleRelease/Mle2dRole.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dRoleRelease/Mle2dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dRoleRelease\Mle2dRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dRole.lib
+copy x64\Release\Mle2dRole\Mle2dRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dRole.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRole.dll
+copy x64\Release\Mle2dRole\Mle2dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -200,10 +206,10 @@ copy x64\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRole.dl
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dRoleDebug/Mle2dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -214,24 +220,24 @@ copy x64\Mle2dRoleRelease\Mle2dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRole.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dRoleDebug/Mle2dRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dRoleDebug/Mle2dRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dRoleDebug/Mle2dRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dRoleDebug/Mle2dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle2dRoleDebug\Mle2dRoled.lib $(MLE_HOME)\lib\rehearsal\Mle2dRoled.lib
+copy Win32\Debug\Mle2dRole\Mle2dRoled.lib $(MLE_HOME)\lib\rehearsal\Mle2dRoled.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle2dRoleDebug\Mle2dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dRoled.dll
+copy Win32\Debug\Mle2dRole\Mle2dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -250,10 +256,10 @@ copy Win32\Mle2dRoleDebug\Mle2dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dRoled.dl
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_2DROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle2dRoleDebug/Mle2dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle2dRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle2dRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle2dRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle2dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle2dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle2dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -264,23 +270,23 @@ copy Win32\Mle2dRoleDebug\Mle2dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle2dRoled.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle2dRoleDebug/Mle2dRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle2dRoleDebug/Mle2dRoled.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\Mle2dRoleDebug/Mle2dRoled.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRoled.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle2dRoleDebug/Mle2dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle2dRole\Mle2dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle2dRoleDebug\Mle2dRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dRoled.lib
+copy x64\Debug\Mle2dRole\Mle2dRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dRoled.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle2dRoleDebug\Mle2dRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRoled.dll
+copy x64\Debug\Mle2dRole\Mle2dRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

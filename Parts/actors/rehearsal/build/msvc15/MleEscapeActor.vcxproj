@@ -69,18 +69,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\MleEscapeActor\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\MleEscapeActor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\MleEscapeActor\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\MleEscapeActor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\MleEscapeActor\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\MleEscapeActor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\MleEscapeActor\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\MleEscapeActor\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>MleEscapeActord</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>MleEscapeActord</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -100,10 +106,10 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/MleEscapeActor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\MleEscapeActor/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -113,23 +119,23 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)/lib/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleEscapeActor.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\$(Configuration)/MleEscapeActor.map</MapFileName>
-      <ImportLibrary>$(Platform)\$(Configuration)/MleEscapeActor.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy Win32\Release\MleEscapeActor.lib $(MLE_HOME)\lib\rehearsal
-copy Win32\Release\MleEscapeActor.dll $(MLE_HOME)\bin\rehearsal
+      <Command>copy Win32\Release\MleEscapeActor\MleEscapeActor.lib $(MLE_HOME)\lib\rehearsal
+copy Win32\Release\MleEscapeActor\MleEscapeActor.dll $(MLE_HOME)\bin\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
@@ -151,10 +157,10 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/MleEscapeActor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\MleEscapeActor/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -164,22 +170,22 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleEscapeActor.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\$(Configuration)/MleEscapeActor.map</MapFileName>
-      <ImportLibrary>$(Platform)\$(Configuration)/MleEscapeActor.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Release\MleEscapeActor.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\MleEscapeActor.dll $(MLE_HOME)\bin64\rehearsal
+      <Command>copy x64\Release\MleEscapeActor\MleEscapeActor.lib $(MLE_HOME)\lib64\rehearsal
+copy x64\Release\MleEscapeActor\MleEscapeActor.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
@@ -201,10 +207,10 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/MleEscapeActor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\MleEscapeActor/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -215,24 +221,24 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActord.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)/lib/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleEscapeActord.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\$(Configuration)/MleEscapeActord.map</MapFileName>
-      <ImportLibrary>$(Platform)\$(Configuration)/MleEscapeActord.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy Win32\Debug\MleEscapeActord.lib $(MLE_HOME)\lib\rehearsal
-copy Win32\Debug\MleEscapeActord.dll $(MLE_HOME)\bin\rehearsal
+      <Command>copy Win32\Debug\MleEscapeActor\MleEscapeActord.lib $(MLE_HOME)\lib\rehearsal
+copy Win32\Debug\MleEscapeActor\MleEscapeActord.dll $(MLE_HOME)\bin\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
@@ -252,10 +258,10 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <PreprocessorDefinitions>MLE_DEBUG;MLE_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_ESCAPEACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/MleEscapeActor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\MleEscapeActor/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\MleEscapeActor/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -266,23 +272,23 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActord.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleEscapeActord.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\$(Configuration)/MleEscapeActord.map</MapFileName>
-      <ImportLibrary>$(Platform)\$(Configuration)/MleEscapeActord.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/MleEscapeActor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Debug\MleEscapeActord.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\MleEscapeActord.dll $(MLE_HOME)\bin64\rehearsal
+      <Command>copy x64\Debug\MleEscapeActor\MleEscapeActord.lib $(MLE_HOME)\lib64\rehearsal
+copy x64\Debug\MleEscapeActor\MleEscapeActord.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>

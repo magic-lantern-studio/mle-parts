@@ -70,18 +70,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle3dRoleRelease\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle3dRoleRelease\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\Mle3dRoleRelease\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\Mle3dRoleRelease\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle3dRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle3dRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle3dRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle3dRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle3dRoleDebug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle3dRoleDebug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\Mle3dRoleDebug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\Mle3dRoleDebug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle3dRole\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle3dRole\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle3dRole\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle3dRole\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>Mle3dRoled</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>Mle3dRoled</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -101,10 +107,10 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle3dRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle3dRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle3droleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3drole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -114,25 +120,25 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;ivroles.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\Mle3dRoleRelease/Mle3dRole.map</MapFileName>
-      <ImportLibrary>$(Platform)\Mle3dRoleRelease/Mle3dRole.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle3dRoleRelease\Mle3dRole.lib $(MLE_HOME)\lib\rehearsal\Mle3dRole.lib
+copy Win32\Release\Mle3dRole\Mle3dRole.lib $(MLE_HOME)\lib\rehearsal\Mle3dRole.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin\rehearsal\Mle3dRole.dll
+copy Win32\Release\Mle3dRole\Mle3dRole.dll $(MLE_HOME)\bin\rehearsal\Mle3dRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -153,10 +159,10 @@ copy Win32\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin\rehearsal\Mle3dRole.dl
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle3dRoleRelease/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle3dRoleRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle3droleRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3drole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -166,24 +172,24 @@ copy Win32\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin\rehearsal\Mle3dRole.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;ivroles.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\Mle3dRoleRelease/Mle3dRole.map</MapFileName>
-      <ImportLibrary>$(Platform)\Mle3dRoleRelease/Mle3dRole.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle3dRoleRelease/Mle3dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle3dRoleRelease\Mle3dRole.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRole.lib
+copy x64\Release\Mle3dRole\Mle3dRole.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRole.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRole.dll
+copy x64\Release\Mle3dRole\Mle3dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRole.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -204,10 +210,10 @@ copy x64\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRole.dl
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle3dRoleDebug/Mle3dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle3dRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle3dRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle3dRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -218,26 +224,26 @@ copy x64\Mle3dRoleRelease\Mle3dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRole.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;ivrolesd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle3dRoleDebug/Mle3dRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle3dRoleDebug/Mle3dRoled.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\Mle3dRoleDebug/Mle3dRoled.map</MapFileName>
-      <ImportLibrary>$(Platform)\Mle3dRoleDebug/Mle3dRoled.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle3dRoleDebug/Mle3dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Mle3dRoleDebug\Mle3dRoled.lib $(MLE_HOME)\lib\rehearsal\Mle3dRoled.lib
+copy Win32\Debug\Mle3dRole\Mle3dRoled.lib $(MLE_HOME)\lib\rehearsal\Mle3dRoled.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Mle3dRoleDebug\Mle3dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle3dRoled.dll
+copy Win32\Debug\Mle3dRole\Mle3dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle3dRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -256,10 +262,10 @@ copy Win32\Mle3dRoleDebug\Mle3dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle3dRoled.dl
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;MLE_MAKE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\Mle3dRoleDebug/Mle3dRole.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\Mle3dRoleDebug/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\Mle3dRoleDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\Mle3dRoleDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dRole/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dRole/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dRole/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -270,25 +276,25 @@ copy Win32\Mle3dRoleDebug\Mle3dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle3dRoled.dl
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;ivrolesd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)/Mle3dRoleDebug/Mle3dRoled.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\Mle3dRoleDebug/Mle3dRoled.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\Mle3dRoleDebug/Mle3dRoled.map</MapFileName>
-      <ImportLibrary>$(Platform)\Mle3dRoleDebug/Mle3dRoled.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRoled.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\Mle3dRoleDebug/Mle3dRole.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dRole\Mle3dRole.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Mle3dRoleDebug\Mle3dRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRoled.lib
+copy x64\Debug\Mle3dRole\Mle3dRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRoled.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Mle3dRoleDebug\Mle3dRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRoled.dll
+copy x64\Debug\Mle3dRole\Mle3dRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRoled.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -70,18 +70,24 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>Mle3dTextureMapMediaRefd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>Mle3dTextureMapMediaRefd</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -100,10 +106,10 @@
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -114,25 +120,25 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Debug\Mle3dTextureMapMediaRefd.lib $(MLE_HOME)\lib\rehearsal\Mle3dTextureMapMediaRefd.lib
+copy Win32\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib $(MLE_HOME)\lib\rehearsal\Mle3dTextureMapMediaRefd.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin\rehearsal\Mle3dTextureMapMediaRefd.dll
+copy Win32\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin\rehearsal\Mle3dTextureMapMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -151,10 +157,10 @@ copy Win32\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin\rehearsal\Mle3dTex
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_MAKE_DLL;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_3DTEXTUREMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -165,24 +171,24 @@ copy Win32\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin\rehearsal\Mle3dTex
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRefd.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dTextureMapMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRefd.lib
+copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRefd.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRefd.dll
+copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -204,10 +210,10 @@ copy x64\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTex
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -217,24 +223,24 @@ copy x64\Debug\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTex
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Release\Mle3dTextureMapMediaRef.lib $(MLE_HOME)\lib\rehearsal\Mle3dTextureMapMediaRef.lib
+copy Win32\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib $(MLE_HOME)\lib\rehearsal\Mle3dTextureMapMediaRef.lib
 mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Release\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin\rehearsal\Mle3dTextureMapMediaRef.dll
+copy Win32\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin\rehearsal\Mle3dTextureMapMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -255,10 +261,10 @@ copy Win32\Release\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin\rehearsal\Mle3dTe
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
@@ -268,23 +274,23 @@ copy Win32\Release\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin\rehearsal\Mle3dTe
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/Mle3dTextureMapMediaRef.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
       <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dTextureMapMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRef.lib
+copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRef.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRef.dll
+copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
