@@ -13,7 +13,6 @@ lib_LTLIBRARIES = libmlloaders.la
 
 # Sources for libmlloaders
 libmlloaders_la_SOURCES = \
-    $(top_srcdir)/../../common/src/loadDwp.cxx \
     $(top_srcdir)/../../common/src/loadSet.cxx
 
 # Linker options libTestProgram
@@ -26,12 +25,5 @@ libmlloaders_la_CPPFLAGS = \
 	-DMLE_INTERNAL \
 	-DMLE_DIGITAL_PLAYPRINT \
     -I$(top_srcdir)/include \
-    -I$(MLE_HOME)/Core/util/common/include \
-	-I$(MLE_HOME)/Core/util/linux/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/common/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/linux/include \
-	-I$(MLE_HOME)/Core/mlert/common/include \
-	-I$(MLE_HOME)/Core/mlert/common/src/foundation \
-	-I$(MLE_HOME)/ATK/common/include \
-	-I$(MLE_HOME)/ATK/linux/include \
-	-I$(MLE_ROOT)/include
+	-I$(MLE_ROOT)/include \
+	-std=c++17

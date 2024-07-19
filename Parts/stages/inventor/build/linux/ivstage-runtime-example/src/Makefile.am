@@ -30,7 +30,7 @@ exampleProgram_LDADD = $(top_srcdir)/../ivstage-runtime/IvStage/.libs/MleIvStage
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dColorMapMediaRef.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dModelMediaRef.so \
 	$(MLE_ROOT)/lib/mle/runtime/Mle3dTextureMapMediaRef.so \
-	-L$(MLE_ROOT)/lib/mle/runtime -lmlert -lDPP -lplayprint \
+	-L$(MLE_ROOT)/lib/mle/runtime -lmlert -lmlloaders -lDPP -lplayprint \
 	-L$(MLE_ROOT)/lib -lmlmath -lmlutil \
 	-lCoin -lSoXt -lXmu
 

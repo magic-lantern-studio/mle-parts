@@ -26,11 +26,15 @@ libmlloaders_la_CPPFLAGS = \
 	-DMLE_INTERNAL \
 	-DMLE_DIGITAL_WORKPRINT \
     -I$(top_srcdir)/include \
-    -I$(MLE_HOME)/Core/util/common/include \
-	-I$(MLE_HOME)/Core/util/linux/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/common/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/linux/include \
-	-I$(MLE_HOME)/Core/mlert/common/include \
-	-I$(MLE_HOME)/Core/mlert/common/src/foundation \
-	-I$(MLE_HOME)/ATK/common/include \
-	-I$(MLE_HOME)/ATK/linux/include
+    -I$(MLE_ROOT)/include \
+    -std=c++17
+
+    
+libmlloaders_la_LIBDADD =
+
+if HAVE_LOG4CXX
+libmlloaders_la_CPPFLAGS += $(LOG4CXX_CFLAGS)
+libmlloaders_la_LDFLAGS += -Wl,-rpath=/usr/local/lib
+libmlloaders_la_LIBDADD += $(LOG4CXX_LIBS)
+endif
+    

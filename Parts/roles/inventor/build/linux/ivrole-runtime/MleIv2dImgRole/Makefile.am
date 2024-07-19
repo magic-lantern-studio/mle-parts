@@ -13,7 +13,7 @@ lib_LTLIBRARIES = Mle2dImgRole.la
 
 # Sources for MleIv2dRole
 Mle2dImgRole_la_SOURCES = \
-	../../../../src/MleIv2dImageRole.cxx
+	$(top_srcdir)/../../../src/MleIv2dImageRole.cxx
 	
 
 # Linker options MleIv2dRole

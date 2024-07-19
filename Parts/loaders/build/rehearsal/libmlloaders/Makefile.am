@@ -17,7 +17,7 @@ libmlloaders_la_SOURCES = \
     $(top_srcdir)/../../common/src/loadSet.cxx
 
 # Linker options libTestProgram
-libmlloaders_la_LDFLAGS =  -version-info 1:0:0
+libmlloaders_la_LDFLAGS = -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
@@ -27,12 +27,13 @@ libmlloaders_la_CPPFLAGS = \
 	-DMLE_REHEARSAL \
 	-DMLE_DIGITAL_WORKPRINT \
     -I$(top_srcdir)/include \
-    -I$(MLE_HOME)/Core/util/common/include \
-	-I$(MLE_HOME)/Core/util/linux/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/common/include \
-	-I$(MLE_HOME)/DigitalWorkprint/lib/linux/include \
-	-I$(MLE_HOME)/Core/mlert/common/include \
-	-I$(MLE_HOME)/Core/mlert/common/src/foundation \
-	-I$(MLE_HOME)/ATK/common/include \
-	-I$(MLE_HOME)/ATK/linux/include
+	-I$(MLE_ROOT)/include \
+	-std=c++17
 
+libmlloaders_la_LIBDADD =
+
+if HAVE_LOG4CXX
+libmlloaders_la_CPPFLAGS += $(LOG4CXX_CFLAGS)
+libmlloaders_la_LDFLAGS += -Wl,-rpath=/usr/local/lib
+libmlloaders_la_LIBDADD += $(LOG4CXX_LIBS)
+endif

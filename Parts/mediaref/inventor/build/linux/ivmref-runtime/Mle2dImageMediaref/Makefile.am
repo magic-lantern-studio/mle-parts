@@ -13,7 +13,7 @@ lib_LTLIBRARIES = Mle2dImageMediaRef.la
 
 # Sources for MleMediaref
 Mle2dImageMediaRef_la_SOURCES = \
-	../../../../../inventor/MleIv2dImageMediaRef.cxx
+	$(top_srcdir)/../../../../inventor/MleIv2dImageMediaRef.cxx
 
 # Linker options libTestProgram
 Mle2dImageMediaRef_la_LDFLAGS = -module -version-info 1:0:0

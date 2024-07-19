@@ -55,4 +55,4 @@ unix {
     workprints.files = $$WORKPRINTS
     INSTALLS += target headers workprints
 }
-!isEmpty(target.path): INSTALLS += target
+#!isEmpty(target.path): INSTALLS += target

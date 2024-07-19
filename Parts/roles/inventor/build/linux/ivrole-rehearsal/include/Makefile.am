@@ -39,3 +39,10 @@ include_HEADERS = \
 	$(top_srcdir)/../../../../common/include/mle/Mle3dRole.h \
 	$(top_srcdir)/../../../../common/include/mle/paletted.h \
 	$(top_srcdir)/../../../include/mle/MleIv3dRole.h
+
+workprints_dir = $(prefix)/include/Parts/roles/workprints
+
+workprints__DATA = \
+	$(top_srcdir)/../../../../workprints/Mle3dRole.wpd \
+	$(top_srcdir)/../../../../workprints/Mle2dImgRole.wpd
+
