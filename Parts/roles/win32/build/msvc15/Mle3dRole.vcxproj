@@ -190,6 +190,8 @@ copy Win32\Release\Mle3dRole\Mle3dRole.dll $(MLE_HOME)\bin\rehearsal\Mle3dRole.d
 copy x64\Release\Mle3dRole\Mle3dRole.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRole.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Release\Mle3dRole\Mle3dRole.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRole.dll
+mkdir $(MLE_HOME)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_HOME)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -295,6 +297,8 @@ copy Win32\Debug\Mle3dRole\Mle3dRoled.dll $(MLE_HOME)\bin\rehearsal\Mle3dRoled.d
 copy x64\Debug\Mle3dRole\Mle3dRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle3dRoled.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Debug\Mle3dRole\Mle3dRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle3dRoled.dll
+mkdir $(MLE_HOME)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_HOME)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

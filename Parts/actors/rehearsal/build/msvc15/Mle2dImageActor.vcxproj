@@ -189,6 +189,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <Command>copy x64\Debug\Mle2dImageActor\Mle2dImageActord.lib $(MLE_HOME)\lib64\rehearsal
 copy x64\Debug\Mle2dImageActor\Mle2dImageActord.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
+mkdir $(MLE_HOME)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_HOME)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -291,7 +293,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <Command>copy x64\Release\Mle2dImageActor\Mle2dImageActor.lib $(MLE_HOME)\lib64\rehearsal
 copy x64\Release\Mle2dImageActor\Mle2dImageActor.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-</Command>
+mkdir $(MLE_HOME)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_HOME)\include\Parts\actors\workprints</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

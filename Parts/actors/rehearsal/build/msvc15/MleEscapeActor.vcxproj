@@ -187,6 +187,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <Command>copy x64\Release\MleEscapeActor\MleEscapeActor.lib $(MLE_HOME)\lib64\rehearsal
 copy x64\Release\MleEscapeActor\MleEscapeActor.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
+mkdir $(MLE_HOME)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_HOME)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -290,6 +292,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <Command>copy x64\Debug\MleEscapeActor\MleEscapeActord.lib $(MLE_HOME)\lib64\rehearsal
 copy x64\Debug\MleEscapeActor\MleEscapeActord.dll $(MLE_HOME)\bin64\rehearsal
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
+mkdir $(MLE_HOME)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_HOME)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

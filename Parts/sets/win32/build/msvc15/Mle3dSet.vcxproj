@@ -192,7 +192,7 @@ mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Debug\Mle3dSet\Mle3dSetd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSetd.dll
 xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\include\Parts\sets\workprints
-xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workprints
+xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_HOME)\include\Parts\sets\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -298,7 +298,7 @@ mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Release\Mle3dSet\Mle3dSet.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSet.dll
 xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
 mkdir $(MLE_HOME)\include\Parts\sets\workprints
-xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workprints
+xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_HOME)\include\Parts\sets\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

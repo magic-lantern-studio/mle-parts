@@ -191,6 +191,8 @@ copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Ml
 copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRoled.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRoled.dll
+mkdir $(MLE_HOME)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_HOME)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -291,6 +293,8 @@ copy Win32\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\M
 copy x64\Release\Mle2dImageRole\Mle2dImageRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRole.lib
 mkdir $(MLE_HOME)\bin64\rehearsal
 copy x64\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRole.dll
+mkdir $(MLE_HOME)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_HOME)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
