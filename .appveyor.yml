@@ -1,0 +1,115 @@
+version: 1.0.{build}
+image: Ubuntu2204
+branches:
+  only:
+  - master
+
+# Set environment
+environment:
+  MLE_ROOT: /opt/MagicLantern
+
+# Install dependencies
+install:
+- sh: >-
+    sudo apt install libx11-dev;
+    sudo apt install libxt-dev
+- sh: >-
+    sudo mkdir $MLE_ROOT;
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-util.git /home/appveyor/projects/mle-core-util;
+    cd /home/appveyor/projects/mle-core-util/util/linux/build;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-math.git /home/appveyor/projects/mle-core-math;
+    cd /home/appveyor/projects/mle-core-math/math/linux/libmlmath;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-dwp.git /home/appveyor/projects/mle-core-dwp;
+    cd /home/appveyor/projects/mle-core-dwp/DigitalWorkprint/lib/linux;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-dpp.git /home/appveyor/projects/mle-core-dpp;
+    cd /home/appveyor/projects/mle-core-dpp/DigitalPlayprint/runtime/linux;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-mlert.git /home/appveyor/projects/mle-core-mlert;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+
+# Custom script to build Magic Lantern Parts using autoconf tools.
+build_script:
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/rehearsal;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-core-util/util/linux/build;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-math/math/linux/libmlmath;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-dwp/DigitalWorkprint/lib/linux;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-dpp/DigitalPlayprint/runtime/linux;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall
+
+# Custom script to create an .zip file containing the Magic Lantern
+# loader artifacts.
+after_build:
+- sh: >-
+    cd /home/appveyor/projects/mle-parts;
+    7z a parts.zip $MLE_ROOT
+
+# Define artifacts to push to AppVeyor
+artifacts:
+- path: parts.zip
+  name: mle-core-parts
