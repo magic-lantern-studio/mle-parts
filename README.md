@@ -13,4 +13,4 @@ Magic Lantern parts include
 * Loaders
 
 # Build Status
-AppVeyor CI: [<img src="https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true" alt="Project Badge">](https://ci.appveyor.com/api/projects/status/prmk7jux3a5j2ij6?svg=true)
+AppVeyor CI: <img src="https://ci.appveyor.com/api/projects/status/prmk7jux3a5j2ij6?svg=true" alt="Project Badge">
