@@ -32,16 +32,13 @@
  * correct define, as using "MLE_NOT_DLL" when "MLE_DLL" is
  * correct is likely to cause mysterious crashes.
  * </p>
- *
- * @author Mark S. Millard
- * @date February 22, 2011
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017 Wizzer Works
+// Copyright (c) 2017-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal

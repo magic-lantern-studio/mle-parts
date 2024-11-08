@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,31 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{20607A0B-6C76-4F59-BB23-BEC6C6896B8E}</ProjectGuid>
-    <RootNamespace>inventor</RootNamespace>
+    <ProjectGuid>{E3EDEA37-E0C1-4652-B5B9-5861BDEB3E86}</ProjectGuid>
+    <RootNamespace>inventor_rehearsal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
@@ -70,14 +70,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\inventor\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\inventor\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\inventor\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\inventor\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\inventor\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\inventor\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\inventor\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\inventor\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\inventor_rehearsal\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\inventor_rehearsal\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\inventor_rehearsal\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\inventor_rehearsal\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\inventor_rehearsal\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\inventor_rehearsal\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>ivrolesd</TargetName>
@@ -95,14 +95,14 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor/inventor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\inventor/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/inventor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -113,16 +113,16 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>$(Platform)\$(Configuration)\inventor\ivrolesd.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\ivrolesd.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\inventor/inventor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/inventor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>copy Win32\Debug\inventor\ivrolesd.lib $(MLE_HOME)\lib\tools\ivrolesd.lib
+      <Command>copy Win32\Debug\ivrolesd.lib $(MLE_HOME)\lib\rehearsal\ivrolesd.lib
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
@@ -132,13 +132,13 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor/inventor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\inventor/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor/</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor_rehearsal/inventor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor_rehearsal/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -149,34 +149,40 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>$(Platform)\$(Configuration)\inventor\ivrolesd.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\inventor_rehearsal\ivrolesd.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\inventor/inventor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\inventor_rehearsal/inventor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>copy x64\Debug\inventor\ivrolesd.lib $(MLE_HOME)\lib64\tools\ivrolesd.lib
+      <Command>copy x64\Debug\inventor_rehearsal\ivrolesd.dll $(MLE_HOME)\bin64\rehearsal\ivrolesd.dll
+copy x64\Debug\inventor_rehearsal\ivrolesd.lib $(MLE_HOME)\lib64\rehearsal\ivrolesd.lib
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>mlmathd.lib;mlertd.lib;Mle3dModelMediaRefd.lib;Mle3dTextureMapMediaRef.lib;Mle3dColorMapMediaRef.lib;Mle3dRole.lib;Mle3dSet.lib;coin4d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>$(Platform)\$(Configuration)\inventor_rehearsal\ivrolesd.lib</ImportLibrary>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor/inventor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\inventor/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor_rehearsal/inventor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor_rehearsal/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -186,16 +192,17 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>$(Platform)\$(Configuration)\inventor\ivroles.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\ivroles.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\inventor/inventor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\inventor_rehearsal/inventor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>copy Win32\Release\inventor\ivroles.lib $(MLE_HOME)\lib\tools\ivroles.lib
+      <Command>copy Win32\Release\inventor_rehearsal\ivroles.dll $(MLE_HOME)\bin\rehearsal\ivroles.dll
+copy Win32\Release\inventor_rehearsal\ivroles.lib $(MLE_HOME)\lib\rehearsal\ivroles.lib
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
@@ -206,14 +213,14 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor/inventor.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\inventor/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\ventor_rehearsal/inventor.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor_rehearsal/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -223,20 +230,26 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>$(Platform)\$(Configuration)\inventor\ivroles.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\ivroles.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\inventor/inventor.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/inventor.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>copy x64\Release\inventor\ivroles.lib $(MLE_HOME)\lib64\tools\ivroles.lib
+      <Command>copy x64\Release\inventor_rehearsal\ivroles.dll $(MLE_HOME)\bin64\rehearsal\ivroles.dll
+copy x64\Release\inventor_rehearsal\ivroles.lib $(MLE_HOME)\lib64\rehearsal\ivroles.lib
 xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
+    <Link>
+      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mlmath.lib;mlert.lib;Mle3dModelMediaRef.lib;Mle3dTextureMapMediaRef.lib;Mle3dColorMapMediaRef.lib;Mle3dRole.lib;Mle3dSet.lib;coin4d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(Platform)\$(Configuration)\inventor_rehearsal\ivroles.lib</ImportLibrary>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\MleIv3dCameraCarrier.cxx">

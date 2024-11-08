@@ -1,7 +1,7 @@
 /** @defgroup MleParts Magic Lantern Parts */
 
 /**
- * @file Mle2dRole.h
+ * @file MleCarrier.h
  * @ingroup MleParts
  *
  * On MSWindows platforms, one of these defines must always be set when
@@ -68,26 +68,26 @@
 // COPYRIGHT_END
 
 /* Precaution to avoid an error easily made by the application programmer. */
-#ifdef MLE_2DROLE_API
-#error Leave the internal MLE_2DROLE_API define alone.
-#endif /* MLE_2DROLE_API */
+#ifdef MLE_CARRIER_API
+#error Leave the internal MLE_CARRIER_API define alone.
+#endif /* MLE_CARRIER_API */
 
 // Magic Lantern export rules.
-# ifdef MLE_2DROLE_EXPORTS
+# ifdef MLE_CARRIER_EXPORTS
 #   ifdef MLE_MAKE_DLL
-#     define MLE_2DROLE_API __declspec(dllexport)
+#     define MLE_CARRIER_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
-# else /* ! MLE_2DROLE_EXPORTS */
+# else /* ! MLE_CARRIER_EXPORTS */
 #   ifdef MLE_DLL
 #     define MLE_2DROLE_API __declspec(dllimport)
 #   else /* ! MLE_DLL */
 #     ifndef MLE_NOT_DLL
-#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/Mle2DRole.h for further instructions.
+#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/MleCarrier.h for further instructions.
 #     endif /* MLE_NOT_DLL */
 #   endif /* ! MLE_DLL */
-# endif /* ! MLE_2DROLE_EXPORTS */
+# endif /* ! MLE_CARRIER_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL */
-#ifndef MLE_2DROLE_API
-# define MLE_2DROLE_API
-#endif /* ! MLE_2DROLE_API */
+#ifndef MLE_CARRIER_API
+# define MLE_CARRIER_API
+#endif /* ! MLE_CARRIER_API */

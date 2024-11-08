@@ -6,16 +6,13 @@
  *
  * This file contains the class for setting a model on a
  * Role.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2003-2019 Wizzer Works
+// Copyright (c) 2003-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,6 +50,8 @@
 #include "mle/mlTypes.h"
 #include "mle/MleMediaRef.h"
 
+#include "mle/MleCarrier.h"
+
 class MleRole;
 class MlTransform;
 
@@ -63,7 +62,7 @@ class MlTransform;
  *
  * @see Mle3dRole
 */
-class Mle3dModelCarrier 
+class MLE_CARRIER_API Mle3dModelCarrier 
 { 
   public:
 
