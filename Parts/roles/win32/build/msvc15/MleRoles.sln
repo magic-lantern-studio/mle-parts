@@ -1,11 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dImageRole", "Mle2dImageRole.vcxproj", "{FFF5400C-0F23-4781-A36A-CBA00021B96F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dRole", "Mle2dRole.vcxproj", "{81ADEFA3-178E-4862-B1DA-7B8F96298577}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dRole", "Mle3dRole.vcxproj", "{71F2C28A-CE2A-414B-BFAE-6F922AEF54A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dRole_tools", "Mle3dRole_tools.vcxproj", "{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +43,19 @@ Global
 		{71F2C28A-CE2A-414B-BFAE-6F922AEF54A5}.Release|Win32.Build.0 = Release|Win32
 		{71F2C28A-CE2A-414B-BFAE-6F922AEF54A5}.Release|x64.ActiveCfg = Release|x64
 		{71F2C28A-CE2A-414B-BFAE-6F922AEF54A5}.Release|x64.Build.0 = Release|x64
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Debug|Win32.Build.0 = Debug|Win32
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Debug|x64.ActiveCfg = Debug|x64
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Debug|x64.Build.0 = Debug|x64
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|Win32.ActiveCfg = Release|Win32
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|Win32.Build.0 = Release|Win32
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|x64.ActiveCfg = Release|x64
+		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87DE4A98-61BC-4672-8B02-6D82BBE80D0D}
 	EndGlobalSection
 EndGlobal
