@@ -60,7 +60,7 @@ class Mle2dRole;
 /**
  * @brief Class definition for Inventor 2D Set.
  */
-class MLE2DSET_API Mle2dSet: public MleSet 
+class MLE_2DSET_API Mle2dSet: public MleSet 
 {
 
     MLE_SET_HEADER(Mle2dSet);
