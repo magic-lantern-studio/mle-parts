@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dRole", "Mle3dRole.vcxp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dRole_tools", "Mle3dRole_tools.vcxproj", "{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dRole_tools", "Mle2dRole_tools.vcxproj", "{D48616F8-77F8-4F36-9B3D-273C169F4297}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -51,6 +53,14 @@ Global
 		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|Win32.Build.0 = Release|Win32
 		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|x64.ActiveCfg = Release|x64
 		{8D5D0266-590D-46B7-ADA9-DE246BF35BF3}.Release|x64.Build.0 = Release|x64
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Debug|Win32.Build.0 = Debug|Win32
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Debug|x64.ActiveCfg = Debug|x64
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Debug|x64.Build.0 = Debug|x64
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|Win32.ActiveCfg = Release|Win32
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|Win32.Build.0 = Release|Win32
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|x64.ActiveCfg = Release|x64
+		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
