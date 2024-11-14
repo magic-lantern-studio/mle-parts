@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dRole_tools", "Mle3dRol
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dRole_tools", "Mle2dRole_tools.vcxproj", "{D48616F8-77F8-4F36-9B3D-273C169F4297}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dImageRole_tools", "Mle2dImageRole_tools.vcxproj", "{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -61,6 +63,14 @@ Global
 		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|Win32.Build.0 = Release|Win32
 		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|x64.ActiveCfg = Release|x64
 		{D48616F8-77F8-4F36-9B3D-273C169F4297}.Release|x64.Build.0 = Release|x64
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Debug|Win32.Build.0 = Debug|Win32
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Debug|x64.ActiveCfg = Debug|x64
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Debug|x64.Build.0 = Debug|x64
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Release|Win32.ActiveCfg = Release|Win32
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Release|Win32.Build.0 = Release|Win32
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Release|x64.ActiveCfg = Release|x64
+		{4D40F2AA-43D5-434D-90C6-CC98A47EA99A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
