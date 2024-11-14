@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dSet", "Mle3dSet.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dSet_tools", "Mle3dSet_tools.vcxproj", "{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dSet_tools", "Mle2dSet_tools.vcxproj", "{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -41,6 +43,14 @@ Global
 		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|Win32.Build.0 = Release|Win32
 		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|x64.ActiveCfg = Release|x64
 		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|x64.Build.0 = Release|x64
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Debug|Win32.Build.0 = Debug|Win32
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Debug|x64.ActiveCfg = Debug|x64
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Debug|x64.Build.0 = Debug|x64
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Release|Win32.ActiveCfg = Release|Win32
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Release|Win32.Build.0 = Release|Win32
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Release|x64.ActiveCfg = Release|x64
+		{9FF9BFB3-7F0A-4F81-8577-54D9C2A76B0E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

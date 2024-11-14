@@ -66,7 +66,7 @@ class MlTransform;
 // two classes MUST HAVE THE SAME VIRTUAL TABLES. This will be fixed
 // after beta (bug #374766), but for now beware!
 
-class MLE3DSET_API Mle3dSet : public MleSet
+class MLE_3DSET_API Mle3dSet : public MleSet
 {
     MLE_SET_HEADER(Mle3dSet);
 

@@ -5,9 +5,6 @@
  * @ingroup MleParts
  *
  * This file defines the entry point for the DLL application.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN

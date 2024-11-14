@@ -41,27 +41,32 @@
 //
 // COPYRIGHT_END
 
+/* Precaution to avoid an error easily made by the application programmer. */
+#ifdef MLE_3DSET_API
+#error Leave the internal MLE_3DSET_API define alone.
+#endif /* MLE_3DSET_API */
+
 // The following ifdef block is the standard way of creating macros which make exporting 
-// from a DLL simpler. All files within this DLL are compiled with the MLE3DSET_EXPORTS
-// symbol defined on the command line. this symbol should not be defined on any project
+// from a DLL simpler. All files within this DLL are compiled with the MLE_3DSET_EXPORTS
+// symbol defined on the command line. This symbol should not be defined on any project
 // that uses this DLL. This way any other project whose source files include this file see 
-// MLE3DSET_API functions as being imported from a DLL, wheras this DLL sees symbols
+// MLE_3DSET_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#ifdef MLE3DSET_EXPORTS
- #if defined(WIN32)
-  #define MLE3DSET_API __declspec(dllexport)
- #else
-  #define MLE3DSET_API
- #endif
-#else
- #if defined(WIN32)
-  #define MLE3DSET_API __declspec(dllimport)
- #else
-  #define MLE3DSET_API
- #endif
-#endif
+# ifdef MLE_3DSET_EXPORTS
+#   ifdef MLE_MAKE_DLL
+#     define MLE_3DSET_API __declspec(dllexport)
+#   endif /* MLE_MAKE_DLL */
+# else /* ! MLE_3DSET_EXPORTS */
+#   ifdef MLE_DLL
+#     define MLE_3DSET_API __declspec(dllimport)
+#   else /* ! MLE_DLL */
+#     ifndef MLE_NOT_DLL
+#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/Mle3dSet.h for further instructions.
+#     endif /* MLE_NOT_DLL */
+#   endif /* ! MLE_DLL */
+# endif /* ! MLE_3DSET_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL. */
-#ifndef MLE3DSET_API
-# define MLE3DSET_API
-#endif /* !MLE3DSET_API */
+#ifndef MLE_3DSET_API
+# define MLE_3DSET_API
+#endif /* ! MLE_3DSET_API */
