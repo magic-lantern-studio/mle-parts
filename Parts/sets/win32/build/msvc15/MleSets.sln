@@ -1,9 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle2dSet", "Mle2dSet.vcxproj", "{7F9D0C07-CC57-4994-8A25-4DD3A5D1F301}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dSet", "Mle3dSet.vcxproj", "{11799B62-F1AC-4474-8635-8DA7B591CA91}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mle3dSet_tools", "Mle3dSet_tools.vcxproj", "{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,8 +33,19 @@ Global
 		{11799B62-F1AC-4474-8635-8DA7B591CA91}.Release|Win32.Build.0 = Release|Win32
 		{11799B62-F1AC-4474-8635-8DA7B591CA91}.Release|x64.ActiveCfg = Release|x64
 		{11799B62-F1AC-4474-8635-8DA7B591CA91}.Release|x64.Build.0 = Release|x64
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Debug|Win32.Build.0 = Debug|Win32
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Debug|x64.ActiveCfg = Debug|x64
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Debug|x64.Build.0 = Debug|x64
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|Win32.ActiveCfg = Release|Win32
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|Win32.Build.0 = Release|Win32
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|x64.ActiveCfg = Release|x64
+		{BFD6A426-10F2-4CAB-BF2F-D0B240CE7D0D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEE57613-AC0F-409D-A1B3-9D7DCD83DC58}
 	EndGlobalSection
 EndGlobal
