@@ -4,8 +4,6 @@
  * @file CubeDragger.cxx
  * @ingroup MlParts
  *
- * @author Mark S. Millard
- *
  * The CubeDragger is a translation-only version of the
  * SoTransformerDragger. It has the same look and feel as that dragger if you
  * forget about all the rotation and scale stuff.

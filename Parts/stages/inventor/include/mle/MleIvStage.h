@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2021 Wizzer Works
+// Copyright (c) 2000-2024 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -40,20 +40,35 @@
 //
 // COPYRIGHT_END
 
+/* Precaution to avoid an error easily made by the application programmer. */
+#ifdef MLE_IVSTAGE_API
+#error Leave the internal MLE_IVSTAGE_API define alone.
+#endif /* MLE_IVSTAGE_API */
+
 // The following ifdef block is the standard way of creating macros which make exporting 
-// from a DLL simpler. All files within this DLL are compiled with the REHEARSAL_EXPORTS
+// from a DLL simpler. All files within this DLL are compiled with the MLE_IVSTAGE_EXPORTS
 // symbol defined on the command line. This symbol should not be defined on any project
 // that uses this DLL. This way any other project whose source files include this file see 
-// REHEARSAL_API functions as being imported from a DLL, whereas this DLL sees symbols
+// MLE_IVSTAGE_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#if defined(WIN32)
-  #ifdef REHEARSAL_EXPORTS
-    #define REHEARSAL_API __declspec(dllexport)
-  #else
-    #define REHEARSAL_API __declspec(dllimport)
-  #endif
-#else
-  #define REHEARSAL_API
-#endif
+# ifdef MLE_IVSTAGE_EXPORTS
+#   ifdef MLE_MAKE_DLL
+#     define MLE_IVSTAGE_API __declspec(dllexport)
+#   endif /* MLE_MAKE_DLL */
+# else /* ! MLE_IVSTAGE_EXPORTS */
+#   ifdef MLE_DLL
+#     define MLE_IVSTAGE_API __declspec(dllimport)
+#   else /* ! MLE_DLL */
+#     ifndef MLE_NOT_DLL
+#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/MleIvStage.h for further instructions.
+#     endif /* MLE_NOT_DLL */
+#   endif /* ! MLE_DLL */
+# endif /* ! MLE_IVSTAGE_EXPORTS */
 
-REHEARSAL_API void initModule(void *);
+/* Empty define to avoid errors when _not_ compiling an MSWindows DLL. */
+#ifndef MLE_IVSTAGE_API
+#define MLE_IVSTAGE_API
+#endif /* !MLE_IVSTAGE_API */
+
+
+MLE_IVSTAGE_API void initModule(void *);

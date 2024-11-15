@@ -130,7 +130,7 @@ class Nudger;
 #endif /* MLE_SOQT */
 
 
-class REHEARSAL_API MleIvStage : public MleStage
+class MLE_IVSTAGE_API MleIvStage : public MleStage
 {
     MLE_STAGE_HEADER(MleIvStage);
 

@@ -19,31 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6BB87D46-99DC-4562-9FE0-B94E771C6BF5}</ProjectGuid>
+    <ProjectGuid>{A2D78E2A-2A26-4620-97FB-338EFCC2C21B}</ProjectGuid>
     <RootNamespace>rehearsal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
@@ -70,16 +70,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\rehearsal\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\rehearsal\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\tools\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\tools\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\tools</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\tools\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\rehearsal\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\rehearsal\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\tools\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\tools\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\tools</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\tools\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
   </PropertyGroup>
@@ -108,17 +108,18 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/rehearsal.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\tools/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\tools/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\tools/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -139,14 +140,12 @@
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/rehearsal.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Debug\MleIvStaged.dll $(MLE_HOME)\bin\rehearsal
-mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Debug\MleIvStaged.lib $(MLE_HOME)\lib\rehearsal
+      <Message>Install Static Library</Message>
+      <Command>mkdir $(MLE_HOME)\lib\tools
+copy Win32\Debug\tools\MleIvStaged.lib $(MLE_HOME)\lib\tools
 xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
@@ -164,13 +163,13 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\rehearsal/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\rehearsal/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\rehearsal/</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\tools/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\tools/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\tools/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -183,25 +182,23 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <Link>
       <AdditionalOptions>/section:".GLOBALS,rws" %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin4d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/MleIvStaged.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleIvStaged.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
-      <MapFileName>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.map</MapFileName>
-      <ImportLibrary>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.lib</ImportLibrary>
+      <MapFileName>$(Platform)\$(Configuration)/MleIvStaged.map</MapFileName>
+      <ImportLibrary>$(Platform)\$(Configuration)/MleIvStaged.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\rehearsal\MleIvStaged.dll $(MLE_HOME)\bin64\rehearsal
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\rehearsal\MleIvStaged.lib $(MLE_HOME)\lib64\rehearsal
+      <Message>Install Static Library</Message>
+      <Command>mkdir $(MLE_HOME)\lib64\tools
+copy x64\Debug\tools\MleIvStaged.lib $(MLE_HOME)\lib64\tools\MleIvStaged.lib
 xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
@@ -221,16 +218,17 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/rehearsal.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\tools/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\tools/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\tools/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -247,14 +245,12 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)/rehearsal.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin\rehearsal
-copy Win32\Release\MleIvStage.dll $(MLE_HOME)\bin\rehearsal
-mkdir $(MLE_HOME)\lib\rehearsal
-copy Win32\Release\MleIvStage.lib $(MLE_HOME)\lib\rehearsal
+      <Message>Install Static Library</Message>
+      <Command>mkdir $(MLE_HOME)\lib\tools
+copy Win32\Release\tools\MleIvStage.lib $(MLE_HOME)\lib\tools
 xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
@@ -273,17 +269,16 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>$(Platform)\$(Configuration)\rehearsal/</AssemblerListingLocation>
-      <ObjectFileName>$(Platform)\$(Configuration)\rehearsal/</ObjectFileName>
-      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\rehearsal/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)\tools/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)\tools/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)\tools/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -291,22 +286,20 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin4.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.dll</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/MleIvStage.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ProgramDatabaseFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pdb</ProgramDatabaseFile>
-      <ImportLibrary>$(Platform)\$(Configuration)\rehearsal/MleIvStage.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(Platform)\$(Configuration)/MleIvStage.pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(Platform)\$(Configuration)/MleIvStage.lib</ImportLibrary>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\tools/MleIvStage.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\rehearsal\MleIvStage.dll $(MLE_HOME)\bin64\rehearsal
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\rehearsal\MleIvStage.lib $(MLE_HOME)\lib64\rehearsal
+      <Message>Install Static Library</Message>
+      <Command>mkdir $(MLE_HOME)\lib64\tools
+copy x64\Release\tools\MleIvStage.lib $(MLE_HOME)\lib64\tools
 xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
 xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
