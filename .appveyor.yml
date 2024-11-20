@@ -42,27 +42,27 @@ install:
     ./configure;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
-#- sh: >-
-#    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-mlert.git /home/appveyor/projects/mle-core-mlert;
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
-#    autoreconf --install;
-#    ./configure;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
-#- sh: >-
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
-#    autoreconf --install;
-#    ./configure;
-#    make clean;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
-#- sh: >-
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
-#    autoreconf --install;
-#    ./configure;
-#    make clean;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-mlert.git /home/appveyor/projects/mle-core-mlert;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
 
 # Custom script to build Magic Lantern Parts using autoconf tools.
 build_script:
@@ -102,12 +102,12 @@ build_script:
     sudo MLE_ROOT=$MLE_ROOT make uninstall;
     cd /home/appveyor/projects/mle-core-dpp/DigitalPlayprint/runtime/linux;
     sudo MLE_ROOT=$MLE_ROOT make uninstall;
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
-#    sudo MLE_ROOT=$MLE_ROOT make uninstall;
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
-#    sudo MLE_ROOT=$MLE_ROOT make uninstall;
-#    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
-#    sudo MLE_ROOT=$MLE_ROOT make uninstall
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/runtime;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall;
+    cd /home/appveyor/projects/mle-core-mlert/mlert/linux/inventor;
+    sudo MLE_ROOT=$MLE_ROOT make uninstall
 
 # Custom script to create an .zip file containing the Magic Lantern
 # loader artifacts.
