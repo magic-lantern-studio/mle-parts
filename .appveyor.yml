@@ -83,6 +83,15 @@ install:
 # Custom script to build Magic Lantern Parts using autoconf tools.
 build_script:
 
+# Build Magic Lantern Properties
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/props/linux;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+
 # Build Magic Lantern Media Reference libraries.
 - sh: >-
     cd /home/appveyor/projects/mle-parts/Parts/mediaref/inventor/build/linux/ivmref-rehearsal;
