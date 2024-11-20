@@ -12,7 +12,8 @@ environment:
 install:
 - sh: >-
     sudo apt install libx11-dev;
-    sudo apt install libxt-dev
+    sudo apt install libxt-dev;
+    sudo apt install libfreeimage-dev
 - sh: >-
     sudo mkdir $MLE_ROOT;
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-util.git /home/appveyor/projects/mle-core-util;
