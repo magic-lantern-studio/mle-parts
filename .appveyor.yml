@@ -14,6 +14,17 @@ install:
     sudo apt install -y libx11-dev;
     sudo apt install -y libxt-dev;
     sudo apt install -y libfreeimage-dev
+# Install Coin 4.x library dependency.
+- sh: >-
+    sudo apt-get install -y mesa-common-dev libglu1-mesa-dev freeglut3-dev doxygen cmake;
+    sudo apt install -y libboost-dev;
+    sudo apt install -y libboost-all-dev;
+    git clone -q --recurse-submodules --branch magiclantern https://github.com/magic-lantern-studio/coin coin;
+    cmake -Hcoin -Bcoin_build -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DCOIN_BUILD_DOCUMENTATION=OFF;
+    cd coin_build;
+    make;
+    sudo make install
+# Install Magic Lantern Utility library dependency.
 - sh: >-
     sudo mkdir $MLE_ROOT;
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-util.git /home/appveyor/projects/mle-core-util;
@@ -22,6 +33,7 @@ install:
     ./configure;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
+# Install Magic Lantern Math library dependency.
 - sh: >-
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-math.git /home/appveyor/projects/mle-core-math;
     cd /home/appveyor/projects/mle-core-math/math/linux/libmlmath;
@@ -29,6 +41,7 @@ install:
     ./configure;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
+# Install Magic Lantern Digital Workprint dependencies.
 - sh: >-
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-dwp.git /home/appveyor/projects/mle-core-dwp;
     cd /home/appveyor/projects/mle-core-dwp/DigitalWorkprint/lib/linux;
@@ -36,6 +49,7 @@ install:
     ./configure;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
+# Install Magic Lantern Digital Playprint dependency.
 - sh: >-
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-dpp.git /home/appveyor/projects/mle-core-dpp;
     cd /home/appveyor/projects/mle-core-dpp/DigitalPlayprint/runtime/linux;
@@ -43,6 +57,7 @@ install:
     ./configure;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
+# Install Magic Lantern Runtime Engine dependency.
 - sh: >-
     git clone -q --branch=master https://github.com/magic-lantern-studio/mle-core-mlert.git /home/appveyor/projects/mle-core-mlert;
     cd /home/appveyor/projects/mle-core-mlert/mlert/linux/rehearsal;
