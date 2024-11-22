@@ -155,6 +155,29 @@ build_script:
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
 
+# Build Magic Lantern Set libraries.
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/sets/inventor/build/ivset-rehearsal;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/sets/inventor/build/ivset-inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/sets/inventor/build/ivset-runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+
 # Build Magic Lantern Loader libraries.
 #- sh: >-
 #    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/rehearsal;
