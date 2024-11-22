@@ -203,21 +203,21 @@ build_script:
 
 # Build Magic Lantern Actor libraries.
 - sh: >-
-    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor-rehearsal;
+    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor_rehearsal;
     autoreconf --install;
     ./configure;
     make clean;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
 - sh: >-
-    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor-inventor;
+    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor_inventor;
     autoreconf --install;
     ./configure;
     make clean;
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
 - sh: >-
-    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor-runtime;
+    cd /home/appveyor/projects/mle-parts/Parts/actors/inventor/build/linux/ivactor_runtime;
     autoreconf --install;
     ./configure;
     make clean;
