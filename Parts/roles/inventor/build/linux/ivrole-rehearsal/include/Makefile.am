@@ -37,6 +37,7 @@ include_HEADERS = \
 	$(top_srcdir)/../../../../common/include/mle/Mle2dImageRole.h \
 	$(top_srcdir)/../../../../common/include/mle/Mle2dRole.h \
 	$(top_srcdir)/../../../../common/include/mle/Mle3dRole.h \
+	$(top_srcdir)/../../../../common/include/mle/MleCarrier.h \
 	$(top_srcdir)/../../../../common/include/mle/paletted.h \
 	$(top_srcdir)/../../../include/mle/MleIv3dRole.h
 

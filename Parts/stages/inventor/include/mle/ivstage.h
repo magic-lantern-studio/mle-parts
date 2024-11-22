@@ -70,11 +70,7 @@
 
 #include "math/vector.h"
 
-#if defined(WIN32)
 #include "mle/MleIvStage.h"
-#else /* WIN32 */
-#define REHEARSAL_API
-#endif /* ! WIN32 */
 
 #if defined(MLE_REHEARSAL)
 #if defined(__linux__) || defined(__APPLE__)
