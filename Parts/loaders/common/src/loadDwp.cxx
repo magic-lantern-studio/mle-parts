@@ -3,7 +3,6 @@
 /**
  * @file loadDwp.cxx
  * @ingroup MleFoundation
-
  */
 
 // COPYRIGHT_BEGIN
