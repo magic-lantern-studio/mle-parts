@@ -225,26 +225,28 @@ build_script:
     sudo MLE_ROOT=$MLE_ROOT make install
 
 # Build Magic Lantern Loader libraries.
-#- sh: >-
-#    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/rehearsal;
-#    autoreconf --install;
-#    ./configure;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
-#- sh: >-
-#    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/runtime;
-#    autoreconf --install;
-#    ./configure;
-#    make clean;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
-#- sh: >-
-#    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/inventor;
-#    autoreconf --install;
-#    ./configure;
-#    make clean;
-#    make;
-#    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/rehearsal;
+    autoreconf --install;
+    ./configure;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+
+# Clean up dependencies before generating deployment package.
 - sh: >-
     cd /home/appveyor/projects/mle-core-util/util/linux/build;
     sudo MLE_ROOT=$MLE_ROOT make uninstall;
