@@ -178,6 +178,29 @@ build_script:
     make;
     sudo MLE_ROOT=$MLE_ROOT make install
 
+# Build Magic Lantern Stage libraries.
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/stages/inventor/build/linux/ivstage-rehearsal;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/stages/inventor/build/linux/ivstage-inventor;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+- sh: >-
+    cd /home/appveyor/projects/mle-parts/Parts/stages/inventor/build/linux/ivstage-runtime;
+    autoreconf --install;
+    ./configure;
+    make clean;
+    make;
+    sudo MLE_ROOT=$MLE_ROOT make install
+
 # Build Magic Lantern Loader libraries.
 #- sh: >-
 #    cd /home/appveyor/projects/mle-parts/Parts/loaders/build/rehearsal;
