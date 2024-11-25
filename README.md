@@ -14,3 +14,7 @@ Magic Lantern parts include
 
 # Build Status
 AppVeyor CI for Ubuntu 22.04 LTS 64-bit: <img src="https://ci.appveyor.com/api/projects/status/prmk7jux3a5j2ij6?svg=true" alt="Project Badge">
+
+# Documentation
+
+Documentation for the Magic Lantern parts libraries can be found on the [project wiki](https://github.com/magic-lantern-studio/mle-parts/wiki).
