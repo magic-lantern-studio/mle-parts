@@ -13,4 +13,4 @@ Magic Lantern parts include
 * Loaders
 
 # Build Status
-AppVeyor CI: <img src="https://ci.appveyor.com/api/projects/status/prmk7jux3a5j2ij6?svg=true" alt="Project Badge">
+AppVeyor CI for Ubuntu 22.04 LTS 64-bit: <img src="https://ci.appveyor.com/api/projects/status/prmk7jux3a5j2ij6?svg=true" alt="Project Badge">
