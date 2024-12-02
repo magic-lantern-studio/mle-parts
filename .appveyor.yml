@@ -246,9 +246,9 @@ build_script:
 after_build:
 - sh: >-
     cd /home/appveyor/projects/mle-parts;
-    7z a parts.zip $MLE_ROOT
+    7z a mleparts.zip $MLE_ROOT
 
 # Define artifacts to push to AppVeyor
 artifacts:
-- path: parts.zip
+- path: mleparts.zip
   name: mle-core-parts
