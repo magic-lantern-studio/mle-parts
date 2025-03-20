@@ -33,16 +33,13 @@
  * It is extremely important that the application programmer uses the
  * correct define, as using "MLE_NOT_DLL" when "MLE_DLL" is
  * correct is likely to cause mysterious crashes.
- *
- * @author Mark S. Millard
- * @created Jan 22, 2006
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,13 +79,13 @@
 #     define MLE_ESCAPEACTOR_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
 # else /* ! MLE_ESCAPEACTOR_EXPORTS */
-#   ifdef MLE_DLL
+#   ifdef MLE_ESCAPEACTOR_DLL
 #     define MLE_ESCAPEACTOR_API __declspec(dllimport)
-#   else /* ! MLE_DLL */
-#     ifndef MLE_NOT_DLL
-#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/MleEscapeActor.h for further instructions.
-#     endif /* MLE_NOT_DLL */
-#   endif /* ! MLE_DLL */
+#   else /* ! MLE_ESCAPEACTOR_DLL */
+#     ifndef MLE_NOT_ESCAPEACTOR_DLL
+#       error Define either MLE_ESCAPEACTOR_DLL or MLE_NOT_ESCAPEACTOR_DLL as appropriate for your linkage! See mle/MleEscapeActor.h for further instructions.
+#     endif /* MLE_NOT_ESCAPEACTOR_DLL */
+#   endif /* ! MLE_ESCAPEACTOR_DLL */
 # endif /* ! MLE_ESCAPEACTOR_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL */

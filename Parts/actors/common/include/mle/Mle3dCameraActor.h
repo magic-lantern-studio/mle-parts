@@ -34,15 +34,13 @@
  * correct define, as using "MLE_NOT_DLL" when "MLE_DLL" is
  * correct is likely to cause mysterious crashes.
  *
- * @author Mark S. Millard
- * @created Jan 22, 2006
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,13 +80,13 @@
 #     define MLE_3DCAMERAACTOR_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
 # else /* ! MLE_3DCAMERAACTOR_EXPORTS */
-#   ifdef MLE_DLL
+#   ifdef MLE_3DCAMERAACTOR_DLL
 #     define MLE_3DCAMERAACTOR_API __declspec(dllimport)
-#   else /* ! MLE_DLL */
-#     ifndef MLE_NOT_DLL
-#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/Mle3dCameraActor.h for further instructions.
-#     endif /* MLE_NOT_DLL */
-#   endif /* ! MLE_DLL */
+#   else /* ! MLE_3DCAMERAACTOR_DLL */
+#     ifndef MLE_NOT_3DCAMERAACTOR_DLL
+#       error Define either MLE_3DCAMERAACTOR_DLL or MLE_NOT_3DCAMERAACTOR_DLL as appropriate for your linkage! See mle/Mle3dCameraActor.h for further instructions.
+#     endif /* MLE_NOT_3DCAMERAACTOR_DLL */
+#   endif /* ! MLE_3DCAMERAACTOR_DLL */
 # endif /* ! MLE_3DCAMERAACTOR_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL */

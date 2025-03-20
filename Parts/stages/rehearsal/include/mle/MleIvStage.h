@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2024 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,13 +57,13 @@
 #     define MLE_IVSTAGE_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
 # else /* ! MLE_IVSTAGE_EXPORTS */
-#   ifdef MLE_DLL
+#   ifdef MLE_IVSTAGE_DLL
 #     define MLE_IVSTAGE_API __declspec(dllimport)
-#   else /* ! MLE_DLL */
-#     ifndef MLE_NOT_DLL
-#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/MleIvStage.h for further instructions.
-#     endif /* MLE_NOT_DLL */
-#   endif /* ! MLE_DLL */
+#   else /* ! MLE_IVSTAGE_DLL */
+#     ifndef MLE_NOT_IVSTAGE_DLL
+#       error Define either MLE_IVSTAGE_DLL or MLE_NOT_IVSTAGE_DLL as appropriate for your linkage! See mle/MleIvStage.h for further instructions.
+#     endif /* MLE_NOT_IVSTAGE_DLL */
+#   endif /* ! MLE_IVSTAGE_DLL */
 # endif /* ! MLE_IVSTAGE_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL. */

@@ -31,32 +31,40 @@
  * It is extremely important that the application programmer uses the
  * correct define, as using "MLE_NOT_DLL" when "MLE_DLL" is
  * correct is likely to cause mysterious crashes.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
-// COPYRIGHT_BEGIN
-//
-//  Copyright (C) 2000-2007  Wizzer Works
-//
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
-//
-//      http://opensource.org/licenses/cpl1.0.php
-//
-//  For purposes of the CPL, "Program" will mean the Content.
-//
-//  For information concerning this Makefile, contact Mark S. Millard,
-//  of Wizzer Works at msm@wizzerworks.com.
-//
-//  More information concerning Wizzer Works may be found at
-//
-//      http://www.wizzerworks.com
-//
-// COPYRIGHT_END
+ // COPYRIGHT_BEGIN
+ //
+ // The MIT License (MIT)
+ //
+ // Copyright (c) 2000-2025 Wizzer Works
+ //
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files (the "Software"), to deal
+ // in the Software without restriction, including without limitation the rights
+ // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ // copies of the Software, and to permit persons to whom the Software is
+ // furnished to do so, subject to the following conditions:
+ //
+ // The above copyright notice and this permission notice shall be included in all
+ // copies or substantial portions of the Software.
+ //
+ // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ // SOFTWARE.
+ //
+ //  For information concerning this header file, contact Mark S. Millard,
+ //  of Wizzer Works at msm@wizzerworks.com.
+ //
+ //  More information concerning Wizzer Works may be found at
+ //
+ //      http://www.wizzerworks.com
+ //
+ // COPYRIGHT_END
 
 
 /* Precaution to avoid an error easily made by the application programmer. */
@@ -71,13 +79,13 @@
 #     define MLE_3DMODELMEDIAREF_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
 # else /* ! MLE_3DMODELMEDIAREF_EXPORTS */
-#   ifdef MLE_DLL
+#   ifdef MLE_3DMODELMEDIAREF_DLL
 #     define MLE_3DMODELMEDIAREF_API __declspec(dllimport)
-#   else /* ! MLE_DLL */
-#     ifndef MLE_NOT_DLL
-#       error Define either MLE_DLL or MLE_NOT_DLL as appropriate for your linkage! See mle/Mle3dModelMediaRef.h for further instructions.
-#     endif /* MLE_NOT_DLL */
-#   endif /* ! MLE_DLL */
+#   else /* ! MLE_3DMODELMEDIAREF_DLL */
+#     ifndef MLE_NOT_3DMODELMEDIAREF_DLL
+#       error Define either MLE_3DMODELMEDIAREF_DLL or MLE_NOT_3DMODELMEDIAREF_DLL as appropriate for your linkage! See mle/Mle3dModelMediaRef.h for further instructions.
+#     endif /* MLE_NOT_3DMODELMEDIAREF_DLL */
+#   endif /* ! MLE_3DMODELMEDIAREF_DLL */
 # endif /* ! MLE_3DMODELMEDIAREF_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL */
