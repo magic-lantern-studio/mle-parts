@@ -12,7 +12,7 @@ dnl AC_CANONICAL_SYSTEM
 AC_CONFIG_MACRO_DIR([m4])
 
 dnl Initialize automake
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([subdir-objects])
 
 dnl This allows us specify individual liking flags for each target
 AM_PROG_CC_C_O 
