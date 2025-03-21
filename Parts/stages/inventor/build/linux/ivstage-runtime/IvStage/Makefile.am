@@ -28,7 +28,18 @@ MleIvStage_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-MleIvStage_la_CPPFLAGS = -DMLE_DIGITAL_PLAYPRINT -DMLE_NOT_DLL \
+MleIvStage_la_CPPFLAGS = \
+    -DMLE_DIGITAL_PLAYPRINT \
+    -DMLE_NOT_UTIL_DLL \
+    -DMLE_NOT_MATH_DLL \
+    -DMLE_NOT_RUNTIME_DLL \
+    -DMLE_NOT_DWP_DLL \
+    -DMLE_NOT_PROPERTY_DLL \
+    -DMLE_NOT_2DROLE_DLL \
+    -DMLE_NOT_3DROLE_DLL \
+    -DMLE_NOT_2DSET_DLL \
+    -DMLE_NOT_3DSET_DLL \
+    -DMLE_NOT_IVSTAGE_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
 	-I$(MLE_ROOT)/include \
