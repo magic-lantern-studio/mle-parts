@@ -20,6 +20,13 @@ Mle3dCameraActor_la_LDFLAGS = -module -version-info 1:0:0
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-Mle3dCameraActor_la_CPPFLAGS = -DMLE_DIGITAL_WORKPRINT -DMLE_NOT_DLL \
+Mle3dCameraActor_la_CPPFLAGS = \
+    -DMLE_DIGITAL_WORKPRINT \
+    -DMLE_NOT_UTIL_DLL \
+    -DMLE_NOT_MATH_DLL \
+    -DMLE_NOT_RUNTIME_DLL \
+    -DMLE_NOT_DWP_DLL \
+    -DMLE_NOT_CARRIER_DLL \
+    -DMLE_NOT_3DCAMERAACTOR_DLL \
 	-I$(top_srcdir)/include -I$(top_srcdir)/../../../../common/include \
 	-I$(MLE_ROOT)/include
