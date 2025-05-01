@@ -48,7 +48,7 @@
 // Include Magic Lantern header files.
 #include "mle/MleMediaRef.h"
 
-#include "mle/MleCarrier.h"
+#include "mle/Mle3dColorMapCarrier.h"
 
 class MleRole;
 
@@ -59,12 +59,12 @@ class MleRole;
  *
  * @see Mle3dRole
  */
-class MLE_CARRIER_API Mle3dColorMapCarrier 
+class MLE_3DCOLORMAPCARRIER_API Mle3dColorMapCarrier
 {
   public:
  
 	/**
-	 * Set() passes a colormap to a Mle3dRole.
+	 * Passes a colormap to a Mle3dRole.
 	 */
     static int set(MleRole *role, MlMediaRef colorMap);
 };

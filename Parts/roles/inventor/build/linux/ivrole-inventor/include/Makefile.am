@@ -37,7 +37,11 @@ include_HEADERS = \
 	$(top_srcdir)/../../../../common/include/mle/Mle2dImageRole.h \
 	$(top_srcdir)/../../../../common/include/mle/Mle2dRole.h \
 	$(top_srcdir)/../../../../common/include/mle/Mle3dRole.h \
-	$(top_srcdir)/../../../../common/include/mle/MleCarrier.h \
+	$(top_srcdir)/../../../../common/include/mle/Mle3dModelCarrier.h \
+	$(top_srcdir)/../../../../common/include/mle/Mle3dColorMapCarrier.h \
+	$(top_srcdir)/../../../../common/include/mle/Mle3dTextureMapCarrier.h \
+	$(top_srcdir)/../../../../common/include/mle/Mle3dTransformCarrier.h \
+	$(top_srcdir)/../../../../common/include/mle/Mle3dCameraCarrier.h \
 	$(top_srcdir)/../../../../common/include/mle/paletted.h \
 	$(top_srcdir)/../../../include/mle/MleIv3dRole.h
 

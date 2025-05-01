@@ -1,27 +1,27 @@
 /** @defgroup MleParts Magic Lantern Parts */
 
 /**
- * @file MleCarrier.h
+ * @file Mle3dTextureMapCarrier.h
  * @ingroup MleParts
  *
  * On MSWindows platforms, one of these defines must always be set when
  * building application programs:
  * <p>
- * "MLE_CARRIER_DLL", when the application programmer is using the
+ * "MLE_3DTEXTUREMAPCARRIER_DLL", when the application programmer is using the
  * library in the form of a dynamic link library (DLL)
  * </p><p>
- * "MLE_NOT_CARRIER_DLL", when the application programmer is using the
+ * "MLE_NOT_3DTEXTUREMAPCARRIER_DLL", when the application programmer is using the
  * library in the form of a static object library (LIB)
  * </p><p>
- * Note that either MLE_CARRIER_DLL or MLE_NOT_CARRIER_DLL _must_ be defined by
+ * Note that either MLE_3DTEXTUREMAPCARRIER_DLL or MLE_NOT_3DTEXTUREMAPCARRIER_DLL _must_ be defined by
  * the application programmer on MSWindows platforms, or else the
  * #error statement will hit. Set up one or the other of these two
  * defines in your compiler environment according to how the library
- * was built -- as a DLL (use "MLE_CARRIER_DLL") or as a LIB (use
- * "MLE_NOT_CARRIER_DLL").
+ * was built -- as a DLL (use "MLE_3DTEXTUREMAPCARRIER_DLL") or as a LIB (use
+ * "MLE_NOT_3DTEXTUREMAPCARRIER_DLL").
  * </p><p>
  * (Setting up defines for the compiler is typically done by either
- * adding something like "/DMLE_CARRIER_DLL" to the compiler's argument
+ * adding something like "/DMLE_3DTEXTUREMAPCARRIER_DLL" to the compiler's argument
  * line (for command-line build processes), or by adding the define to
  * the list of preprocessor symbols in your IDE GUI (in the MSVC IDE,
  * this is done from the "Project"->"Settings" menu, choose the "C/C++"
@@ -29,7 +29,7 @@
  * appropriate define)).
  * </p><p>
  * It is extremely important that the application programmer uses the
- * correct define, as using "MLE_NOT_CARRIER_DLL" when "MLE_CARRIER_DLL" is
+ * correct define, as using "MLE_NOT_3DTEXTUREMAPCARRIER_DLL" when "MLE_3DTEXTUREMAPCARRIER_DLL" is
  * correct is likely to cause mysterious crashes.
  * </p>
  */
@@ -68,26 +68,26 @@
 // COPYRIGHT_END
 
 /* Precaution to avoid an error easily made by the application programmer. */
-#ifdef MLE_CARRIER_API
-#error Leave the internal MLE_CARRIER_API define alone.
-#endif /* MLE_CARRIER_API */
+#ifdef MLE_3DTEXTUREMAPCARRIER_API
+#error Leave the internal MLE_3DTEXTUREMAPCARRIER_API define alone.
+#endif /* MLE_3DTEXTUREMAPCARRIER_API */
 
 // Magic Lantern export rules.
-# ifdef MLE_CARRIER_EXPORTS
+# ifdef MLE_3DTEXTUREMAPCARRIER_EXPORTS
 #   ifdef MLE_MAKE_DLL
-#     define MLE_CARRIER_API __declspec(dllexport)
+#     define MLE_3DTEXTUREMAPCARRIER_API __declspec(dllexport)
 #   endif /* MLE_MAKE_DLL */
-# else /* ! MLE_CARRIER_EXPORTS */
-#   ifdef MLE_CARRIER_DLL
-#     define MLE_CARRIER_API __declspec(dllimport)
-#   else /* ! MLE_CARRIER_DLL */
-#     ifndef MLE_NOT_CARRIER_DLL
-#       error Define either MLE_CARRIER_DLL or MLE_NOT_CARRIER_DLL as appropriate for your linkage! See mle/MleCarrier.h for further instructions.
-#     endif /* MLE_NOT_CARRIER_DLL */
-#   endif /* ! MLE_CARRIER_DLL */
-# endif /* ! MLE_CARRIER_EXPORTS */
+# else /* ! MLE_3DTEXTUREMAPCARRIER_EXPORTS */
+#   ifdef MLE_3DTEXTUREMAPCARRIER_DLL
+#     define MLE_3DTEXTUREMAPCARRIER_API __declspec(dllimport)
+#   else /* ! MLE_3DTEXTUREMAPCARRIER_DLL */
+#     ifndef MLE_NOT_3DTEXTUREMAPCARRIER_DLL
+#       error Define either MLE_3DTEXTUREMAPCARRIER_DLL or MLE_NOT_3DTEXTUREMAPCARRIER_DLL as appropriate for your linkage! See mle/Mle3dTextureMapCarrier.h for further instructions.
+#     endif /* MLE_NOT_3DTEXTUREMAPCARRIER_DLL */
+#   endif /* ! MLE_3DTEXTUREMAPCARRIER_DLL */
+# endif /* ! MLE_3DTEXTUREMAPCARRIER_EXPORTS */
 
 /* Empty define to avoid errors when _not_ compiling an MSWindows DLL */
-#ifndef MLE_CARRIER_API
-# define MLE_CARRIER_API
-#endif /* ! MLE_CARRIER_API */
+#ifndef MLE_3DTEXTUREMAPCARRIER_API
+# define MLE_3DTEXTUREMAPCARRIER_API
+#endif /* ! MLE_3DTEXTUREMAPCARRIER_API */

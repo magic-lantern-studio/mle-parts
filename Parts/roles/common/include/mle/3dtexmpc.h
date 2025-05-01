@@ -47,7 +47,7 @@
 // Include Magic Lantern header files.
 #include "mle/MleMediaRef.h"
 
-#include "mle/MleCarrier.h"
+#include "mle/Mle3dTextureMapCarrier.h"
 
 class MleRole;
 
@@ -58,10 +58,13 @@ class MleRole;
  *
  * @see Mle3dRole
  */
-class MLE_CARRIER_API Mle3dTextureMapCarrier 
+class MLE_3DTEXTUREMAPCARRIER_API Mle3dTextureMapCarrier
 { 
   public:
 
+	/**
+	 * Passes a texturemap to a Mle3dRole.
+	 */
     static int set(MleRole *role, MlMediaRef textureMap);
 };
 

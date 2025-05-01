@@ -11,7 +11,7 @@
  //
  // The MIT License (MIT)
  //
- // Copyright (c) 2000-2024 Wizzer Works
+ // Copyright (c) 2000-2025 Wizzer Works
  //
  // Permission is hereby granted, free of charge, to any person obtaining a copy
  // of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@
 #include "math/vector.h"
 #include "math/rotation.h"
 
-#include "mle/MleCarrier.h"
+#include "mle/Mle3dCameraCarrier.h"
 
 class MleSet;
 
@@ -59,7 +59,7 @@ class MleSet;
  * Mle3dSet.  It is not strictly an object, merely a name scoping
  * mechanism for functions.
  */
-class MLE_CARRIER_API Mle3dCameraCarrier
+class MLE_3DCAMERACARRIER_API Mle3dCameraCarrier
 {
   public:
 

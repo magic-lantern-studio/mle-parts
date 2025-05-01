@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2024 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@
 #define __MLE_3DTRANSC_H_
 
 // Include Magic Lantern header files.
-#include "mle/MleCarrier.h"
+#include "mle/Mle3dTransformCarrier.h"
 
 class MleRole;
 class MlTransform;
@@ -56,7 +56,7 @@ class MlTransform;
  *
  * @see Mle3dRole
  */
-class MLE_CARRIER_API Mle3dTransformCarrier 
+class MLE_3DTRANSFORMCARRIER_API Mle3dTransformCarrier
 {
   public:
 
