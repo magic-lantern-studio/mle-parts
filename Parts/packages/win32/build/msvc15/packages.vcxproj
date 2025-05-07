@@ -143,6 +143,14 @@
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
     <TargetName>pkgs</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Fixed Release|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>fpkgs</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Fixed Debug|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>fpkgsd</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Fixed Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -184,23 +192,24 @@ xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Core\mlert\common\src\foundation;$(MLE_HOME)\Core\math\common\include;$(MLE_HOME)\Core\util\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=1;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=1;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>.\FixedDebug/packages.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\FixedDebug/</AssemblerListingLocation>
-      <ObjectFileName>.\FixedDebug/</ObjectFileName>
-      <ProgramDataBaseFileName>.\FixedDebug/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/fpkgs.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>FixedDebug\fpkgsd.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\fpkgsd.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
@@ -210,7 +219,7 @@ xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
     <PostBuildEvent>
       <Message>Install Library</Message>
       <Command>mkdir $(MLE_HOME)\lib\runtime\cdecl
-copy "Win32\Fixed Debug\fpkgsd.lib" $(MLE_HOME)\lib\runtime\cdecl\fpkgsd.lib
+copy "x64\Fixed Debug\fpkgsd.lib" $(MLE_HOME)\lib64\runtime\cdecl\fpkgsd.lib
 mkdir $(MLE_HOME)\include\mle
 xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
 </Command>
@@ -258,16 +267,17 @@ xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Core\mlert\common\src\foundation;$(MLE_HOME)\Core\math\common\include;$(MLE_HOME)\Core\util\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\packages.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\pkgs.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
       <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
       <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -332,33 +342,34 @@ xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Core\mlert\common\src\foundation;$(MLE_HOME)\Core\math\common\include;$(MLE_HOME)\Core\util\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=1;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=1;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeaderOutputFile>.\FixedRelease/packages.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\FixedRelease/</AssemblerListingLocation>
-      <ObjectFileName>.\FixedRelease/</ObjectFileName>
-      <ProgramDataBaseFileName>.\FixedRelease/</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)/fpkgs.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
+      <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
+      <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>FixedRelease\fpkgs.lib</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)\fpkgs.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>FixedRelease/fpkgs.bsc</OutputFile>
+      <OutputFile>$(Platform)\$(Configuration)/fpkgs.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
       <Command>mkdir $(MLE_HOME)\lib\runtime\cdecl
-copy "Win32\Fixed Release\fpkgs.lib" $(MLE_HOME)\lib\runtime\cdecl\fpkgs.lib
+copy "x64\Fixed Release\fpkgs.lib" $(MLE_HOME)\lib64\runtime\cdecl\fpkgs.lib
 mkdir $(MLE_HOME)\include\mle
 xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
 </Command>
@@ -405,16 +416,17 @@ xcopy /Y ..\..\..\common\include\mle\* $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Core\mlert\common\src\foundation;$(MLE_HOME)\Core\math\common\include;$(MLE_HOME)\Core\util\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_NOT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\packages.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\pkgs.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)/</AssemblerListingLocation>
       <ObjectFileName>$(Platform)\$(Configuration)/</ObjectFileName>
       <ProgramDataBaseFileName>$(Platform)\$(Configuration)/</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

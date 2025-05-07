@@ -132,9 +132,9 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_DWP_DLL;MLE_RUNTIME_DLL;MLE_CARRIER_DLL;MLE_PROPERTY_DLL;MLE_3DROLE_DLL;MLE_3DSET_DLL;MLE_3DCOLORMAPMEDIAREF_DLL;MLE_3DMODELMEDIAREF_DLL;MLE_3DTEXTUREMAPMEDIAREF_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor_rehearsal/inventor.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor_rehearsal/</AssemblerListingLocation>
       <ObjectFileName>$(Platform)\$(Configuration)\inventor_rehearsal/</ObjectFileName>
@@ -165,7 +165,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
 </Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>mlmathd.lib;mlertd.lib;Mle3dModelMediaRefd.lib;Mle3dTextureMapMediaRef.lib;Mle3dColorMapMediaRef.lib;Mle3dRole.lib;Mle3dSet.lib;coin4d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mlmathd.lib;mlertd.lib;Mle3dModelMediaRefd.lib;Mle3dTextureMapMediaRefd.lib;Mle3dColorMapMediaRefd.lib;Mle3dRoled.lib;Mle3dSetd.lib;coin4d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>$(Platform)\$(Configuration)\inventor_rehearsal\ivrolesd.lib</ImportLibrary>
     </Link>
@@ -213,9 +213,9 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_DWP_DLL;MLE_RUNTIME_DLL;MLE_CARRIER_DLL;MLE_PROPERTY_DLL;MLE_3DROLE_DLL;MLE_3DSET_DLL;MLE_3DCOLORMAPMEDIAREF_DLL;MLE_3DMODELMEDIAREF_DLL;MLE_3DTEXTUREMAPMEDIAREF_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;MLE_CARRIER_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\ventor_rehearsal/inventor.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)\inventor_rehearsal/</AssemblerListingLocation>

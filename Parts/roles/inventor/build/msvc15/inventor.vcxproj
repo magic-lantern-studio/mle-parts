@@ -132,7 +132,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_CARRIER_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_DWP_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_3DROLE_DLL;MLE_NOT_3DSET_DLL;MLE_NOT_3DCOLORMAPMEDIAREF_DLL;MLE_NOT_3DMODELMEDIAREF_DLL;MLE_NOT_3DTEXTUREMAPMEDIAREF_DLL;COIN_DLL;WIN32;_DEBUG;_LIB;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\inventor/inventor.pch</PrecompiledHeaderOutputFile>
@@ -206,7 +206,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..;..\..\..\common\include;..\..\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_CARRIER_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_DWP_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_3DROLE_DLL;MLE_NOT_3DSET_DLL;MLE_NOT_3DCOLORMAPMEDIAREF_DLL;MLE_NOT_3DMODELMEDIAREF_DLL;MLE_NOT_3DTEXTUREMAPMEDIAREF_DLL;COIN_DLL;WIN32;NDEBUG;_LIB;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>

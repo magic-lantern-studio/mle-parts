@@ -164,9 +164,9 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_IVSTAGE_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DROLE_DLL;MLE_3DROLE_DLL;MLE_2DSET_DLL;MLE_3DSET_DLL;MLE_PROPERTY_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;_DEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)\rehearsal/</AssemblerListingLocation>
       <ObjectFileName>$(Platform)\$(Configuration)\rehearsal/</ObjectFileName>
@@ -273,9 +273,9 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_IVSTAGE_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DROLE_DLL;MLE_3DROLE_DLL;MLE_2DSET_DLL;MLE_3DSET_DLL;MLE_PROPERTY_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;WIN32;NDEBUG;_WINDOWS;_USRDLL;MLE_IVSTAGE_EXPORTS;MLE_MAKE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(Platform)\$(Configuration)\rehearsal/</AssemblerListingLocation>
