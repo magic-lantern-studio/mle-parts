@@ -404,7 +404,7 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     QWidget *m_shellParent;
 #elif defined(MLE_SOGTK)
     // The shell's parent widget for Gtk platform.
-    GtkWidget m_shellParent;
+    GtkWidget *m_shellParent;
 #else
     // The shell's parent widget for Xt platform.
     Widget m_shellParent;
@@ -518,7 +518,7 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
      */
     static int closeEventCB(MleEvent event,void *callData,void *clientData);
 #elif defined(MLE_SOGTK)
-    static int eventHandler(MleIvStage *stage,GtkEvent *event);
+    static int eventHandler(MleIvStage *stage,GdkEvent *event);
 #else
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
 #endif /* Qt */

@@ -104,7 +104,8 @@ if(MagicLantern_FOUND)
     MLE_NOT_3DROLE_DLL
     MLE_NOT_2DSET_DLL
     MLE_NOT_3DSET_DLL
-    MLE_NOT_IVSTAGE_DLL)
+    MLE_NOT_IVSTAGE_DLL
+    MLE_SOGTK)
 
   # Specify the shared library
   add_library(

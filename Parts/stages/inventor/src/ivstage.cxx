@@ -279,7 +279,7 @@ MleIvStage::init(void)
     }
 #elif defined(MLE_SOGTK)
     // Initialize Inventor and Gtk.
-    GtkWidget mainWindow = SoGtk::init("Magic Lantern");
+    GtkWidget *mainWindow = SoGtk::init("Magic Lantern");
 #else
     // Initialize Inventor and Xt.
     Widget mainWindow = SoXt::init("Magic Lantern");
@@ -303,7 +303,7 @@ MleIvStage::init(void)
 #if defined(MLE_SOQT)
     QWidget *parent = mainWindow;
 #elif defined(MLE_SOGTK)
-    GtkWidget parent = mainWindow;
+    GtkWidget *parent = mainWindow;
 #else
     Widget parent = mainWindow;
 #endif /* QT */
@@ -953,7 +953,7 @@ MleIvStage::closeEventCB(MleEvent event,void *callData,void *clientData)
 }
 #elif defined(MLE_SOGTK)
 int
-MleIvStage::eventHandler(MleIvStage *stage, GtkEvent *event)
+MleIvStage::eventHandler(MleIvStage *stage, GdkEvent *event)
 {
 #if defined(MLE_REHEARSAL)
     // Get stage size.
