@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2024 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -55,6 +55,7 @@
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 #include <QCoreApplication>
+#elif defined(MLE_SOGTK)
 #else
 #include <X11/IntrinsicP.h>
 #endif
@@ -70,6 +71,11 @@
 #include <Inventor/Qt/viewers/SoQtExaminerViewer.h>
 #include <Inventor/Qt/viewers/SoQtPlaneViewer.h>
 #include <Inventor/Qt/viewers/SoQtFlyViewer.h>
+#elif defined(MLE_SOGTK)
+#include <Inventor/Gtk/SoGtk.h>
+#include <Inventor/Gtk/viewers/SoGtkExaminerViewer.h>
+#include <Inventor/Gtk/viewers/SoGtkPlaneViewer.h>
+#include <Inventor/Gtk/viewers/SoGtkFlyViewer.h>
 #else
 #include <Inventor/Xt/SoXt.h>
 #include <Inventor/Xt/viewers/SoXtExaminerViewer.h>
@@ -161,6 +167,13 @@ static void _processQtEvents()
     // Note: the DeferredDelete events will not be processed by processEvents(). If this becomes a problem,
     // then this function will need to be rewritten to use sendPostedEvents().
     QCoreApplication::processEvents();
+}
+#elif defined(MLE_SOGTK)
+static void _processGtkEvents()
+{
+	// Check for events and dispatch them if found.
+	while (gtk_events_pending())
+		gtk_main_iteration_do(FALSE);
 }
 #else
 static void _processXtEvents()
@@ -264,6 +277,9 @@ MleIvStage::init(void)
         SoQt::init(m_shellParent);
         mainWindow = m_shellParent;
     }
+#elif defined(MLE_SOGTK)
+    // Initialize Inventor and Gtk.
+    GtkWidget mainWindow = SoGtk::init("Magic Lantern");
 #else
     // Initialize Inventor and Xt.
     Widget mainWindow = SoXt::init("Magic Lantern");
@@ -286,6 +302,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     QWidget *parent = mainWindow;
+#elif defined(MLE_SOGTK)
+    GtkWidget parent = mainWindow;
 #else
     Widget parent = mainWindow;
 #endif /* QT */
@@ -299,6 +317,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         // ToDo: determine what to do if the window is to be placed offscreen.
+#elif defined(MLE_SOGTK)
+    	// ToDo: determine what to do if the window is to be placed offscreen.
 #else
         // Create the popup widget.
         parent = XtCreatePopupShell("popup",
@@ -363,6 +383,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_examVwr = new SoQtExaminerViewer(parent);
+#elif defined(MLE_SOGTK)
+    m_examVwr = new SoGtkExaminerViewer(parent);
 #else
     //m_examVwr = new MleExaminerViewer(parent);
     //m_flyVwr = new MleFlyViewer(parent);
@@ -385,6 +407,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_viewer = new SoQtRenderArea(parent);
+#elif defined(MLE_SOGTK)
+    m_viewer = new SoGtkRenderArea(parent);
 #else
     m_viewer = new SoXtRenderArea(parent);
 #endif /* Qt */
@@ -404,6 +428,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
+#elif defined(MLE_SOGTK)
+    m_viewer->setEventCallback((SoGtkRenderAreaEventCB *)eventHandler,this);
 #else
     m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
 #endif /* Qt */
@@ -611,6 +637,8 @@ MleIvStage::init(void)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         SoQt::show(mainWindow);
+#elif defined(MLE_SOGTK)
+        SoGtk::show(mainWindow);
 #else
         SoXt::show(mainWindow);
 #endif /* Qt */
@@ -626,6 +654,9 @@ MleIvStage::init(void)
 #if defined(MLE_SOQT)
     // Flush the Qt event queue.
     _processQtEvents();
+#elif defined(MLE_SOGTK)
+    // Flush the Gtk event queue.
+    _processGtkEvents();
 #else
     // Flush the Xt event queue.
     _processXtEvents();
@@ -698,6 +729,9 @@ MleIvStage::initPlatform(void)
 #if defined(MLE_SOQT)
     // Provide users with the application context.
     // ToDo: not sure if we need something like this for Qt.
+#elif defined(MLE_SOGTK)
+    // Provide users with the application context.
+    // ToDo: not sure if we need something like this for Gtk.
 #else
     // Provide users with the application context.
     data->m_appContext = SoXt::getAppContext();
@@ -887,7 +921,7 @@ MleIvStage::eventHandler(MleIvStage *stage,QEvent *event)
 
     if ( stage->getEditing() )
     {
-        // ToDo: see below to determine what to do in special cases.
+        // ToDo: see Xt code below to determine what to do in special cases.
         // Normally let event go through (rehearsal editing time).
         return FALSE;
     }
@@ -916,6 +950,26 @@ MleIvStage::closeEventCB(MleEvent event,void *callData,void *clientData)
     g_theTitle->m_quit = TRUE;
 
     return 0;
+}
+#elif defined(MLE_SOGTK)
+int
+MleIvStage::eventHandler(MleIvStage *stage, GtkEvent *event)
+{
+#if defined(MLE_REHEARSAL)
+    // Get stage size.
+    int width,height;
+    stage->getSize(&width,&height);
+
+    if ( stage->getEditing() )
+    {
+        // ToDo: see Xt code below to determine what to do in special cases.
+        // Normally let event go through (rehearsal editing time).
+        return FALSE;
+    }
+#endif /* MLE_REHEARSAL */
+
+	// Deliver events to the player.
+	return FALSE;
 }
 #else
 // This function is the Inventor event handler.  It is Installed on the
@@ -1077,6 +1131,8 @@ MleIvStage::update(MleIvStage * stage)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     _processQtEvents();
+#elif defined(MLE_SOGTK)
+    _processGtkEvents();
 #else
     _processXtEvents();
 #endif /* Qt */
@@ -1125,7 +1181,7 @@ MleIvStage::setProperty(MleObject *object, const char *name, unsigned char *valu
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-// everything below this point is for rehearsal only
+// Everything below this point is for rehearsal only /////////////////
 #if defined(MLE_REHEARSAL)
 
 void
@@ -1137,6 +1193,10 @@ MleIvStage::edit(void)
 #if defined(MLE_SOQT)
     // Process pending events.
     QCoreApplication::processEvents();
+#elif defined(MLE_SOGTK)
+	// Check for events and dispatch them if found.
+	while (gtk_events_pending())
+		gtk_main_iteration_do(FALSE);
 #else
     // Get the application context for the stage.
     XtAppContext appContext = SoXt::getAppContext();
@@ -1160,7 +1220,7 @@ MleIvStage::edit(void)
 }
 
 #if defined(__linux__) || defined(__APPLE__)
-#if ! defined (MLE_SOQT)
+#if ! defined (MLE_SOQT) || ! defined(MLE_SOGTK)
 int 
 MleIvStage::getFD()
 {
@@ -1245,6 +1305,12 @@ MleIvStage::deactivateManipulator(MleActor *actor,int invokeCallback)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined (MLE_SOQT)
 QWidget *
+MleIvStage::getWindow(void)
+{
+    return m_shellParent;
+}
+#elif defined(MLE_SOGTK)
+GtkWidget *
 MleIvStage::getWindow(void)
 {
     return m_shellParent;
@@ -1357,6 +1423,8 @@ int MleIvStage::setViewer(const char* viewerName)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtFullViewer *oldViewer = m_viewer;
+#elif defined(MLE_SOGTK)
+    SoGtkFullViewer *oldViewer = m_viewer;
 #else
     //MleFullViewer *oldViewer = m_viewer;
     SoXtFullViewer *oldViewer = m_viewer;
@@ -1404,6 +1472,8 @@ int MleIvStage::setViewer(const char* viewerName)
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
         m_viewer->setEventCallback((SoQtRenderAreaEventCB *)eventHandler,this);
+#elif defined(MLE_SOGTK)
+        m_viewer->setEventCallback((SoGtktRenderAreaEventCB *)eventHandler,this);
 #else
         m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
 #endif /* Qt */
@@ -1422,6 +1492,12 @@ int MleIvStage::setViewer(const char* viewerName)
         m_viewer->setDrawStyle(
             SoQtViewer::INTERACTIVE,
             oldViewer->getDrawStyle(SoQtViewer::INTERACTIVE) );
+#elif defined(MLE_SOGTK)
+        m_viewer->setDrawStyle(SoGtkViewer::STILL,
+            oldViewer->getDrawStyle(SoGtkViewer::STILL));
+        m_viewer->setDrawStyle(
+            SoGtkViewer::INTERACTIVE,
+            oldViewer->getDrawStyle(SoGtkViewer::INTERACTIVE) );
 #else
         m_viewer->setDrawStyle(SoXtViewer::STILL, 
             oldViewer->getDrawStyle(SoXtViewer::STILL));
@@ -1444,8 +1520,12 @@ int MleIvStage::setViewer(const char* viewerName)
 #if defined(MLE_SOQT)
         // Flush the Qt event queue.
         QCoreApplication::processEvents();
+#elif defined(MLE_SOGTK)
+    	// Flush the Gtk event queue.
+    	while (gtk_events_pending())
+    		gtk_main_iteration_do(FALSE);
 #else
-        // Flush the Xt eventqueue.
+        // Flush the Xt event queue.
         // Get the application context for the stage.
         XtAppContext appContext = SoXt::getAppContext();
     
@@ -2569,6 +2649,44 @@ void MleIvStage::setRenderMode(char *renderMode)
     }
 
     m_viewer->setDrawStyle(SoQtViewer::STILL, style);
+#elif defined(MLE_SOGTK)
+     SoGtkViewer::DrawStyle style;
+     if (!strcmp(renderMode, RENDER_AS_IS))
+     {
+         style = SoGtkViewer::VIEW_AS_IS;
+     }
+     else if (!strcmp(renderMode, RENDER_HIDDEN_LINE))
+     {
+         style = SoGtkViewer::VIEW_HIDDEN_LINE;
+     }
+     else if (!strcmp(renderMode, RENDER_NO_TEXTURE))
+     {
+         style = SoGtkViewer::VIEW_NO_TEXTURE;
+     }
+     else if (!strcmp(renderMode, RENDER_LOWRES))
+     {
+         style = SoGtkViewer::VIEW_LOW_COMPLEXITY;
+     }
+     else if (!strcmp(renderMode, RENDER_WIREFRAME))
+     {
+         style = SoGtkViewer::VIEW_LINE;
+     }
+     else if (!strcmp(renderMode, RENDER_POINTS))
+     {
+         style = SoGtkViewer::VIEW_POINT;
+     }
+     else if (!strcmp(renderMode, RENDER_BBOX))
+     {
+         style = SoGtkViewer::VIEW_BBOX;
+     }
+     else
+     {
+         printf("ERROR MleIvStage setRenderMode: unknown render mode '%s'\n",
+             renderMode);
+         style = SoGtkViewer::VIEW_AS_IS;
+     }
+
+     m_viewer->setDrawStyle(SoGtkViewer::STILL, style);
 #else
     SoXtViewer::DrawStyle style;
     if (!strcmp(renderMode, RENDER_AS_IS))
@@ -2667,6 +2785,20 @@ const char * MleIvStage::getRenderMode() const
 
     printf("ERROR iv stage getRenderMode: unknown iv mode %d\n",
     m_viewer->getDrawStyle(SoQtViewer::STILL));
+#elif defined(MLE_SOGTK)
+    switch (m_viewer->getDrawStyle(SoGtkViewer::STILL))
+    {
+        case SoGtkViewer::VIEW_AS_IS: return RENDER_AS_IS;
+        case SoGtkViewer::VIEW_HIDDEN_LINE: return RENDER_HIDDEN_LINE;
+        case SoGtkViewer::VIEW_NO_TEXTURE: return RENDER_NO_TEXTURE;
+        case SoGtkViewer::VIEW_LOW_COMPLEXITY: return RENDER_LOWRES;
+        case SoGtkViewer::VIEW_LINE: return RENDER_WIREFRAME;
+        case SoGtkViewer::VIEW_POINT: return RENDER_POINTS;
+        case SoGtkViewer::VIEW_BBOX: return RENDER_BBOX;
+    }
+
+    printf("ERROR iv stage getRenderMode: unknown iv mode %d\n",
+    m_viewer->getDrawStyle(SoGtkViewer::STILL));
 #else
     switch (m_viewer->getDrawStyle(SoXtViewer::STILL))
     {

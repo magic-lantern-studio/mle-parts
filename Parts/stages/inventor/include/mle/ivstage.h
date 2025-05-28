@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2024 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,10 @@
 #include <QtGlobal>
 #include <QEvent>
 #include <Inventor/Qt/viewers/SoQtFullViewer.h>
+#elif defined(MLE_SOGTK)
+#include <Inventor/Gtk/viewers/SoGtkFullViewer.h>
 #else
+// Default to SoXt
 #include <Inventor/Xt/viewers/SoXtFullViewer.h>
 #endif /* Qt */
 #endif /* __linux__ */
@@ -76,6 +79,8 @@
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 class SoQtRenderArea;
+#elif defined(MLE_SOGTK)
+class SoGtkRenderArea;
 #else
 class SoXtRenderArea;
 #endif /* Qt */
@@ -166,7 +171,7 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     
     // Configuration.
 #if defined(__linux__) || defined(__APPLE__)
-#if ! defined(MLE_SOQT)
+#if ! defined(MLE_SOQT) || ! defined(MLE_SOGTK)
     virtual int getFD();
 #endif
 #endif /* __linux__ */
@@ -178,6 +183,8 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     virtual QWidget *getWindow(void);
+#elif defined(MLE_SOGTK)
+    virtual GtkWidget *getWindow(void);
 #else
     virtual Window getWindow(void);
     virtual Display* getDisplay(void);
@@ -347,6 +354,9 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
 #if defined(MLE_SOQT)
     SoQtFullViewer *m_viewer;
     SoQtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
+#elif defined(MLE_SOGTK)
+    SoGtkFullViewer *m_viewer;
+    SoGtkFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
 #else
     // MleFullViewer  *m_walkVwr;
     // MleFullViewer *m_viewer;
@@ -363,6 +373,8 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
     SoQtRenderArea *m_viewer;
+#elif defined(MLE_SOGTK)
+    SoGtkRenderArea *m_viewer;
 #else
     SoXtRenderArea *m_viewer;
 #endif
@@ -390,8 +402,11 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
 #if defined(MLE_SOQT)
     // The shell's parent widget for the Qt platform.
     QWidget *m_shellParent;
+#elif defined(MLE_SOGTK)
+    // The shell's parent widget for Gtk platform.
+    GtkWidget m_shellParent;
 #else
-    // The shell's parent widget for non-Qt platform.
+    // The shell's parent widget for Xt platform.
     Widget m_shellParent;
 #endif /* Qt */
 #endif /* __linux__ */
@@ -502,6 +517,8 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
      * @param clientData Client data for the event callback
      */
     static int closeEventCB(MleEvent event,void *callData,void *clientData);
+#elif defined(MLE_SOGTK)
+    static int eventHandler(MleIvStage *stage,GtkEvent *event);
 #else
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
 #endif /* Qt */
