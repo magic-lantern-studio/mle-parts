@@ -2,10 +2,10 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 # Project name and enable C++ support
-project(null LANGUAGES CXX)
+project(MleIvStage VERSION 1.0.0 LANGUAGES CXX)
 
-# Require C++11
-set(CMAKE_CXX_STANDARD 11)
+# Require C++17
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -45,13 +45,20 @@ if(MagicLantern_FOUND)
   message(STATUS "    SoGtk_LIBRARIES=" ${SoGtk_LIBRARIES})
   message(STATUS "    MagicLantern_INCLUDE_DIRS=" ${MagicLantern_INCLUDE_DIRS})
   message(STATUS "    MagicLantern_LIBRARIES=" ${MagicLantern_LIBRARIES})
+  message(STATUS "    MLE_ROOT=" $ENV{MLE_ROOT})
+  message(STATUS "    MLE_WORKPRINTS=" $ENV{MLE_WORKPRINTS})
+
+  # Specify the include directories for the header files
   include_directories(
     gen
+    ../../../include
     $ENV{MLE_ROOT}/include
     ${MagicLantern_INCLUDE_DIRS}
     ${COIN3D_INCLUDE_DIRS}
     ${SoGtk_INCLUDE_DIRS}
     ${GTK2_INCLUDE_DIRS})
+
+  # Specify the compiler macro definitions
   add_compile_definitions(
     ${MagicLantern_DEFINITIONS}
     MLE_DIGITAL_PLAYPRINT
@@ -65,8 +72,10 @@ if(MagicLantern_FOUND)
     MLE_NOT_2DSET_DLL
     MLE_NOT_3DSET_DLL
     MLE_NOT_IVSTAGE_DLL)
+
+  # Specify the shared library
   add_library(
-    ivstage SHARED
+    MleIvStageShared SHARED
     ../../../src/antirot.cxx
     ../../../src/CubeDragger.cxx
     ../../../src/CubeManip.cxx
@@ -75,4 +84,32 @@ if(MagicLantern_FOUND)
     ../../../src/Source.cxx
     ../../../src/SpotMarker.cxx
     ../../../src/Target.cxx)
+
+  # Specify the static library
+  add_library(
+    MleIvStageStatic STATIC
+    ../../../src/antirot.cxx
+    ../../../src/CubeDragger.cxx
+    ../../../src/CubeManip.cxx
+    ../../../src/ivstage.cxx
+    ../../../src/MultiSearchAction.cxx
+    ../../../src/Source.cxx
+    ../../../src/SpotMarker.cxx
+    ../../../src/Target.cxx)
+
+  # Specify the shared library properties
+  set_target_properties(MleIvStageShared PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME MleIvStage
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+  )
+
+  # Specify the static library properties
+  set_target_properties(MleIvStageStatic PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME MleIvStage
+    VERSION ${PROJECT_VERSION}
+  )
+
 endif()
