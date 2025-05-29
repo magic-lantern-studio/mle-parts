@@ -45,6 +45,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Specify where to find CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+# Specify Debug postfix
+set(CMAKE_DEBUG_POSTFIX "d")
+
 if(POLICY CMP0072)
   # Get rid of OpenGL GLVND warning from CMake 3.11
   cmake_policy(SET CMP0072 NEW)
@@ -60,7 +63,6 @@ include(FindSoGtk)
 find_package(SoGtk REQUIRED)
 include(FindMagicLantern)
 find_package(MagicLantern REQUIRED)
-
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules (
@@ -105,7 +107,8 @@ if(MagicLantern_FOUND)
     MLE_NOT_2DSET_DLL
     MLE_NOT_3DSET_DLL
     MLE_NOT_IVSTAGE_DLL
-    MLE_SOGTK)
+    MLE_SOGTK
+    MLE_GTK)
 
   # Specify the shared library
   add_library(
@@ -163,5 +166,23 @@ if(MagicLantern_FOUND)
     PRIVATE
       $<$<CONFIG:Debug>: MLE_DEBUG>
       $<$<CONFIG:Release>:>)
+
+  # Install the libraries
+  install(
+    TARGETS
+      MleIvStageShared
+      MleIvStageStatic
+    DESTINATION
+      lib/mle/runtime
+  )
+
+   # Install the header files
+  install(
+    FILES
+      ../../../include/mle/MleIvStage.h
+      ../../../include/mle/ivstage.h
+    DESTINATION
+      include/mle
+  )
 
 endif()
