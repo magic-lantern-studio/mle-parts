@@ -1,0 +1,2 @@
+#define LOADERSREHEARSAL_API __declspec(dllexport)
+#define LOADERSREHEARSAL_API __declspec(dllimport)

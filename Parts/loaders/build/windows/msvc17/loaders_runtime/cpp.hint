@@ -1,0 +1,2 @@
+#define LOADERSRUNTIME_API __declspec(dllexport)
+#define LOADERSRUNTIME_API __declspec(dllimport)
