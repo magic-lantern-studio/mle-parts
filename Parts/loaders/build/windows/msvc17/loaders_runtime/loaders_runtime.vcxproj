@@ -123,7 +123,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\runtime\cdecl</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mleutild.lib;mlertd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mlutild.lib;mlertd.lib;playprintd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,7 +141,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\runtime\cdecl</AdditionalLibraryDirectories>
-      <AdditionalDependencies>mleutil.lib;mlert.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mlutil.lib;mlert.lib;playprint.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015-2024 Wizzer Works
+// Copyright (c) 2015-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,16 +58,24 @@
 #include "mle/MleRuntime.h"
 
 #ifdef MLE_REHEARSAL
+#if 0
 // Include ATK header files.
 #include "mle/MlePlayer.h"
 
 MLE_RUNTIME_API MlePlayer *_mlPlayer = NULL;
+#else
+#include "mle/player.h"
+#endif
 #endif /* MLE_REHEARSAL */
 
 static void releaseItem(MleDwpItem *item)
 {
 #ifdef MLE_REHEARSAL
-	if ( _mlPlayer )
+#if 0
+	if (_mlPlayer)
+#else
+	if (mlGetPlayer() != nullptr)
+#endif /* 0 */
 	{
 		// Find the root.
 		while ( item->getParent() )
@@ -81,8 +89,12 @@ static void releaseItem(MleDwpItem *item)
 MleDwpGroup *_mlGetWorkprintGroup(const char *id)
 {
 #ifdef MLE_REHEARSAL
+#if 0
 	if ( _mlPlayer )
 		mlSetWorkprint(_mlPlayer->sendGetWorkprintGroup(id));
+#else
+	mlSetWorkprint(mlGetWorkprintGroup(id));
+#endif /* 0 */
 #endif /* MLE_REHEARSAL */
 
 	MLE_ASSERT(mlGetWorkprint());
@@ -102,8 +114,12 @@ void _mlReleaseWorkprintGroup(MleDwpItem *group)
 MleDwpScene *_mlGetWorkprintScene(const char *id)
 {
 #ifdef MLE_REHEARSAL
+#if 0
 	if ( _mlPlayer )
 		mlSetWorkprint(_mlPlayer->sendGetWorkprintScene(id));
+#else
+	mlSetWorkprint(mlGetWorkprintScene(id));
+#endif /* 0 */
 #endif /* MLE_REHEARSAL */
 
 	MLE_ASSERT(mlGetWorkprint());
@@ -123,6 +139,7 @@ void _mlReleaseWorkprintScene(MleDwpItem *scene)
 MleDwpMediaRef *_mlGetWorkprintMediaRef(const char *id)
 {
 #ifdef MLE_REHEARSAL
+#if 0
 	if ( _mlPlayer )
 	{
 		mlSetWorkprint(_mlPlayer->sendGetWorkprintMediaRef(id));
@@ -131,6 +148,13 @@ MleDwpMediaRef *_mlGetWorkprintMediaRef(const char *id)
 		if ( mlGetWorkprint() == NULL )
 			return NULL;
 	}
+#else
+    mlSetWorkprint(mlGetWorkprintMediaRef(id));
+
+	// If we fail, just return NULL.
+	if (mlGetWorkprint() == NULL)
+		return NULL;
+#endif /* 0 */
 #endif /* MLE_REHEARSAL */
 
 	MLE_ASSERT(mlGetWorkprint());
@@ -150,6 +174,7 @@ void _mlReleaseWorkprintMediaRef(MleDwpMediaRef *mediaRef)
 MleDwpSet *_mlGetWorkprintSet(const char *id)
 {
 #ifdef MLE_REHEARSAL
+#if 0
 	if ( _mlPlayer )
 	{
 		mlSetWorkprint(_mlPlayer->sendGetWorkprintSet(id));
@@ -158,6 +183,13 @@ MleDwpSet *_mlGetWorkprintSet(const char *id)
 		if ( mlGetWorkprint() == NULL )
 			return NULL;
 	}
+#else
+	mlSetWorkprint(mlGetWorkprintSet(id));
+
+	// If we fail, just return NULL.
+	if (mlGetWorkprint() == NULL)
+		return NULL;
+#endif /* 0 */
 #endif /* MLE_REHEARSAL */
 
 	MLE_ASSERT(mlGetWorkprint());

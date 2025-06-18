@@ -13,12 +13,18 @@
     <ClCompile Include="..\..\..\..\common\src\loadSet.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\common\src\player.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="loaders_rehearsal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\common\src\player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
