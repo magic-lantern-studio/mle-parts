@@ -6,25 +6,33 @@
  *
  * This file contains the class implementation for setting a color map
  * on a Role.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -41,29 +49,29 @@
 #include "mle/br3drole.h"
 #include "mle/3dcomapm.h"
 #include "mle/3dcomapc.h"
-#ifdef WIN32
+#ifdef _WINDOWS
 #include "mle/pcpal.h" // For MLE_PCPAL_BASE_GRAY.
 #endif
 
 int Mle3dColorMapCarrier::set(MleRole *role, MlMediaRef colorMap)
 { 
-	int result=FALSE;
+    int result=FALSE;
 
     if (colorMap != MLE_NO_MEDIA)
     {
-		char* registryKey = mlGenRegistryKeyFromMedia(colorMap);
+        char* registryKey = mlGenRegistryKeyFromMedia(colorMap);
 
         br_pixelmap* shadeTable = NULL;
         if (registryKey)
             shadeTable = BrMapFind(registryKey);
         if (shadeTable == NULL)
         { 
-			 Mle3dColorMapMediaRef *mediaRef = 
+             Mle3dColorMapMediaRef *mediaRef = 
                  (Mle3dColorMapMediaRef *)mlLoadMediaRef(colorMap,NULL);
 
              if (mediaRef && (shadeTable = (br_pixelmap*)mediaRef->read()))
              { 
-				 // Add this to the BRender registry.
+                 // Add this to the BRender registry.
                  shadeTable->identifier = registryKey;
                  BrTableAdd(shadeTable);
             }
@@ -72,7 +80,7 @@ int Mle3dColorMapCarrier::set(MleRole *role, MlMediaRef colorMap)
         if (shadeTable)
             for (br_actor* root = (br_actor*)(Mle3dRole::cast(role)->getRoot());
                  root!=NULL; root = root->next)
-			{ 
+            { 
                 br_material* material = root->material;
                 if (!material)
                 {
@@ -81,7 +89,7 @@ int Mle3dColorMapCarrier::set(MleRole *role, MlMediaRef colorMap)
                 }
                 material->index_shade = shadeTable;
 
-#ifdef WIN32
+#ifdef _WINDOWS
                 material->colour = BR_COLOUR_RGB(255,255,255);   /* colour */
                 material->opacity = 255;                         /* opacity */
                 material->ka = BR_UFRACTION(0.10);               /* ka */
@@ -95,11 +103,11 @@ int Mle3dColorMapCarrier::set(MleRole *role, MlMediaRef colorMap)
                 material->map_transform.m[1][1] = BR_SCALAR(1);
                 material->map_transform.m[2][0] = BR_SCALAR(0);
                 material->map_transform.m[2][1] = BR_SCALAR(0);
-			    // We don't have any knowledge here about the organization
-			    // of the color palette. The best guess is to set the 
-			    // index base and range to the first ramp in the default
-			    // palette, which is a grayscale, since the default RGB 
-			    // material color is white.
+                // We don't have any knowledge here about the organization
+                // of the color palette. The best guess is to set the 
+                // index base and range to the first ramp in the default
+                // palette, which is a grayscale, since the default RGB 
+                // material color is white.
                 material->index_base = MLE_PCPAL_BASE_GRAY;
                 material->index_range = 31;
 #else /* SGI */
@@ -113,12 +121,12 @@ int Mle3dColorMapCarrier::set(MleRole *role, MlMediaRef colorMap)
                 material->index_base = 0;
                 material->index_range = 0;
                 material->index_shade = NULL;
-#endif /* WIN32 material setup */
+#endif /* _WINDOWS material setup */
 
                 BrMaterialAdd(material);
                 BrMaterialUpdate(material,BR_MATU_ALL);
                 result=TRUE;
-			}
+            }
     }
 
     return result;

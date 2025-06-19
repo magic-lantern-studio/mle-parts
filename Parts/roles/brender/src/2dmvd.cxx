@@ -5,25 +5,33 @@
  * @ingroup MleParts
  *
  * This file implements the class for a 2D Movie Role.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -33,32 +41,32 @@
 // COPYRIGHT_END
 
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 #include <string.h>
 #include <GL/gl.h>
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
 #include "mle/2dmva.h"
 #include "mle/2dmvd.h"
 #include "mle/MleLoad.h"
 #include "mle/filemref.h"
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 #include "mle/titleenv.h"
 #include "mle/sgibrstage.h"
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
 #include "mle/pcstage.h"
 #include "mle/br2dfrm.h"
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 // Forward declaration.
 static int printf(const char *format, ... );
 static void CALLBACK cb(UINT, UINT, DWORD dwUser, DWORD, DWORD);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 
 MLE_ROLE_SOURCE(Mle2dMvRole, Mle2dRole);
@@ -72,7 +80,7 @@ Mle2dMvRole::Mle2dMvRole(MleActor *actor)
     fileName = NULL;
     sound = NULL;
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
     imageBuffer = NULL;
     audioBuffer = NULL;
     movieId = 0;
@@ -85,7 +93,7 @@ Mle2dMvRole::Mle2dMvRole(MleActor *actor)
 
     theTitle->scheduler->insertFunc(PHASE_ROLE, update, this, this);
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     filePtr     = NULL;
     videoStream = NULL;
@@ -93,14 +101,14 @@ Mle2dMvRole::Mle2dMvRole(MleActor *actor)
     getFramePtr = NULL;
     timerEvent  = NULL;
     resolution  = 0;
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 }
 
 
 Mle2dMvRole::~Mle2dMvRole(void)
 {
     if (fileName)
-	    delete [] fileName;
+        delete [] fileName;
 
     close();
 }
@@ -111,32 +119,32 @@ Mle2dMvRole::screenLocation(MlVector2 &pos)
 {
     screenPosition.setValue(pos.getValue());
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 
     // Update its bounding box.
     MlScalar width, height, min[2], max[2];
 
     if(movieId)
-	{
-		min[0] = pos[0];
-		min[1] = pos[1];
-		max[0] = pos[0] + mlLongToScalar(imageWidth) - ML_SCALAR_ONE;
-		max[1] = pos[1] + mlLongToScalar(imageHeight) - ML_SCALAR_ONE;
+    {
+        min[0] = pos[0];
+        min[1] = pos[1];
+        max[0] = pos[0] + mlLongToScalar(imageWidth) - ML_SCALAR_ONE;
+        max[1] = pos[1] + mlLongToScalar(imageHeight) - ML_SCALAR_ONE;
     }
     else
-	{
-		// This is to handle the case where media is not loaded in correctly.
+    {
+        // This is to handle the case where media is not loaded in correctly.
 
-		getBounds(min, max);
-		width = max[0] - min[0] + ML_SCALAR_ONE;
-		height = max[1] - min[1] + ML_SCALAR_ONE;
-		min[0] = pos[0];
-		min[1] = pos[1];
-		max[0] = pos[0] + width - ML_SCALAR_ONE;
-		max[1] = pos[1] + height - ML_SCALAR_ONE;
+        getBounds(min, max);
+        width = max[0] - min[0] + ML_SCALAR_ONE;
+        height = max[1] - min[1] + ML_SCALAR_ONE;
+        min[0] = pos[0];
+        min[1] = pos[1];
+        max[0] = pos[0] + width - ML_SCALAR_ONE;
+        max[1] = pos[1] + height - ML_SCALAR_ONE;
     }
     setBounds(min, max);
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 }
 
 
@@ -152,59 +160,59 @@ Mle2dMvRole::load(MlMediaRef mv)
     // Give it a default bounding box of 64 by 64 if it is a bogus
     // media ref.
     if (fileMediaRef)
-	{
-		newFileName = (char *) fileMediaRef->read();
-		if (! newFileName)
-		{
-			screenPosition.getValue(min[0], min[1]);
-			max[0] = min[0] + ML_SCALAR(63);
-			max[1] = min[1] + ML_SCALAR(63);
-			setBounds(min, max);
-			delete fileMediaRef;
-			return;
-		}
+    {
+        newFileName = (char *) fileMediaRef->read();
+        if (! newFileName)
+        {
+            screenPosition.getValue(min[0], min[1]);
+            max[0] = min[0] + ML_SCALAR(63);
+            max[1] = min[1] + ML_SCALAR(63);
+            setBounds(min, max);
+            delete fileMediaRef;
+            return;
+        }
     }
     else
-	{
-		screenPosition.getValue(min[0], min[1]);
-		max[0] = min[0] + ML_SCALAR(63);
-		max[1] = min[1] + ML_SCALAR(63);
-		setBounds(min, max);
-		return;
+    {
+        screenPosition.getValue(min[0], min[1]);
+        max[0] = min[0] + ML_SCALAR(63);
+        max[1] = min[1] + ML_SCALAR(63);
+        setBounds(min, max);
+        return;
     }
 
     // Return if it is the same movie as the current one; otherwise,
     // update the fileName.
     if (fileName)
-	{
-		if (strcmp(fileName, newFileName) == 0)
-		{
+    {
+        if (strcmp(fileName, newFileName) == 0)
+        {
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
-			firstTime = TRUE;
-#endif /* MLE_REHEARSAL or __sgi */
+#if defined(MLE_REHEARSAL)
+            firstTime = TRUE;
+#endif /* MLE_REHEARSAL */
 
-			delete fileMediaRef;
-			return;
-		}
-		else
-			delete [] fileName;
-	}
-	fileName = new char[strlen(newFileName) + 1];
-	strcpy(fileName, newFileName);
+            delete fileMediaRef;
+            return;
+        }
+        else
+            delete [] fileName;
+    }
+    fileName = new char[strlen(newFileName) + 1];
+    strcpy(fileName, newFileName);
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
-	if (initMvFile())
-	{
-		firstTime = TRUE;
+#if defined(MLE_REHEARSAL)
+    if (initMvFile())
+    {
+        firstTime = TRUE;
 
-		// Get it ready to display the first frame.
-		Mle2dMvRole::update(this);
-	}
+        // Get it ready to display the first frame.
+        Mle2dMvRole::update(this);
+    }
 
-#elif defined(WIN32)
-	initAviFile();
-#endif /* MLE_REHEARSAL or __sgi */
+#elif defined(_WINDOWS)
+    initAviFile();
+#endif /* MLE_REHEARSAL */
 
     // Delete the file media ref.
     // XXX might want to store in some media ref registry for latter use.
@@ -222,17 +230,17 @@ Mle2dMvRole::display(int state)
 void
 Mle2dMvRole::draw(void *)
 {
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
     drawMvFrame();
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     drawAviFrame();
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 }
 
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 void
 Mle2dMvRole::update(void *clientData)
 {
@@ -243,93 +251,93 @@ Mle2dMvRole::update(void *clientData)
     // Advances to the next frame, and skip frame if necessary.
     role->nextFrame();
 }
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
 
 void
 Mle2dMvRole::nextFrame(void)
 {
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
     long deltaTime;
     DMstatus status;
 
     // Don't update if media is not loaded in.
 
     if (! movieId)
-		return;
+        return;
 
     if (firstTime)
-	{
-		// The first time it comes up is a special case.  We don't want to
-		// play the audio but just retreive the first frame of video and
-		// put it in the image buffer ready for display.
-		firstTime = FALSE;
+    {
+        // The first time it comes up is a special case.  We don't want to
+        // play the audio but just retreive the first frame of video and
+        // put it in the image buffer ready for display.
+        firstTime = FALSE;
 
-		status = mvReadFrames(imageTrack, currentFrame, 1, imageFrameSize,
-					  imageBuffer);
-		if (status != DM_SUCCESS)
-			fprintf(stderr, "Mle2dMvRole: mvReadFrames error.\n");
+        status = mvReadFrames(imageTrack, currentFrame, 1, imageFrameSize,
+                      imageBuffer);
+        if (status != DM_SUCCESS)
+            fprintf(stderr, "Mle2dMvRole: mvReadFrames error.\n");
     }
     else
-	{
-		if (displayState)
-		{
-			if (firstFrame)
-			{
-				// If it is the first frame, start playing the audio and
-				// start the timer.  Note the first frame of video data is
-				// in the imageBuffer already and the video is actually
-				// played in the stage phase by the draw() routine.
-				if (audioBuffer)
-					sound->play();
+    {
+        if (displayState)
+        {
+            if (firstFrame)
+            {
+                // If it is the first frame, start playing the audio and
+                // start the timer.  Note the first frame of video data is
+                // in the imageBuffer already and the video is actually
+                // played in the stage phase by the draw() routine.
+                if (audioBuffer)
+                    sound->play();
 
-				gettimeofday(&startTime);
-				firstFrame = FALSE;
-			}
-			else
-			{
-				// Save the previous frame count and calculate the current
-				// frame.  This will drop frames if needed.
-				prevFrame = currentFrame;
-				gettimeofday(&currentTime);
-				if (startTime.tv_sec == currentTime.tv_sec)
-					deltaTime = currentTime.tv_usec - startTime.tv_usec;
-				else if (currentTime.tv_sec > startTime.tv_sec)
-				{
-					deltaTime = (currentTime.tv_sec - startTime.tv_sec) *
-						1000000 + (currentTime.tv_usec -
-						startTime.tv_usec);
-				}
-				startTime.tv_sec = currentTime.tv_sec;
-				startTime.tv_usec = currentTime.tv_usec;
+                gettimeofday(&startTime);
+                firstFrame = FALSE;
+            }
+            else
+            {
+                // Save the previous frame count and calculate the current
+                // frame.  This will drop frames if needed.
+                prevFrame = currentFrame;
+                gettimeofday(&currentTime);
+                if (startTime.tv_sec == currentTime.tv_sec)
+                    deltaTime = currentTime.tv_usec - startTime.tv_usec;
+                else if (currentTime.tv_sec > startTime.tv_sec)
+                {
+                    deltaTime = (currentTime.tv_sec - startTime.tv_sec) *
+                        1000000 + (currentTime.tv_usec -
+                        startTime.tv_usec);
+                }
+                startTime.tv_sec = currentTime.tv_sec;
+                startTime.tv_usec = currentTime.tv_usec;
 
-				currentFrame = currentFrame + (currentDeltaTime + deltaTime) /
-						   imageFrameTime;
-				currentDeltaTime = (currentDeltaTime + deltaTime) %
-						   imageFrameTime;
+                currentFrame = currentFrame + (currentDeltaTime + deltaTime) /
+                           imageFrameTime;
+                currentDeltaTime = (currentDeltaTime + deltaTime) %
+                           imageFrameTime;
 
-				// Go back to the beginning if needed.
-				if (currentFrame >= imageLength)
-				{
-					currentFrame = 0;
-					firstFrame = TRUE;
-				}
+                // Go back to the beginning if needed.
+                if (currentFrame >= imageLength)
+                {
+                    currentFrame = 0;
+                    firstFrame = TRUE;
+                }
 
-				// Retreive the appropriate frame of video data.  Don't need
-				// to retreive a frame if it is still within the time for
-				// the same frame.
-				if (currentFrame != prevFrame)
-				{
-					status = mvReadFrames(imageTrack, currentFrame, 1,
-							  imageFrameSize, imageBuffer);
-					if (status != DM_SUCCESS)
-					    fprintf(stderr, "Mle2dMvRole: mvReadFrames error.\n");
-				}
-			}
-		}
+                // Retreive the appropriate frame of video data.  Don't need
+                // to retreive a frame if it is still within the time for
+                // the same frame.
+                if (currentFrame != prevFrame)
+                {
+                    status = mvReadFrames(imageTrack, currentFrame, 1,
+                              imageFrameSize, imageBuffer);
+                    if (status != DM_SUCCESS)
+                        fprintf(stderr, "Mle2dMvRole: mvReadFrames error.\n");
+                }
+            }
+        }
     }
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     dataPtr = AVIStreamGetFrame ( getFramePtr, streamPos );
     bitmapInfo = (BITMAPINFO *) dataPtr;
@@ -344,28 +352,28 @@ Mle2dMvRole::nextFrame(void)
     streamPos = AVIStreamNextSample ( videoStream, streamPos );
     if ( streamPos < 0 )
         streamPos = 0;
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 }
 
 
 void
 Mle2dMvRole::close()
 {
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 
     // Remove the scheduled update() function.
     theTitle->scheduler->remove(this);
 
     if (sound)
-		delete sound;
+        delete sound;
     if (imageBuffer)
-		delete [] imageBuffer;
+        delete [] imageBuffer;
     if (audioBuffer)
-		delete [] audioBuffer;
+        delete [] audioBuffer;
     if (movieId)
-		mvClose(movieId);
+        mvClose(movieId);
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     if ( timerEvent )
     {
@@ -404,11 +412,11 @@ Mle2dMvRole::close()
     }
     dib.setDIB ( NULL, NULL, FALSE );
 
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 }
 
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 MlBoolean
 Mle2dMvRole::initMvFile(void)
 {
@@ -418,50 +426,50 @@ Mle2dMvRole::initMvFile(void)
 
     // Check for valid movie file.
     if (! mvIsMovieFile(fileName))
-	{
-		fprintf(stderr, "Mle2dMvRole: cannot open movie file %s.\n",
-			fileName);
-		return FALSE;
+    {
+        fprintf(stderr, "Mle2dMvRole: cannot open movie file %s.\n",
+            fileName);
+        return FALSE;
     }
 
     // Free the resources occupy by the current movie.
     if (movieId)
-	{
-		mvClose(movieId);
-		movieId = 0;
+    {
+        mvClose(movieId);
+        movieId = 0;
     }
     if (imageBuffer)
-	{
-		delete [] imageBuffer;
-		imageBuffer = NULL;
+    {
+        delete [] imageBuffer;
+        imageBuffer = NULL;
     }
     if (audioBuffer)
-	{
-		delete [] audioBuffer;
-		audioBuffer = NULL;
+    {
+        delete [] audioBuffer;
+        audioBuffer = NULL;
     }
     if (sound)
-	{
-		delete sound;
-		sound = NULL;
+    {
+        delete sound;
+        sound = NULL;
     }
 
     // Open new movie file.
     if(mvOpenFile(fileName, O_RDONLY, &movieId) != DM_SUCCESS)
-	{
-		fprintf(stderr, "Mle2dMvRole: cannot open movie file %s.\n", 
-					fileName);
-		return FALSE;
+    {
+        fprintf(stderr, "Mle2dMvRole: cannot open movie file %s.\n", 
+                    fileName);
+        return FALSE;
     }
 
     // Get image track, image width and height, frameSize in bytes, total
     // number of frames.
     if (mvFindTrackByMedium(movieId, DM_IMAGE, &imageTrack) != DM_SUCCESS)
-	{
-		fprintf(stderr, "Mle2dMvRole: cannot find image track.\n"); 
-		mvClose(movieId);
-		movieId = 0;
-		return FALSE;
+    {
+        fprintf(stderr, "Mle2dMvRole: cannot find image track.\n"); 
+        mvClose(movieId);
+        movieId = 0;
+        return FALSE;
     }
     imageRate = mvGetImageRate(imageTrack);
     imageWidth = mvGetImageWidth(imageTrack);
@@ -471,11 +479,11 @@ Mle2dMvRole::initMvFile(void)
     imageLength = mvGetTrackLength(imageTrack);
 
     if (imageLength == 0)
-	{
-		fprintf(stderr, "Mle2dMvRole: track length is zero.\n"); 
-		mvClose(movieId);
-		movieId = 0;
-		return FALSE;
+    {
+        fprintf(stderr, "Mle2dMvRole: track length is zero.\n"); 
+        mvClose(movieId);
+        movieId = 0;
+        return FALSE;
     }
 
     imageBuffer = new char[imageFrameSize];
@@ -493,9 +501,9 @@ Mle2dMvRole::initMvFile(void)
     // Get audio track, number of bits per sample, number samples per
     // second, number of channels, sample format, total number of frames.
     if (mvFindTrackByMedium(movieId, DM_AUDIO, &audioTrack) != DM_SUCCESS)
-	{
-		fprintf(stderr, "Mle2dMvRole: cannot find audio track.\n"); 
-		return FALSE;
+    {
+        fprintf(stderr, "Mle2dMvRole: cannot find audio track.\n"); 
+        return FALSE;
     }
     audioWidth = mvGetAudioWidth(audioTrack);
     audioRate = mvGetAudioRate(audioTrack);
@@ -511,31 +519,31 @@ Mle2dMvRole::initMvFile(void)
     audioBuffer = new char[audioBuffSize];
 
     status = mvReadFrames(audioTrack, 0, audioLength, audioBuffSize,
-			  audioBuffer);
+              audioBuffer);
     if (status == DM_SUCCESS)
-	{
-		sound = new MleSampleSound;
+    {
+        sound = new MleSampleSound;
 
-		// Open and set up the sound object.
-		sound->open();
-		sound->setup(audioFormat, audioWidth, audioChannels, audioLength,
-				 audioRate );
-		sound->setBuffer((char *) audioBuffer);
+        // Open and set up the sound object.
+        sound->open();
+        sound->setup(audioFormat, audioWidth, audioChannels, audioLength,
+                 audioRate );
+        sound->setBuffer((char *) audioBuffer);
 
-		return TRUE;
+        return TRUE;
     }
     else
-	{
-		fprintf(stderr, "Mle2dMvRole: audio track read error.\n");
+    {
+        fprintf(stderr, "Mle2dMvRole: audio track read error.\n");
 
-		// Encountered error, remove audio buffer.
-		if (audioBuffer)
-		{
-			delete [] audioBuffer;
-			audioBuffer = NULL;
-		}
+        // Encountered error, remove audio buffer.
+        if (audioBuffer)
+        {
+            delete [] audioBuffer;
+            audioBuffer = NULL;
+        }
 
-		return FALSE;
+        return FALSE;
     }
 }
 
@@ -548,10 +556,10 @@ Mle2dMvRole::drawMvFrame(void)
 
     // Don't draw if media is not loaded in.
     if (! movieId)
-		return;
+        return;
 
     if (displayState)
-	{
+    {
         screenPosition.getValue(x, y);
 
 #if defined(MLE_REHEARSAL)
@@ -566,10 +574,10 @@ Mle2dMvRole::drawMvFrame(void)
                      GL_TEXTURE_BIT | GL_VIEWPORT_BIT | GL_TRANSFORM_BIT);
 
         glDisable(GL_DEPTH_TEST);
-		glDisable(GL_ALPHA_TEST);
+        glDisable(GL_ALPHA_TEST);
         glDisable(GL_TEXTURE_1D);
         glDisable(GL_TEXTURE_2D);
-		glDisable(GL_BLEND);
+        glDisable(GL_BLEND);
 
         glMatrixMode(GL_PROJECTION);
         glPushMatrix();
@@ -582,7 +590,7 @@ Mle2dMvRole::drawMvFrame(void)
 
         glRasterPos3i(mlScalarToLong(x), mlScalarToLong(y), 0);
         glDrawPixels(imageWidth, imageHeight, GL_ABGR_EXT, GL_UNSIGNED_BYTE,
-		     imageBuffer);
+             imageBuffer);
 
         glMatrixMode(GL_PROJECTION);
         glPopMatrix();
@@ -592,10 +600,10 @@ Mle2dMvRole::drawMvFrame(void)
         glPopAttrib();
     }
 }
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 MlBoolean
 Mle2dMvRole::initAviFile(void)
 {
@@ -606,7 +614,7 @@ Mle2dMvRole::initAviFile(void)
     printf ( "hr = %x filePtr = %x\n", hr, filePtr );
     if ( hr != 0 )
     {
-		return FALSE;
+        return FALSE;
     }
 
     // Get the AVI file information.
@@ -620,8 +628,8 @@ Mle2dMvRole::initAviFile(void)
     printf ( "hr = %x videoStream = %x\n", hr, videoStream );
     if ( hr != 0 )
     {
-		close ();
-		return FALSE;
+        close ();
+        return FALSE;
     }
 
     // Get the video stream information.
@@ -638,8 +646,8 @@ Mle2dMvRole::initAviFile(void)
     printf ( "getFramePtr = %x\n", getFramePtr );
     if ( getFramePtr == NULL )
     {
-		close ();
-		return FALSE;
+        close ();
+        return FALSE;
     }
 
     // Get the first video frame.
@@ -648,8 +656,8 @@ Mle2dMvRole::initAviFile(void)
     printf ( "dataPtr = %x\n", dataPtr );
     if ( dataPtr == NULL )
     {
-		close ();
-		return FALSE;
+        close ();
+        return FALSE;
     }
 
     // Update the video stream position.
@@ -659,24 +667,24 @@ Mle2dMvRole::initAviFile(void)
     bitmapInfo = (BITMAPINFO *) dataPtr;
     h = (BITMAPINFOHEADER *) &(bitmapInfo->bmiHeader);
     bitmap = ((BYTE *)bitmapInfo) + h->biSize
-			+ ( h->biClrUsed * sizeof(RGBQUAD) );
+            + ( h->biClrUsed * sizeof(RGBQUAD) );
 
     // Make sure the DIB has a color table.
     printf ( "biClrUsed %d\n", h->biClrUsed );
     if ( h->biClrUsed != 256 )
     {
-		close ();
-		return FALSE;
+        close ();
+        return FALSE;
     }
 
     // Set up a palette for the DIB.
     PALETTEENTRY palEntries[256];
     for ( int i = 0; i < 256; i++ )
     {
-		palEntries[i].peRed = bitmapInfo->bmiColors[i].rgbRed;
-		palEntries[i].peGreen = bitmapInfo->bmiColors[i].rgbGreen;
-		palEntries[i].peBlue = bitmapInfo->bmiColors[i].rgbBlue;
-		palEntries[i].peFlags = PC_NOCOLLAPSE;
+        palEntries[i].peRed = bitmapInfo->bmiColors[i].rgbRed;
+        palEntries[i].peGreen = bitmapInfo->bmiColors[i].rgbGreen;
+        palEntries[i].peBlue = bitmapInfo->bmiColors[i].rgbBlue;
+        palEntries[i].peFlags = PC_NOCOLLAPSE;
     }
 
     // Map the palette here to that of the set's palette.
@@ -694,7 +702,7 @@ Mle2dMvRole::initAviFile(void)
     printf ( "hr = %x audioStream = %x\n", hr, audioStream );
     if ( hr != 0 )
     {
-		return TRUE;		// no audio is okay
+        return TRUE;        // no audio is okay
     }
 
     // Get the audio stream information.
@@ -706,7 +714,7 @@ Mle2dMvRole::initAviFile(void)
     audioBufferSize = audioTotalSamples * audioBytesPerSample;
 
     printf ( "TotalSamples %d BytesPerSample %d SamplesPerSecond %d\n",
-	audioTotalSamples, audioBytesPerSample, audioSamplesPerSecond );
+    audioTotalSamples, audioBytesPerSample, audioSamplesPerSecond );
 
     // Create a sample sound object.
     sound = new MleSampleSound;
@@ -715,13 +723,13 @@ Mle2dMvRole::initAviFile(void)
     // Read the entire audio stream into a Direct Sound buffer.
     // XXX Need to handle streams that are too large for memory.
     hr = sound->setup ( audioTotalSamples, audioBytesPerSample,
-				audioSamplesPerSecond );
+                audioSamplesPerSecond );
     printf ( "hr = %x BufferSize = %d\n", hr, audioBufferSize );
     if ( hr != 0 )
     {
-		delete sound;
-		sound = NULL;
-		return TRUE;
+        delete sound;
+        sound = NULL;
+        return TRUE;
     }
 
     void * ptr1, * ptr2;
@@ -732,23 +740,23 @@ Mle2dMvRole::initAviFile(void)
     printf ( "hr = %x ptr1 = %x bytes1 = %d\n", hr, ptr1, bytes1 );
     if ( hr != 0 )
     {
-		delete sound;
-		sound = NULL;
-		return TRUE;
+        delete sound;
+        sound = NULL;
+        return TRUE;
     }
 
     // Read the audio stream.
     LONG bytesRead = 0, samplesRead = 0;
     hr = AVIStreamRead ( audioStream, audioInfo.dwStart,
-			audioTotalSamples, ptr1, audioBufferSize,
-			&bytesRead, &samplesRead );
+            audioTotalSamples, ptr1, audioBufferSize,
+            &bytesRead, &samplesRead );
 
     printf ( "hr = %x bytesRead = %d samplesRead = %d\n",
-				hr, bytesRead, samplesRead );
+                hr, bytesRead, samplesRead );
     if ( hr != 0 )
     {
-		delete sound;
-		sound = NULL;
+        delete sound;
+        sound = NULL;
     }
 
     // Unlock the audio buffer.
@@ -768,60 +776,60 @@ Mle2dMvRole::drawAviFrame(void)
 
     if ( displayState && videoStream )
     {
-		// Start a periodic timer at the video frame rate.
-		if ( ! timerEvent )
-		{
-			timerEvent = timeSetEvent ( period, resolution, cb, (DWORD)this,
-							TIME_PERIODIC );
-			if ( sound )
-			sound->play ();
-		}
+        // Start a periodic timer at the video frame rate.
+        if ( ! timerEvent )
+        {
+            timerEvent = timeSetEvent ( period, resolution, cb, (DWORD)this,
+                            TIME_PERIODIC );
+            if ( sound )
+            sound->play ();
+        }
 
-		dib.setDIB ( bitmapInfo, bitmap, FALSE );
+        dib.setDIB ( bitmapInfo, bitmap, FALSE );
 
-		screenPosition.getValue(xPos,yPos);
-		xd = mlScalarToLong(xPos);
-		yd = mlScalarToLong(yPos);
+        screenPosition.getValue(xPos,yPos);
+        xd = mlScalarToLong(xPos);
+        yd = mlScalarToLong(yPos);
 
-		destDib = ((Mle2dSet *)set)->getDib();
-		srcWidth = dib.getWidth();
-		srcHeight = dib.getHeight();
-		destWidth = destDib->getWidth();
-		destHeight = destDib->getHeight();
+        destDib = ((Mle2dSet *)set)->getDib();
+        srcWidth = dib.getWidth();
+        srcHeight = dib.getHeight();
+        destWidth = destDib->getWidth();
+        destHeight = destDib->getHeight();
 
-		// Check for trivial clipping
-		if ((xd >= destWidth) || (yd >= destHeight))
-			return;
-		if ((destWidth <= 0) || (destHeight <= 0))
-			return;
-		if ((srcWidth <= 0) || (srcHeight <= 0))
-			return;
+        // Check for trivial clipping
+        if ((xd >= destWidth) || (yd >= destHeight))
+            return;
+        if ((destWidth <= 0) || (destHeight <= 0))
+            return;
+        if ((srcWidth <= 0) || (srcHeight <= 0))
+            return;
 
-		xs = ys = 0;
+        xs = ys = 0;
 
-		if ((xd + srcWidth) > destWidth)
-			srcWidth = destWidth - xd;
+        if ((xd + srcWidth) > destWidth)
+            srcWidth = destWidth - xd;
 
-		if ((yd + srcHeight) > destHeight)
-		{
-			int origHeight = srcHeight;
-			srcHeight = destHeight - yd;
-			ys = origHeight - srcHeight;
-		}
+        if ((yd + srcHeight) > destHeight)
+        {
+            int origHeight = srcHeight;
+            srcHeight = destHeight - yd;
+            ys = origHeight - srcHeight;
+        }
 
-		// On Windows, the origin is the upper, left-hand corner;
-		// therefore, we have to compensate for the vertical offset
-		yd = destHeight - yd - srcHeight;
+        // On Windows, the origin is the upper, left-hand corner;
+        // therefore, we have to compensate for the vertical offset
+        yd = destHeight - yd - srcHeight;
 
-		// Copy pixel data into rendering buffer
-		dib.copyBits(destDib,xd,yd,srcWidth,srcHeight,xs,ys);
+        // Copy pixel data into rendering buffer
+        dib.copyBits(destDib,xd,yd,srcWidth,srcHeight,xs,ys);
 
-		// Set extent of role for dirty rectangle calculation
-		min[0] = mlLongToScalar(xd);
-		min[1] = mlLongToScalar(yd);
-		max[0] = mlLongToScalar(xd + srcWidth - 1);
-		max[1] = mlLongToScalar(yd + srcHeight - 1);
-		setBounds(min, max);
+        // Set extent of role for dirty rectangle calculation
+        min[0] = mlLongToScalar(xd);
+        min[1] = mlLongToScalar(yd);
+        max[0] = mlLongToScalar(xd + srcWidth - 1);
+        max[1] = mlLongToScalar(yd + srcHeight - 1);
+        setBounds(min, max);
     }
 }
 
@@ -844,4 +852,4 @@ static int printf ( const char * format, ... )
     OutputDebugString ( pbuf );
     return 0;
 }
-#endif /* WIN32 */
+#endif /* _WINDOWS */

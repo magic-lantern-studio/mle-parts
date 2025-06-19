@@ -43,7 +43,7 @@
 //  ToDo: a lot of code is duplicated from brender - should consider
 //  moving into a common base class sometime after MLE 1.0.
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #endif
@@ -83,7 +83,7 @@
 #include <Inventor/Xt/viewers/SoXtFlyViewer.h>
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #include <Inventor/Win/SoWin.h>
 #include <Inventor/Win/viewers/SoWinExaminerViewer.h>
 #include <Inventor/Win/viewers/SoWinPlaneViewer.h>
@@ -127,7 +127,7 @@
 #if defined(__linux__) || defined(__APPLE__)
 #include "mle/mlPlatformData.h"
 #endif
-#if defined(WIN32)
+#if defined(_WINDOWS)
 //#include "mle/ivplatform.h"
 #include "mle/mlPlatformData.h"
 #include "mle/MleEventDispatcher.h"
@@ -201,14 +201,14 @@ MleIvStage::resolveEdit(const char * /*property*/)
 {
 }
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 // This routine is used by the popup window that parents the
 // stage offscreen.
 LRESULT CALLBACK PopupWindowProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
     return DefWindowProc(hwnd, iMsg, wParam, lParam);
 }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #endif /* MLE_REHEARSAL */
 
 
@@ -285,7 +285,7 @@ MleIvStage::init(void)
     Widget mainWindow = SoXt::init("Magic Lantern");
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     // Initializes SoWin library (and implicitly also the Coin
     // library). Returns a top-level / shell window to use.
     HWND mainWindow = (HWND)g_theTitle->m_platformData;
@@ -296,7 +296,7 @@ MleIvStage::init(void)
     {
         SoWin::init(mainWindow);
     }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     // Put the window offscreen if asked.
 #if defined(__linux__) || defined(__APPLE__)
@@ -308,9 +308,9 @@ MleIvStage::init(void)
     Widget parent = mainWindow;
 #endif /* QT */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     HWND parent = mainWindow;
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #if defined(MLE_REHEARSAL)
     if ( m_offscreen )
     {
@@ -339,7 +339,7 @@ MleIvStage::init(void)
         //m_shellParent = parent;
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
         WNDCLASSEX wndclass;
         HINSTANCE hInstance = NULL;
         static char szAppName[] = "PopupWindow";
@@ -375,7 +375,7 @@ MleIvStage::init(void)
 
         SetParent(mainWindow,parent);
         SetWindowPos(parent,HWND_NOTOPMOST,-1024,-1024,0,0,SWP_NOSIZE | SWP_NOZORDER);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     }
     m_shellParent = parent;
 
@@ -395,11 +395,11 @@ MleIvStage::init(void)
     //m_planeVwr = new SoXtPlaneViewer(parent);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     m_examVwr = new SoWinExaminerViewer(parent);
     //m_flyVwr = new SoWinFlyViewer(parent);
     //m_planeVwr = new SoWinPlaneViewer(parent);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     m_viewer = NULL;
     
 #else /* MLE_REHEARSAL */
@@ -413,9 +413,9 @@ MleIvStage::init(void)
     m_viewer = new SoXtRenderArea(parent);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     m_viewer = new SoWinRenderArea(parent);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     m_viewer->setAutoRedraw(FALSE);
 #endif /* ! MLE_REHEARSAL */
 
@@ -434,9 +434,9 @@ MleIvStage::init(void)
     m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     m_viewer->show();
 
     // Create the root of the scene graph.
@@ -643,9 +643,9 @@ MleIvStage::init(void)
         SoXt::show(mainWindow);
 #endif /* Qt */
 #endif /* MLRE_REHEARSAL */
-#if defined(WIN32)
+#if defined(_WINDOWS)
         SoWin::show(mainWindow);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     // Initialize platform data.
     g_theTitle->m_platformData = initPlatform();
@@ -662,7 +662,7 @@ MleIvStage::init(void)
     _processXtEvents();
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     MSG msg;
 
     // Flush the message queue.
@@ -671,7 +671,7 @@ MleIvStage::init(void)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     // Schedule the rendering function.
     g_theTitle->m_theScheduler->insertFunc(
@@ -713,16 +713,16 @@ MleIvStage::initPlatform(void)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     // Provide users with the render area widget.
     data->m_widget = m_viewer->getOverlayWidget();
-#if defined(WIN32)
+#if defined(_WINDOWS)
     data->m_widget = m_viewer->getGLWidget();
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     MLE_ASSERT(data->m_widget);
 
 #if defined(__linux__) || defined(__APPLE__)
@@ -1046,7 +1046,7 @@ MleIvStage::eventHandler(MleIvStage *stage,XAnyEvent *event)
 #endif /* Qt */
 #endif /* __linux__ */
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 // This function is the Inventor event handler.  It is Installed on the
 //   render area to pick up Windows messages before the render area processes them.
 //   It should return TRUE if the event is not to be passed on to the
@@ -1119,7 +1119,7 @@ MleIvStage::eventHandler(MleIvStage *stage,MSG *msg)
     // Don't pass this event to the viewer.
     return TRUE;
 }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 void
 MleIvStage::update(MleIvStage * stage)
@@ -1137,7 +1137,7 @@ MleIvStage::update(MleIvStage * stage)
     _processXtEvents();
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     MSG msg;
     HWND window = SoWin::getTopLevelWidget();
 
@@ -1147,7 +1147,7 @@ MleIvStage::update(MleIvStage * stage)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 }
 
 void
@@ -1206,7 +1206,7 @@ MleIvStage::edit(void)
         XtAppProcessEvent(appContext,XtIMAll);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     MSG msg;
     HWND window = SoWin::getTopLevelWidget();
 
@@ -1216,7 +1216,7 @@ MleIvStage::edit(void)
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 }
 
 #if defined(__linux__) || defined(__APPLE__)
@@ -1329,13 +1329,13 @@ MleIvStage::getDisplay(void)
 }
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
 HWND
 MleIvStage::getWindow(void)
 {
     return m_shellParent;
 }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -1430,9 +1430,9 @@ int MleIvStage::setViewer(const char* viewerName)
     SoXtFullViewer *oldViewer = m_viewer;
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     SoWinFullViewer *oldViewer = m_viewer;
-#endif /* WIN32 **/
+#endif /* _WINDOWS **/
 
     if (!strcmp(viewerName, STAGE_VIEWER_FLY))
         m_viewer = m_flyVwr;
@@ -1478,9 +1478,9 @@ int MleIvStage::setViewer(const char* viewerName)
         m_viewer->setEventCallback((SoXtRenderAreaEventCB *)eventHandler,this);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
         m_viewer->setEventCallback((SoWinRenderAreaEventCB *)eventHandler,this);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
         m_viewer->show();
         oldViewer->hide();
@@ -1506,13 +1506,13 @@ int MleIvStage::setViewer(const char* viewerName)
             oldViewer->getDrawStyle(SoXtViewer::INTERACTIVE) );
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
         m_viewer->setDrawStyle(SoWinViewer::STILL, 
             oldViewer->getDrawStyle(SoWinViewer::STILL));
         m_viewer->setDrawStyle( 
             SoWinViewer::INTERACTIVE,
             oldViewer->getDrawStyle(SoWinViewer::INTERACTIVE) );
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
         m_viewer->setSceneGraph(m_root);
 
@@ -1534,7 +1534,7 @@ int MleIvStage::setViewer(const char* viewerName)
             XtAppProcessEvent(appContext,XtIMAll);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
         MSG msg;
         HWND window = SoWin::getTopLevelWidget();
 
@@ -1544,7 +1544,7 @@ int MleIvStage::setViewer(const char* viewerName)
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
         // Sync up the camera by setting the active set.
         setActiveSet(m_activeSet);
@@ -2727,7 +2727,7 @@ void MleIvStage::setRenderMode(char *renderMode)
     m_viewer->setDrawStyle(SoXtViewer::STILL, style);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     SoWinViewer::DrawStyle style;
     if (!strcmp(renderMode, RENDER_AS_IS))
     {
@@ -2765,7 +2765,7 @@ void MleIvStage::setRenderMode(char *renderMode)
     }
 
     m_viewer->setDrawStyle(SoWinViewer::STILL, style);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 }
 
 const char * MleIvStage::getRenderMode() const
@@ -2815,7 +2815,7 @@ const char * MleIvStage::getRenderMode() const
     m_viewer->getDrawStyle(SoXtViewer::STILL));
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     switch (m_viewer->getDrawStyle(SoWinViewer::STILL))
     {
         case SoWinViewer::VIEW_AS_IS: return RENDER_AS_IS;
@@ -2829,7 +2829,7 @@ const char * MleIvStage::getRenderMode() const
 
     printf("ERROR iv stage getRenderMode: unknown iv mode %d\n", 
        m_viewer->getDrawStyle(SoWinViewer::STILL));
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     return NULL;
 }

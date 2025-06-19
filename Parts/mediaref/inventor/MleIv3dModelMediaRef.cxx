@@ -42,9 +42,9 @@
  // COPYRIGHT_END
 
 // Include system header files.
-#ifdef WIN32
+#ifdef _WINDOWS
 #include <windows.h>
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 // Include Inventor header files.
 #include "Inventor/SoDB.h"

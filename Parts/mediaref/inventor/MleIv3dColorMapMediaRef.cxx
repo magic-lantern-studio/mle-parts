@@ -6,9 +6,6 @@
  *
  * This file implements the class for a 3D Colormap Media Reference
  * targeting the Inventor platform.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
  // COPYRIGHT_BEGIN
@@ -45,9 +42,9 @@
  // COPYRIGHT_END
 
 // Include system header files.
-#ifdef WIN32
+#ifdef _WINDOWS
 #include <windows.h>
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 // Include Runtime Player header files.
 #include "mle/mlTypes.h"

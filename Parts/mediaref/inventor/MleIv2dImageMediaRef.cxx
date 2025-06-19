@@ -42,9 +42,9 @@
  // COPYRIGHT_END
 
 // Include system header files
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #include <windows.h>
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
 // Include runtime player header files
 #include "mle/imagmref.h"

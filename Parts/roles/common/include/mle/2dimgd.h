@@ -5,16 +5,13 @@
  * @ingroup MleParts
  *
  * This file defines the class for a 2D Image Role.
- *
- * @author Mark S. Millard
- * @date February 22, 2011
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2018 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +49,7 @@
 // Include files for image processing library.
 #include <FreeImage.h>
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
 // Include files for image processing library.
 #include "mle/dib.h"
@@ -79,7 +76,7 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
 
   public:
 
-	Mle2dImgRole(MleActor *actor);
+    Mle2dImgRole(MleActor *actor);
 
     virtual ~Mle2dImgRole(void);
 
@@ -103,10 +100,10 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
 
   protected:
 
-	// Image origin (lower left) in screen coordinate.
+    // Image origin (lower left) in screen coordinate.
     MlVector2 screenPosition;
 
-	// TRUE for on, FALSE for off
+    // TRUE for on, FALSE for off
     int displayState;
 
 #if defined(MLE_REHEARSAL) || defined(__linux__)
@@ -115,13 +112,13 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
 
   private:
 
-	// The FreeImage DIB object.
-	FIBITMAP *inImg;
-	FIBITMAP *imageOp;
+    // The FreeImage DIB object.
+    FIBITMAP *inImg;
+    FIBITMAP *imageOp;
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
-	// The Microsoft DIB object.
+    // The Microsoft DIB object.
     MleDIB dib;
 
 #endif /* MLE_REHEARSAL */

@@ -5,25 +5,33 @@
  * @ingroup MleParts
  *
  * This file defines the class for a 2D Sprite Role.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -43,18 +51,10 @@
 /********************** End common includes ********************************/
 
 
-/********************** Begin SGI includes *********************************/
-#if defined(MLE_REHEARSAL) || defined(__sgi)
-#include <il/ilABGRImg.h>
-#include <il/ilFileImg.h>
-#endif // MLE_REHEARSAL or __sgi
-/********************** End SGI includes ***********************************/
-
-
 /********************** Begin Win32 includes *******************************/
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #include "mle/dib.h"
-#endif // WIN32
+#endif // _WINDOWS
 /********************** End Win32 includes *********************************/
 
 // Declare external classes.
@@ -161,13 +161,13 @@ class Mle2dSpriteRole : public Mle2dRole
 
   private:
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
     MleDIB**             dib;                // DIB objects
-#endif // WIN32
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#endif // _WINDOWS
+#if defined(MLE_REHEARSAL)
     unsigned char**     spriteData;         // Array of pointers to images
                                             // One image per sprite page
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 };
 
 

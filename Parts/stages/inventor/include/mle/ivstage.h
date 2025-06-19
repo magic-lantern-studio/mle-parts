@@ -47,11 +47,11 @@
 
 // Include Inventor header files.
 #include <Inventor/SbLinear.h>
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <Inventor/Win/viewers/SoWinFullViewer.h>
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
 #include <QtGlobal>
@@ -85,9 +85,9 @@ class SoGtkRenderArea;
 class SoXtRenderArea;
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
 class SoWinRenderArea;
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #endif /* MLE_REHEARSAL */
 
 class SoSelection;
@@ -190,9 +190,9 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     virtual Display* getDisplay(void);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     virtual HWND getWindow();
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     virtual void setOffscreen(int flag);
     
@@ -365,10 +365,10 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     SoXtFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     SoWinFullViewer *m_viewer;
     SoWinFullViewer *m_examVwr, *m_flyVwr, *m_planeVwr;
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #else /* MLE_REHEARSAL */
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(MLE_SOQT)
@@ -379,9 +379,9 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     SoXtRenderArea *m_viewer;
 #endif
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     SoWinRenderArea *m_viewer;
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 #endif /* ! MLE_REHEARSAL */
 
     // Root of the scene graph.
@@ -412,9 +412,9 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
 #endif /* __linux__ */
 
 #if defined(MLE_REHEARSAL)
-#if defined(WIN32)
+#if defined(_WINDOWS)
     HWND m_shellParent;
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     
     SoSeparator *m_toolRoot;
     MleSnapper *m_snapper;
@@ -523,9 +523,9 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     static int eventHandler(MleIvStage *stage,XAnyEvent *event);
 #endif /* Qt */
 #endif /* __linux__ */
-#if defined(WIN32)
+#if defined(_WINDOWS)
     static int eventHandler(MleIvStage *stage,MSG *event);
-#endif /* WIN32 */
+#endif /* _WINDOWS */
     
 #if defined(MLE_REHEARSAL)
     // eventCB() is the callback for the Inventor event callback

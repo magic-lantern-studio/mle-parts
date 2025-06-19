@@ -5,25 +5,33 @@
  * @ingroup MleParts
  *
  * This file defines the BRender Stage.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -31,6 +39,7 @@
 //      http://www.wizzerworks.com
 //
 // COPYRIGHT_END
+
 
 #ifndef __MLE_BRSTAGE_H_
 #define __MLE_BRSTAGE_H_
@@ -80,17 +89,17 @@ class BrStage : public MleStage
     br_pixelmap *getFrontBuffer(void) const { return m_frontBuffer; }
     
     /**
-	 * Registers a new Set with this stage
+     * Registers a new Set with this stage
      * and returns a pointer to the scheduled render item.
-	 */
+     */
     virtual MleSchedulerItem *addSet(void (*render)(MleSet *),MleSet *set);
     
-#ifdef WIN32
+#ifdef _WINDOWS
 
     // Marks a region of the screen that needs to be blitted at frame end.
     void dirtyRegion(brwin_dirty_rect* newRegion);
 
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 
     // Beginning of properties.
 
@@ -103,10 +112,10 @@ class BrStage : public MleStage
     br_pixelmap *m_frontBuffer;
     br_pixelmap *m_depthBuffer;
     
-#ifdef WIN32
+#ifdef _WINDOWS
 
-	MlScalar m_aspect;
-	brwin_dirty_rect *m_curBlitBounds;
+    MlScalar m_aspect;
+    brwin_dirty_rect *m_curBlitBounds;
 
 #endif
 };

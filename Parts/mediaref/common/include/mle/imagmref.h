@@ -5,25 +5,33 @@
  * @ingroup MleParts
  *
  * This file defines the class for an Image Media Reference.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2011  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -31,6 +39,7 @@
 //      http://www.wizzerworks.com
 //
 // COPYRIGHT_END
+
 
 #ifndef __MLE_IMAGMREF_H_
 #define __MLE_IMAGMREF_H_
@@ -40,14 +49,14 @@
 #include "mle/MleMediaRef.h"
 #include "mle/Mle2dImageMediaRef.h"
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #if defined(MLE_REHEARSAL)
 // Use FreeImage library for Rehearsal Player on Windows.
 #include <FreeImage.h>
 #else /* ! MLE_REHEARSAL */
 #include "mle/dib.h"
 #endif
-#else /* ! WIN32 */
+#else /* ! _WINDOWS */
 // Use FreeImage library.
 #include <FreeImage.h>
 #endif
@@ -79,11 +88,11 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
 
     MlBoolean read(FIBITMAP *&inImg);
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     MlBoolean read(MleDIB &dib);
 
-#endif /* WIN32 */
+#endif /* _WINDOWS */
 };
 
 

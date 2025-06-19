@@ -12,7 +12,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2024 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@
 
 MLE_ROLE_SOURCE(Mle3dRole,MleRole);
 
-#if defined(WIN32)
+#if defined(_WINDOWS)
 // Make sure that the registry can be shared if the library is
 // included as part of a DLL.
 #pragma data_seg( ".GLOBALS" )
@@ -70,7 +70,7 @@ MLE_ROLE_SOURCE(Mle3dRole,MleRole);
 #if defined(MLE_REHEARSAL)
 MleDwpDict Mle3dRole::g_pickRegistry;
 #endif /* MLE_REHEARSAL */
-#if defined(WIN32)
+#if defined(_WINDOWS)
 #pragma data_seg()
 #pragma comment(linker, "/section:.GLOBALS,rws")
 #endif

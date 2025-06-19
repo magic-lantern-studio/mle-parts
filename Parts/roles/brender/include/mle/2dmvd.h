@@ -5,25 +5,33 @@
  * @ingroup MleParts
  *
  * This file defines the class for a 2D Movie Role.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
-//  Copyright (C) 2000-2007  Wizzer Works
+// The MIT License (MIT)
 //
-//  Wizzer Works makes available all content in this file ("Content").
-//  Unless otherwise indicated below, the Content is provided to you
-//  under the terms and conditions of the Common Public License Version 1.0
-//  ("CPL"). A copy of the CPL is available at
+// Copyright (c) 2000-2025 Wizzer Works
 //
-//      http://opensource.org/licenses/cpl1.0.php
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  For purposes of the CPL, "Program" will mean the Content.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 //
-//  For information concerning this Makefile, contact Mark S. Millard,
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+//  For information concerning this header file, contact Mark S. Millard,
 //  of Wizzer Works at msm@wizzerworks.com.
 //
 //  More information concerning Wizzer Works may be found at
@@ -40,11 +48,11 @@
 #include "mle/2drole.h"
 #include "mle/smpsound.h"
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 #include <sys/time.h>
 #include <movie.h>
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
 #include "mle/dib.h"
 
@@ -57,7 +65,7 @@ class MleAviDIB : public MleDIB
 	{ bmInfo = info; bmData = data; ownData = own; }
 };
 #include <vfw.h> // Video for Windows
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
 
 class MleActor;
@@ -90,13 +98,13 @@ class Mle2dMvRole : public Mle2dRole
     // scheduler.
     virtual void	draw(void *data);
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL))
 
     // Get the appropriate frame of the movie media ready for rendering
     // by calling nextFrame().  This function is scheduled with the
     // scheduler in the PHASE_DELEGATE phase.
     static void		update(void *clientData);
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 
     // Retreive the appropriate movie media at the time.
     void		nextFrame(void);
@@ -117,7 +125,7 @@ class Mle2dMvRole : public Mle2dRole
 
     MleSampleSound	*sound;
 
-#if defined(MLE_REHEARSAL) || defined(__sgi)
+#if defined(MLE_REHEARSAL)
 
     MlBoolean	initMvFile(void);
     void		drawMvFrame(void);
@@ -142,7 +150,7 @@ class Mle2dMvRole : public Mle2dRole
     long		currentDeltaTime;
     struct timeval	startTime, currentTime;
 
-#elif defined(WIN32)
+#elif defined(_WINDOWS)
 
     MlBoolean		initAviFile(void);
     void		drawAviFrame(void);
@@ -170,7 +178,7 @@ class Mle2dMvRole : public Mle2dRole
     DWORD		audioBytesPerSample;
     DWORD		audioSamplesPerSecond;
     DWORD		audioBufferSize;
-#endif /* MLE_REHEARSAL or __sgi */
+#endif /* MLE_REHEARSAL */
 };
 
 
