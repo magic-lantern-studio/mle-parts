@@ -154,7 +154,7 @@ copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Ml
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_ROOT)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_DWP_DLL;MLE_RUNTIME_DLL;MLE_2DIMAGEMEDIAREF_DLL;MLE_2DIMAGEROLE_DLL;MLE_2DROLE_DLL;MLE_IVSTAGE_DLL;MLE_2DIMAGEACTOR_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -176,7 +176,7 @@ copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Ml
       <AdditionalDependencies>mlertd.lib;Mle2dImageMediaRefd.lib;Mle2dRoled.lib;Mle2dSetd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRoled.lib</ImportLibrary>
@@ -187,12 +187,12 @@ copy Win32\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin\rehearsal\Ml
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRoled.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRoled.dll
-mkdir $(MLE_HOME)\include\Parts\roles\workprints
-xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_HOME)\include\Parts\roles\workprints
+      <Command>mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.lib $(MLE_ROOT)\lib64\rehearsal\Mle2dImageRoled.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle2dImageRole\Mle2dImageRoled.dll $(MLE_ROOT)\bin64\rehearsal\Mle2dImageRoled.dll
+mkdir $(MLE_ROOT)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_ROOT)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -259,7 +259,7 @@ copy Win32\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\M
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_HOME)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\Parts\actors\common\include;$(MLE_ROOT)\include;$(COINDIR)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_DWP_DLL;MLE_RUNTIME_DLL;MLE_2DIMAGEMEDIAREF_DLL;MLE_2DIMAGEROLE_DLL;MLE_2DROLE_DLL;MLE_IVSTAGE_DLL;MLE_2DIMAGEACTOR_DLL;MLE_MAKE_DLL;COIN_DLL;SOWIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -279,7 +279,7 @@ copy Win32\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\M
       <AdditionalDependencies>mlert.lib;Mle2dImageMediaRef.lib;Mle2dRole.lib;Mle2dSet.lib;DWP.lib;mlmath.lib;coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageRole\Mle2dImageRole.lib</ImportLibrary>
     </Link>
@@ -289,12 +289,12 @@ copy Win32\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin\rehearsal\M
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle2dImageRole\Mle2dImageRole.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageRole.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageRole.dll
+      <Command>mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle2dImageRole\Mle2dImageRole.lib $(MLE_ROOT)\lib64\rehearsal\Mle2dImageRole.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle2dImageRole\Mle2dImageRole.dll $(MLE_ROOT)\bin64\rehearsal\Mle2dImageRole.dll
 mkdir $(MLE_HOME)\include\Parts\roles\workprints
-xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_HOME)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgRole.* $(MLE_ROOT)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
