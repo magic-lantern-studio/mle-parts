@@ -155,7 +155,7 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_PROPERTY_DLL;MLE_3DROLE_DLL;MLE_3DSET_DLL;MLE_IVSTAGE_DLL;COIN_DLL;SOWIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DSET_EXPORTS;MLE_MAKE_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -176,7 +176,7 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
       <AdditionalDependencies>MleIvStaged.lib;Mle3dRoled.lib;mlertd.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSetd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSetd.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSetd.lib</ImportLibrary>
@@ -187,13 +187,13 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dSet\Mle3dSetd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dSetd.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle3dSet\Mle3dSetd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSetd.dll
-xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\sets\workprints
-xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_HOME)\include\Parts\sets\workprints
+      <Command>mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle3dSet\Mle3dSetd.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dSetd.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle3dSet\Mle3dSetd.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dSetd.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\sets\workprints
+xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_ROOT)\include\Parts\sets\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -263,7 +263,7 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\stages\rehearsal\include;$(MLE_HOME)\Parts\props\common;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_PROPERTY_DLL;MLE_3DROLE_DLL;MLE_3DSET_DLL;MLE_IVSTAGE_DLL;COIN_DLL;SOWIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DSET_EXPORTS;MLE_MAKE_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -284,7 +284,7 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
       <AdditionalDependencies>MleIvStage.lib;Mle3dRole.lib;mlert.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSet.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSet.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dSet\Mle3dSet.lib</ImportLibrary>
     </Link>
@@ -294,13 +294,13 @@ xcopy /y ..\..\..\inventor\workprints\*.wpf $(MLE_HOME)\include\Parts\sets\workp
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dSet\Mle3dSet.lib $(MLE_HOME)\lib64\rehearsal\Mle3dSet.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle3dSet\Mle3dSet.dll $(MLE_HOME)\bin64\rehearsal\Mle3dSet.dll
-xcopy /y ..\..\..\inventor\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\sets\workprints
-xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_HOME)\include\Parts\sets\workprints
+      <Command>mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle3dSet\Mle3dSet.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dSet.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle3dSet\Mle3dSet.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dSet.dll
+xcopy /y ..\..\..\inventor\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\sets\workprints
+xcopy /y ..\..\..\inventor\workprints\MleIv3dSet.wpf $(MLE_ROOT)\include\Parts\sets\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
