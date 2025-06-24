@@ -153,7 +153,7 @@ copy Win32\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.dll $(MLE_HOME)\bin\reh
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DIMAGEMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -173,7 +173,7 @@ copy Win32\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.dll $(MLE_HOME)\bin\reh
       <AdditionalDependencies>mlert.lib;DWP.lib;Coin4.lib;FreeImage.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRef.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRef.lib</ImportLibrary>
     </Link>
@@ -183,11 +183,11 @@ copy Win32\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.dll $(MLE_HOME)\bin\reh
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageMediaRef.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageMediaRef.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.lib $(MLE_ROOT)\lib64\rehearsal\Mle2dImageMediaRef.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle2dImageMediaRef\Mle2dImageMediaRef.dll $(MLE_ROOT)\bin64\rehearsal\Mle2dImageMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -255,7 +255,7 @@ copy Win32\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll $(MLE_HOME)\bin\rehe
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DIMAGEMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -275,7 +275,7 @@ copy Win32\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll $(MLE_HOME)\bin\rehe
       <AdditionalDependencies>mlertd.lib;DWPd.lib;Coin4d.lib;FreeImaged.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;$(FREEIMAGEDIR)/x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRefd.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle2dImageMediaRef\Mle2dImageMediaRefd.lib</ImportLibrary>
@@ -286,11 +286,11 @@ copy Win32\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll $(MLE_HOME)\bin\rehe
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle2dImageMediaRefd.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle2dImageMediaRefd.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.lib $(MLE_ROOT)\lib64\rehearsal\Mle2dImageMediaRefd.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle2dImageMediaRef\Mle2dImageMediaRefd.dll $(MLE_ROOT)\bin64\rehearsal\Mle2dImageMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

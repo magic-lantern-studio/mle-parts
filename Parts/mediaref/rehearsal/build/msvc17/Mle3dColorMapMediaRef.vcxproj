@@ -153,7 +153,7 @@ copy Win32\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll $(MLE_HOME)\b
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_3DCOLORMAPMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -173,7 +173,7 @@ copy Win32\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll $(MLE_HOME)\b
       <AdditionalDependencies>mlert.lib;DWP.lib;Coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.lib</ImportLibrary>
     </Link>
@@ -183,11 +183,11 @@ copy Win32\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll $(MLE_HOME)\b
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle3dColorMapMediaRef.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dColorMapMediaRef.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dColorMapMediaRef.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle3dColorMapMediaRef\Mle3dColorMapMediaRef.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dColorMapMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -255,7 +255,7 @@ copy Win32\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll $(MLE_HOME)\bi
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_3DCOLORMAPMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCOLORMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -275,7 +275,7 @@ copy Win32\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll $(MLE_HOME)\bi
       <AdditionalDependencies>mlertd.lib;DWPd.lib;Coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.lib</ImportLibrary>
@@ -286,11 +286,11 @@ copy Win32\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll $(MLE_HOME)\bi
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dColorMapMediaRefd.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dColorMapMediaRefd.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dColorMapMediaRefd.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle3dColorMapMediaRef\Mle3dColorMapMediaRefd.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dColorMapMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -153,7 +153,7 @@ copy Win32\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_NOT_3DTEXTUREMAPMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DTEXTUREMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -173,7 +173,7 @@ copy Win32\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib</ImportLibrary>
@@ -184,11 +184,11 @@ copy Win32\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRefd.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRefd.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dTextureMapMediaRefd.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRefd.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dTextureMapMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -256,7 +256,7 @@ copy Win32\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOM
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_NOT_3DTEXTUREMAPMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DTEXTUREMAPMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -276,7 +276,7 @@ copy Win32\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOM
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib</ImportLibrary>
     </Link>
@@ -286,11 +286,11 @@ copy Win32\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOM
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle3dTextureMapMediaRef.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dTextureMapMediaRef.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dTextureMapMediaRef.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle3dTextureMapMediaRef\Mle3dTextureMapMediaRef.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dTextureMapMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

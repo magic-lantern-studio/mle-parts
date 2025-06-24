@@ -153,7 +153,7 @@ copy Win32\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.dll $(MLE_HOME)\bin\reh
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_NOT_3DMODELMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DMODELMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -173,7 +173,7 @@ copy Win32\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.dll $(MLE_HOME)\bin\reh
       <AdditionalDependencies>mlert.lib;DWP.lib;Coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRef.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRef.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRef.lib</ImportLibrary>
     </Link>
@@ -183,11 +183,11 @@ copy Win32\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.dll $(MLE_HOME)\bin\reh
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.lib $(MLE_HOME)\lib64\rehearsal\Mle3dModelMediaRef.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.dll $(MLE_HOME)\bin64\rehearsal\Mle3dModelMediaRef.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dModelMediaRef.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\Mle3dModelMediaRef\Mle3dModelMediaRef.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dModelMediaRef.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -255,7 +255,7 @@ copy Win32\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll $(MLE_HOME)\bin\rehe
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../../common/include;$(MLE_HOME)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../common/include;$(MLE_ROOT)/include;$(COINDIR)/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_NOT_3DMODELMEDIAREF_DLL;MLE_MAKE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DMODELMEDIAREF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -275,7 +275,7 @@ copy Win32\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll $(MLE_HOME)\bin\rehe
       <AdditionalDependencies>mlertd.lib;DWPd.lib;Coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRefd.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\Mle3dModelMediaRef\Mle3dModelMediaRefd.lib</ImportLibrary>
@@ -286,11 +286,11 @@ copy Win32\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll $(MLE_HOME)\bin\rehe
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.lib $(MLE_HOME)\lib64\rehearsal\Mle3dModelMediaRefd.lib
-mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll $(MLE_HOME)\bin64\rehearsal\Mle3dModelMediaRefd.dll
+      <Command>xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.lib $(MLE_ROOT)\lib64\rehearsal\Mle3dModelMediaRefd.lib
+mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\Mle3dModelMediaRef\Mle3dModelMediaRefd.dll $(MLE_ROOT)\bin64\rehearsal\Mle3dModelMediaRefd.dll
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
