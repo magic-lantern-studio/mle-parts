@@ -159,8 +159,8 @@ copy Win32\Release\Mle3dRole_tools\Mle3dRole.lib $(MLE_HOME)\lib\tools\Mle3dRole
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor;..\..\..\..\props\common;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_CARRIER_DLL;MLE_NOT_DWP_DLL;MLE_NOT_3DROLE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor;$(MLE_HOME)\Parts\props\common;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_3DTRANSFORMCARRIER_DLL;MLE_NOT_DWP_DLL;MLE_NOT_3DROLE_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_3DROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -192,10 +192,10 @@ copy Win32\Release\Mle3dRole_tools\Mle3dRole.lib $(MLE_HOME)\lib\tools\Mle3dRole
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Release\Mle3dRole_tools\Mle3dRole.lib $(MLE_HOME)\lib64\tools\Mle3dRole.lib
-mkdir $(MLE_HOME)\include\Parts\roles\workprints
-xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_HOME)\include\Parts\roles\workprints
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Release\Mle3dRole_tools\Mle3dRole.lib $(MLE_ROOT)\lib64\tools\Mle3dRole.lib
+mkdir $(MLE_ROOT)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_ROOT)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -263,8 +263,8 @@ copy Win32\Debug\Mle3dRole_tools\Mle3dRoled.lib $(MLE_HOME)\lib\tools\Mle3dRoled
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE-HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_CARRIER_DLL;MLE_NOT_DWP_DLL;MLE_NOT_3DROLE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor\include;$(MLE-HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_PROPERTY_DLL;MLE_NOT_3DTRANSFORMCARRIER_DLL;MLE_NOT_DWP_DLL;MLE_NOT_3DROLE_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_3DROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dRole_tools\Mle3dRole.pch</PrecompiledHeaderOutputFile>
@@ -297,10 +297,10 @@ copy Win32\Debug\Mle3dRole_tools\Mle3dRoled.lib $(MLE_HOME)\lib\tools\Mle3dRoled
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Debug\Mle3dRole_tools\Mle3dRoled.lib $(MLE_HOME)\lib64\tools\Mle3dRoled.lib
-mkdir $(MLE_HOME)\include\Parts\roles\workprints
-xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_HOME)\include\Parts\roles\workprints
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Debug\Mle3dRole_tools\Mle3dRoled.lib $(MLE_ROOT)\lib64\tools\Mle3dRoled.lib
+mkdir $(MLE_ROOT)\include\Parts\roles\workprints
+xcopy /y ..\..\..\workprints\Mle3dRole.* $(MLE_ROOT)\include\Parts\roles\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

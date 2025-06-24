@@ -159,7 +159,7 @@ copy Win32\Release\Mle2dRole_tools\Mle2dRole.dll $(MLE_HOME)\bin\tools\Mle2dRole
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor;..\..\..\..\props\common;..\..\..\..\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;..\..\..\..\sets\inventor;..\..\..\..\stages\inventor;..\..\..\..\props\common;..\..\..\..\mediaref\inventor;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_DWP_DLL;MLE_NOT_2DROLE_DLL;MLE_NOT_2DSET_DLL;COIN_DLL;NDEBUG;_WINDOWS;_USRDLL;MLE_2DROLE_EXPORTS;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -190,8 +190,8 @@ copy Win32\Release\Mle2dRole_tools\Mle2dRole.dll $(MLE_HOME)\bin\tools\Mle2dRole
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Release\Mle2dRole_tools\Mle2dRole.lib $(MLE_HOME)\lib64\tools\Mle2dRole.lib
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Release\Mle2dRole_tools\Mle2dRole.lib $(MLE_ROOT)\lib64\tools\Mle2dRole.lib
 
 </Command>
     </PostBuildEvent>
@@ -260,7 +260,7 @@ copy Win32\Debug\Mle2dRole_tools\Mle2dRoled.dll $(MLE_HOME)\bin\tools\Mle2dRoled
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_HOME)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;..\..\..\inventor;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\Parts\stages\inventor\include;$(MLE_HOME)\Parts\props\common\include;$(MLE_HOME)\Parts\mediaref\inventor;$(MLE_ROOT)\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_DWP_DLL;MLE_NOT_2DROLE_DLL;MLE_NOT_2DSET_DLL;COIN_DLL;_DEBUG;_WINDOWS;_USRDLL;MLE_2DROLE_EXPORTS;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -292,8 +292,8 @@ copy Win32\Debug\Mle2dRole_tools\Mle2dRoled.dll $(MLE_HOME)\bin\tools\Mle2dRoled
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Debug\Mle2dRole_tools\Mle2dRoled.lib $(MLE_HOME)\lib64\tools\Mle2dRoled.lib
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Debug\Mle2dRole_tools\Mle2dRoled.lib $(MLE_ROOT)\lib64\tools\Mle2dRoled.lib
 
 </Command>
     </PostBuildEvent>
