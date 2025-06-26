@@ -185,7 +185,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mleatkd.lib;Mle2dRoled.lib;Mle3dRoled.lib;Mle2dSetd.lib;Mle3dSetd.lib;DWPd.lib;mlertd.lib;mlmathd.lib;coin4d.lib;sowin1d.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\rehearsal/MleIvStaged.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -198,12 +198,12 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Debug\rehearsal\MleIvStaged.dll $(MLE_HOME)\bin64\rehearsal
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\rehearsal\MleIvStaged.lib $(MLE_HOME)\lib64\rehearsal
-xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
-xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
+      <Command>mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Debug\rehearsal\MleIvStaged.dll $(MLE_ROOT)\bin64\rehearsal
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\rehearsal\MleIvStaged.lib $(MLE_ROOT)\lib64\rehearsal
+xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_ROOT)\include\mle
+xcopy /y ..\..\include\mle\*.h $(MLE_ROOT)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -293,7 +293,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mleatk.lib;Mle2dRole.lib;Mle3dRole.lib;Mle2dSet.lib;Mle3dSet.lib;DWP.lib;mlert.lib;mlmath.lib;coin4.lib;sowin1.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)\lib64\rehearsal;$(COINDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\rehearsal/MleIvStage.pdb</ProgramDatabaseFile>
       <ImportLibrary>$(Platform)\$(Configuration)\rehearsal/MleIvStage.lib</ImportLibrary>
     </Link>
@@ -303,12 +303,12 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>mkdir $(MLE_HOME)\bin64\rehearsal
-copy x64\Release\rehearsal\MleIvStage.dll $(MLE_HOME)\bin64\rehearsal
-mkdir $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\rehearsal\MleIvStage.lib $(MLE_HOME)\lib64\rehearsal
-xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
-xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
+      <Command>mkdir $(MLE_ROOT)\bin64\rehearsal
+copy x64\Release\rehearsal\MleIvStage.dll $(MLE_ROOT)\bin64\rehearsal
+mkdir $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\rehearsal\MleIvStage.lib $(MLE_ROOT)\lib64\rehearsal
+xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_ROOT)\include\mle
+xcopy /y ..\..\include\mle\*.h $(MLE_ROOT)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

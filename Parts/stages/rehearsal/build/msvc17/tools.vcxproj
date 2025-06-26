@@ -162,7 +162,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(MLE_ROOT)\include;$(MLE_ROOT)\include\rehearsal;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_IVSTAGE_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_DWP_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_2DROLE_DLL;MLE_NOT_3DROLE_DLL;MLE_NOT_2DSET_DLL;MLE_NOT_3DSET_DLL;MLE_NOT_PROPERTY_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -197,10 +197,10 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Static Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Debug\tools\MleIvStaged.lib $(MLE_HOME)\lib64\tools\MleIvStaged.lib
-xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
-xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Debug\tools\MleIvStaged.lib $(MLE_ROOT)\lib64\tools\MleIvStaged.lib
+xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_ROOT)\include\mle
+xcopy /y ..\..\include\mle\*.h $(MLE_ROOT)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -268,7 +268,7 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\include;$(MLE_HOME)\include\rehearsal;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\..\inventor\include;..\..\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\Parts\roles\inventor\include;$(MLE_HOME)\Parts\sets\inventor;$(MLE_HOME)\ATK\common\include;$(MLE_HOME)\ATK\win32\include;$(MLE_ROOT)\include;$(MLE_ROOT)\include\rehearsal;$(COINDIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_IVSTAGE_DLL;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_NOT_DWP_DLL;MLE_NOT_RUNTIME_DLL;MLE_NOT_2DROLE_DLL;MLE_NOT_3DROLE_DLL;MLE_NOT_2DSET_DLL;MLE_NOT_3DSET_DLL;MLE_NOT_PROPERTY_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;COIN_DLL;SOWIN_DLL;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -299,10 +299,10 @@ xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install Static Library</Message>
-      <Command>mkdir $(MLE_HOME)\lib64\tools
-copy x64\Release\tools\MleIvStage.lib $(MLE_HOME)\lib64\tools
-xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_HOME)\include\mle
-xcopy /y ..\..\include\mle\*.h $(MLE_HOME)\include\mle
+      <Command>mkdir $(MLE_ROOT)\lib64\tools
+copy x64\Release\tools\MleIvStage.lib $(MLE_ROOT)\lib64\tools
+xcopy /y ..\..\..\inventor\include\mle\*.h $(MLE_ROOT)\include\mle
+xcopy /y ..\..\include\mle\*.h $(MLE_ROOT)\include\mle
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
