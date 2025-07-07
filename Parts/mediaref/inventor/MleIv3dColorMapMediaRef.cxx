@@ -45,6 +45,7 @@
 #ifdef _WINDOWS
 #include <windows.h>
 #endif /* _WINDOWS */
+#include <mle/mlMalloc.h>
 
 // Include Runtime Player header files.
 #include "mle/mlTypes.h"
@@ -92,3 +93,28 @@ void *Mle3dColorMapMediaRef::read()
     return result;
 }
 
+void*
+Mle3dColorMapMediaRef::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle3dColorMapMediaRef::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle3dColorMapMediaRef::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle3dColorMapMediaRef::operator delete[](void* p)
+{
+    mlFree(p);
+}

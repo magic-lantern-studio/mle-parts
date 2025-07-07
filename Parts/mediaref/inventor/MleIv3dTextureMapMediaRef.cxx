@@ -48,6 +48,7 @@
 #ifdef psx
 #include <stdio.h>
 #endif
+#include <mle/mlMalloc.h>
 
 // Include Runtime Player header files
 #include "Inventor/nodes/SoTexture2.h"
@@ -91,3 +92,28 @@ void* Mle3dTextureMapMediaRef::read()
     return result;
 }
 
+void*
+Mle3dTextureMapMediaRef::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle3dTextureMapMediaRef::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle3dTextureMapMediaRef::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle3dTextureMapMediaRef::operator delete[](void* p)
+{
+    mlFree(p);
+}

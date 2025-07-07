@@ -49,6 +49,7 @@
 // Include runtime player header files
 #include "mle/imagmref.h"
 #include "mle/mlFileio.h"
+#include "mle/mlMalloc.h"
 
 
 MLE_MEDIAREF_SOURCE(MleImageMediaRef,MleMediaRef);
@@ -152,4 +153,30 @@ MleImageMediaRef::read(FIBITMAP *&inImg)
     }
 
     return(status);
+}
+
+void*
+MleImageMediaRef::operator new(size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void*
+MleImageMediaRef::operator new[](size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void
+MleImageMediaRef::operator delete(void* p)
+{
+	mlFree(p);
+}
+
+void
+MleImageMediaRef::operator delete[](void* p)
+{
+	mlFree(p);
 }

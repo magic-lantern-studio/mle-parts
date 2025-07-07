@@ -45,6 +45,7 @@
 #ifdef _WINDOWS
 #include <windows.h>
 #endif /* _WINDOWS */
+#include <mle/mlMalloc.h>
 
 // Include Inventor header files.
 #include "Inventor/SoDB.h"
@@ -98,3 +99,28 @@ void* Mle3dModelMediaRef::read()
     return myGraph;
 }
 
+void*
+Mle3dModelMediaRef::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle3dModelMediaRef::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle3dModelMediaRef::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle3dModelMediaRef::operator delete[](void* p)
+{
+    mlFree(p);
+}

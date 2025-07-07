@@ -80,19 +80,67 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
 
   public:
 
+    /**
+	 * Default constructor.
+     * 
+     * This constructor initializes the media reference.
+     */
     MleImageMediaRef(void);
 
+    /**
+	 * The destructor.
+     */
     virtual ~MleImageMediaRef(void);
 
 #if defined(__linux__) || defined(MLE_REHEARSAL)
 
+    /*
+     * Read a FreeImage bitmap from a file.
+     *
+     * @param inImg A reference to a pointer to the FreeImage bitmap.
+     * @return TRUE if successful, FALSE otherwise.
+	 */
     MlBoolean read(FIBITMAP *&inImg);
 
 #elif defined(_WINDOWS)
 
+    /**
+     * Read a Microsoft bitmap from a file.
+     *
+     * @param inImg A reference to a Microsoft bitmap.
+     * @return TRUE if successful, FALSE otherwise.
+     */
     MlBoolean read(MleDIB &dib);
 
 #endif /* _WINDOWS */
+
+    /**
+     * Override operator new.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new(size_t tSize);
+
+    /**
+     * Override operator new array.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new[](size_t tSize);
+
+    /**
+     * Override operator delete.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete(void* p);
+
+    /**
+     * Override operator delete array.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete[](void* p);
 };
 
 
