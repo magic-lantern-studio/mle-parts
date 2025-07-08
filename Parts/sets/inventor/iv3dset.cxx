@@ -12,7 +12,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2018-2024 Wizzer Works
+// Copyright (c) 2018-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,6 +44,7 @@
 // Include system header files.
 #include <stdio.h>
 
+// Include Inventor header files.
 #include <Inventor/SbLinear.h>
 #include <Inventor/SbBox.h>
 #include <Inventor/SoPath.h>
@@ -59,7 +60,10 @@
 #include <Inventor/actions/SoGetBoundingBoxAction.h>
 #include <Inventor/sensors/SoFieldSensor.h>
 
+// Include Magic Lantern header files.
 #include "mle/mlAssert.h"
+#include "mle/mlMalloc.h"
+
 #include "math/scalar.h"
 #include "math/vector.h"
 #include "math/rotation.h"
@@ -170,6 +174,32 @@ Mle3dSet::attach(MleRole *p,MleRole *c)
 		child->setIvParent(m_root);
 #endif /* MLE_REHEARSAL */
 	}
+}
+
+void*
+Mle3dSet::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle3dSet::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle3dSet::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle3dSet::operator delete[](void* p)
+{
+    mlFree(p);
 }
 
 //////////////////////////////////////////////////////////////////////

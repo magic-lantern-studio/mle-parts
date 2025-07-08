@@ -189,6 +189,31 @@ Mle2dSet::render(MleSet *s)
     }
 }
 
+void*
+Mle2dSet::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle2dSet::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle2dSet::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle2dSet::operator delete[](void* p)
+{
+    mlFree(p);
+}
 
 #ifdef MLE_REHEARSAL
 
