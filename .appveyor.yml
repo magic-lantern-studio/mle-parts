@@ -11,6 +11,7 @@ environment:
 # Install dependencies
 install:
 - sh: >-
+    sudo apt-get update
     sudo apt-get install -y libx11-dev;
     sudo apt-get install -y libxt-dev;
     sudo apt-get install -y libmotif-dev;
