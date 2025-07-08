@@ -143,9 +143,43 @@ class MLE_IVSTAGE_API MleIvStage : public MleStage
     // Property declarations.
     MLE_STAGE_PROPERTY(MlVector2,size,getSizeProperty,setSizeProperty)
 
-    // constructor and destructor
+    /**
+	 * @brief The default constructor.
+     */
     MleIvStage(void);
+
+	/**
+	 * The destructor.
+     */
     virtual ~MleIvStage(void);
+
+    /**
+     * Override operator new.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new(size_t tSize);
+
+    /**
+     * Override operator new array.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new[](size_t tSize);
+
+    /**
+     * Override operator delete.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete(void* p);
+
+    /**
+     * Override operator delete array.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete[](void* p);
     
 #if defined(MLE_REHEARSAL)
 

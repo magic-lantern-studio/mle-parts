@@ -4,8 +4,6 @@
  * @file SpotMarker.cxx
  * @ingroup MlParts
  *
- * @author Mark S. Millard
- *
  * This file implements a class representing a marker displayed for snapping
  * operations.
  */
@@ -14,7 +12,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2020 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -50,6 +48,7 @@
 // need to recompile first.
 #define READ_FROM_FILE 0
 
+// Include Inventor header files.
 #include <Inventor/SoDB.h>
 #include <Inventor/SoInput.h>
 #include <Inventor/SoPickedPoint.h>
@@ -77,19 +76,16 @@
 #include <Inventor/nodes/SoVertexShape.h>
 
 #if 0
-//mvo
 #include <Vrml/VrmlCone.h>
 #include <Vrml/VrmlCube.h>
 #include <Vrml/VrmlCylinder.h>
 #include <Vrml/VrmlSphere.h>
-#endif
+#endif /* 0 */
 
-//mvo
 //#include <CosmoCreate/CoAssert.h>
 #include <mle/mlAssert.h>
 #define ASSERT MLE_ASSERT
 
-//mvo
 //#include "CtBase.h"
 
 #include "CubeDragger.h"

@@ -3266,5 +3266,31 @@ void MleIvStage::recalcAutoClipPlanes()
 //
 //////////////////////////////////////////////////////////////////////
 
-
 #endif /* MLE_REHEARSAL */
+
+
+void*
+MleIvStage::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+MleIvStage::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+MleIvStage::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+MleIvStage::operator delete[](void* p)
+{
+    mlFree(p);
+}

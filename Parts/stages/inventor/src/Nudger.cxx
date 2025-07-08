@@ -4,8 +4,6 @@
  * @file Nudger.cxx
  * @ingroup MlParts
  *
- * @author Mark S. Millard
- *
  * This file implements a class that allows objects to be "nudged" a little
  * bit in any screen space direction.
  */
@@ -14,7 +12,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2020 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
