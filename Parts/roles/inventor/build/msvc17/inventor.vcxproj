@@ -296,6 +296,11 @@ xcopy /y ..\..\include\mle\*.h $(MLE_ROOT)\include\mle
     <ClInclude Include="..\..\..\common\include\mle\3dmodelc.h" />
     <ClInclude Include="..\..\..\common\include\mle\3dtexmpc.h" />
     <ClInclude Include="..\..\..\common\include\mle\3dtransc.h" />
+    <ClInclude Include="..\..\..\common\include\mle\Mle3dCameraCarrier.h" />
+    <ClInclude Include="..\..\..\common\include\mle\Mle3dColorMapCarrier.h" />
+    <ClInclude Include="..\..\..\common\include\mle\Mle3dModelCarrier.h" />
+    <ClInclude Include="..\..\..\common\include\mle\Mle3dTextureMapCarrier.h" />
+    <ClInclude Include="..\..\..\common\include\mle\Mle3dTransformCarrier.h" />
     <ClInclude Include="..\..\..\common\include\mle\MleCarrier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
