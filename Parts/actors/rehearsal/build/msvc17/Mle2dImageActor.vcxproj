@@ -153,7 +153,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_2DIMAGEACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DIMAGEROLE_DLL;MLE_2DROLE_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;_DEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -174,7 +174,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlertd.lib;ivrolesd.lib;Mle2dImageRoled.lib;Mle2dSetd.lib;MleIvStaged.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageActor\Mle2dImageActord.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageActor\Mle2dImageActord.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -187,11 +187,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Debug\Mle2dImageActor\Mle2dImageActord.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle2dImageActor\Mle2dImageActord.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_HOME)\include\Parts\actors\workprints
+      <Command>copy x64\Debug\Mle2dImageActor\Mle2dImageActord.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle2dImageActor\Mle2dImageActord.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOt)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_ROOT)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -259,7 +259,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;$(FREEIMAGEDIR)/x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_2DIMAGEACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_2DIMAGEROLE_DLL;MLE_2DROLE_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;NDEBUG;_WINDOWS;_USRDLL;MLE_2DIMAGEACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -280,7 +280,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlert.lib;ivroles.lib;Mle2dImageRole.lib;Mle3dSet.lib;MleIvStage.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle2dImageActor\Mle2dImageActor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle2dImageActor\Mle2dImageActor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(Platform)\$(Configuration)\Mle2dImageActor\Mle2dImageActor.map</MapFileName>
@@ -292,11 +292,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Release\Mle2dImageActor\Mle2dImageActor.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle2dImageActor\Mle2dImageActor.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_HOME)\include\Parts\actors\workprints</Command>
+      <Command>copy x64\Release\Mle2dImageActor\Mle2dImageActor.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle2dImageActor\Mle2dImageActor.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle2dImgActor.* $(MLE_ROOT)\include\Parts\actors\workprints</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

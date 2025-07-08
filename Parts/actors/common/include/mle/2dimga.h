@@ -5,16 +5,13 @@
  * @ingroup MleParts
  *
  * This file defines the class for a 2D Image Actor.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2019 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -152,6 +149,34 @@ class MLE_2DIMAGEACTOR_API Mle2dImgActor : public MleActor
     void setDisplayStateProperty(int state)
     { displayState = state; }
 #endif
+
+    /**
+     * Override operator new.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new(size_t tSize);
+
+    /**
+     * Override operator new array.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new[](size_t tSize);
+
+    /**
+     * Override operator delete.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete(void* p);
+
+    /**
+     * Override operator delete array.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete[](void* p);
 
   protected:
 

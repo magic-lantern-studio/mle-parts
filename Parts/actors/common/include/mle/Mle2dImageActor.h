@@ -9,18 +9,18 @@
  * On MSWindows platforms, one of these defines must always be set when
  * building application programs:
  *
- * - "MLE_DLL", when the application programmer is using the
+ * - "MLE_2DIMAGEACTOR_DLL", when the application programmer is using the
  *   library in the form of a dynamic link library (DLL)
  *
- * - "MLE_NOT_DLL", when the application programmer is using the
+ * - "MLE_NOT_2DIMAGEACTOR_DLL", when the application programmer is using the
  *   library in the form of a static object library (LIB)
  *
- * Note that either MLE_DLL or MLE_NOT_DLL _must_ be defined by
+ * Note that either MLE_2DIMAGEACTOR_DLL or MLE_NOT_2DIMAGEACTOR_DLL _must_ be defined by
  * the application programmer on MSWindows platforms, or else the
  * #error statement will hit. Set up one or the other of these two
  * defines in your compiler environment according to how the library
- * was built -- as a DLL (use "MLE_DLL") or as a LIB (use
- * "MLE_NOT_DLL").
+ * was built -- as a DLL (use "MLE_2DIMAGEACTOR_DLL") or as a LIB (use
+ * "MLE_NOT_2DIMAGEACTOR_DLL").
  *
  * (Setting up defines for the compiler is typically done by either
  * adding something like "/DMLE_DLL" to the compiler's argument
@@ -31,7 +31,7 @@
  * appropriate define)).
  *
  * It is extremely important that the application programmer uses the
- * correct define, as using "MLE_NOT_DLL" when "MLE_DLL" is
+ * correct define, as using "MLE_NOT_2DIMAGEACTOR_DLL" when "MLE_2DIMAGEACTOR_DLL" is
  * correct is likely to cause mysterious crashes.
  */
 
