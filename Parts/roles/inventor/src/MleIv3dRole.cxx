@@ -58,6 +58,9 @@
 #include "mle/3dtransc.h"
 #include "mle/MleIv3dRole.h"
 
+#include "mle/mlMalloc.h"
+#include "mle/mlMalloc.h"
+
 
 MLE_ROLE_SOURCE(Mle3dRole,MleRole);
 
@@ -147,4 +150,30 @@ Mle3dRole::addChild(Mle3dRole *child)
 		SoGroup::getClassTypeId()));
 
     ((SoGroup *)m_root)->addChild(child->getRoot());
+}
+
+void*
+Mle3dRole::operator new(size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void*
+Mle3dRole::operator new[](size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void
+Mle3dRole::operator delete(void* p)
+{
+	mlFree(p);
+}
+
+void
+Mle3dRole::operator delete[](void* p)
+{
+	mlFree(p);
 }

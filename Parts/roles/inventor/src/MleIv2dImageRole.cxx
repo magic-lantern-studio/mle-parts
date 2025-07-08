@@ -207,3 +207,29 @@ Mle2dImgRole::draw(void *)
 		glPopAttrib();
     }
 }
+
+void*
+Mle2dImgRole::operator new(size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void*
+Mle2dImgRole::operator new[](size_t tSize)
+{
+	void* p = mlMalloc(tSize);
+	return p;
+}
+
+void
+Mle2dImgRole::operator delete(void* p)
+{
+	mlFree(p);
+}
+
+void
+Mle2dImgRole::operator delete[](void* p)
+{
+	mlFree(p);
+}

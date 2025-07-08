@@ -11,7 +11,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2017-2021 Wizzer Works
+// Copyright (c) 2017-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,7 @@
 
 // Include Magic Lantern header files.
 #include "mle/mlTypes.h"
+#include "mle/mlMalloc.h"
 
 // Include Inventor Player header files.
 #include "mle/iv2dset.h"
@@ -89,4 +90,30 @@ Mle2dRole::setBounds(MlScalar min[2], MlScalar max[2])
     m_bBoxMin[1] = min[1];
     m_bBoxMax[0] = max[0];
     m_bBoxMax[1] = max[1];
+}
+
+void*
+Mle2dRole::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+Mle2dRole::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+Mle2dRole::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+Mle2dRole::operator delete[](void* p)
+{
+    mlFree(p);
 }

@@ -103,6 +103,34 @@ class MLE_3DROLE_API Mle3dRole : public MleRole
 
 #endif /* MLE_REHEARSAL */
 
+    /**
+     * Override operator new.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new(size_t tSize);
+
+    /**
+     * Override operator new array.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new[](size_t tSize);
+
+    /**
+     * Override operator delete.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete(void* p);
+
+    /**
+     * Override operator delete array.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete[](void* p);
+
   protected:
 
 	SoSeparator *m_root;
