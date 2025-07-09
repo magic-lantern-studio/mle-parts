@@ -6,16 +6,13 @@
  *
  * This file defines the class for an Actor that processes the escape
  * key.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -89,6 +86,34 @@ class MLE_ESCAPEACTOR_API MleEscapeActor : public MleActor
      * schedules this actor's update function.
 	 */
     virtual void init(void);
+
+    /**
+     * Override operator new.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new(size_t tSize);
+
+    /**
+     * Override operator new array.
+     *
+     * @param tSize The size, in bytes, to allocate.
+     */
+    void* operator new[](size_t tSize);
+
+    /**
+     * Override operator delete.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete(void* p);
+
+    /**
+     * Override operator delete array.
+     *
+     * @param p A pointer to the memory to delete.
+     */
+    void operator delete[](void* p);
 
 #ifdef MLE_REHEARSAL
 

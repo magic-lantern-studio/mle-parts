@@ -23,7 +23,7 @@
  * "MLE_NOT_2DIMAGEACTOR_DLL").
  *
  * (Setting up defines for the compiler is typically done by either
- * adding something like "/DMLE_DLL" to the compiler's argument
+ * adding something like "/DMLE_2DIMAGEACTOR_DLL" to the compiler's argument
  * line (for command-line build processes), or by adding the define to
  * the list of preprocessor symbols in your IDE GUI (in the MSVC IDE,
  * this is done from the "Project"->"Settings" menu, choose the "C/C++"

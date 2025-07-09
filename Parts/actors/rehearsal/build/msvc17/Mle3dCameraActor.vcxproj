@@ -152,8 +152,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_3DCAMERAACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_CARRIER_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCAMERAACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_3DCAMERAACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_3DCAMERACARRIER_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;NDEBUG;_WINDOWS;_USRDLL;MLE_3DCAMERAACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -173,7 +173,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlert.lib;ivroles.lib;Mle3dSet.lib;MleIvStage.lib;DWP.lib;mlmath.lib;coin4.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActor.map</MapFileName>
@@ -185,11 +185,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Release\Mle3dCameraActor\Mle3dCameraActor.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\Mle3dCameraActor\Mle3dCameraActor.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\Mle3dCameraActor.* $(MLE_HOME)\include\Parts\actors\workprints
+      <Command>copy x64\Release\Mle3dCameraActor\Mle3dCameraActor.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\Mle3dCameraActor\Mle3dCameraActor.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle3dCameraActor.* $(MLE_ROOT)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -257,8 +257,8 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>MLE_DEBUG;MLE_3DCAMERAACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_CARRIER_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCAMERAACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MLE_DEBUG;MLE_3DCAMERAACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;MLE_3DCAMERACARRIER_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;_DEBUG;_WINDOWS;_USRDLL;MLE_3DCAMERAACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActor.pch</PrecompiledHeaderOutputFile>
@@ -278,7 +278,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlertd.lib;ivrolesd.lib;Mle3dSetd.lib;MleIvStaged.lib;DWPd.lib;mlmathd.lib;coin4d.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActord.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;$(COINDIR)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\Mle3dCameraActor\Mle3dCameraActord.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -291,11 +291,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Debug\Mle3dCameraActor\Mle3dCameraActord.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\Mle3dCameraActor\Mle3dCameraActord.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\Mle3dCameraActor.* $(MLE_HOME)\include\Parts\actors\workprints
+      <Command>copy x64\Debug\Mle3dCameraActor\Mle3dCameraActord.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\Mle3dCameraActor\Mle3dCameraActord.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\Mle3dCameraActor.* $(MLE_ROOT)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

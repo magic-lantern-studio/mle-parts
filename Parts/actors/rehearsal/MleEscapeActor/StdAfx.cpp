@@ -7,9 +7,6 @@
  * This source file includes just the standard includes.
  * Mle2dRole.pch will be the pre-compiled header.
  * stdafx.obj will contain the pre-compiled type information.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
@@ -17,7 +14,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal

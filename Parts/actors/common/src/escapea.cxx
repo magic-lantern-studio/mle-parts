@@ -6,16 +6,13 @@
  *
  * This file implements the class for an Actor that processes the escape
  * key.
- *
- * @author Mark S. Millard
- * @date May 1, 2003
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -109,4 +106,30 @@ MleEscapeActor::update(MleEscapeActor* /* self */)
     {
         g_theTitle->m_quit = TRUE;
     }
+}
+
+void*
+MleEscapeActor::operator new(size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void*
+MleEscapeActor::operator new[](size_t tSize)
+{
+    void* p = mlMalloc(tSize);
+    return p;
+}
+
+void
+MleEscapeActor::operator delete(void* p)
+{
+    mlFree(p);
+}
+
+void
+MleEscapeActor::operator delete[](void* p)
+{
+    mlFree(p);
 }

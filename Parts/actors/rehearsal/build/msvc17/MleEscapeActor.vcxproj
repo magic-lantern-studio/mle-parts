@@ -152,7 +152,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_ESCAPEACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;ML_MATH_DEBUG=0;ML_FIXED_POINT=0;NDEBUG;_WINDOWS;_USRDLL;MLE_ESCAPEACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -173,7 +173,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlert.lib;DWP.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActor.map</MapFileName>
@@ -185,11 +185,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Release\MleEscapeActor\MleEscapeActor.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Release\MleEscapeActor\MleEscapeActor.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_HOME)\include\Parts\actors\workprints
+      <Command>copy x64\Release\MleEscapeActor\MleEscapeActor.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Release\MleEscapeActor\MleEscapeActor.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_ROOT)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -257,7 +257,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_HOME)\Parts\roles\common\include;$(MLE_HOME)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\include;$(MLE_ROOT)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>MLE_DEBUG;MLE_ESCAPEACTOR_DLL;MLE_MAKE_DLL;MLE_REHEARSAL;MLE_DIGITAL_WORKPRINT;MLE_NOT_UTIL_DLL;MLE_NOT_MATH_DLL;MLE_RUNTIME_DLL;MLE_DWP_DLL;ML_MATH_DEBUG=1;ML_FIXED_POINT=0;_DEBUG;_WINDOWS;_USRDLL;MLE_ESCAPEACTOR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -278,7 +278,7 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
       <AdditionalDependencies>mlertd.lib;DWPd.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(MLE_HOME)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(MLE_ROOT)/lib64/rehearsal;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(Platform)\$(Configuration)\MleEscapeActor\MleEscapeActord.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -291,11 +291,11 @@ xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
     </Bscmake>
     <PostBuildEvent>
       <Message>Install DLL</Message>
-      <Command>copy x64\Debug\MleEscapeActor\MleEscapeActord.lib $(MLE_HOME)\lib64\rehearsal
-copy x64\Debug\MleEscapeActor\MleEscapeActord.dll $(MLE_HOME)\bin64\rehearsal
-xcopy /y ..\..\..\common\include\mle\*.h $(MLE_HOME)\include\mle
-mkdir $(MLE_HOME)\include\Parts\actors\workprints
-xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_HOME)\include\Parts\actors\workprints
+      <Command>copy x64\Debug\MleEscapeActor\MleEscapeActord.lib $(MLE_ROOT)\lib64\rehearsal
+copy x64\Debug\MleEscapeActor\MleEscapeActord.dll $(MLE_ROOT)\bin64\rehearsal
+xcopy /y ..\..\..\common\include\mle\*.h $(MLE_ROOT)\include\mle
+mkdir $(MLE_ROOT)\include\Parts\actors\workprints
+xcopy /y ..\..\..\workprints\MleEscapeActor.* $(MLE_ROOT)\include\Parts\actors\workprints
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

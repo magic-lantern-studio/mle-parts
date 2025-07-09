@@ -5,16 +5,13 @@
  * @ingroup MleRehearsal
  *
  * Implements the entry point for the DLL application.
- *
- * @author Mark S. Millard
- * @created Jan 22, 2006
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2000-2019 Wizzer Works
+// Copyright (c) 2000-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,6 +45,7 @@
 // COPYRIGHT_END
 
 
+// Include Magic Lantern header files.
 #include "stdafx.h"
 #include "mle/Mle3dCameraActor.h"
 
