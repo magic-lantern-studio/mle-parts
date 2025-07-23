@@ -29,7 +29,7 @@
 <option id="program-prefix" value=""/>
 <option id="program-suffix" value=""/>
 <option id="program-transform-name" value=""/>
-<option id="env_vars" value=""/>
+<option id="env_vars" value="MLE_ROOT=&quot;/opt/MagicLantern&quot; MLE_HOME=&quot;/home/msm/Projects/MagicLanternStudio&quot;"/>
 <option id="enable-maintainer-mode" value="false"/>
 <flag id="CFLAGS" value="CFLAGS|CXXFLAGS">
 <flagvalue id="cflags-debug" value="false"/>

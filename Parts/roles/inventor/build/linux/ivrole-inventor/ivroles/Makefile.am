@@ -1,6 +1,6 @@
 #######################################
 # The directory for object files and libraries of object code
-libdir = $(exec_prefix)/lib/mle/inventor
+libdir = $(exec_prefix)/lib/inventor
 
 #######################################
 # The list of libraries we are building seperated by spaces.
