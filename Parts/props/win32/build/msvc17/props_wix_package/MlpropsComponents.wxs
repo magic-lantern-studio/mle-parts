@@ -1,0 +1,86 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{697FF295-6C62-41B3-9983-2E19B9632849}">
+				<File Id="HeaderFile1" Source="..\..\..\..\common\include\mle\3danimrp.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\common\include\mle\3dcamarp.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\common\include\mle\3dcamclp.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\common\include\mle\3dcamfvp.h" />
+				<File Id="HeaderFile5" Source="..\..\..\..\common\include\mle\3dcamtp.h" />
+				<File Id="HeaderFile6" Source="..\..\..\..\common\include\mle\3dcharrp.h" />
+				<File Id="HeaderFile7" Source="..\..\..\..\common\include\mle\3dcomapp.h" />
+				<File Id="HeaderFile8" Source="..\..\..\..\common\include\mle\3derotp.h" />
+				<File Id="HeaderFile9" Source="..\..\..\..\common\include\mle\3dgeomrp.h" />
+				<File Id="HeaderFile10" Source="..\..\..\..\common\include\mle\3dgeorwp.h" />
+				<File Id="HeaderFile11" Source="..\..\..\..\common\include\mle\3dltap.h" />
+				<File Id="HeaderFile12" Source="..\..\..\..\common\include\mle\3dltdp.h" />
+				<File Id="HeaderFile13" Source="..\..\..\..\common\include\mle\3dltip.h" />
+				<File Id="HeaderFile14" Source="..\..\..\..\common\include\mle\3dltsp.h" />
+				<File Id="HeaderFile15" Source="..\..\..\..\common\include\mle\3dlttp.h" />
+				<File Id="HeaderFile16" Source="..\..\..\..\common\include\mle\3dmatlrp.h" />
+				<File Id="HeaderFile17" Source="..\..\..\..\common\include\mle\3dmodelp.h" />
+				<File Id="HeaderFile18" Source="..\..\..\..\common\include\mle\3dnodetp.h" />
+				<File Id="HeaderFile19" Source="..\..\..\..\common\include\mle\3dnscalp.h" />
+				<File Id="HeaderFile20" Source="..\..\..\..\common\include\mle\3dpickp.h" />
+				<File Id="HeaderFile21" Source="..\..\..\..\common\include\mle\3dqrotp.h" />
+				<File Id="HeaderFile22" Source="..\..\..\..\common\include\mle\3drendp.h" />
+				<File Id="HeaderFile23" Source="..\..\..\..\common\include\mle\3drgeomp.h" />
+				<File Id="HeaderFile24" Source="..\..\..\..\common\include\mle\3drstylp.h" />
+				<File Id="HeaderFile25" Source="..\..\..\..\common\include\mle\3dscenep.h" />
+				<File Id="HeaderFile26" Source="..\..\..\..\common\include\mle\3dtexmpp.h" />
+				<File Id="HeaderFile27" Source="..\..\..\..\common\include\mle\3dtextrp.h" />
+				<File Id="HeaderFile28" Source="..\..\..\..\common\include\mle\3dtranfp.h" />
+				<File Id="HeaderFile29" Source="..\..\..\..\common\include\mle\3dtranlp.h" />
+				<File Id="HeaderFile30" Source="..\..\..\..\common\include\mle\3dtranrp.h" />
+				<File Id="HeaderFile31" Source="..\..\..\..\common\include\mle\3duscalp.h" />
+				<File Id="HeaderFile32" Source="..\..\..\..\common\include\mle\myprop1p.h" />
+				<File Id="HeaderFile33" Source="..\..\..\..\common\include\mle\myprop2p.h" />
+				<File Id="HeaderFile34" Source="..\..\..\..\common\include\mle\myprop3p.h" />
+				<File Id="HeaderFile35" Source="..\..\..\..\common\include\mle\propdef.h" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="WORKPRINTS_INCLUDE">
+			<Component Id="Workprints" Guid="{717C1390-9863-4E38-B0DE-7135844A1430}">
+				<File Id="Workprint1" Source="..\..\..\..\workprints\Mle3dAnimationRegistryProperty.wpp" />
+				<File Id="Workprint2" Source="..\..\..\..\workprints\Mle3dCameraAspectRatioProperty.wpp" />
+				<File Id="Workprint3" Source="..\..\..\..\workprints\Mle3dCameraClippingProperty.wpp" />
+				<File Id="Workprint4" Source="..\..\..\..\workprints\Mle3dCameraFieldOfViewProperty.wpp" />
+				<File Id="Workprint5" Source="..\..\..\..\workprints\Mle3dCameraTypeProperty.wpp" />
+				<File Id="Workprint6" Source="..\..\..\..\workprints\Mle3dCharacterRegistryProperty.wpp" />
+				<File Id="Workprint7" Source="..\..\..\..\workprints\Mle3dColorMapProperty.wpp" />
+				<File Id="Workprint8" Source="..\..\..\..\workprints\Mle3dEulerAngleRotationProperty.wpp" />
+				<File Id="Workprint9" Source="..\..\..\..\workprints\Mle3dGeometryRegistryProperty.wpp" />
+				<File Id="Workprint10" Source="..\..\..\..\workprints\Mle3dGeometryRegistryWebProperty.wpp" />
+				<File Id="Workprint11" Source="..\..\..\..\workprints\Mle3dLightAngleProperty.wpp" />
+				<File Id="Workprint12" Source="..\..\..\..\workprints\Mle3dLightDropOffRateProperty.wpp" />
+				<File Id="Workprint13" Source="..\..\..\..\workprints\Mle3dLightIntensityProperty.wpp" />
+				<File Id="Workprint14" Source="..\..\..\..\workprints\Mle3dLightSwitchProperty.wpp" />
+				<File Id="Workprint15" Source="..\..\..\..\workprints\Mle3dLightTypeProperty.wpp" />
+				<File Id="Workprint16" Source="..\..\..\..\workprints\Mle3dMaterialRegistryProperty.wpp" />
+				<File Id="Workprint17" Source="..\..\..\..\workprints\Mle3dModelProperty.wpp" />
+				<File Id="Workprint18" Source="..\..\..\..\workprints\Mle3dNodeTypeProperty.wpp" />
+				<File Id="Workprint19" Source="..\..\..\..\workprints\Mle3dNonuniformScaleProperty.wpp" />
+				<File Id="Workprint20" Source="..\..\..\..\workprints\Mle3dOrientationProperty.wpp" />
+				<File Id="Workprint21" Source="..\..\..\..\workprints\Mle3dPickableProperty.wpp" />
+				<File Id="Workprint22" Source="..\..\..\..\workprints\Mle3dPositionProperty.wpp" />
+				<File Id="Workprint23" Source="..\..\..\..\workprints\Mle3dQuaternionRotationProperty.wpp" />
+				<File Id="Workprint24" Source="..\..\..\..\workprints\Mle3dRehearsalGeometryProperty.wpp" />
+				<File Id="Workprint25" Source="..\..\..\..\workprints\Mle3dRenderProperty.wpp" />
+				<File Id="Workprint26" Source="..\..\..\..\workprints\Mle3dRenderStyleProperty.wpp" />
+				<File Id="Workprint27" Source="..\..\..\..\workprints\Mle3dSceneGraphProperty.wpp" />
+				<File Id="Workprint28" Source="..\..\..\..\workprints\Mle3dTextureMapProperty.wpp" />
+				<File Id="Workprint29" Source="..\..\..\..\workprints\Mle3dTextureRegistryProperty.wpp" />
+				<File Id="Workprint30" Source="..\..\..\..\workprints\Mle3dTransformProperty.wpp" />
+				<File Id="Workprint31" Source="..\..\..\..\workprints\Mle3dTranslationProperty.wpp" />
+				<File Id="Workprint32" Source="..\..\..\..\workprints\Mle3dUniformScaleProperty.wpp" />
+				<File Id="Workprint33" Source="..\..\..\..\workprints\MyOneProperty.wpp" />
+				<File Id="Workprint34" Source="..\..\..\..\workprints\MyThreeProperty.wpp" />
+				<File Id="Workprint35" Source="..\..\..\..\workprints\MyTwoProperty.wpp" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="MlpropsComponents" Directory="MLEROOT">
+			<ComponentRef Id="HeaderFiles" />
+			<ComponentRef Id="Workprints" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
