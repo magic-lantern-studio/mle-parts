@@ -1,0 +1,8 @@
+﻿<Project Sdk="WixToolset.Sdk/6.0.1">
+  <ItemGroup>
+    <ProjectReference Include="..\Mle2dImageMediaRef.vcxproj" />
+    <ProjectReference Include="..\Mle3dColorMapMediaRef.vcxproj" />
+    <ProjectReference Include="..\Mle3dModelMediaRef.vcxproj" />
+    <ProjectReference Include="..\Mle3dTextureMapMediaRef.vcxproj" />
+  </ItemGroup>
+</Project>

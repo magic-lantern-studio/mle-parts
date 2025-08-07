@@ -1,0 +1,42 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{8F0E4483-2C5D-4DE0-933A-884E6B6D8F48}">
+				<File Id="HeaderFile1" Source="..\..\..\..\common\include\mle\imagmref.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\common\include\mle\Mle2dImageMediaRef.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\common\include\mle\3dcomapm.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\common\include\mle\Mle3dColorMapMediaRef.h" />
+				<File Id="HeaderFile5" Source="..\..\..\..\common\include\mle\3dmodelm.h" />
+				<File Id="HeaderFile6" Source="..\..\..\..\common\include\mle\Mle3dModelMediaRef.h" />
+				<File Id="HeaderFile7" Source="..\..\..\..\common\include\mle\3dtexmpm.h" />
+				<File Id="HeaderFile8" Source="..\..\..\..\common\include\mle\Mle3dTextureMapMediaRef.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="MediarefComponents" Directory="MLEROOT">
+			<Component Id="rehearsal" Directory="BIN64" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
+				<File Id="ml2dimagemediaref_rehearsal" Source="$(var.Mle2dImageMediaRef.TargetPath)"/>
+				<File Id="ml3dcolormapmediaref_rehearsal" Source="$(var.Mle3dColorMapMediaRef.TargetPath)"/>
+				<File Id="ml3dmodelmediaref_rehearsal" Source="$(var.Mle3dModelMediaRef.TargetPath)"/>
+				<File Id="ml3dtexturemapmediaref_rehearsal" Source="$(var.Mle3dTextureMapMediaRef.TargetPath)"/>
+			</Component>
+			<?if $(var.Configuration) = Debug ?>
+				<!-- Debug Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{9E1DF459-80D9-4BAD-A265-3703034E09E3}">
+					<File Id="mle2dimagemediaref_rehearsal_lib" Source="$(var.Mle2dImageMediaRef.TargetDir)\Mle2dImageMediaRefd.lib"/>
+					<File Id="mle3dcolormapmediaref_rehearsal_lib" Source="$(var.Mle3dColorMapMediaRef.TargetDir)\Mle3dColorMapMediaRefd.lib"/>
+					<File Id="mle3dmodelemediaref_rehearsal_lib" Source="$(var.Mle3dModelMediaRef.TargetDir)\Mle3dModelMediaRefd.lib"/>
+					<File Id="mle3dtexturemapmediaref_rehearsal_lib" Source="$(var.Mle3dTextureMapMediaRef.TargetDir)\Mle3dTextureMapMediaRefd.lib"/>
+				</Component>
+			<?else?>
+				<!-- Release Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{E07EE52F-3C83-4CB3-BB49-6BD0255169B7}">
+					<File Id="mle2dimagemediaref_rehearsa_libl" Source="$(var.Mle2dImageMediaRef.TargetDir)\Mle2dImageMediaRef.lib"/>
+					<File Id="mle3dcolormapmediaref_rehearsal_lib" Source="$(var.Mle3dColorMapMediaRef.TargetDir)\Mle3dColorMapMediaRef.lib"/>
+					<File Id="mle3dmodelemediaref_rehearsal_lib" Source="$(var.Mle3dModelMediaRef.TargetDir)\Mle3dModelMediaRef.lib"/>
+					<File Id="mle3dtexturemapmediaref_rehearsal_lib" Source="$(var.Mle3dTextureMapMediaRef.TargetDir)\Mle3dTextureMapMediaRef.lib"/>
+				</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>

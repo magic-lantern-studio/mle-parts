@@ -1,0 +1,27 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<?if $(var.Configuration) = Debug ?>
+		<!-- Debug Package -->
+		<Package Id="wizzer.magiclantern.mediarefd_wix_package"
+				 Name="Magic Lantern SDK mediarefd"
+				 Manufacturer="WizzerWorks"
+				 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="MediarefComponents" />
+			</Feature>
+		</Package>
+	<?else?>
+		<!-- Release Package -->
+		<Package Id="wizzer.magiclantern.mediaref_wix_package"
+					 Name="Magic Lantern SDK mediaref"
+					 Manufacturer="WizzerWorks"
+					 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="MediarefComponents" />
+			</Feature>
+		</Package>
+	<?endif?>
+</Wix>
