@@ -19,6 +19,7 @@
 					<Directory Id="LIB64_TOOLS" Name="tools"/>
 				</Directory>
 				<Directory Id="BIN64" Name="bin64">
+					<Directory Id="BIN64_REHEARSAL" Name="rehearsal" />
 				</Directory>
 			</Directory>
 		</DirectoryRef>
