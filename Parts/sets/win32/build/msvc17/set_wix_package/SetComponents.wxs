@@ -1,0 +1,32 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{B01C91D0-5FE8-44F6-9713-1EF933AFD983}">
+				<File Id="HeaderFile1" Source="..\..\..\..\inventor\mle\iv2dset.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\inventor\mle\Mle2dSet.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\inventor\mle\iv3dset.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\inventor\mle\Mle3dSet.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="SetComponents" Directory="MLEROOT">
+			<Component Id="rehearsal" Directory="BIN64" Guid="{D9F0F708-0140-4D15-B646-9E062147613F}">
+				<File Id="mel2dset_rehearsal" Source="$(var.Mle2dSet.TargetPath)"/>
+				<File Id="mle3dset_rehearsal" Source="$(var.Mle3dSet.TargetPath)"/>
+			</Component>
+			<?if $(var.Configuration) = Debug ?>
+			<!-- Debug Package -->
+			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{13864DB6-DB00-4920-A67A-BDC3283794D9}">
+				<File Id="mel2dset_rehearsal_lib" Source="$(var.Mle2dSet.TargetDir)\Mle2dSetd.lib"/>
+				<File Id="mle3dset_rehearsal_lib" Source="$(var.Mle3dSet.TargetDir)\Mle3dSetd.lib"/>
+			</Component>
+			<?else?>
+			<!-- Release Package -->
+			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{14832C09-7B24-4198-B7B2-065D09C4D034}">
+				<File Id="mel2dset_rehearsal_lib" Source="$(var.Mle2dSet.TargetDir)\Mle2dSet.lib"/>
+				<File Id="mle3dset_rehearsal_lib" Source="$(var.Mle3dSet.TargetDir)\Mle3dSet.lib"/>
+			</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
