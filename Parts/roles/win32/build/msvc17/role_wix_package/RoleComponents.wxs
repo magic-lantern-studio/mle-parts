@@ -1,0 +1,37 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{9C9E0F22-E017-4942-8E90-9829BA1193C4}">
+				<File Id="HeaderFile1" Source="..\..\..\..\common\include\mle\2dimgd.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\common\include\mle\Mle2dImageRole.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\common\include\mle\2drole.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\common\include\mle\Mle2dRole.h" />
+				<File Id="HeaderFile5" Source="..\..\..\..\common\include\mle\Mle3dRole.h" />
+				<File Id="HeaderFile6" Source="..\..\..\..\inventor\include\mle\MleIv3dRole.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="RoleComponents" Directory="MLEROOT">
+			<Component Id="rehearsal" Directory="BIN64" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
+				<File Id="mel2dimagerole_rehearsal" Source="$(var.Mle2dImageRole.TargetPath)"/>
+				<File Id="mle2drole_rehearsal" Source="$(var.Mle2dRole.TargetPath)"/>
+				<File Id="mle3drole_rehearsal" Source="$(var.Mle3dRole.TargetPath)"/>
+			</Component>
+			<?if $(var.Configuration) = Debug ?>
+				<!-- Debug Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{05E0D1B4-D732-43CB-B49C-6846658F8E41}">
+					<File Id="mel2dimagerole_rehearsal_lib" Source="$(var.Mle2dImageRole.TargetDir)\Mle2dImageRoled.lib"/>
+					<File Id="mle2drole_rehearsal_lib" Source="$(var.Mle2dRole.TargetDir)\Mle2dRoled.lib"/>
+					<File Id="mle3drole_rehearsal_lib" Source="$(var.Mle3dRole.TargetDir)\Mle3dRoled.lib"/>
+				</Component>
+			<?else?>
+				<!-- Release Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{14832C09-7B24-4198-B7B2-065D09C4D034}">
+					<File Id="mel2dimagerole_rehearsal_lib" Source="$(var.Mle2dImageRole.TargetDir)\Mle2dImageRole.lib"/>
+					<File Id="mle2drole_rehearsal_lib" Source="$(var.Mle2dRole.TargetDir)\Mle2dRole.lib"/>
+					<File Id="mle3drole_rehearsal_lib" Source="$(var.Mle3dRole.TargetDir)\Mle3dRole.lib"/>
+				</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>

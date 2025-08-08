@@ -1,0 +1,27 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<?if $(var.Configuration) = Debug ?>
+		<!-- Debug Package -->
+		<Package Id="wizzer.magiclantern.roled_wix_package"
+				 Name="Magic Lantern SDK roled"
+				 Manufacturer="WizzerWorks"
+				 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="RoleComponents" />
+			</Feature>
+		</Package>
+	<?else?>
+		<!-- Release Package -->
+		<Package Id="wizzer.magiclantern.role_wix_package"
+				 Name="Magic Lantern SDK role"
+				 Manufacturer="WizzerWorks"
+				 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="RoleComponents" />
+			</Feature>
+		</Package>
+	<?endif?>
+</Wix>
