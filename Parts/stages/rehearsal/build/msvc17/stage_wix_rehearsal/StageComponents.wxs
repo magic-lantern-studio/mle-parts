@@ -1,0 +1,38 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{7C485D75-5D9A-4FEC-81A8-C2D885A6FD5C}">
+				<File Id="HeaderFile1" Source="..\..\..\..\inventor\include\antirot.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\inventor\include\CubeDragger.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\inventor\include\CubeDraggerGeom.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\inventor\include\CubeManip.h" />
+				<File Id="HeaderFile5" Source="..\..\..\..\inventor\include\mle\ivstage.h" />
+				<File Id="HeaderFile6" Source="..\..\..\include\mle\MleIvStage.h" />
+				<File Id="HeaderFile7" Source="..\..\..\..\inventor\include\MultiSearchAction.h" />
+				<File Id="HeaderFile8" Source="..\..\..\..\inventor\include\Nudger.h" />
+				<File Id="HeaderFile9" Source="..\..\..\..\inventor\include\Snapper.h" />
+				<File Id="HeaderFile10" Source="..\..\..\..\inventor\include\Source.h" />
+				<File Id="HeaderFile11" Source="..\..\..\..\inventor\include\SpotMarker.h" />
+				<File Id="HeaderFile12" Source="..\..\..\..\inventor\include\SpotMarkerGraph.h" />
+				<File Id="HeaderFile13" Source="..\..\..\..\inventor\include\Target.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="StageComponents" Directory="MLEROOT">
+			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{089AF43A-D607-40A7-9D08-05380E568F7B}">
+				<File Id="mleivstage_rehearsal" Source="$(var.rehearsal.TargetPath)"/>
+			</Component>
+			<?if $(var.Configuration) = Debug ?>
+			<!-- Debug Package -->
+			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
+				<File Id="mleivstage_rehearsal_lib" Source="$(var.rehearsal.TargetDir)\MleIvStaged.lib"/>
+			</Component>
+			<?else?>
+			<!-- Release Package -->
+			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
+				<File Id="mleivstage_rehearsal_lib" Source="$(var.rehearsal.TargetDir)\MleIvStage.lib"/>
+			</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>

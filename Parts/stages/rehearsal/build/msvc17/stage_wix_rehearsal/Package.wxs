@@ -1,0 +1,27 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<?if $(var.Configuration) = Debug ?>
+		<!-- Debug Package -->
+		<Package Id="wizzer.magiclantern.staged_wix_package"
+							 Name="Magic Lantern SDK staged"
+							 Manufacturer="WizzerWorks"
+							 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="StageComponents" />
+			</Feature>
+		</Package>
+	<?else?>
+		<!-- Release Package -->
+		<Package Id="wizzer.magiclantern.stage_wix_package"
+							 Name="Magic Lantern SDK stage"
+							 Manufacturer="WizzerWorks"
+							 Version="1.0.0.0">
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+			<Feature Id="Main">
+				<ComponentGroupRef Id="StageComponents" />
+			</Feature>
+		</Package>
+	<?endif?>
+</Wix>

@@ -1,0 +1,27 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<StandardDirectory Id="ProgramFiles6432Folder">
+			<Directory Id="INSTALLFOLDER" Name="!(bind.Property.Manufacturer)" />
+		</StandardDirectory>
+	</Fragment>
+	<Fragment>
+		<DirectoryRef Id="INSTALLFOLDER">
+			<Directory Id="MLEROOT" Name="MagicLantern">
+				<Directory Id="HEADERS_INCLUDE" Name="include">
+					<Directory Id="HEADERS_INCLUDE_MLE" Name="mle"/>
+					<Directory Id="WORKPRINTS_INCLUDE" Name="workprints" />
+				</Directory>
+				<Directory Id="LIB64" Name="lib64">
+					<Directory Id="LIB64_REHEARSAL" Name="rehearsal"/>
+					<Directory Id="LIB64_RUNTIME" Name="runtime">
+						<Directory Id="LIB64_RUNTIME_CDECL" Name="cdecl"/>
+					</Directory>
+					<Directory Id="LIB64_TOOLS" Name="tools"/>
+				</Directory>
+				<Directory Id="BIN64" Name="bin64">
+					<Directory Id="BIN64_REHEARSAL" Name="rehearsal"/>
+				</Directory>
+			</Directory>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
