@@ -1,0 +1,37 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{FEF71C93-86B9-40C5-83E7-9C8DF8858DE1}">
+				<File Id="HeaderFile1" Source="..\..\..\..\common\include\mle\2dimga.h" />
+				<File Id="HeaderFile2" Source="..\..\..\..\common\include\mle\Mle2dImageActor.h" />
+				<File Id="HeaderFile3" Source="..\..\..\..\common\include\mle\3dcama.h" />
+				<File Id="HeaderFile4" Source="..\..\..\..\common\include\mle\Mle3dCameraActor.h" />
+				<File Id="HeaderFile5" Source="..\..\..\..\common\include\mle\escapea.h" />
+				<File Id="HeaderFile7" Source="..\..\..\..\common\include\mle\MleEscapeActor.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="ActorComponents" Directory="MLEROOT">
+			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{F4486A78-E4D2-479E-A92E-DCC3F30833C6}">
+				<File Id="mle2dimageactor_rehearsal" Source="$(var.Mle2dImageActor.TargetPath)"/>
+				<File Id="mle3dcameraactor_rehearsal" Source="$(var.Mle3dCameraActor.TargetPath)"/>
+				<File Id="mleescapeactor_rehearsal" Source="$(var.MleEscapeActor.TargetPath)"/>
+			</Component>
+			<?if $(var.Configuration) = Debug ?>
+				<!-- Debug Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{DDE89436-DCB2-49C0-8367-BE47DD39E04C}">
+					<File Id="mle2dimageactor_rehearsal_lib" Source="$(var.Mle2dImageActor.TargetDir)\Mle2dImageActord.lib"/>
+					<File Id="mle3dcameraactor_rehearsal_lib" Source="$(var.Mle3dCameraActor.TargetDir)\Mle3dCameraActord.lib"/>
+					<File Id="mleescapeactor_rehearsal_lib" Source="$(var.MleEscapeActor.TargetDir)\MleEscapeActord.lib"/>
+				</Component>
+			<?else?>
+				<!-- Release Package -->
+				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{AA97B263-E263-462C-9FDC-35D9613F34B6}">
+					<File Id="mle2dimageactor_rehearsal_lib" Source="$(var.Mle2dImageActor.TargetDir)\Mle2dImageActor.lib"/>
+					<File Id="mle3dcameraactor_rehearsal_lib" Source="$(var.Mle3dCameraActor.TargetDir)\Mle3dCameraActor.lib"/>
+					<File Id="mleescapeactor_rehearsal_lib" Source="$(var.MleEscapeActor.TargetDir)\MleEscapeActor.lib"/>
+				</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
