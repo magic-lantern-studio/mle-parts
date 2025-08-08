@@ -16,7 +16,7 @@
 			</Component>
 		</DirectoryRef>
 		<ComponentGroup Id="RoleComponents" Directory="MLEROOT">
-			<Component Id="rehearsal" Directory="BIN64">
+			<Component Id="rehearsal" Directory="BIN64_REHEARSAL">
 				<File Id="inventor_rehearsal" Source="$(var.inventor_rehearsal.TargetPath)"/>
 			</Component>
 			<?if $(var.Configuration) = Debug ?>

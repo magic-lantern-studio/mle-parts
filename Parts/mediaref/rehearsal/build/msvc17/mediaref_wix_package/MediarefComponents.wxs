@@ -13,7 +13,7 @@
 			</Component>
 		</DirectoryRef>
 		<ComponentGroup Id="MediarefComponents" Directory="MLEROOT">
-			<Component Id="rehearsal" Directory="BIN64" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
+			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
 				<File Id="ml2dimagemediaref_rehearsal" Source="$(var.Mle2dImageMediaRef.TargetPath)"/>
 				<File Id="ml3dcolormapmediaref_rehearsal" Source="$(var.Mle3dColorMapMediaRef.TargetPath)"/>
 				<File Id="ml3dmodelmediaref_rehearsal" Source="$(var.Mle3dModelMediaRef.TargetPath)"/>

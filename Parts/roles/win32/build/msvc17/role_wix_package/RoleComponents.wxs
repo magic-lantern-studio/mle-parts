@@ -11,7 +11,7 @@
 			</Component>
 		</DirectoryRef>
 		<ComponentGroup Id="RoleComponents" Directory="MLEROOT">
-			<Component Id="rehearsal" Directory="BIN64" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
+			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
 				<File Id="mel2dimagerole_rehearsal" Source="$(var.Mle2dImageRole.TargetPath)"/>
 				<File Id="mle2drole_rehearsal" Source="$(var.Mle2dRole.TargetPath)"/>
 				<File Id="mle3drole_rehearsal" Source="$(var.Mle3dRole.TargetPath)"/>
