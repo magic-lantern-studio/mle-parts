@@ -10,6 +10,7 @@
 			<Feature Id="Main">
 				<ComponentGroupRef Id="MlpropsComponents" />
 			</Feature>
+			<MediaTemplate EmbedCab="yes" />
 		</Package>
 	<?else?>
 		<!-- Release Package -->
@@ -22,6 +23,7 @@
 			<Feature Id="Main">
 				<ComponentGroupRef Id="MlpropsComponents" />
 			</Feature>
+			<MediaTemplate EmbedCab="yes" />
 		</Package>
 	<?endif?>
 </Wix>
