@@ -39,7 +39,7 @@ install:
 
 # Install FreeImage library dependency.
 - sh: >-
-    git clone --branch magiclantern git@github.com:magic-lantern-studio/freeimage.git freeimage;
+    git clone --branch magiclantern https://github.com/magic-lantern-studio/freeimage.git freeimage;
     cd freeimage;
     make;
     sudo make install
