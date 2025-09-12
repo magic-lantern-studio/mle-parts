@@ -17,7 +17,6 @@ install:
     sudo apt-get install -y libmotif-dev;
     sudo apt-get install -y libxmu-dev;
     sudo apt-get install -y libxpm-dev;
-    sudo apt-get install -y libfreeimage-dev;
     sudo apt-get install -y doxygen;
     sudo apt-get install -y cmake
 
@@ -35,6 +34,13 @@ install:
     git clone -q --recurse-submodules --branch magiclantern https://github.com/magic-lantern-studio/soxt soxt;
     cmake -Hsoxt -Bsoxt_build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_PREFIX_PATH="/usr/local" -DSOXT_BUILD_DOCUMENTATION=OFF;
     cd soxt_build;
+    make;
+    sudo make install
+
+# Install FreeImage library dependency.
+- sh: >-
+    git clone --branch magiclantern https://github.com/magic-lantern-studio/freeimage.git freeimage;
+    cd freeimage;
     make;
     sudo make install
 

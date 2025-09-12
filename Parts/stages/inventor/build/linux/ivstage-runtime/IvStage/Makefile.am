@@ -1,6 +1,6 @@
 #######################################
 # The directory for object files and libraries of object code
-libdir = $(exec_prefix)/lib/mle/runtime
+libdir = $(exec_prefix)/lib/runtime
 
 #######################################
 # The list of libraries we are building seperated by spaces.
@@ -42,5 +42,4 @@ MleIvStage_la_CPPFLAGS = \
     -DMLE_NOT_IVSTAGE_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
-	-I$(MLE_ROOT)/include \
-	-I$(MLE_HOME)/Core/mlert/linux/include
+	-I$(MLE_ROOT)/include

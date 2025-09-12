@@ -1,6 +1,6 @@
 #######################################
 # The directory for object files and libraries of object code
-libdir = $(exec_prefix)/lib/mle/inventor
+libdir = $(exec_prefix)/lib/inventor
 
 #######################################
 # The list of libraries we are building seperated by spaces.
@@ -44,5 +44,4 @@ MleIvStage_la_CPPFLAGS = \
     -DMLE_NOT_IVSTAGE_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
-	-I$(MLE_ROOT)/include \
-	-I$(MLE_HOME)/Core/mlert/inventor/include
+	-I$(MLE_ROOT)/include

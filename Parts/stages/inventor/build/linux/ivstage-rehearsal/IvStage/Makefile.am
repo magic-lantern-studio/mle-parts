@@ -1,6 +1,6 @@
 #######################################
 # The directory for object files and libraries of object code
-libdir = $(exec_prefix)/lib/mle/rehearsal
+libdir = $(exec_prefix)/lib/rehearsal
 
 #######################################
 # The list of libraries we are building seperated by spaces.
@@ -45,5 +45,4 @@ MleIvStage_la_CPPFLAGS = \
     -DMLE_NOT_IVSTAGE_DLL \
 	-I$(top_srcdir)/include \
 	-I$(top_srcdir)/../../../include \
-	-I$(MLE_ROOT)/include \
-	-I$(MLE_HOME)/Core/mlert/rehearsal/include
+	-I$(MLE_ROOT)/include
