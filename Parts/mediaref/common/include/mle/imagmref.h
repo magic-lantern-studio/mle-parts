@@ -49,17 +49,8 @@
 #include "mle/MleMediaRef.h"
 #include "mle/Mle2dImageMediaRef.h"
 
-#if defined(_WINDOWS)
-#if defined(MLE_REHEARSAL)
-// Use FreeImage library for Rehearsal Player on Windows.
-#include <FreeImage.h>
-#else /* ! MLE_REHEARSAL */
-#include "mle/dib.h"
-#endif
-#else /* ! _WINDOWS */
 // Use FreeImage library.
 #include <FreeImage.h>
-#endif
 
 
 /**
@@ -69,14 +60,10 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
 {
     MLE_MEDIAREF_HEADER(MleImageMediaRef);
 
-#if defined(__linux__) || defined(MLE_REHEARSAL)
-
   private:
 
     /** The IO handler for FreeImage. */
     FreeImageIO m_io;
-
-#endif /* MLE_REHEARSAL */
 
   public:
 
@@ -92,8 +79,6 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
      */
     virtual ~MleImageMediaRef(void);
 
-#if defined(__linux__) || defined(MLE_REHEARSAL)
-
     /*
      * Read a FreeImage bitmap from a file.
      *
@@ -101,18 +86,6 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
      * @return TRUE if successful, FALSE otherwise.
 	 */
     MlBoolean read(FIBITMAP *&inImg);
-
-#elif defined(_WINDOWS)
-
-    /**
-     * Read a Microsoft bitmap from a file.
-     *
-     * @param inImg A reference to a Microsoft bitmap.
-     * @return TRUE if successful, FALSE otherwise.
-     */
-    MlBoolean read(MleDIB &dib);
-
-#endif /* _WINDOWS */
 
     /**
      * Override operator new.

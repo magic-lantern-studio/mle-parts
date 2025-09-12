@@ -1,4 +1,7 @@
 ﻿<Project Sdk="WixToolset.Sdk/6.0.1">
+  <PropertyGroup>
+    <Configurations>Debug;Release;ReleaseRuntime;DebugRuntime</Configurations>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mle2dImageMediaRef.vcxproj" />
     <ProjectReference Include="..\Mle3dColorMapMediaRef.vcxproj" />
