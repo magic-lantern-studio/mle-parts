@@ -63,12 +63,15 @@ Mle3dModelMediaRef::Mle3dModelMediaRef()
     // Do nothing extra.
 }
 
-
 Mle3dModelMediaRef::~Mle3dModelMediaRef()
 {
     // Do nothing.
 }
 
+void Mle3dModelMediaRef::init(void)
+{
+	// Nothing to initialize.
+}
 
 void* Mle3dModelMediaRef::read()
 {

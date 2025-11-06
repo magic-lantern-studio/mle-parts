@@ -4,8 +4,7 @@
  * @file 3dmodelm.h
  * @ingroup MleParts
  *
- * This file defines the class for a 3D Model Media Reference
- * targeting the BRender platform.
+ * This file defines the class for a 3D Model Media Reference.
  */
 
  // COPYRIGHT_BEGIN
@@ -70,6 +69,11 @@ class MLE_3DMODELMEDIAREF_API Mle3dModelMediaRef : public MleMediaRef
 	 * The destructor.
      */
     virtual ~Mle3dModelMediaRef();
+
+    /**
+	 * @brief Initialize the media reference.
+     */
+	virtual void init(void);
 
     /**
 	 * Reads the 3D model media reference.

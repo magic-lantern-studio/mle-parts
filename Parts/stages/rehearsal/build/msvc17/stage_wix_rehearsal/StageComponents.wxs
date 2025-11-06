@@ -18,17 +18,17 @@
 			</Component>
 		</DirectoryRef>
 		<ComponentGroup Id="StageComponents" Directory="MLEROOT">
-			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{089AF43A-D607-40A7-9D08-05380E568F7B}">
-				<File Id="mleivstage_rehearsal" Source="$(var.rehearsal.TargetPath)"/>
+			<Component Id="mleivstage_rehearsal_loc" Directory="BIN64_REHEARSAL" Guid="{089AF43A-D607-40A7-9D08-05380E568F7B}">
+				<File Id="mleivstage_rehearsal_dll" Source="$(var.rehearsal.TargetPath)"/>
 			</Component>
 			<?if $(var.Configuration) = Debug ?>
 			<!-- Debug Package -->
-			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
+			<Component Id="mleivstage_rehearsal_lib_loc" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
 				<File Id="mleivstage_rehearsal_lib" Source="$(var.rehearsal.TargetDir)\MleIvStaged.lib"/>
 			</Component>
 			<?else?>
 			<!-- Release Package -->
-			<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
+			<Component Id="mleivstage_rehearsal_lib_loc" Directory="LIB64_REHEARSAL" Guid="{37AFCCA0-C682-4E5D-BFD5-34B55F9A0C33}">
 				<File Id="mleivstage_rehearsal_lib" Source="$(var.rehearsal.TargetDir)\MleIvStage.lib"/>
 			</Component>
 			<?endif?>

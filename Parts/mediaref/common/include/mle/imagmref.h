@@ -79,6 +79,11 @@ class MLE_2DIMAGEMEDIAREF_API MleImageMediaRef : public MleMediaRef
      */
     virtual ~MleImageMediaRef(void);
 
+    /**
+     *  @brief Initialize the media reference.
+     */
+	virtual void init(void);
+
     /*
      * Read a FreeImage bitmap from a file.
      *

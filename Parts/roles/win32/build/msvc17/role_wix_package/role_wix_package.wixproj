@@ -1,4 +1,8 @@
 ﻿<Project Sdk="WixToolset.Sdk/6.0.1">
+  <PropertyGroup>
+    <Configurations>Debug;Release;DebugRuntime;ReleaseRuntime</Configurations>
+    <Platforms>x86;x64</Platforms>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mle2dImageRole.vcxproj" />
     <ProjectReference Include="..\Mle2dRole.vcxproj" />

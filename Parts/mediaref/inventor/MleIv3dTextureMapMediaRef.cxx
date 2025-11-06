@@ -63,10 +63,14 @@ Mle3dTextureMapMediaRef::Mle3dTextureMapMediaRef()
     // Do nothing extra.
 }
 
-
 Mle3dTextureMapMediaRef::~Mle3dTextureMapMediaRef()
 {
     // Do nothing.
+}
+
+void Mle3dTextureMapMediaRef::init(void)
+{
+    // Nothing to initialize.
 }
 
 

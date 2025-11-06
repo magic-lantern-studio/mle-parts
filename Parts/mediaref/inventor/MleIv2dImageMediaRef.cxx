@@ -98,13 +98,27 @@ fif_TellProc(fi_handle handle)
 
 MleImageMediaRef::MleImageMediaRef()
 {
-
+	// Do nothing.
 }
-
 
 MleImageMediaRef::~MleImageMediaRef()
 {
-    // Do nothing
+    // Do nothing.
+}
+
+void MleImageMediaRef::init(void)
+{
+#if 0
+	// Initialize the FreeImage library.
+	FreeImage_Initialise(TRUE);
+	// Set the error handler.
+	FreeImage_SetOutputMessage(FreeImageErrorHandler);
+	// Initialize the I/O function pointers.
+	m_io.read_proc = fif_ReadProc;
+	m_io.write_proc = fif_WriteProc;
+	m_io.seek_proc = fif_SeekProc;
+	m_io.tell_proc = fif_TellProc;
+#endif /* 0 */
 }
 
 MlBoolean

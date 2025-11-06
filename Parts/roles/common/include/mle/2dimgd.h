@@ -43,22 +43,14 @@
 #ifndef __MLE_2DIMGD_H_
 #define __MLE_2DIMGD_H_
 
-// Include system header files.
-#if defined(MLE_REHEARSAL) || defined(__linux__)
-
 // Include files for image processing library.
 #include <FreeImage.h>
-
-#elif defined(_WINDOWS)
-
-// Include files for image processing library.
-#include "mle/dib.h"
-
-#endif /* MLE_REHEARSAL */
 
 // Include Magic Lantern header files.
 #include "mle/mlTypes.h"
 #include "math/vector.h"
+
+// Include Magic Lantern Role header files.
 #include "mle/2drole.h"
 #include "mle/Mle2dImageRole.h"
 
@@ -134,8 +126,6 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
     // TRUE for on, FALSE for off
     int displayState;
 
-#if defined(MLE_REHEARSAL) || defined(__linux__)
-
     unsigned char *imageData;
 
   private:
@@ -143,13 +133,6 @@ class MLE_2DIMAGEROLE_API Mle2dImgRole : public Mle2dRole
     // The FreeImage DIB object.
     FIBITMAP *inImg;
     FIBITMAP *imageOp;
-
-#elif defined(_WINDOWS)
-
-    // The Microsoft DIB object.
-    MleDIB dib;
-
-#endif /* MLE_REHEARSAL */
 };
 
 

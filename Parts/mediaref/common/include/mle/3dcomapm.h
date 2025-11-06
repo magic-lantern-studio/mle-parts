@@ -4,8 +4,7 @@
  * @file 3dcomapm.h
  * @ingroup MleParts
  *
- * This file defines the class for a 3D Colormap Media Reference
- * targeting the BRender platform.
+ * This file defines the class for a 3D Colormap Media Reference.
  */
 
  // COPYRIGHT_BEGIN
@@ -77,6 +76,12 @@ class MLE_3DCOLORMAPMEDIAREF_API Mle3dColorMapMediaRef : public MleMediaRef
 	 * The destructor.
      */
     virtual ~Mle3dColorMapMediaRef(void);
+
+    /**
+     *  @brief Initialize the media reference.
+     */
+
+    virtual void init(void);
  
     /**
 	 * Reads the colormap data from the media reference.

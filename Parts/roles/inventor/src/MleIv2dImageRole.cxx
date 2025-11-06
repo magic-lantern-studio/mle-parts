@@ -169,7 +169,7 @@ Mle2dImgRole::draw(void *)
 
 #if defined(MLE_REHEARSAL)
 		MleIvStage::g_theStage->getSize(&stageWidth, &stageHeight);
-#elif defined(__sgi) || defined (__linux__)
+#elif defined(__linux__) || defined(_WINDOWS)
 		// Todo: need to fix this for non-rehearsal stage.
 		stageWidth = 640;
 		stageHeight = 480;

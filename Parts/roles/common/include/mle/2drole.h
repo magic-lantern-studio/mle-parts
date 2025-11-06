@@ -81,6 +81,9 @@ class MLE_2DROLE_API Mle2dRole : public MleRole
     // @brief Destructor for a 2D Role base class.
     virtual ~Mle2dRole(void);
 
+    // @brief Initialize the role.
+    virtual void init() { /* Do nothing extra. */ }
+
     // @brief Get the bounding box of the Role.
     //
     // The bounding box is specified in pixels

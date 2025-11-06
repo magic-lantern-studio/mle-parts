@@ -1,0 +1,41 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<DirectoryRef Id="HEADERS_INCLUDE_MLE">
+			<Component Id="HeaderFiles" Guid="{EF67C6A7-F2A2-4A73-8F5B-ED4D1ACCF72B}">
+				<File Id="HeaderFile1" Source="..\..\..\common\include\mle\align.h" />
+				<File Id="HeaderFile2" Source="..\..\..\common\include\mle\avoidsph.h" />
+				<File Id="HeaderFile3" Source="..\..\..\common\include\mle\banker.h" />
+				<File Id="HeaderFile4" Source="..\..\..\common\include\mle\behavlib.h" />
+				<File Id="HeaderFile5" Source="..\..\..\common\include\mle\cohere.h" />
+				<File Id="HeaderFile6" Source="..\..\..\common\include\mle\gvehicle.h" />
+				<File Id="HeaderFile7" Source="..\..\..\common\include\mle\path.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\pe.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\separate.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\simpmass.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\sphobs.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\spiral.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\stabiliz.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\steermas.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\vehicle.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\wander.h" />
+				<File Id="HeaderFile8" Source="..\..\..\common\include\mle\wraptest.h" />
+			</Component>
+		</DirectoryRef>
+		<ComponentGroup Id="BehaviorComponents" Directory="MLEROOT">
+			<?if $(var.Configuration) = Debug ?>
+				<!-- Debug Package -->
+				<Component Id="runtime_lib_loc" Directory="LIB64_RUNTIME_CDECL" Guid="{FD7F99D2-51FA-4B08-BFC1-BBC2ECAAA2F9}">
+					<File Id="behavior_runtime_lib" Source="$(var.packages.TargetDir)\pkgsd.lib"/>
+				</Component>
+			<?else?>
+				<!-- Release Package -->
+				<Component Id="runtime_lib_loc" Directory="LIB64_RUNTIME_CDECL" Guid="{51608FAE-D24E-40E4-AFEB-AB2160BEA144}">
+					<File Id="behavior_runtime_lib" Source="$(var.packages.TargetDir)\pkgs.lib"/>
+				</Component>
+			<?endif?>
+			<ComponentRef Id="HeaderFiles" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
+
+

@@ -1,6 +1,7 @@
 ﻿<Project Sdk="WixToolset.Sdk/6.0.1">
   <PropertyGroup>
     <Configurations>Debug;Release;ReleaseRuntime;DebugRuntime</Configurations>
+    <Platforms>x86;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mle2dImageMediaRef.vcxproj" />

@@ -5,14 +5,14 @@
  * @ingroup MleParts
  *
  * This file contains the class for a 3D Role targeting the Inventor
- * platfrom.
+ * platform.
  */
 
 // COPYRIGHT_BEGIN
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2003-2021 Wizzer Works
+// Copyright (c) 2003-2025 Wizzer Works
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -78,7 +78,9 @@ class MLE_3DROLE_API Mle3dRole : public MleRole
     Mle3dRole(MleActor *actor, 
 		int nodeType = Mle3dNodeTypeProperty::GEOMETRY);
 
-    ~Mle3dRole();
+    virtual ~Mle3dRole();
+
+    virtual void init() { /* Do nothing extra. */ }
     
     virtual void addChild(Mle3dRole *child);
 

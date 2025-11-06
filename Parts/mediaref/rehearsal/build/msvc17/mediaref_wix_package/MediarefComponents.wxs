@@ -13,7 +13,7 @@
 			</Component>
 		</DirectoryRef>
 		<ComponentGroup Id="MediarefComponents" Directory="MLEROOT">
-			<Component Id="rehearsal" Directory="BIN64_REHEARSAL" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
+			<Component Id="rehearsal_loc" Directory="BIN64_REHEARSAL" Guid="{BF050BF3-4B95-41BE-ACDF-E5E54DB7350E}">
 				<File Id="ml2dimagemediaref_rehearsal" Source="$(var.Mle2dImageMediaRef.TargetPath)"/>
 				<File Id="ml3dcolormapmediaref_rehearsal" Source="$(var.Mle3dColorMapMediaRef.TargetPath)"/>
 				<File Id="ml3dmodelmediaref_rehearsal" Source="$(var.Mle3dModelMediaRef.TargetPath)"/>
@@ -21,7 +21,7 @@
 			</Component>
 			<?if $(var.Configuration) = Debug ?>
 				<!-- Debug Package -->
-				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{9E1DF459-80D9-4BAD-A265-3703034E09E3}">
+				<Component Id="rehearsal_lib_loc" Directory="LIB64_REHEARSAL" Guid="{9E1DF459-80D9-4BAD-A265-3703034E09E3}">
 					<File Id="mle2dimagemediaref_rehearsal_lib" Source="$(var.Mle2dImageMediaRef.TargetDir)\Mle2dImageMediaRefd.lib"/>
 					<File Id="mle3dcolormapmediaref_rehearsal_lib" Source="$(var.Mle3dColorMapMediaRef.TargetDir)\Mle3dColorMapMediaRefd.lib"/>
 					<File Id="mle3dmodelemediaref_rehearsal_lib" Source="$(var.Mle3dModelMediaRef.TargetDir)\Mle3dModelMediaRefd.lib"/>
@@ -29,7 +29,7 @@
 				</Component>
 			<?else?>
 				<!-- Release Package -->
-				<Component Id="rehearsal_lib" Directory="LIB64_REHEARSAL" Guid="{E07EE52F-3C83-4CB3-BB49-6BD0255169B7}">
+				<Component Id="rehearsal_lib_loc" Directory="LIB64_REHEARSAL" Guid="{E07EE52F-3C83-4CB3-BB49-6BD0255169B7}">
 					<File Id="mle2dimagemediaref_rehearsa_libl" Source="$(var.Mle2dImageMediaRef.TargetDir)\Mle2dImageMediaRef.lib"/>
 					<File Id="mle3dcolormapmediaref_rehearsal_lib" Source="$(var.Mle3dColorMapMediaRef.TargetDir)\Mle3dColorMapMediaRef.lib"/>
 					<File Id="mle3dmodelemediaref_rehearsal_lib" Source="$(var.Mle3dModelMediaRef.TargetDir)\Mle3dModelMediaRef.lib"/>

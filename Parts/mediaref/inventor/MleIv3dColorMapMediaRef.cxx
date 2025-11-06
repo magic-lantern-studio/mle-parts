@@ -66,6 +66,10 @@ Mle3dColorMapMediaRef::~Mle3dColorMapMediaRef()
     // Do nothing.
 }
 
+void Mle3dColorMapMediaRef::init(void)
+{
+    // Do nothing extra.
+}
 
 void *Mle3dColorMapMediaRef::read()
 {

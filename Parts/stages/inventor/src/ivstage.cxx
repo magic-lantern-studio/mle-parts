@@ -135,10 +135,14 @@
 #include "mle/MleStageFuncs.h"
 #include "mle/2drole.h"
 
+#if defined(MLE_REHEARSAL)
 #include "Snapper.h"
+#endif /* MLE_REHEARSAL */
 #include "Source.h"
 #include "Target.h"
+#if defined(MLE_REHEARSAL)
 #include "Nudger.h"
+#endif /* MLE_REHEARSAL */
 
 #include "mle/ivstage.h"
 #include "mle/iv3dset.h"
@@ -714,8 +718,12 @@ MleIvStage::initPlatform(void)
     MleIvPlatformData *data = new MleIvPlatformData();
 #endif /* __linux__ */
 #if defined(_WINDOWS)
+#if defined(MLE_REHEARSAL)
     //MleIvPlatformData *data = (MleIvPlatformData *)mlMalloc(sizeof(MleIvPlatformData));
     MleIvPlatformData *data = new MleIvPlatformData();
+#else
+	MleWin32PlatformData* data = new MleWin32PlatformData();
+#endif /* MLE_REHEARSAL */
 #endif /* _WINDOWS */
 
     // Provide users with the render area widget.

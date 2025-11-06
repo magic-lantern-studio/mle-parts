@@ -114,12 +114,16 @@ class Target;
 class Source;
 
 class SoFullViewer;
+#if defined(MLE_REHEARSAL)
 class MleSnapper;
+#endif /* MLE_REHEARSAL */
 
 class MleSet;
 class MleRole;
-class MleSchederItem;
+struct MleSchedulerItem;
+#if defined(MLE_REHEARSAL)
 class Nudger;
+#endif /* MLE_REHEARSAL */
 
 #if defined(MLE_SOQT)
 // Global definition for Magic Lantern Qt events.

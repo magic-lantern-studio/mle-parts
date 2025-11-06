@@ -4,8 +4,7 @@
  * @file 3dtexmpm.h
  * @ingroup MleParts
  *
- * This file defines the class for a 3D Texture Map Media Reference
- * targeting the BRender platform.
+ * This file defines the class for a 3D Texture Map Media Reference.
  */
 
  // COPYRIGHT_BEGIN
@@ -67,6 +66,11 @@ class MLE_3DTEXTUREMAPMEDIAREF_API Mle3dTextureMapMediaRef : public MleMediaRef
 	 * The destructor.
      */
     virtual ~Mle3dTextureMapMediaRef(void);
+
+    /**
+     *  @brief Initialize the media reference.
+     */
+    virtual void init(void);
 
     /**
 	 * Read texture map data from the media reference.
