@@ -1,4 +1,4 @@
-name: Continuous Integration Build (Windows, Visual Studio 2022)
+name: Continuous Integration Props Build (Windows, Visual Studio 2022)
 
 on:
   workflow_dispatch:  # Allow manual triggers

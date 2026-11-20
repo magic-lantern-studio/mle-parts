@@ -1,4 +1,4 @@
-name: Continuous Integration Build (Ubuntu 24.04)
+name: Continuous Integration Props Build (Ubuntu 24.04)
 
 on:
   workflow_dispatch:  # Allow manual triggers
