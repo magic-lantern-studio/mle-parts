@@ -1,0 +1,41 @@
+name: Continuous Integration Build (Ubuntu 24.04)
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    branches: [ "master" ]
+
+env:
+  MLE_ROOT: ${{ github.workspace }}/MagicLantern
+
+jobs:
+  ubuntu-build:
+    name: Ubuntu 24.04 Build (props)
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
+
+      # The props part has no compiled code and no dependencies on other
+      # Magic Lantern libraries. It installs the property header files and
+      # workprints.
+      - name: Configure and install props
+        run: |
+          cmake -S Parts/props/linux -B build/props -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$MLE_ROOT"
+          cmake --build build/props
+          cmake --install build/props
+          ls -R "$MLE_ROOT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-parts-props-ubuntu-24.04
+          path: ${{ env.MLE_ROOT }}

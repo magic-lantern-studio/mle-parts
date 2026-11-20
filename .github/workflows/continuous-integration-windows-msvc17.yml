@@ -1,0 +1,37 @@
+name: Continuous Integration Build (Windows, Visual Studio 2022)
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    branches: [ "master" ]
+
+jobs:
+  windows-build:
+    name: Windows Build (props)
+    # GitHub does not offer a "Windows 11" runner image; windows-2022 has
+    # Visual Studio 2022 (v143 toolset) preinstalled.
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add msbuild to Path
+        uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
+
+      # The props part has no compiled code. The Windows build packages the
+      # property header files and workprints into an installer (WiX).
+      - name: Build installer package with msbuild
+        shell: cmd
+        run: |
+          cd Parts\props\win32\build\msvc17\props_wix_package
+          msbuild props_wix_package.sln /restore /p:Configuration=Release /p:Platform=x64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-parts-props-windows-Release
+          path: Parts/props/win32/build/msvc17/props_wix_package/bin/
+          if-no-files-found: error
