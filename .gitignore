@@ -1,3 +1,5 @@
+## Linux autoconf
+
 **/Makefile
 **/Makefile.in
 **/.libs
@@ -20,3 +22,4 @@
 **/ltmain.sh
 **/depcomp
 **/rehearsalTest
+**/*~
