@@ -1,0 +1,101 @@
+name: Continuous Integration Mediaref Build (Windows, Visual Studio 2022)
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    branches: [ "master" ]
+
+env:
+  # The Visual Studio project post-build steps install into %MLE_ROOT%.
+  MLE_ROOT: C:\opt\MagicLantern
+  # The projects look for Coin in %COINDIR%\include and %COINDIR%\lib, and for
+  # FreeImage in %FREEIMAGEDIR%\x64.
+  COINDIR: ${{ github.workspace }}\coin_install
+  FREEIMAGEDIR: ${{ github.workspace }}\FreeImage\Dist
+
+jobs:
+  windows-build:
+    name: Windows Build (mediaref)
+    # GitHub does not offer a "Windows 11" runner image; windows-2022 has
+    # Visual Studio 2022 (v143 toolset) preinstalled.
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add msbuild to Path
+        uses: microsoft/setup-msbuild@v2
+        with:
+          msbuild-architecture: x64
+
+      # Download the latest mle-core-mlert artifact into %MLE_ROOT%. It contains
+      # the mle-core-mlert, mle-core-dpp, mle-core-dwp, mle-core-math and
+      # mle-core-util libraries and headers.
+      - name: Download mle-core-mlert artifacts
+        shell: cmd
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir %MLE_ROOT%
+          gh run download --repo magic-lantern-studio/mle-core-mlert --name mle-core-mlert-windows-Release --dir %MLE_ROOT%
+          dir /s /b %MLE_ROOT%
+
+      # The binary distribution has FreeImage.h, FreeImage.lib and
+      # FreeImage.dll in FreeImage\Dist\x64.
+      - name: Download FreeImage
+        shell: pwsh
+        run: |
+          curl.exe -L --fail -o FreeImage.zip "https://downloads.sourceforge.net/project/freeimage/Binary%20Distribution/3.18.0/FreeImage3180Win32Win64.zip"
+          Expand-Archive FreeImage.zip -DestinationPath .
+          dir FreeImage\Dist\x64
+
+      # Build Coin from the Magic Lantern fork. The installed files are cached
+      # until the fork changes.
+      - name: Checkout Coin
+        id: coin
+        uses: actions/checkout@v4
+        with:
+          repository: magic-lantern-studio/coin
+          ref: magiclantern
+          submodules: recursive
+          path: coin
+
+      - name: Cache Coin
+        id: coin-cache
+        uses: actions/cache@v4
+        with:
+          path: coin_install
+          key: coin-windows-2022-${{ steps.coin.outputs.commit }}
+
+      - name: Build Coin
+        if: steps.coin-cache.outputs.cache-hit != 'true'
+        shell: cmd
+        run: |
+          cmake -S coin -B coin_build -G "Visual Studio 17 2022" -A x64 -DCMAKE_INSTALL_PREFIX=coin_install -DCOIN_BUILD_DOCUMENTATION=OFF -DCOIN_BUILD_TESTS=OFF
+          cmake --build coin_build --target INSTALL --config Release -- /nologo /verbosity:minimal /maxcpucount:2
+
+      - name: List Coin
+        shell: cmd
+        run: dir %COINDIR%\lib
+
+      # Release links the rehearsal libraries and ReleaseRuntime links the
+      # runtime libraries. The Debug configurations are not built because the
+      # upstream artifacts only contain Release libraries.
+      - name: Build Release with msbuild
+        shell: cmd
+        run: |
+          cd Parts\mediaref\rehearsal\build\msvc17
+          msbuild MleMediaRefs.sln /restore /p:Configuration=Release /p:Platform=x64
+
+      - name: Build ReleaseRuntime with msbuild
+        shell: cmd
+        run: |
+          cd Parts\mediaref\rehearsal\build\msvc17
+          msbuild MleMediaRefs.sln /restore /p:Configuration=ReleaseRuntime /p:Platform=x64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-parts-mediaref-windows-Release
+          path: ${{ env.MLE_ROOT }}
