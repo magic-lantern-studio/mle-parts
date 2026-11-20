@@ -12,7 +12,7 @@ env:
 
 jobs:
   ubuntu-build:
-    name: Ubuntu 24.04 Build (mediaref inventor, ${{ matrix.build_type }})
+    name: Ubuntu 24.04 Build (mediaref, ${{ matrix.build_type }})
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -56,7 +56,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX="$COIN_ROOT" \
             -DCOIN_BUILD_DOCUMENTATION=OFF \
             -DCOIN_BUILD_TESTS=OFF
-          cmake --build coin_build --parallel
+          cmake --build coin_build --parallel 4
           cmake --install coin_build
           ls "$COIN_ROOT/include/Inventor/SoDB.h"
 
