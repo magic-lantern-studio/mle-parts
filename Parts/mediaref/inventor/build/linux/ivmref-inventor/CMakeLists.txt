@@ -64,8 +64,10 @@ foreach(header mle/mlTypes.h mle/MleMediaRef.h)
       "Install mle-core-util and mle-core-mlert into MLE_ROOT first.")
   endif()
 endforeach()
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(COIN REQUIRED Coin)
+find_path(COIN_INCLUDE_DIR Inventor/SoDB.h)
+if (NOT COIN_INCLUDE_DIR)
+  message(FATAL_ERROR "Could not find Inventor/SoDB.h. Install the Coin development files.")
+endif()
 find_path(FREEIMAGE_INCLUDE_DIR FreeImage.h)
 if (NOT FREEIMAGE_INCLUDE_DIR)
   message(FATAL_ERROR "Could not find FreeImage.h. Install the FreeImage development files.")
@@ -76,7 +78,7 @@ include_directories(
   ../../../../common/include
   ../../../../inventor
   $ENV{MLE_ROOT}/include
-  ${COIN_INCLUDE_DIRS}
+  ${COIN_INCLUDE_DIR}
   ${FREEIMAGE_INCLUDE_DIR})
 
 # Specify the compiler macro definitions
