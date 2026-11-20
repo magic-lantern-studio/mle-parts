@@ -1,0 +1,104 @@
+name: Continuous Integration Roles Build (Ubuntu 24.04)
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    branches: [ "master" ]
+
+env:
+  MLE_ROOT: ${{ github.workspace }}/MagicLantern
+  # Coin is built from the Magic Lantern fork and installed here.
+  COIN_ROOT: ${{ github.workspace }}/coin_install
+
+jobs:
+  ubuntu-build:
+    name: Ubuntu 24.04 Build (roles, ${{ matrix.build_type }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [ Release, Debug ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # freeglut3-dev is needed to build Coin.
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake freeglut3-dev
+
+      # Build Coin from the Magic Lantern fork. The installed files are cached
+      # until the fork changes.
+      - name: Checkout Coin
+        id: coin
+        uses: actions/checkout@v4
+        with:
+          repository: magic-lantern-studio/coin
+          ref: magiclantern
+          submodules: recursive
+          path: coin
+
+      - name: Cache Coin
+        id: coin-cache
+        uses: actions/cache@v4
+        with:
+          path: coin_install
+          key: coin-ubuntu-24.04-${{ steps.coin.outputs.commit }}
+
+      - name: Build Coin
+        if: steps.coin-cache.outputs.cache-hit != 'true'
+        run: |
+          cmake -S coin -B coin_build -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$COIN_ROOT" \
+            -DCOIN_BUILD_DOCUMENTATION=OFF \
+            -DCOIN_BUILD_TESTS=OFF
+          cmake --build coin_build --parallel 4
+          cmake --install coin_build
+          ls "$COIN_ROOT/include/Inventor/SoDB.h"
+
+      # Download the latest mle-parts mediaref artifact into $MLE_ROOT. It
+      # contains the mle-core-mlert, mle-core-dpp, mle-core-dwp, mle-core-math
+      # and mle-core-util libraries and headers, and the media reference
+      # headers needed by the roles.
+      - name: Download mediaref artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download \
+            --repo magic-lantern-studio/mle-parts \
+            --name mle-parts-mediaref-ubuntu-24.04-${{ matrix.build_type }} \
+            --dir "$MLE_ROOT"
+
+      # Download the latest mle-parts props artifact into $MLE_ROOT. It contains
+      # the property headers needed by the roles.
+      - name: Download props artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download \
+            --repo magic-lantern-studio/mle-parts \
+            --name mle-parts-props-ubuntu-24.04 \
+            --dir "$MLE_ROOT"
+          ls -R "$MLE_ROOT"
+
+      - name: Build and install roles
+        run: |
+          for variant in rehearsal inventor runtime; do
+            build=build/ivrole-$variant
+            cmake -S Parts/roles/inventor/build/linux/ivrole-$variant -B "$build" \
+              -G "Unix Makefiles" \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DCMAKE_INSTALL_PREFIX="$MLE_ROOT" \
+              -DCMAKE_PREFIX_PATH="$MLE_ROOT;$COIN_ROOT"
+            cmake --build "$build" --parallel 4
+            cmake --install "$build"
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-parts-roles-ubuntu-24.04-${{ matrix.build_type }}
+          path: ${{ env.MLE_ROOT }}
