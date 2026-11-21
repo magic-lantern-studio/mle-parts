@@ -1,0 +1,60 @@
+name: Continuous Integration Actors Build (Ubuntu 24.04)
+
+on:
+  workflow_dispatch:  # Allow manual triggers
+  push:
+    branches: [ "master" ]
+
+env:
+  MLE_ROOT: ${{ github.workspace }}/MagicLantern
+
+jobs:
+  ubuntu-build:
+    name: Ubuntu 24.04 Build (actors, ${{ matrix.build_type }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [ Release, Debug ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
+
+      # Download the latest mle-parts roles artifact into $MLE_ROOT. It contains
+      # the mle-core-mlert, mle-core-dpp, mle-core-dwp, mle-core-math and
+      # mle-core-util libraries and headers, and the mle-parts props, mediaref
+      # and roles headers needed by the actors.
+      - name: Download roles artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download \
+            --repo magic-lantern-studio/mle-parts \
+            --name mle-parts-roles-ubuntu-24.04-${{ matrix.build_type }} \
+            --dir "$MLE_ROOT"
+          ls -R "$MLE_ROOT"
+
+      - name: Build and install actors
+        run: |
+          for variant in rehearsal inventor runtime; do
+            build=build/ivactor_$variant
+            cmake -S Parts/actors/inventor/build/linux/ivactor_$variant -B "$build" \
+              -G "Unix Makefiles" \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+              -DCMAKE_INSTALL_PREFIX="$MLE_ROOT" \
+              -DCMAKE_PREFIX_PATH="$MLE_ROOT"
+            cmake --build "$build" --parallel 4
+            cmake --install "$build"
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mle-parts-actors-ubuntu-24.04-${{ matrix.build_type }}
+          path: ${{ env.MLE_ROOT }}
