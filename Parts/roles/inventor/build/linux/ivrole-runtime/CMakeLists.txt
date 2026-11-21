@@ -73,6 +73,10 @@ find_path(COIN_INCLUDE_DIR Inventor/SoDB.h)
 if (NOT COIN_INCLUDE_DIR)
   message(FATAL_ERROR "Could not find Inventor/SoDB.h. Install the Coin development files.")
 endif()
+find_path(SOXT_INCLUDE_DIR Inventor/Xt/viewers/SoXtFullViewer.h)
+if (NOT SOXT_INCLUDE_DIR)
+  message(FATAL_ERROR "Could not find Inventor/Xt/viewers/SoXtFullViewer.h. Install the SoXt development files.")
+endif()
 
 # Specify the compiler macro definitions
 add_compile_definitions(
@@ -99,7 +103,8 @@ include_directories(
   ${PARTS_ROOT}/sets/inventor
   ${PARTS_ROOT}/mediaref/common/include
   $ENV{MLE_ROOT}/include
-  ${COIN_INCLUDE_DIR})
+  ${COIN_INCLUDE_DIR}
+  ${SOXT_INCLUDE_DIR})
 
 set(ROLES_SRC ../../../src)
 

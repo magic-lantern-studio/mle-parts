@@ -9,6 +9,8 @@ env:
   MLE_ROOT: ${{ github.workspace }}/MagicLantern
   # Coin is built from the Magic Lantern fork and installed here.
   COIN_ROOT: ${{ github.workspace }}/coin_install
+  # SoXt is built from the Magic Lantern fork and installed here.
+  SOXT_ROOT: ${{ github.workspace }}/soxt_install
 
 jobs:
   ubuntu-build:
@@ -23,12 +25,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # freeglut3-dev is needed to build Coin and libfreeimage-dev provides
-      # FreeImage.h, which is included by the media reference headers.
+      # freeglut3-dev is needed to build Coin, the X11, Xt and Motif packages
+      # to build SoXt, and libfreeimage-dev provides FreeImage.h, which is
+      # included by the media reference headers.
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake freeglut3-dev libfreeimage-dev
+          sudo apt-get install -y build-essential cmake freeglut3-dev libfreeimage-dev \
+            libx11-dev libxt-dev libxmu-dev libxi-dev libxpm-dev libmotif-dev
 
       # Build Coin from the Magic Lantern fork. The installed files are cached
       # until the fork changes.
@@ -59,6 +63,37 @@ jobs:
           cmake --build coin_build --parallel 4
           cmake --install coin_build
           ls "$COIN_ROOT/include/Inventor/SoDB.h"
+
+      # Build SoXt from the Magic Lantern fork. The installed files are cached
+      # until the fork or Coin changes.
+      - name: Checkout SoXt
+        id: soxt
+        uses: actions/checkout@v4
+        with:
+          repository: magic-lantern-studio/soxt
+          ref: magiclantern
+          submodules: recursive
+          path: soxt
+
+      - name: Cache SoXt
+        id: soxt-cache
+        uses: actions/cache@v4
+        with:
+          path: soxt_install
+          key: soxt-ubuntu-24.04-${{ steps.soxt.outputs.commit }}-${{ steps.coin.outputs.commit }}
+
+      - name: Build SoXt
+        if: steps.soxt-cache.outputs.cache-hit != 'true'
+        run: |
+          cmake -S soxt -B soxt_build -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$SOXT_ROOT" \
+            -DCMAKE_PREFIX_PATH="$COIN_ROOT" \
+            -DSOXT_BUILD_DOCUMENTATION=OFF \
+            -DSOXT_BUILD_TESTS=OFF
+          cmake --build soxt_build --parallel 4
+          cmake --install soxt_build
+          ls "$SOXT_ROOT/include/Inventor/Xt/viewers/SoXtFullViewer.h"
 
       # Download the latest mle-parts mediaref artifact into $MLE_ROOT. It
       # contains the mle-core-mlert, mle-core-dpp, mle-core-dwp, mle-core-math
@@ -93,7 +128,7 @@ jobs:
               -G "Unix Makefiles" \
               -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
               -DCMAKE_INSTALL_PREFIX="$MLE_ROOT" \
-              -DCMAKE_PREFIX_PATH="$MLE_ROOT;$COIN_ROOT"
+              -DCMAKE_PREFIX_PATH="$MLE_ROOT;$COIN_ROOT;$SOXT_ROOT"
             cmake --build "$build" --parallel 4
             cmake --install "$build"
           done
