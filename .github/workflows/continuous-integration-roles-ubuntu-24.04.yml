@@ -23,11 +23,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # freeglut3-dev is needed to build Coin.
+      # freeglut3-dev is needed to build Coin and libfreeimage-dev provides
+      # FreeImage.h, which is included by the media reference headers.
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake freeglut3-dev
+          sudo apt-get install -y build-essential cmake freeglut3-dev libfreeimage-dev
 
       # Build Coin from the Magic Lantern fork. The installed files are cached
       # until the fork changes.
