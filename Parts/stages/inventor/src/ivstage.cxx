@@ -743,7 +743,7 @@ MleIvStage::initPlatform(void)
 #else
     // Provide users with the application context.
     data->m_appContext = SoXt::getAppContext();
-    MLE_ASSERT(data->appContext);
+    MLE_ASSERT(data->m_appContext);
 #endif /* Qt */
 #endif /* __linux__ */
 
